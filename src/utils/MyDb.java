@@ -10,7 +10,7 @@ public class MyDb {
     String password = "";
 
     Connection cnx;
-    private static MyDb instance;
+     static MyDb instance;
 
     public MyDb() {
         try {

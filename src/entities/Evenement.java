@@ -13,15 +13,16 @@ public class Evenement {
     private String titre,description,localisation;
     private Date dateDebut,dateFin;
     private Float prix;
-    private Categorie categorie;
+
     private byte[] image;
     private int nbPlace;
     //jointure
     //jointure avec createur(user)
     //liste des participant (user[])
+    //private Categorie categorie;
 
 
-    public Evenement(int id, int evaluation, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, Categorie categorie, byte[] image, int nbPlace) {
+    public Evenement(int id, int evaluation, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, byte[] image, int nbPlace) {
         this.id = id;
         this.evaluation = evaluation;
         this.titre = titre;
@@ -30,8 +31,30 @@ public class Evenement {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.prix = prix;
-        this.categorie = categorie;
         this.image = image;
+        this.nbPlace = nbPlace;
+    }
+
+    public Evenement() {
+    }
+
+    public Evenement(int evaluation, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, int nbPlace) {
+        this.evaluation = evaluation;
+        this.titre = titre;
+        this.description = description;
+        this.localisation = localisation;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.prix = prix;
+        this.nbPlace = nbPlace;
+    }
+
+    public Evenement(int evaluation, String titre, String description, String localisation, Float prix, int nbPlace) {
+        this.evaluation = evaluation;
+        this.titre = titre;
+        this.description = description;
+        this.localisation = localisation;
+        this.prix = prix;
         this.nbPlace = nbPlace;
     }
 
@@ -99,13 +122,7 @@ public class Evenement {
         this.evaluation = evaluation;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
-    }
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
     public BufferedImage getImage() {
         try {
             ByteArrayInputStream bis = new ByteArrayInputStream(this.image);
@@ -144,7 +161,6 @@ public class Evenement {
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 ", prix=" + prix +
-                ", categorie=" + categorie +
                 ", image=" + Arrays.toString(image) +
                 ", nbPlace=" + nbPlace +
                 '}';
