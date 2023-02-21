@@ -1,7 +1,7 @@
 package entities;
 
 public class Produit {
-    private int ID_produit, qte_stock;
+    private int ID_produit, qte_stock, id_ctg;
     private String nom,description,image;
     private Float prix;
 
@@ -9,21 +9,23 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(int ID_produit, int qte_stock, String nom, String description, String image, Float prix) {
+    public Produit(int ID_produit, int qte_stock, String nom, String description, String image, Float prix, int id_ctg) {
         this.ID_produit = ID_produit;
         this.qte_stock = qte_stock;
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.prix = prix;
+        this.id_ctg=id_ctg;
     }
 
-    public Produit(int qte_stock, String nom, String description, String image, Float prix) {
+    public Produit(int qte_stock, String nom, String description, String image, Float prix, int id_ctg) {
         this.qte_stock = qte_stock;
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.prix = prix;
+        this.id_ctg=id_ctg;
     }
 
     public int getID_produit() {
@@ -74,11 +76,20 @@ public class Produit {
         this.prix = prix;
     }
 
+    public int getId_ctg() {
+        return id_ctg;
+    }
+
+    public void setId_ctg(int id_ctg) {
+        this.id_ctg = id_ctg;
+    }
+
     @Override
     public String toString() {
         return "Produit{" +
                 "ID_produit=" + ID_produit +
                 ", qte_stock=" + qte_stock +
+                ", id_ctg=" + id_ctg +
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +

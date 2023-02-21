@@ -2,35 +2,35 @@ package entities;
 
 public class Categorie {
 
- private int Cat_ID;
- private String nom ;
+ private int id_ctg;
+ private String nom_ctg ;
 
- public Categorie(int cat_ID, String nom) {
-  Cat_ID = cat_ID;
-  this.nom = nom;
+ public Categorie(int id_ctg, String nom_ctg) {
+  id_ctg = id_ctg;
+  this.nom_ctg = nom_ctg;
  }
 
- public int getCat_ID() {
-  return Cat_ID;
+ public int getid_ctg() {
+  return id_ctg;
  }
 
- public void setCat_ID(int cat_ID) {
-  Cat_ID = cat_ID;
+ public void setid_ctg(int id_ctg) {
+  id_ctg = id_ctg;
  }
 
- public String getNom() {
-  return nom;
+ public String getnom_ctg() {
+  return nom_ctg;
  }
 
- public void setNom(String nom) {
-  this.nom = nom;
+ public void setnom_ctg(String nom_ctg) {
+  nom_ctg = nom_ctg;
  }
 
  @Override
  public String toString() {
   return "Categorie{" +
-          "Cat_ID=" + Cat_ID +
-          ", nom='" + nom + '\'' +
+          "id_ctg=" + id_ctg +
+          ", nom_ctg='" + nom_ctg + '\'' +
           '}';
  }
 }
