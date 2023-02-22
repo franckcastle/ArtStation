@@ -5,7 +5,6 @@ import utils.MyDb;
 
 import java.sql.*;
 import java.util.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,17 +50,20 @@ public class EvenementService {
         pstmt.executeUpdate();
     }
 
-    public void supprimerEv(Integer id) {
+    public boolean supprimerEv(Integer id) {
         String sql = "delete from evenement where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, id);
             ste.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+
         }
 
 
+        return false;
     }
 
     public void modifierEvent(Evenement e) {

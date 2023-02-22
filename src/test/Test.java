@@ -18,11 +18,11 @@ public class Test {
 
         try {
             Evenement e1= new Evenement(4,"aslema","event","raddes",new java.util.Date(),new java.util.Date(),12.66F,6 ) ;
-            es.ajouterEv(e1);
+            //es.ajouterEv(e1);
             //Evenement e1=new Evenement();
             //e1.setTitre("haja modifié");
             //e1.setId(2);
-            es.supprimerEv(6);
+            //es.supprimerEv(6);
             //es.modifierEvent(e1);
             System.out.println(es.getAll());
         }catch (SQLException ex) {
