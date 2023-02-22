@@ -36,16 +36,19 @@ public class AfficherUsersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try{
+        try {
+            // TODO
             List<User> users = us.recuperer();
-            int row = 0;
-            int col = 0;
-            for (int i =0;i<users.size();i++){
-                
-            }
+            ObservableList<User> olu = FXCollections.observableArrayList(users);
+            usersTv.setItems(olu);
+            UserIdTv.setCellValueFactory(new PropertyValueFactory("userId"));
+            usernameTv.setCellValueFactory(new PropertyValueFactory("username"));
+            passwordTv.setCellValueFactory(new PropertyValueFactory("email"));
+            emailTv.setCellValueFactory(new PropertyValueFactory("password"));
+            role.setCellValueFactory(new PropertyValueFactory("role"));
 
-        }catch (SQLException ex){
-            System.out.println("yy"+ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("error" + ex.getMessage());
         }
 
     }
