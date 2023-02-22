@@ -9,22 +9,22 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(int ID_produit, int qte_stock, String nom, String description, String image, Float prix, int id_ctg) {
+    public Produit(int ID_produit, String nom, String description, String image, Float prix,int qte_stock, int id_ctg) {
         this.ID_produit = ID_produit;
-        this.qte_stock = qte_stock;
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.prix = prix;
+        this.qte_stock = qte_stock;
         this.id_ctg=id_ctg;
     }
 
-    public Produit(int qte_stock, String nom, String description, String image, Float prix, int id_ctg) {
-        this.qte_stock = qte_stock;
+    public Produit( String nom, String description, String image, Float prix,int qte_stock, int id_ctg) {
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.prix = prix;
+        this.qte_stock = qte_stock;
         this.id_ctg=id_ctg;
     }
 
