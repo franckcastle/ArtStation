@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherWorkshopController">
+   <children>
+      <Label layoutX="256.0" layoutY="22.0" text="Affichage " textFill="#bf6017">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TableView fx:id="AfficherId" layoutX="11.0" layoutY="70.0" prefHeight="265.0" prefWidth="582.0">
+        <columns>
+          <TableColumn fx:id="titreField" prefWidth="59.0" text="Titre" />
+            <TableColumn fx:id="dureeField" prefWidth="63.0" text="Duree" />
+          <TableColumn fx:id="nom_artisteField" prefWidth="87.0" text="nom_artiste" />
+            <TableColumn fx:id="dateField" prefWidth="59.0" text="Date" />
+            <TableColumn fx:id="heure_debutField" prefWidth="98.0" text="Heure_debut" />
+            <TableColumn fx:id="heure_finField" prefWidth="84.0" text="Heure_fin" />
+            <TableColumn fx:id="prixField" prefWidth="47.0" text="Prix" />
+            <TableColumn fx:id="nbPlacesField" prefWidth="103.0" text="nbPlaces" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
