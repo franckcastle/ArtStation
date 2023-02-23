@@ -6,7 +6,11 @@ public class Categorie {
  private String nom_ctg ;
 
  public Categorie(int id_ctg, String nom_ctg) {
-  id_ctg = id_ctg;
+  this.id_ctg = id_ctg;
+  this.nom_ctg = nom_ctg;
+ }
+
+ public Categorie(String nom_ctg) {
   this.nom_ctg = nom_ctg;
  }
 
