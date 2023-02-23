@@ -19,7 +19,7 @@ public class AjouterUserController implements Initializable {
     @FXML
     public TextField usernameTf;
     @FXML
-    public TextField passwordTf;
+    public PasswordField passwordTf;
     @FXML
     public TextField emailTf;
     @FXML
@@ -50,8 +50,14 @@ public class AjouterUserController implements Initializable {
             reset();
             us.ajouter(u);
             System.out.println("Inscription avec succes");
-        } catch (SQLException ex) {
+
+            Parent loader = FXMLLoader.load(getClass().getResource("Connexion.fxml"));
+            usernameTf.getScene().setRoot(loader);
+
+        } catch (SQLException ex ) {
             System.out.println("error" + ex.getMessage());
+        }catch (IOException e ) {
+            System.out.println(e);
         }
     }
 

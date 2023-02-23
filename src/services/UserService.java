@@ -37,8 +37,8 @@ public class UserService implements IService<User> {
     public boolean supprimer(User u) throws SQLException {
         boolean ok = false;
         try {
-            PreparedStatement req = cnx.prepareStatement("delete from user where userId= ?");
-            req.setInt(1,u.getUserId());
+            PreparedStatement req = cnx.prepareStatement("delete from user where username= ?");
+            req.setString(1,u.getUsername());
             req.executeUpdate();
             ok=true;
         }catch (SQLException ex){
@@ -62,5 +62,31 @@ public class UserService implements IService<User> {
             users.add(u);
         }
         return users;
+    }
+
+    @Override
+    public User GetByUsername(String username) throws SQLException {
+        List<User> users = new ArrayList<>();
+        String req = "Select * from user where username = ?";
+
+        PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1,username);
+            ResultSet rs = ps.executeQuery();
+            User u = new User();
+            rs.next();
+            if (rs.getRow()!=0){
+                u.setUserId(rs.getInt(1));
+                u.setUsername(username);
+                u.setPassword(rs.getString(3));
+                u.setEmail(rs.getString(4));
+                u.setRole(rs.getString(5));
+
+                return u;
+            }
+            else {
+                System.out.println("Utilisateur inexistant");
+                return null;
+        }
+
     }
 }

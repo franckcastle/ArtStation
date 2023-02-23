@@ -14,15 +14,15 @@ public class Test extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterUser.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/LandingPage.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root,700,700);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Inscription");
+            primaryStage.setTitle("ArtStation");
             primaryStage.show();
 
         } catch (IOException ex) {
-            System.out.println("xerror" + ex.getMessage());
+            System.out.println("xerror" + ex);
         }
     }
 
