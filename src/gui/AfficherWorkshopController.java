@@ -17,17 +17,27 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import services.WorkshopServices;
 import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import utils.MyDB;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 
 import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AfficherWorkshopController implements Initializable {
+    Connection cnx;
 
     WorkshopServices ws = new WorkshopServices();
 
@@ -80,4 +90,13 @@ public class AfficherWorkshopController implements Initializable {
     }
 
 
+    @FXML
+
+
+     private void Supprimer(ActionEvent event) {
+        Workshop selected= (Workshop) AfficherId.getSelectionModel().getSelectedItem();
+        ws.supprimerWs(selected.getId());
+        AfficherId.getItems().removeAll(AfficherId.getSelectionModel().getSelectedItems());
+
+    }
 }

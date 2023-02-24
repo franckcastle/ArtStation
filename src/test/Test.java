@@ -9,11 +9,6 @@ import java.sql.SQLException;
 
 
 public class Test{
-
-
-
-
-
     public static void main(String[] args) throws IOException {
 
         try {
@@ -24,9 +19,17 @@ public class Test{
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+
+
             ps.modifierWs(p);
-           ps.supprimerWs(2);
+
+
+
+
+           ps.supprimerWs(3);
+
             System.out.println(ps.recuperer(p));
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
 

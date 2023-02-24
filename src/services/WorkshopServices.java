@@ -37,7 +37,7 @@ public class WorkshopServices {
 
     public void ajouterWs(Workshop t) throws SQLException, Exception {
         String sDate = "31/12/1998";
-        Date dateDebut = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
 
         String sql = "INSERT INTO workshop (duree,nbPlaces,prix,date,titre,nom_artiste,description,heure_debut,heure_fin) VALUES (?, ?, ?, ?,?, ?, ?, ?,?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
@@ -62,6 +62,7 @@ public class WorkshopServices {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, id);
             ste.executeUpdate();
+            System.out.println("workshop supprimé  ");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
