@@ -14,6 +14,5 @@
       <TextField fx:id="emailTf" layoutX="280.0" layoutY="222.0" promptText="email" />
       <TextField fx:id="roleTf" layoutX="280.0" layoutY="283.0" promptText="role" />
       <Button layoutX="323.0" layoutY="344.0" mnemonicParsing="false" onAction="#AjouterUser" text="s'inscrire" />
-      <Button layoutX="325.0" layoutY="391.0" mnemonicParsing="false" onAction="#AfficherUsers" text="Afficher" />
    </children>
 </AnchorPane>

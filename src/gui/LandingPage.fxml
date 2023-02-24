@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LandingPageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LandingPageController">
    <children>
       <Button fx:id="cnxBtn" layoutX="76.0" layoutY="173.0" mnemonicParsing="false" onAction="#ConnexionRed" prefHeight="26.0" prefWidth="154.0" text="Connexion" />
       <Button fx:id="inscriBtn" layoutX="370.0" layoutY="173.0" mnemonicParsing="false" onAction="#InscriptionRed" prefHeight="26.0" prefWidth="154.0" text="Inscription" />
+      <Label layoutX="240.0" layoutY="53.0" text="ArtStation">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

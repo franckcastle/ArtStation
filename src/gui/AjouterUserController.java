@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import services.UserService;
@@ -41,13 +42,33 @@ public class AjouterUserController implements Initializable {
 
     @FXML
     void AjouterUser(ActionEvent event) {
+
         try {
             User u = new User();
             u.setUsername(usernameTf.getText());
-            u.setPassword(passwordTf.getText());
+            u.setPassword( passwordTf.getText());
             u.setEmail(emailTf.getText());
             u.setRole(roleTf.getText());
             reset();
+            if (u.getUsername().length()==0 || u.getEmail().length()==0||u.getRole().length()==0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'inscription");
+                alert.setHeaderText("Veuillez remplir tt les champs.");
+                alert.showAndWait();
+                Parent loader = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
+                usernameTf.getScene().setRoot(loader);
+                return;
+            }
+            if (u.getPassword().length() < 8) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'inscription");
+                alert.setHeaderText("Le mot de passe doit comporter au moins 8 caractères.");
+                alert.showAndWait();
+                Parent loader = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
+                usernameTf.getScene().setRoot(loader);
+                return; // stop the method execution if the password is too short
+            }
+            
             us.ajouter(u);
             System.out.println("Inscription avec succes");
 
@@ -61,16 +82,6 @@ public class AjouterUserController implements Initializable {
         }
     }
 
-    @FXML
-    void AfficherUsers (ActionEvent event){
-        try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherUsers.fxml"));
-            usernameTf.getScene().setRoot(loader);
-
-        }catch (IOException ex){
-            System.out.println("xx"+ex.getMessage());
-        }
-    }
 
 
 }

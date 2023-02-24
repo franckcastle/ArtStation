@@ -3,13 +3,22 @@ package gui;
 import entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import services.UserService;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
+
+
 
 public class ConnexionController implements Initializable {
     @FXML
@@ -32,10 +41,29 @@ public class ConnexionController implements Initializable {
             String password = passwordTf.getText();
             try {
                 u = us.GetByUsername(username);
-                if (password != u.getPassword()){
-                    System.out.println(password.getClass());
 
-                    System.out.println("000");
+                if(u!=null) {
+                    if (password.equals(u.getPassword())) {
+                        try {
+                            Parent loader = FXMLLoader.load(getClass().getResource("AfficherUsers.fxml"));
+                            usernameTf.getScene().setRoot(loader);
+
+                        } catch (IOException ex) {
+                            System.out.println("xx" + ex.getMessage());
+                        }
+                    } else {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Erreur de connexion");
+                        alert.setHeaderText(" mot de passe invalide ");
+                        alert.showAndWait();
+
+                    }
+                }else {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Erreur de connexion");
+                    alert.setHeaderText("Utilisateur Introuvable ");
+
+                    alert.showAndWait();
                 }
 
             }catch (SQLException e){

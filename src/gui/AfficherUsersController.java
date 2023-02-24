@@ -2,13 +2,16 @@ package gui;
 
 import entities.User;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -51,7 +54,9 @@ public class AfficherUsersController implements Initializable {
             passwordTv.setCellValueFactory(new PropertyValueFactory("email"));
             emailTv.setCellValueFactory(new PropertyValueFactory("password"));
             role.setCellValueFactory(new PropertyValueFactory("role"));
+
             this.delete();
+            this.modifier();
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -91,6 +96,42 @@ public class AfficherUsersController implements Initializable {
     }
 
 
+    public void modifier() {
 
+        modifier.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("modifier");
+                            b.setOnAction(event -> {
+                                try {
+                                    TableCell cell = (TableCell) ((Button) event.getSource()).getParent();
+                                    int rowIndexBtnmodifier = cell.getIndex();
+
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierUser.fxml"));
+                                    Parent root = loader.load();
+
+                                    ModifierUserController controller = loader.getController();
+
+                                    controller.setUsername(usernameTv.getCellData(rowIndexBtnmodifier));
+
+
+                                    usersTv.getScene().setRoot(root);
+                                }catch (IOException e){
+                                    System.out.println("Erreur lors du chargement de l'interface utilisateur : " + e.getMessage());
+                                }
+
+                            });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
+
+    }
 
 }

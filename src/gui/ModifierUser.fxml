@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" prefHeight="459.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierUserController">
+   <children>
+      <Label layoutX="255.0" layoutY="29.0" text="Modifier User">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailTf" layoutX="433.0" layoutY="131.0" promptText="email" />
+      <TextField fx:id="usernameTf" layoutX="36.0" layoutY="131.0" promptText="username" />
+      <PasswordField fx:id="passwordTf" layoutX="36.0" layoutY="217.0" promptText="password" />
+      <TextField fx:id="roleTf" layoutX="433.0" layoutY="217.0" promptText="role" />
+      <Button alignment="CENTER" layoutX="260.0" layoutY="325.0" mnemonicParsing="false" onAction="#ModifierUtilisateur" prefHeight="26.0" prefWidth="121.0" text="Modifier" />
+   </children>
+</AnchorPane>
