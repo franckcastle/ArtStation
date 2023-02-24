@@ -28,7 +28,7 @@ public class AjouterPdtController  implements Initializable {
     @FXML
     public TextField qte_stockTf;
     @FXML
-    public TextField id_categorieTf;
+    public TextField categorieTf;
     @FXML
     public TextField imageTf;
 
@@ -44,21 +44,46 @@ public class AjouterPdtController  implements Initializable {
     }
 
         @FXML
-        void AjouterProduit (ActionEvent event) {
-
-                Produit p = new Produit();
-                p.setNom(nomTf.getText());
-                p.setDescription (descriptionTf.getText());
-                p.setPrix(Float.valueOf(prixTf.getText()));
-                p.setQte_stock(Integer.parseInt(qte_stockTf.getText()));
-                p.setId_ctg(Integer.parseInt(prixTf.getText()));
-                p.setImage(imageTf.getText());
+      public void AjouterProduit (ActionEvent event) {
+            Produit p = new Produit();
+            p.setNom(nomTf.getText());
+            p.setDescription (descriptionTf.getText());
+            p.setPrix(Float.valueOf(prixTf.getText()));
+            p.setQte_stock(Integer.parseInt(qte_stockTf.getText()));
+            p.setId_ctg( Integer.parseInt(categorieTf.getText()));
+            p.setImage(imageTf.getText());
             try {
                 ps.ajouterProduit(p);
-               // reset();
+                reset();
             } catch (Exception ex) {
                 System.out.println("error" + ex.getMessage());
+            }}
+
+            private void reset() {
+                nomTf.setText("");
+                descriptionTf.setText("");
+                prixTf.setText("");
+                qte_stockTf.setText("");
+                categorieTf.setText("");
+                imageTf.setText("");
             }
 
+}
 
-        }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

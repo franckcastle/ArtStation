@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherPdtController">
+   <children>
+      <TableView fx:id="productsTv" layoutX="5.0" layoutY="14.0" prefHeight="314.0" prefWidth="590.0">
+        <columns>
+          <TableColumn fx:id="idproduitTv" prefWidth="40.000030517578125" text="id produit" />
+          <TableColumn fx:id="nomTv" prefWidth="59.199981689453125" text="nom produit" />
+            <TableColumn fx:id="descriptionTv" prefWidth="60.0" text="description" />
+            <TableColumn fx:id="prixTv" prefWidth="54.4000244140625" text="prix" />
+            <TableColumn fx:id="imageTv" prefWidth="68.0" text="image" />
+            <TableColumn fx:id="qte_stockTv" prefWidth="72.0" text="quantité stock" />
+            <TableColumn fx:id="categorieTv" prefWidth="66.4000244140625" text="categorie" />
+            <TableColumn fx:id="supprimer" prefWidth="83.199951171875" text="supprimer" />
+            <TableColumn fx:id="modifier" prefWidth="80.40008544921875" text="modifier" />
+        </columns>
+      </TableView>
+      <Button fx:id="AjouterProduit" layoutX="238.0" layoutY="345.0" mnemonicParsing="false" onAction="#ajouterProduit" text="Ajouter produit" />
+   </children>
+</AnchorPane>
