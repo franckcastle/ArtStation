@@ -6,10 +6,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="457.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherEvController">
+<AnchorPane fx:id="AnchorPane" prefHeight="457.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherEvController">
    <children>
       <Label layoutX="185.0" layoutY="42.0" text="Affichier Events" />
-      <TableView fx:id="EventsTv" layoutX="6.0" layoutY="87.0" prefHeight="200.0" prefWidth="603.0">
+      <TableView fx:id="EventsTv" layoutY="85.0" prefHeight="202.0" prefWidth="677.0">
         <columns>
           <TableColumn fx:id="evaluatinTv" prefWidth="75.0" text="evaluation" />
           <TableColumn fx:id="titreTv" prefWidth="75.0" text="titre" />
@@ -20,6 +20,7 @@
             <TableColumn fx:id="prixTv" prefWidth="58.4000244140625" text="prix" />
             <TableColumn fx:id="nbPlaceTv" prefWidth="56.7999267578125" text="nbPlace" />
             <TableColumn fx:id="delete" prefWidth="56" text="Action" />
+            <TableColumn fx:id="modifier" prefWidth="75.0" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="AjouterBtn" layoutX="198.0" layoutY="303.0" mnemonicParsing="false" onAction="#ajouterEv" style="-fx-background-color: #252525;" text="Ajouter" textFill="WHITE" />

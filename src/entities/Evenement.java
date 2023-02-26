@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class Evenement {
     private int id,evaluation;
@@ -17,6 +18,19 @@ public class Evenement {
     private byte[] image;
     private int nbPlace;
     //jointure
+    private List<Reservation> reservations;
+
+    public Evenement(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
     //jointure avec createur(user)
     //liste des participant (user[])
     //private Categorie categorie;

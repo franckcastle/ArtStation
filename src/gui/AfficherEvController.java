@@ -15,6 +15,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import services.EvenementService;
 
@@ -48,6 +49,11 @@ public class AfficherEvController implements Initializable {
     public TableColumn nbPlaceTv;
     @FXML
     private TableColumn<Evenement, Button> delete;
+    @FXML
+    private TableColumn<Evenement, Button> modifier;
+    @FXML
+    private AnchorPane AnchorPane;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,6 +61,9 @@ public class AfficherEvController implements Initializable {
             List<Evenement> ev =es.getAll();
 
             ObservableList<Evenement> olp = FXCollections.observableArrayList(ev);
+
+
+
             EventsTv.setItems(olp);
             evaluatinTv.setCellValueFactory(new PropertyValueFactory("evaluation"));
             titreTv.setCellValueFactory(new PropertyValueFactory("titre"));
@@ -66,6 +75,7 @@ public class AfficherEvController implements Initializable {
             nbPlaceTv.setCellValueFactory(new PropertyValueFactory("nbPlace"));
 
             this.delete();
+            this.modifier();
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -112,4 +122,53 @@ public class AfficherEvController implements Initializable {
         });
 
     }
+    public void modifier(){
+        modifier.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("modifier");
+                        b.setOnAction(event -> {
+
+
+                            try {
+
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModiffierEv.fxml"));
+                                Parent root = loader.load();
+
+                                //AnchorPane  = loader.load();
+
+
+                                //AnchorPane pane=loader.load();
+                                Evenement even= (Evenement) EventsTv.getItems().get(getIndex());
+                                System.out.println("hetha even"+even.getId());
+                                ModiffierEvController controller =loader.getController();
+                                controller.ee=even;
+                                EventsTv.getScene().setRoot(root);
+
+                                //Stage stage = new Stage();
+                                //stage.setScene(new Scene(root));
+                                //stage.show();
+                                //AnchorPane anchorPane = (AnchorPane) root;
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            //Parent root = loader.load();
+
+
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
+    }
+
 }

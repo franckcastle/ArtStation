@@ -3,12 +3,17 @@ package gui;
 import entities.Evenement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import services.EvenementService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -35,6 +40,8 @@ public class AjouterEvController implements Initializable {
     private DatePicker dateFinFiel;
     @FXML
     private TextField prixField;
+    @FXML
+    private Button retourId;
 
     EvenementService es = new EvenementService();
 
@@ -45,25 +52,47 @@ public class AjouterEvController implements Initializable {
         @FXML
     public void ajouterEv(ActionEvent event){
             Evenement e = new Evenement();
-           e.setEvaluation(Integer.parseInt(evaluationIField.getText()));
-           e.setTitre(titreField.getText());
-           e.setDescription(descriptionField.getText());
-           e.setLocalisation(localisationField.getText());
-           e.setNbPlace(Integer.parseInt(nbPlaceField.getText()));
-           //e.setDateDebut(dateDebutField.getValue().format());
-            LocalDate localDate = dateDebutField.getValue();
-            Date newDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            e.setDateDebut(newDate);
-            LocalDate localDate1 = dateFinFiel.getValue();
-            Date newDate1 = Date.from(localDate1.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            e.setDateFin(newDate1);
-            e.setPrix(Float.valueOf(prixField.getText()));
-            try {
-                es.ajouterEv(e);
-                reset();
-            } catch (Exception ex) {
-                System.out.println("error" + ex.getMessage());
+            String evaluationValue = evaluationIField.getText();
+            if(!titreField.getText().isEmpty() && !descriptionField.getText().isEmpty() && !localisationField.getText().isEmpty() && !nbPlaceField.getText().isEmpty()  && !prixField.getText().isEmpty()) {
+                if (evaluationValue.matches("[1-9]|10")) {
+                    e.setEvaluation(Integer.parseInt(evaluationValue));
+                } else {
+                    // Afficher un message d'erreur ou prendre une action pour informer l'utilisateur que la saisie est invalide
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur ");
+                    alert.setHeaderText("l'evaluation doit etre entre 1 et 10");
+
+                    alert.showAndWait();
+                }
+                e.setTitre(titreField.getText());
+                e.setDescription(descriptionField.getText());
+                e.setLocalisation(localisationField.getText());
+                e.setNbPlace(Integer.parseInt(nbPlaceField.getText()));
+                //e.setDateDebut(dateDebutField.getValue().format());
+                LocalDate localDate = dateDebutField.getValue();
+                Date newDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                e.setDateDebut(newDate);
+                LocalDate localDate1 = dateFinFiel.getValue();
+                Date newDate1 = Date.from(localDate1.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                e.setDateFin(newDate1);
+                e.setPrix(Float.valueOf(prixField.getText()));
+                try {
+                    es.ajouterEv(e);
+                    reset();
+                } catch (Exception ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur ");
+                alert.setHeaderText("toutes les champs sont obligatoires");
+
+                alert.showAndWait();
             }
+
+
+
+
 
         }
     private void reset() {
@@ -76,4 +105,16 @@ public class AjouterEvController implements Initializable {
         //dateFinFiel.setAccessibleText("");
         prixField.setText("");
     }
+    @FXML
+    public void retourAf(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AfficherEv.fxml"));
+
+            //Parent root = loader.load();
+            evaluationIField.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

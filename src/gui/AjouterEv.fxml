@@ -18,5 +18,6 @@
       <DatePicker fx:id="dateDebutField" layoutX="21.0" layoutY="256.0" promptText="date de debut " />
       <DatePicker fx:id="dateFinFiel" layoutX="21.0" layoutY="292.0" promptText="date de fin" />
       <TextField fx:id="prixField" layoutX="27.0" layoutY="327.0" promptText="prix" />
+      <Button fx:id="retourId" layoutX="393.0" layoutY="305.0" mnemonicParsing="false" onAction="#retourAf" text="retour" />
    </children>
 </AnchorPane>
