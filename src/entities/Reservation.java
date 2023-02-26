@@ -7,10 +7,24 @@ public class Reservation {
     //jointure
     private Evenement evenement;
     //jointure avec user
-
+    private User user;
     public Reservation(int id, Evenement evenement) {
         this.id = id;
         this.evenement = evenement;
+    }
+
+    public Reservation(int id, Evenement evenement, User user) {
+        this.id = id;
+        this.evenement = evenement;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getId() {

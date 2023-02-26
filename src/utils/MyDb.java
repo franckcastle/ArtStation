@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MyDb {
+
     String url = "jdbc:mysql://localhost:3306/art";
     String username = "root";
     String password = "";
@@ -23,14 +24,17 @@ public class MyDb {
 
     public static MyDb getInstance() {
         if (instance == null) {
+
             instance = new MyDb();
         }
         return instance;
     }
 
+
     public Connection getCnx() {
         return cnx;
     }
+
 
 
 }

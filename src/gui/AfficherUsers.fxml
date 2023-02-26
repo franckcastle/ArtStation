@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherUsersController">
+   <children>
+      <Label layoutX="245.0" layoutY="23.0" text="Afficher Users" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="usersTv" layoutY="58.0" prefHeight="350.0" prefWidth="658.0">
+        <columns>
+          <TableColumn fx:id="UserIdTv" prefWidth="64.800048828125" text="userId" />
+          <TableColumn fx:id="usernameTv" prefWidth="102.39996337890625" text="username" />
+            <TableColumn fx:id="passwordTv" prefWidth="84.0" text="Password" />
+            <TableColumn fx:id="emailTv" prefWidth="176.0" text="email" />
+            <TableColumn fx:id="role" prefWidth="107.99996948242188" text="role" />
+            <TableColumn fx:id="modifier" prefWidth="64.79998779296875" text="modifier" />
+            <TableColumn fx:id="supprimer" prefWidth="57.5999755859375" text="supprimer" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
