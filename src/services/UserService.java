@@ -105,7 +105,7 @@ public class UserService implements IService<User> {
         }
         return false;
     }
-
+//test
     @Override
     public boolean annulerRes(int id_u, Evenement e) throws SQLException {
         PreparedStatement req = cnx.prepareStatement("delete from reservation where event_id= ? and user_id=? ");
