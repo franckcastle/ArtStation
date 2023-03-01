@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterOrder">
+   <children>
+      <TextField fx:id="nom_column" layoutX="116.0" layoutY="37.0" promptText="nom" />
+      <TextField fx:id="prenom_column" layoutX="116.0" layoutY="83.0" promptText="prenom" />
+      <TextField fx:id="ville_column" layoutX="116.0" layoutY="137.0" promptText="ville" />
+      <TextField fx:id="addresse_column" layoutX="116.0" layoutY="187.0" promptText="addresee" />
+      <TextField fx:id="code_column" layoutX="116.0" layoutY="238.0" promptText="code postale" />
+      <TextField fx:id="prix_totale" layoutX="116.0" layoutY="289.0" promptText="prix" />
+      <Button fx:id="ajouteOrders" layoutX="399.0" layoutY="163.0" mnemonicParsing="false" onAction="#onClickAjouter" text="ajouter" />
+
+   </children>
+</AnchorPane>

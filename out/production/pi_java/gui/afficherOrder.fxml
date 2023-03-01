@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.afficherOrderController">
+   <children>
+      <TableView fx:id="carts_table" layoutY="89.0" prefHeight="314.0" prefWidth="601.0">
+         <columns>
+            <TableColumn fx:id="id_column" prefWidth="38.39999312162399" text="id" />
+            <TableColumn fx:id="nom_column" prefWidth="56.80002212524414" text="nom" />
+            <TableColumn fx:id="prenom_column" prefWidth="57.60003662109375" text="prenom" />
+            <TableColumn fx:id="ville_column" prefWidth="59.20001220703125" text="ville" />
+            <TableColumn fx:id="addresse_column" prefWidth="79.19993591308594" text="addresse" />
+            <TableColumn fx:id="postale_column" prefWidth="55.20001220703125" text="code_postale" />
+            <TableColumn fx:id="prix_column" prefWidth="33.5999755859375" text="prix" />
+            <TableColumn fx:id="sta_column" prefWidth="40.0" text="sta" />
+            <TableColumn fx:id="pruducts" prefWidth="35.99993896484375" text="produit" />
+            <TableColumn fx:id="delete" prefWidth="35.99993896484375" text="delete" />
+            <TableColumn fx:id="modifier" prefWidth="35.99993896484375" text="update" />
+         </columns>
+      </TableView>
+      <Button fx:id="ajouter_column" layoutX="285.0" layoutY="37.0" mnemonicParsing="false" onAction="#ajouterbtn" text="ajouter" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="order_id_field" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterItem">
+   <children>
+      <TextField fx:id="price_field" layoutX="226.0" layoutY="258.0" promptText="price" />
+      <TextField fx:id="quantity_field" layoutX="227.0" layoutY="217.0" promptText="quantity" />
+      <TextField fx:id="id_field" layoutX="226.0" layoutY="175.0" promptText="id" />
+      <TextField fx:id="order_id_field" layoutX="228.0" layoutY="130.0" promptText="order_id" />
+      <Button fx:id="btnOnClick" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#ajouterItem" text="Button" />
+   </children>
+</AnchorPane>
