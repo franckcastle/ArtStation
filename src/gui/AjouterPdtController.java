@@ -60,7 +60,6 @@ public class AjouterPdtController  implements Initializable {
             for (Categorie c : cat) {
                 catNames.add(c.getNom_ctg());}
                 comb.setItems(catNames);
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -75,7 +74,7 @@ public class AjouterPdtController  implements Initializable {
             p.setDescription (descriptionTf.getText());
             p.setPrix(Float.valueOf(prixTf.getText()));
             p.setQte_stock(Integer.parseInt(qte_stockTf.getText()));
-            p.setId_ctg( Integer.parseInt(categorieTf.getText()));
+            p.setId_ctg(i);
             p.setImage(imageTf.getText());
             try {
                 ps.ajouterProduit(p);
@@ -83,16 +82,20 @@ public class AjouterPdtController  implements Initializable {
             } catch (Exception ex) {
                 System.out.println("error" + ex.getMessage());
             }}
-
+int i;
             @FXML
             void select (ActionEvent event) throws SQLException {
         String s = comb.getSelectionModel().getSelectedItem().toString();
+        System.out.println(s);
+                List<Categorie> categories = cs.getAll();
+                for (Categorie c : categories) {
+                    if (c.getNom_ctg().equals(s)) {
+                       int categoryId = c.getid_ctg();
 
-              /*  List<Categorie> cat = cs.getAll();
-                System.out.println(cat);
-                ObservableList<Categorie> s = FXCollections.observableArrayList(cat);
-                comb = new ComboBox<>();
-                comb.getItems().addAll(s);*/
+                        i=categoryId;
+                        break; }
+                }
+
             }
 
             private void reset() {

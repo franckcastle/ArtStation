@@ -15,7 +15,7 @@ public class Test {
         ProduitService ps = new ProduitService();
         CategorieService cs = new CategorieService();
         List<Categorie> cat = cs.getAll();
-       System.out.println(cat);
+
         //try{
            //Categorie c1 = new Categorie ("musique");
            //cs.ajouterCategorie(c1);

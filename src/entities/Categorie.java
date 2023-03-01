@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 public class Categorie {
 
  private int id_ctg;

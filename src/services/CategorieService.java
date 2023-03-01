@@ -45,7 +45,16 @@ public class CategorieService {
         pstmt.executeUpdate();
     }
 
-
+//    public int GetIdByName(String name) throws SQLException {
+//        String req = "SELECT id_ctg FROM categorie where nom_ctg='"+name+"';";
+//        PreparedStatement pst = cnx.prepareStatement(req);
+//        ResultSet rs = pst.executeQuery();
+//
+//        int i= rs.getInt("id_ctg");
+//
+//        return i;
+//
+//    }
 
     public void supprimerCategorie(Integer id_ctg) {
         String sql = "delete from categorie where id_ctg=?";
