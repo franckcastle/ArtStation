@@ -22,7 +22,8 @@ public class Categorie {
   id_ctg = id_ctg;
  }
 
- public String getnom_ctg() {
+
+ public String getNom_ctg() {
   return nom_ctg;
  }
 
@@ -37,4 +38,6 @@ public class Categorie {
           ", nom_ctg='" + nom_ctg + '\'' +
           '}';
  }
+
+
 }

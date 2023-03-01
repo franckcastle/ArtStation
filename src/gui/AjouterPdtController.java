@@ -1,24 +1,36 @@
 package gui;
 
 import entities.Produit;
+import entities.Categorie;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 import services.ProduitService;
+import services.CategorieService;
 import java.lang.Integer;
 
 
 
 public class AjouterPdtController  implements Initializable {
+
+    @FXML
+    private ComboBox comb;
     @FXML
     public TextField nomTf;
     @FXML
@@ -34,6 +46,7 @@ public class AjouterPdtController  implements Initializable {
 
     // instance database Service
     ProduitService ps = new ProduitService();
+    CategorieService cs = new CategorieService();
 
 
     /**
@@ -41,10 +54,22 @@ public class AjouterPdtController  implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            List<Categorie> cat = cs.getAll();
+            ObservableList<String> catNames = FXCollections.observableArrayList();
+            for (Categorie c : cat) {
+                catNames.add(c.getNom_ctg());}
+                comb.setItems(catNames);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
         @FXML
-      public void AjouterProduit (ActionEvent event) {
+      public void AjouterProduit (ActionEvent event) throws SQLException {
+
             Produit p = new Produit();
             p.setNom(nomTf.getText());
             p.setDescription (descriptionTf.getText());
@@ -58,6 +83,17 @@ public class AjouterPdtController  implements Initializable {
             } catch (Exception ex) {
                 System.out.println("error" + ex.getMessage());
             }}
+
+            @FXML
+            void select (ActionEvent event) throws SQLException {
+        String s = comb.getSelectionModel().getSelectedItem().toString();
+
+              /*  List<Categorie> cat = cs.getAll();
+                System.out.println(cat);
+                ObservableList<Categorie> s = FXCollections.observableArrayList(cat);
+                comb = new ComboBox<>();
+                comb.getItems().addAll(s);*/
+            }
 
             private void reset() {
                 nomTf.setText("");

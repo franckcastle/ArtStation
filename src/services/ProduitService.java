@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import utils.MyDb;
-import java.text.ParseException;
 
 public class ProduitService  {
     Connection cnx;

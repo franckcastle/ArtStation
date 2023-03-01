@@ -22,26 +22,29 @@ public class CategorieService {
         cnx = MyDb.getInstance().getCnx();
     }
 
-    public void ajouterCategorie(Categorie c) throws SQLException, Exception {
-        String sql = "INSERT INTO categorie (nom_ctg) VALUES (?)";
-        PreparedStatement pstmt = cnx.prepareStatement(sql);
-        pstmt.setString(1, c.getnom_ctg());
-        pstmt.executeUpdate();
-    }
-
     public List<Categorie> getAll() throws SQLException {
-        List<Categorie> listCategorie = new ArrayList<Categorie>();
+        List<Categorie> cat = new ArrayList<Categorie>();
         String req = "select * from categorie";
         Statement st = cnx.createStatement();
         ResultSet rs = st.executeQuery(req);
         while (rs.next()) {
             System.out.println(rs);
-            Categorie c = new Categorie(rs.getInt("id_ctg"), rs.getString("nom_ctg"));
+            Categorie c = new Categorie
+                    (rs.getInt("id_ctg"), rs.getString("nom_ctg"));
 
-            listCategorie.add(c);
+            cat.add(c);
+            System.out.println();
         }
-        return listCategorie;
+        return cat;
     }
+
+    public void ajouterCategorie(Categorie c) throws SQLException, Exception {
+        String sql = "INSERT INTO categorie (nom_ctg) VALUES (?)";
+        PreparedStatement pstmt = cnx.prepareStatement(sql);
+        pstmt.setString(1, c.getNom_ctg());
+        pstmt.executeUpdate();
+    }
+
 
 
     public void supprimerCategorie(Integer id_ctg) {
@@ -59,7 +62,7 @@ public class CategorieService {
         String query = "UPDATE  categorie set nom_ctg=? Where id_ctg ='" + c.getid_ctg() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
-            ste.setString(1, c.getnom_ctg());
+            ste.setString(1, c.getNom_ctg());
             ste.executeUpdate();
             System.out.println("categorie  modifié  ");
 

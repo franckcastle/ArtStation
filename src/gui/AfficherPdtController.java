@@ -90,9 +90,21 @@ public class AfficherPdtController implements Initializable {
         }
     }
 
+    public void select (ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AjouterPdt.fxml"));
+
+            //Parent root = loader.load();
+            productsTv.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
-   public void supprimer() {
+
+
+    public void supprimer() {
         supprimer.setCellFactory((param) -> {
             return new TableCell() {
                 @Override
