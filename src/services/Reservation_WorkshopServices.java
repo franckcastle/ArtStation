@@ -25,7 +25,7 @@ public class Reservation_WorkshopServices {
         ResultSet rs = st.executeQuery(req);
         while (rs.next()) {
             System.out.println(rs);
-            Reservation_Workshop t = new Reservation_Workshop(rs.getInt("id"), rs.getInt("id_workshop"), rs.getInt("id_user"));
+            Reservation_Workshop t = new Reservation_Workshop(rs.getInt("id"), rs.getInt("id_workshop"), rs.getString("categorie"));
             listEv.add(t);
         }
         return listEv;
@@ -33,14 +33,13 @@ public class Reservation_WorkshopServices {
 
 
     public void ajouterR(Reservation_Workshop t) throws SQLException, Exception {
-        String sDate = "31/12/1998";
-        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
 
-        String sql = "INSERT INTO workshop (id_workshop,id_user) VALUES (?, ?)";
+
+        String sql = "INSERT INTO reservation_workshop (id_workshop,id_user,categorie) VALUES (?, ?,?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
         pstmt.setInt(1, t.getId_workshop());
         pstmt.setInt(2, t.getId_user());
-
+        pstmt.setString(3, t.getCategorie());
 
         pstmt.executeUpdate();
     }
@@ -67,9 +66,10 @@ public class Reservation_WorkshopServices {
         ResultSet rs =  st.executeQuery(s);
         while(rs.next()){
             Reservation_Workshop p = new Reservation_Workshop();
-            p.setId(rs.getInt("id"));
+            p.setId_reservation(rs.getInt("id"));
             p.setId_workshop(rs.getInt("id_workshop"));
             p.setId_user(rs.getInt("id_user"));
+            p.setCategorie(rs.getString("categorie"));
 
             reservations.add(p);
 
@@ -78,7 +78,7 @@ public class Reservation_WorkshopServices {
     }
 
     public void modifierR(Reservation_Workshop t) {
-        String query = "UPDATE  reservation_workshop set id_workshop=? Where id ='" + t.getId() + "'";
+        String query = "UPDATE  reservation_workshop set id_workshop=? Where id ='" + t.getId_reservation() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setInt(1, t.getId_workshop());

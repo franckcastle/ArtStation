@@ -1,40 +1,27 @@
 package gui;
 
+import com.mysql.cj.protocol.Message;
 import entities.Workshop;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import services.WorkshopServices;
-import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import utils.MyDB;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
-
-import javafx.scene.control.Label;
-
-import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class AfficherWorkshopController implements Initializable {
     Connection cnx;
@@ -59,18 +46,21 @@ public class AfficherWorkshopController implements Initializable {
     @FXML
     public TableColumn prixField;
     @FXML
+    public TableColumn categorieField;
+    @FXML
     public TableColumn nbPlacesField;
     @FXML
-    private TableColumn<Workshop, Button> delete;
-
+    private TableColumn delete;
     @FXML
-    private Label welcomeLb;
+    private TableColumn modifier;
+
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            List<Workshop> w = ws.getAll();
+            List<Workshop> w = ws.recuperer();
 
             ObservableList<Workshop> olp = FXCollections.observableArrayList(w);
             AfficherId.setItems(olp);
@@ -82,7 +72,9 @@ public class AfficherWorkshopController implements Initializable {
             heure_finField.setCellValueFactory(new PropertyValueFactory("heure_fin"));
             prixField.setCellValueFactory(new PropertyValueFactory("prix"));
             nbPlacesField.setCellValueFactory(new PropertyValueFactory("nbPlaces"));
-
+            categorieField.setCellValueFactory(new PropertyValueFactory("categorie"));
+            this.delete();
+            this.modifier();
 
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
@@ -90,13 +82,96 @@ public class AfficherWorkshopController implements Initializable {
     }
 
 
-    @FXML
 
+    public void delete() {
+        delete.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("delete");
+                        b.setOnAction((event) -> {
+                            try {
+                                if (ws.supprimerWs((Workshop) AfficherId.getItems().get(getIndex()))) {
+                                    AfficherId.getItems().remove(getIndex());
+                                    AfficherId.refresh();
 
-     private void Supprimer(ActionEvent event) {
-        Workshop selected= (Workshop) AfficherId.getSelectionModel().getSelectedItem();
-        ws.supprimerWs(selected.getId());
-        AfficherId.getItems().removeAll(AfficherId.getSelectionModel().getSelectedItems());
+                                }
+                            } catch (SQLException ex) {
+                                System.out.println("erreor:" + ex.getMessage());
+
+                            }
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
 
     }
+
+
+
+
+    public void modifier(){
+        modifier.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("modifier");
+                        b.setOnAction(event -> {
+
+
+                            try {
+                                TableCell cell = (TableCell) ((Button) event.getSource()).getParent();
+                                int rowIndexBtnmodifier = cell.getIndex();
+
+
+
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModifierWorkshop.fxml"));
+                                Parent root = loader.load();
+
+
+
+
+                                Workshop wp= (Workshop) AfficherId.getItems().get(getIndex());
+
+                                ModifierWorkshopController controller =loader.getController();
+                                controller.w=wp;
+                                AfficherId.getScene().setRoot(root);
+
+                                //Stage stage = new Stage();
+                                //stage.setScene(new Scene(root));
+                                //stage.show();
+                                //AnchorPane anchorPane = (AnchorPane) root;
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            //Parent root = loader.load();
+
+
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
+    }
+
+
+
+
+
+
 }

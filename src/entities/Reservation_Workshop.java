@@ -1,28 +1,36 @@
 package entities;
 
 public class Reservation_Workshop {
-    private int id,id_workshop,id_user;
+    private int id_reservation,id_workshop,id_user;
+    private String categorie;
 
     public Reservation_Workshop() {
 
     }
 
-    public Reservation_Workshop(int id, int id_workshop, int id_user) {
-        this.id = id;
+    public Reservation_Workshop(int id_reservation, int id_workshop, int id_user, String categorie) {
+        this.id_reservation = id_reservation;
         this.id_workshop = id_workshop;
         this.id_user = id_user;
+        this.categorie=categorie;
     }
 
-    public Reservation_Workshop(int id_workshop, int id_user) {
+    public Reservation_Workshop(int id_workshop, int id_user, String categorie) {
         this.id_workshop = id_workshop;
         this.id_user = id_user;
-    }
-    public int getId() {
-        return id;
+        this.categorie=categorie;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+
+
+
+    public int getId_reservation() {
+        return id_reservation;
+    }
+
+    public void setId_reservation(int id_reservation) {
+        this.id_reservation = id_reservation;
     }
 
     public int getId_workshop() {
@@ -42,7 +50,11 @@ public class Reservation_Workshop {
     }
 
 
+    public String getCategorie() {
+        return categorie;
+    }
 
-
-
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
 }

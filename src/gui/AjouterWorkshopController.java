@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import services.WorkshopServices;
@@ -41,6 +42,9 @@ public class AjouterWorkshopController implements Initializable {
     @FXML
     private TextField descriptionField;
 
+    @FXML
+    private TextField categorieField;
+
     WorkshopServices ws = new WorkshopServices();
 
 
@@ -66,6 +70,7 @@ public class AjouterWorkshopController implements Initializable {
 
     private void reset() {
         titreField.setText("");
+        descriptionField.setText("");
         dureeField.setText("");
         nom_artisteField.setText("");
         //dateField.setText("");
@@ -73,6 +78,8 @@ public class AjouterWorkshopController implements Initializable {
         heure_finField.setText("");
         prixField.setText("");
         nbPlacesField.setText("");
+        categorieField.setText("");
+
     }
 
     @FXML
@@ -91,7 +98,27 @@ public class AjouterWorkshopController implements Initializable {
             w.setHeure_fin(heure_finField.getText());
             w.setPrix(Float.parseFloat(prixField.getText()));
             w.setNbPlaces(Integer.parseInt(nbPlacesField.getText()));
+            w.setCategorie(categorieField.getText());
             reset();
+
+            if (w.getTitre().length()==0 || w.getDescription().length()==0 || w.getNom_artiste().length()==0|| w.getHeure_debut().length()==0|| w.getHeure_fin().length()==0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'insertion");
+                alert.setHeaderText("Veuillez remplir tous les champs.");
+                alert.showAndWait();
+
+                return;
+            }
+
+            if (w.getNbPlaces()>50 ) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'insertion");
+                alert.setHeaderText("Le nombre de participants maximal est 50");
+                alert.showAndWait();
+
+                return;
+            }
+
             ws.ajouterWs(w);
             System.out.println("Ajout avec succes");
         } catch (SQLException ex) {

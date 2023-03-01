@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierWorkshopController">
+   <children>
+      <Label layoutX="51.0" layoutY="27.0" prefHeight="51.0" prefWidth="127.0" text="Modification" />
+      <TextField fx:id="titreId" layoutX="29.0" layoutY="89.0" promptText="titre" />
+      <TextField fx:id="descriptionId" layoutX="192.0" layoutY="89.0" promptText="description" />
+      <TextField fx:id="dureeId" layoutX="29.0" layoutY="134.0" promptText="duree" />
+      <TextField fx:id="nom_artisteId" layoutX="192.0" layoutY="134.0" promptText="nom_artiste" />
+      <DatePicker fx:id="dateId" layoutX="104.0" layoutY="188.0" />
+      <TextField fx:id="heure_debutId" layoutX="29.0" layoutY="221.0" promptText="heure_debut" />
+      <TextField fx:id="heure_finId" layoutX="217.0" layoutY="221.0" promptText="heure_fin" />
+      <TextField fx:id="prixId" layoutX="22.0" layoutY="284.0" promptText="prix" />
+      <TextField fx:id="nbPlacesId" layoutX="192.0" layoutY="284.0" promptText="nbPlaces" />
+      <TextField fx:id="categorieId" layoutX="104.0" layoutY="339.0" promptText="categorie" />
+      <Button fx:id="modifier" layoutX="448.0" layoutY="134.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Button fx:id="retour" layoutX="448.0" layoutY="176.0" mnemonicParsing="false" onAction="#retourAf" prefHeight="25.0" prefWidth="61.0" text="retour" />
+   </children>
+</AnchorPane>
