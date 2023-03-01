@@ -41,9 +41,9 @@ public class afficherOrderController implements Initializable {
     private TableColumn  postale_column;
     @FXML
     private TableColumn  modifier;
-
     @FXML
-    private TableColumn  pruducts;
+    private TableColumn  pruducts ;
+
     @FXML
     private TableColumn prenom_column;
 
@@ -106,9 +106,10 @@ public class afficherOrderController implements Initializable {
                                 FXMLLoader loader =  new FXMLLoader(getClass().getResource("getProducts.fxml"));
                                 Parent root = loader.load();
                                 ShoppingCart shop= (ShoppingCart)carts_table.getItems().get(getIndex());
-                                System.out.println(shop);
+
                                 GetProducts controller =loader.getController();
                                 controller.sc= shop;
+
                                 carts_table.getScene().setRoot(root);
 
 

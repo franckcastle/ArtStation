@@ -52,7 +52,7 @@ public class ModifierOrder implements Initializable {
     }
 
     public ModifierOrder(ShoppingCart sc) {
-        this.sc = sc;
+        this.sc=sc;
     }
 
 
@@ -60,8 +60,6 @@ public class ModifierOrder implements Initializable {
 
     @FXML
     void btnModifier(ActionEvent event) throws SQLException {
-
-
 
         System.out.println(sc);
 

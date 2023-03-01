@@ -33,13 +33,14 @@ public class GetProducts implements Initializable {
     private TableColumn quantity_column;
 
 
-     ProduitService Ps =new ProduitService();
+
+    ProduitService Ps = new ProduitService();
 
     public ShoppingCart sc;
 
+
     public GetProducts() {
     }
-
     public GetProducts(ShoppingCart sc) {
         this.sc = sc;
     }
@@ -49,8 +50,8 @@ public class GetProducts implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        try {
-            List<Produit> cartItems = Ps.getByorderId(sc.getOrderId());
+      /* try {
+            List<Produit> cartItems = Ps.getByorderId(i);
             ObservableList<Produit> olu = FXCollections.observableArrayList(cartItems);
 
             itemstable.setItems(olu);
@@ -58,15 +59,10 @@ public class GetProducts implements Initializable {
             price_column.setCellValueFactory(new PropertyValueFactory("prenom"));
           quantity_column.setCellValueFactory(new PropertyValueFactory("ville"));
 
-        } catch (SQLException ex) {
-            System.out.println("error" + ex.getMessage());
-        }
-
-
-
-    }
-
-
+       } catch (SQLException ex) {
+           System.out.println("error" + ex.getMessage());
+        }*/
+ }
 
 
 }

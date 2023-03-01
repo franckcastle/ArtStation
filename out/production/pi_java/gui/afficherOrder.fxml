@@ -9,6 +9,7 @@
    <children>
       <TableView fx:id="carts_table" layoutY="89.0" prefHeight="314.0" prefWidth="601.0">
          <columns>
+
             <TableColumn fx:id="id_column" prefWidth="38.39999312162399" text="id" />
             <TableColumn fx:id="nom_column" prefWidth="56.80002212524414" text="nom" />
             <TableColumn fx:id="prenom_column" prefWidth="57.60003662109375" text="prenom" />
