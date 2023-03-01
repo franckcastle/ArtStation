@@ -12,7 +12,7 @@ import javafx.application.Application;
         import java.util.List;
 
 public class ProfanityCheckerFX extends Application {
-
+//view
     private static final List<String> profanityDictionary = Arrays.asList("gros_mot_1", "gros_mot_2", "gros_mot_3");
 
     @Override
