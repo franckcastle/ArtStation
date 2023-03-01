@@ -1,5 +1,6 @@
 package gui;
 
+import entities.Session;
 import entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +46,7 @@ public class ConnexionController implements Initializable {
                 if(u!=null) {
                     if (password.equals(u.getPassword())) {
                         try {
+                            Session.setUserCon(u);
                             Parent loader = FXMLLoader.load(getClass().getResource("AfficherUsers.fxml"));
                             usernameTf.getScene().setRoot(loader);
 

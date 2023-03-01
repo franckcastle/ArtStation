@@ -22,7 +22,7 @@ public class ReclamService implements IServiceReclam<Reclamation>{
             statement.setString(2, reclamation.getSujet());
             statement.setString(3, reclamation.getPlainte());
             statement.executeUpdate();
-        System.out.println("reclamation ajouté");
+
     }
 
     @Override
