@@ -57,15 +57,8 @@ public class ModifierUserController implements Initializable {
         }catch (SQLException | IOException ex){
             System.out.println(ex);
         }
-
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
-
     }
-
-
 }

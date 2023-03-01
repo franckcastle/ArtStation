@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -32,6 +33,7 @@ public class LandingPageController {
         try {
             Parent loader = FXMLLoader.load(getClass().getResource("AjouterUser.fxml"));
             inscriBtn.getScene().setRoot(loader);
+
 
         }catch (IOException ex){
             System.out.println("landing-inscri"+ex.getMessage());

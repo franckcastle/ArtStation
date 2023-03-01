@@ -56,6 +56,7 @@ public class UserService implements IService<User> {
         ResultSet rs = st.executeQuery(s);
         while (rs.next()){
             User u = new User();
+            u.setUserId(rs.getInt("userId"));
             u.setUsername(rs.getString("userName"));
             u.setPassword(rs.getString("password"));
             u.setEmail(rs.getString("email"));
