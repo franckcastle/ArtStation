@@ -24,22 +24,28 @@ public class AjouterComController implements Initializable {
     private TextField descriptionField;
 
     CommentaireService cms = new CommentaireService();
+    public Statut sta ;
+    public AjouterComController(){}
+
+
 
 
     @FXML
     void ajouterCom(ActionEvent event) {
+       // System.out.println(sta.getId_s());
         Commentaire c = new Commentaire();
-        c.setDescription(descriptionField.getText());
-        try {
-            if (c.getDescription().length()==0 ) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur Commentaire ! ");
-                alert.setHeaderText("Veuillez ajouter votre commentaire !");
-                alert.showAndWait();
-                return;
-            }
-            cms.ajouterCom(c);
-            reset();
+       c.setDescription(descriptionField.getText());
+        c.setId_s(sta.getId_s());
+           try {
+              if (c.getDescription().length()==0 ) {
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                  alert.setTitle("Erreur Commentaire ! ");
+                  alert.setHeaderText("Veuillez ajouter votre commentaire !");
+                   alert.showAndWait();
+                  return;
+             }
+             cms.ajouterCom(c);
+             reset();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

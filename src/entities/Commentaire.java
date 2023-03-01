@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Commentaire {
     private int id_c ;
+    private int id_s;
     private String description;
     private Date date_ajout;
     private Statut statut;
@@ -17,10 +18,18 @@ public class Commentaire {
     public Commentaire(){
     }
 
-    public Commentaire(int id_c, String description, Statut statut ) {
-        this.id_c = id_c;
+
+    public Commentaire(int id_s, String description) {
+        this.id_s = id_s;
         this.description = description;
-        this.statut = statut;
+    }
+
+    public int getId_s() {
+        return id_s;
+    }
+
+    public void setId_s(int id_s) {
+        this.id_s = id_s;
     }
 
     public int getId_c() {

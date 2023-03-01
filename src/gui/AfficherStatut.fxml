@@ -26,6 +26,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="commenter" layoutX="274.0" layoutY="322.0" mnemonicParsing="false" onAction="#commenter" text="commenter" />
+
    </children>
 </AnchorPane>

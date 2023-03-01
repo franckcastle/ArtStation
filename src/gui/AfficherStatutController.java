@@ -61,10 +61,60 @@ public class AfficherStatutController implements Initializable{
 
             this.supprimer();
             this.modifier();
+            this.commenter2();
         } catch (SQLException ex) {
             System.out.println("Erreur" + ex.getMessage());
         }
         }
+
+
+
+
+    @FXML
+    public void commenter2() {
+        commenter2.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("commenter");
+                        b.setOnAction((event) -> {
+
+                            try {
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("AjouterCom.fxml"));
+                                Parent root = loader.load();
+
+                               Statut st =(Statut)statutsTv.getItems().get(getIndex());
+                               AjouterComController controller = loader.getController();
+                               controller.sta=st;
+                                statutsTv.getScene().setRoot(root);
+
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -139,16 +189,16 @@ public class AfficherStatutController implements Initializable{
     }
 
 
-    @FXML
-    void commenter(ActionEvent event) {
-        try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AjouterCom.fxml"));
-            statutsTv.getScene().setRoot(loader);
-
-        }catch (IOException ex){
-            System.out.println("Erreur"+ex.getMessage());
-        }
-    }
+//    @FXML
+//    void commenter(ActionEvent event) {
+//        try {
+//            Parent loader = FXMLLoader.load(getClass().getResource("AjouterCom.fxml"));
+//            statutsTv.getScene().setRoot(loader);
+//
+//        }catch (IOException ex){
+//            System.out.println("Erreur"+ex.getMessage());
+//        }
+//    }
 
    
 }

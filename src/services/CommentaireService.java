@@ -20,9 +20,11 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
         java.util.Date javaDate = new java.util.Date();
         java.sql.Date date_ajout = new java.sql.Date(javaDate.getTime());
         PreparedStatement statement;
-        statement = cnx.prepareStatement("INSERT INTO  commentaire (description) VALUES" +
-                "(?)");
+        statement = cnx.prepareStatement("INSERT INTO  commentaire (description,id_s) VALUES" +
+                "(?,?)");
         statement.setString(1, c.getDescription());
+        statement.setInt(2, c.getId_s());
+
         statement.executeUpdate();
         System.out.println("l'ajout du commentaire a ete effectué avec succés!");
 
@@ -84,6 +86,8 @@ public void modifierCom (String s, String x) throws SQLException{
             cm.setDescription(rs.getString("description"));
             cm.setDate_ajout(rs.getDate("date_ajout"));
             cm.setId_c(rs.getInt("id_c"));
+            cm.setId_c(rs.getInt("id_s"));
+
             commentaires.add(cm);
 
         }
@@ -107,6 +111,24 @@ public void modifierCom (String s, String x) throws SQLException{
         }
 
         return c;
+    }
+    public List<Commentaire> recupererComByIdStatut(int id_s) throws SQLException {
+        List<Commentaire> commentaires = new ArrayList<>();
+        String q = "select * from commentaire where id_c ="+id_s;
+        Statement st = cnx.createStatement();
+        ResultSet rs =  st.executeQuery(q);
+        while(rs.next()){
+            Commentaire cm = new Commentaire();
+            cm.setDescription(rs.getString("description"));
+            cm.setDate_ajout(rs.getDate("date_ajout"));
+            cm.setId_c(rs.getInt("id_c"));
+            cm.setId_c(rs.getInt("id_s"));
+
+            commentaires.add(cm);
+
+        }
+        return commentaires;
+
     }
 
 

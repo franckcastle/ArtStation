@@ -15,4 +15,6 @@ public interface IServiceCom <Q>{
     public List<Q> recupererCom() throws SQLException;
     public Commentaire rechCom(int id_c) throws SQLException;
 
+    public List<Q> recupererComByIdStatut(int id_s) throws SQLException;
+
 }
