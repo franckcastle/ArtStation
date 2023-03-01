@@ -30,52 +30,82 @@ public  class StatutService implements IService <Statut> {
         System.out.println("Ajout réussi !");
 
     }
-    //String req = "UPDATE statut SET titre = ?,contenu = ?,updated = ? where id_s = ?";
 
-    public void modifier(Statut s,String nouveauTitre, String nouveauContenu) throws SQLException, ParseException {
-        if(nouveauTitre != null && !nouveauTitre.equals("") && nouveauContenu != null && !nouveauContenu.equals("")){
-            s.setContenu(nouveauContenu);
-            s.setTitre(nouveauTitre);
-            String req = "UPDATE statut SET titre = ?,contenu = ?,updated = ? where id_s ='" + s.getId_s() + "'";
-            PreparedStatement ps = cnx.prepareStatement(req);
-            java.sql.Date updated= Date.valueOf(LocalDate.now());
-            ps.setString(1, s.getTitre());
-            ps.setString(2, s.getContenu());
-            ps.setDate(3, updated);
-            //ps.setInt(4, s.getId_s());
-            ps.executeUpdate();
-            System.out.println("Le titre et le contenu ont été modifiés avec succés !");
-        }
-      else if (nouveauTitre != null && !nouveauTitre.equals("")){
-          s.setTitre(nouveauTitre);
-          String req = "UPDATE statut SET titre = ? , updated = ? where id_s ='" + s.getId_s() + "'";
-          PreparedStatement ps = cnx.prepareStatement(req);
-          java.sql.Date updated= Date.valueOf(LocalDate.now());
-          ps.setString(1, s.getTitre());
-          ps.setDate(2, updated);
-          //ps.setInt(3, s.getId_s());
-          ps.executeUpdate();
-            System.out.println("Le titre a été modifiés avec succés !");
+    @Override
+    public void modifier(String a, String b, java.util.Date d1, java.util.Date d2) throws SQLException, ParseException {
+        Statut s = new Statut();
+        String req = "UPDATE statut SET titre = ?,tire = ?,contenu,updated = ? where id_s ='" + s.getId_s() + "'";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        java.sql.Date updated = Date.valueOf(LocalDate.now());
 
-
-        }
-        else if (nouveauContenu != null && !nouveauContenu.equals("")){
-            s.setContenu(nouveauContenu);
-            String req = "UPDATE statut SET contenu = ? , updated = ? where id_s ='" + s.getId_s() + "'";
-            PreparedStatement ps = cnx.prepareStatement(req);
-            java.sql.Date updated= Date.valueOf(LocalDate.now());
-            ps.setString(1, s.getContenu());
-            ps.setDate(2, updated);
-            //ps.setInt(3, s.getId_s());
-            ps.executeUpdate();
-            System.out.println("Le contenu a été modifiés avec succés !");
-        }
-
-        else {
-            System.out.println("Modification echouée !");
-        }
+        ps.setString(1,a);
+        ps.setString(2,b);
+        ps.setDate(3, (Date) s.getUpdated());
+        // ps.setInt(3, c.getId_c());
+        ps.executeUpdate();
+        System.out.println("Le statut a été modifié avec succés !");
 
     }
+
+//    @Override
+//    public void modifier(String a, String b, String c, String e) throws SQLException, ParseException {
+//        Statut s = new Statut();
+//        String req = "UPDATE statut SET titre = ?,tire = ?,contenu,updated = ? where id_s ='" + s.getId_s() + "'";
+//        PreparedStatement ps = cnx.prepareStatement(req);
+//        java.sql.Date updated = Date.valueOf(LocalDate.now());
+//
+//        ps.setString(1,a);
+//        ps.setString(2,b);
+//        ps.setDate(3, (Date) s.getUpdated());
+//        // ps.setInt(3, c.getId_c());
+//        ps.executeUpdate();
+//        System.out.println("Le statut a été modifié avec succés !");
+//    }
+
+    //    public void modifier(Statut s,String nouveauTitre, String nouveauContenu) throws SQLException, ParseException {
+//        if(nouveauTitre != null && !nouveauTitre.equals("") && nouveauContenu != null && !nouveauContenu.equals("")){
+//            s.setContenu(nouveauContenu);
+//            s.setTitre(nouveauTitre);
+//            String req = "UPDATE statut SET titre = ?,contenu = ?,updated = ? where id_s ='" + s.getId_s() + "'";
+//            PreparedStatement ps = cnx.prepareStatement(req);
+//            java.sql.Date updated= Date.valueOf(LocalDate.now());
+//            ps.setString(1, s.getTitre());
+//            ps.setString(2, s.getContenu());
+//            ps.setDate(3, updated);
+//            //ps.setInt(4, s.getId_s());
+//            ps.executeUpdate();
+//            System.out.println("Le titre et le contenu ont été modifiés avec succés !");
+//        }
+//      else if (nouveauTitre != null && !nouveauTitre.equals("")){
+//          s.setTitre(nouveauTitre);
+//          String req = "UPDATE statut SET titre = ? , updated = ? where id_s ='" + s.getId_s() + "'";
+//          PreparedStatement ps = cnx.prepareStatement(req);
+//          java.sql.Date updated= Date.valueOf(LocalDate.now());
+//          ps.setString(1, s.getTitre());
+//          ps.setDate(2, updated);
+//          //ps.setInt(3, s.getId_s());
+//          ps.executeUpdate();
+//            System.out.println("Le titre a été modifiés avec succés !");
+//
+//
+//        }
+//        else if (nouveauContenu != null && !nouveauContenu.equals("")){
+//            s.setContenu(nouveauContenu);
+//            String req = "UPDATE statut SET contenu = ? , updated = ? where id_s ='" + s.getId_s() + "'";
+//            PreparedStatement ps = cnx.prepareStatement(req);
+//            java.sql.Date updated= Date.valueOf(LocalDate.now());
+//            ps.setString(1, s.getContenu());
+//            ps.setDate(2, updated);
+//            //ps.setInt(3, s.getId_s());
+//            ps.executeUpdate();
+//            System.out.println("Le contenu a été modifiés avec succés !");
+//        }
+//
+//        else {
+//            System.out.println("Modification echouée !");
+//        }
+//
+//    }
     public boolean supprimer (int id_s) throws SQLException{
         boolean ok = false;
         try {
@@ -111,26 +141,11 @@ public  class StatutService implements IService <Statut> {
 
     }
     public Statut rechStatut(int id_s) throws SQLException, ParseException {
-        //Statut stat = new Statut();
-//        try {
-//            String req = "Select * from statut where id_s ="+id_s;
-//            Statement st = cnx.createStatement();
-//
-//            ResultSet RS = st.executeQuery(req);
-//            RS.first();
-//
-//
-//            stat.setTitre(RS.getString("Titre"));
-//            stat.setContenu(RS.getString("Contenu"));
-//            stat.setId_s(RS.getInt(1));
-//
         Statut statut = new Statut();
         try {
             Statement stmt = cnx.createStatement();
             ResultSet result = stmt.executeQuery("SELECT * FROM statut  where id_s ="+id_s);
             while(result.next()) {
-
-
                 statut.setId_s(result.getInt(1));
                 statut.setTitre(result.getString(2));
                 statut.setContenu(result.getString(3));
@@ -143,6 +158,19 @@ public  class StatutService implements IService <Statut> {
 
         return statut;
     }
+
+    @Override
+    public int recupererIdStatut(String titre) throws SQLException, ParseException {
+        int id=0;
+        String p = "SELECT id_s FROM statut where titre='"+titre+"';";
+        PreparedStatement pst = cnx.prepareStatement(p);
+        ResultSet rs = pst.executeQuery();
+        while(rs.next())
+        {id= rs.getInt("id_s");
+        }
+        return id;
+    }
+
 
 
 }

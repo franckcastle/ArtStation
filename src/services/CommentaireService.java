@@ -2,9 +2,11 @@ package services;
 
 
 import entities.Commentaire;
+import entities.Statut;
 import utils.MyDB;
 import java.sql.Connection;
 import java.sql.*;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,22 +27,35 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
         System.out.println("l'ajout du commentaire a ete effectué avec succés!");
 
     }
-    public void modifierCom (Commentaire c, String nouvelleDescription) throws SQLException{
-        if (nouvelleDescription != null && !nouvelleDescription.equals("")) {
-            c.setDescription(nouvelleDescription);
-
-
-            String req = "UPDATE commentaire SET description = ?,date_ajout = ? where id_s ='" + c.getId_c() + "'";
+//    public void modifierCom (Commentaire c, String nouvelleDescription) throws SQLException{
+//        if (nouvelleDescription != null && !nouvelleDescription.equals("")) {
+//            c.setDescription(nouvelleDescription);
+//
+//
+//            String req = "UPDATE commentaire SET description = ?,date_ajout = ? where id_s ='" + c.getId_c() + "'";
+//            PreparedStatement ps = cnx.prepareStatement(req);
+//            java.sql.Date date_ajout = Date.valueOf(LocalDate.now());
+//
+//            ps.setString(1, c.getDescription());
+//            ps.setDate(2, (Date) c.getDate_ajout());
+//            // ps.setInt(3, c.getId_c());
+//            ps.executeUpdate();
+//            System.out.println("Le commentaire a été modifié avec succés !");
+//
+//        }
+//
+//    }
+public void modifierCom (String s, String x) throws SQLException{
+        Commentaire c = new Commentaire();
+            String req = "UPDATE commentaire SET description = ?,date_ajout = ? where id_c ='" + c.getId_c() + "'";
             PreparedStatement ps = cnx.prepareStatement(req);
             java.sql.Date date_ajout = Date.valueOf(LocalDate.now());
 
-            ps.setString(1, c.getDescription());
+            ps.setString(1, s);
             ps.setDate(2, (Date) c.getDate_ajout());
             // ps.setInt(3, c.getId_c());
             ps.executeUpdate();
             System.out.println("Le commentaire a été modifié avec succés !");
-
-        }
 
     }
     public boolean supprimerCom (int id_c) throws SQLException{
@@ -74,6 +89,24 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
         }
         return commentaires;
 
+    }
+
+    public Commentaire rechCom(int id_c) throws SQLException {
+        Commentaire c = new Commentaire();
+        try {
+            Statement stmt = cnx.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT * FROM commentaire  where id_c ="+id_c);
+            while(result.next()) {
+                c.setId_c(result.getInt(1));
+                c.setDescription(result.getString(2));
+                c.setDate_ajout(result.getDate(3));
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return c;
     }
 
 
