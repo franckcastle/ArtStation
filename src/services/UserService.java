@@ -14,23 +14,23 @@ public class UserService implements IService<User> {
 
     @Override
     public void ajouter(User u) throws SQLException {
-        String req = "INSERT INTO user(userId,userName,password,email,role)Values("
-                + u.getUserId() + ",'" + u.getUsername() + "','" + u.getPassword() + "','"
-                + u.getEmail() + "','" + u.getRole() + "')";
+        String req = "INSERT INTO user(userName,password,email,tel,role)Values('"+ u.getUsername() + "','" + u.getPassword() + "','"
+                + u.getEmail() +"',"+u.getTel()+ ",'" + u.getRole() + "')";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
-        System.out.println("done");
+
     }
 
     @Override
-    public void modifer(String s,String s1,String s2,String s3,String s4) throws SQLException {
+    public void modifer(String s,String s1,String s2,int s3,String s4,String s5) throws SQLException {
         String req = "UPDATE user SET userName=?,password=?,email=?,role=? where username = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1,s);
         ps.setString(2,s1);
         ps.setString(3,s2);
-        ps.setString(4, s3);
+        ps.setInt(4, s3);
         ps.setString(5, s4);
+        ps.setString(5, s5);
         ps.executeUpdate();
     }
 
@@ -60,6 +60,7 @@ public class UserService implements IService<User> {
             u.setUsername(rs.getString("userName"));
             u.setPassword(rs.getString("password"));
             u.setEmail(rs.getString("email"));
+            u.setTel(rs.getInt("tel"));
             u.setRole(rs.getString("role"));
             users.add(u);
         }
@@ -81,7 +82,8 @@ public class UserService implements IService<User> {
                 u.setUsername(username);
                 u.setPassword(rs.getString(3));
                 u.setEmail(rs.getString(4));
-                u.setRole(rs.getString(5));
+                u.setUserId(rs.getInt(5));
+                u.setRole(rs.getString(6));
 
                 return u;
             }

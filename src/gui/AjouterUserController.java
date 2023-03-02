@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import services.UserService;
@@ -25,19 +26,27 @@ public class AjouterUserController implements Initializable {
     public TextField emailTf;
     @FXML
     public TextField roleTf;
+    @FXML
+    private TextField telTf;
+    @FXML
+    private ChoiceBox<String> roleCb;
 
+    private String[] roles = {"Artiste","Client"};
     UserService us = new UserService();
+
+    private String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        roleCb.getItems().addAll(roles);
     }
 
     private void reset() {
         usernameTf.setText("");
         passwordTf.setText("");
         emailTf.setText("");
-        roleTf.setText("");
+        roleCb.getItems().addAll(roles);
     }
 
     @FXML
@@ -48,7 +57,8 @@ public class AjouterUserController implements Initializable {
             u.setUsername(usernameTf.getText());
             u.setPassword( passwordTf.getText());
             u.setEmail(emailTf.getText());
-            u.setRole(roleTf.getText());
+            u.setTel(Integer.parseInt(telTf.getText()));
+            u.setRole(roleCb.getValue());
             reset();
             if (u.getUsername().length()==0 || u.getEmail().length()==0||u.getRole().length()==0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -67,6 +77,15 @@ public class AjouterUserController implements Initializable {
                 Parent loader = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
                 usernameTf.getScene().setRoot(loader);
                 return; // stop the method execution if the password is too short
+            }
+            if (!u.getEmail().matches(emailRegex)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'inscription");
+                alert.setHeaderText("L'e-mail n'est pas valide.");
+                alert.showAndWait();
+                Parent loader = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
+                usernameTf.getScene().setRoot(loader);
+                return; // stop the method execution if the email is invalid
             }
             
             us.ajouter(u);

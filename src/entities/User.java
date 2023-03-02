@@ -1,22 +1,24 @@
 package entities;
 public class User {
-    private int userId ;
+    private int userId ,tel;
     private String username,password,email,role;
 
     public User() {}
 
-    public User(String username, String password, String email, String role) {
+    public User(String username, String password, String email,int tel ,String role) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.tel = tel;
         this.role = role;
     }
 
-    public User(int userId, String username, String password, String email, String role) {
+    public User(int userId, String username, String password, String email,int tel ,String role) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.tel = tel;
         this.role = role;
     }
 
@@ -60,14 +62,11 @@ public class User {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+    public int getTel() {
+        return tel;
+    }
+
+    public void setTel(int tel) {
+        this.tel = tel;
     }
 }

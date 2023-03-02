@@ -21,9 +21,10 @@
          </font></TextField>
       <PasswordField fx:id="passwordTf" alignment="CENTER" layoutX="36.0" layoutY="217.0" prefHeight="26.0" prefWidth="224.0" promptText="Mot de passe" />
       <TextField fx:id="roleTf" alignment="CENTER" layoutX="367.0" layoutY="216.0" prefHeight="26.0" prefWidth="224.0" promptText="Rôle" />
-      <Button alignment="CENTER" layoutX="184.0" layoutY="325.0" mnemonicParsing="false" onAction="#ModifierUtilisateur" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: f6b49c;" text="Modifier" textFill="WHITE">
+      <Button alignment="CENTER" layoutX="184.0" layoutY="378.0" mnemonicParsing="false" onAction="#ModifierUtilisateur" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: f6b49c;" text="Modifier" textFill="WHITE">
          <font>
             <Font name="Ebrima" size="12.0" />
          </font></Button>
+      <TextField fx:id="telTf" alignment="CENTER" layoutX="209.0" layoutY="298.0" prefHeight="26.0" prefWidth="224.0" promptText="Tel" />
    </children>
 </AnchorPane>

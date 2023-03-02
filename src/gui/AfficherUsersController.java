@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -132,6 +133,12 @@ public class AfficherUsersController implements Initializable {
 
         });
 
+    }
+
+    @FXML
+    void Reclam(ActionEvent event) throws IOException {
+        Parent loader = FXMLLoader.load(getClass().getResource("AjouterReclam.fxml"));
+        usersTv.getScene().setRoot(loader);
     }
 
 }
