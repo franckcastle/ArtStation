@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import services.StatutService;
@@ -17,17 +18,18 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ModifierStatutController implements Initializable {
-    Date d1;
-    Date d2;
+
     String c,e;
     String titre,contenu;
     StatutService ser = new StatutService();
+    public Statut ss;
 
     public ModifierStatutController () {
     }
-    public ModifierStatutController (String titre) {
-        this.titre=titre;
-        this.contenu=contenu;
+    public ModifierStatutController (Statut ss) {
+        this.ss=ss;
+        //this.titre=titre;
+        //this.contenu=contenu;
     }
 
     public void setTitre (String titre) {
@@ -45,24 +47,29 @@ public class ModifierStatutController implements Initializable {
     @FXML
     private TextField titreField;
 
-    @FXML
-    void modifier(ActionEvent event) {
-        String titre = titreField.getText();
-        String contenu = contenuField.getText();
-        try {
-            ser.modifier(titre,contenu,d1,d2);
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
-            titreField.getScene().setRoot(loader);
-            contenuField.getScene().setRoot(loader);
+//    @FXML
+//    void modifier(ActionEvent event) {
+//       // Statut s= new Statut();
+//        String titre = titreField.getText();
+//        String contenu = contenuField.getText();
+//        try {
+//            ser.modifier(titre,contenu,c,e);
+//            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+//            titreField.getScene().setRoot(loader);
+//            //contenuField.getScene().setRoot(loader);
+//
+//
+//        }catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        } catch (SQLException | ParseException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//
+//    }
 
 
-        }catch (IOException ex) {
-            throw new RuntimeException(ex);
-        } catch (SQLException | ParseException ex) {
-            throw new RuntimeException(ex);
-        }
 
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

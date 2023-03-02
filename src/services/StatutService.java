@@ -21,36 +21,28 @@ public  class StatutService implements IService <Statut> {
         java.util.Date javaDate = new java.util.Date();
         java.sql.Date created = new java.sql.Date(javaDate.getTime());
         PreparedStatement statement;
-        statement = cnx.prepareStatement("INSERT INTO  statut (titre,contenu,created) VALUES" +
-                "(?, ?, ?)");
+        statement = cnx.prepareStatement("INSERT INTO  statut (titre,contenu,created,nbrLike) VALUES" +
+                "(?, ?, ?,?)");
         statement.setString(1, s.getTitre());
         statement.setString(2, s.getContenu());
         statement.setDate(3,  created);
+        statement.setInt(4,  0);
         statement.executeUpdate();
         System.out.println("Ajout réussi !");
 
     }
 
-    @Override
-    public void modifier(String a, String b, java.util.Date d1, java.util.Date d2) throws SQLException, ParseException {
-        Statut s = new Statut();
-        String req = "UPDATE statut SET titre = ?,tire = ?,contenu,updated = ? where id_s ='" + s.getId_s() + "'";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        java.sql.Date updated = Date.valueOf(LocalDate.now());
-
-        ps.setString(1,a);
-        ps.setString(2,b);
-        ps.setDate(3, (Date) s.getUpdated());
-        // ps.setInt(3, c.getId_c());
-        ps.executeUpdate();
-        System.out.println("Le statut a été modifié avec succés !");
-
+    public void ajouterLikeStatut(Statut statut) throws SQLException {
+        PreparedStatement statement;
+        statement = cnx.prepareStatement("UPDATE statut SET nbrLike = nbrLike+1 WHERE id_s="+statut.getId_s());
+        statement.executeUpdate();
+        System.out.println("Like réussi !");
     }
 
 //    @Override
-//    public void modifier(String a, String b, String c, String e) throws SQLException, ParseException {
-//        Statut s = new Statut();
-//        String req = "UPDATE statut SET titre = ?,tire = ?,contenu,updated = ? where id_s ='" + s.getId_s() + "'";
+//    public void modifier(String a, String b) throws SQLException, ParseException {
+//
+//        String req = "UPDATE statut SET titre = ?,contenu = ?,updated = ? where id_s ='" + s.getId_s() + "'";
 //        PreparedStatement ps = cnx.prepareStatement(req);
 //        java.sql.Date updated = Date.valueOf(LocalDate.now());
 //
@@ -60,9 +52,47 @@ public  class StatutService implements IService <Statut> {
 //        // ps.setInt(3, c.getId_c());
 //        ps.executeUpdate();
 //        System.out.println("Le statut a été modifié avec succés !");
+//
+//    }
+//@Override
+//  public void modifier(Statut s) throws SQLException, ParseException {
+//    String query = "UPDATE  evenement set titre=? , contenu=? Where id_s ='" + s.getId_s() + "'";
+//    java.sql.Date updated = Date.valueOf(LocalDate.now());
+//    try {
+//        PreparedStatement ste = cnx.prepareStatement(query);
+//        ste.setString(1, s.getTitre());
+//        ste.setString(2, s.getContenu());
+//        ste.setDate(1, s.getUpdated());
+//
+//
+//        ste.executeUpdate();
+//        System.out.println("Statut modifié  ");
+//
+//    } catch (SQLException ex) {
+//        System.out.println(ex.getMessage());
+//    }
+//
+//
+//
+//}
+
+//    @Override
+//    public void modifier(String a, String b, String c, String e) throws SQLException, ParseException {
+//        Statut s = new Statut();
+//       // String req = "UPDATE statut SET titre = ?,tire = ?,contenu,updated = ? where id_s ='" + s.getId_s() + "'";
+//        String req = "UPDATE statut SET titre = ?,contenu=? where id_s = ?";
+//        PreparedStatement ps = cnx.prepareStatement(req);
+//        java.sql.Date updated = Date.valueOf(LocalDate.now());
+//
+//        ps.setString(1,a);
+//        ps.setString(2,b);
+//        //ps.setDate(3, (Date) s.getUpdated());
+//        // ps.setInt(3, c.getId_c());
+//        ps.executeUpdate();
+//        System.out.println("Le statut a été modifié avec succés !");
 //    }
 
-    //    public void modifier(Statut s,String nouveauTitre, String nouveauContenu) throws SQLException, ParseException {
+//        public void modifier(Statut s,String nouveauTitre, String nouveauContenu) throws SQLException, ParseException {
 //        if(nouveauTitre != null && !nouveauTitre.equals("") && nouveauContenu != null && !nouveauContenu.equals("")){
 //            s.setContenu(nouveauContenu);
 //            s.setTitre(nouveauTitre);
@@ -133,6 +163,7 @@ public  class StatutService implements IService <Statut> {
             stt.setContenu(rs.getString("contenu"));
             stt.setCreated(rs.getDate("created"));
             stt.setUpdated(rs.getDate("updated"));
+            stt.setNbrLike(rs.getInt("nbrLike"));
             stt.setId_s(rs.getInt("id_s"));
             statuts.add(stt);
 

@@ -4,12 +4,17 @@ import entities.Statut;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import java.awt.event.MouseEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import services.StatutService;
 
 import javax.swing.*;
@@ -39,9 +44,18 @@ public class AfficherStatutController implements Initializable{
     @FXML
     private TableColumn<Statut, Button> modifier;
     @FXML
-    private TableColumn<?, ?> commenter2;
+    private TableColumn<String, Button> commenter2;
     @FXML
-    private Button commenter;
+    private TableColumn<Statut, Integer> nbrlikeTv;
+
+
+    @FXML
+    private Button liker;
+
+    private boolean isLiked;
+
+    @FXML
+    private ImageView icon;
 
     StatutService s = new StatutService();
 
@@ -57,6 +71,8 @@ public class AfficherStatutController implements Initializable{
             contenuTv.setCellValueFactory(new PropertyValueFactory<>("contenu"));
             createdTv.setCellValueFactory(new PropertyValueFactory<>("created"));
             updatedTv.setCellValueFactory(new PropertyValueFactory<>("updated"));
+            nbrlikeTv.setCellValueFactory(new PropertyValueFactory<>("nbrLike"));
+
 
 
             this.supprimer();
@@ -104,19 +120,31 @@ public class AfficherStatutController implements Initializable{
         });
     }
 
+    @FXML
+    void liker(ActionEvent event) throws SQLException {
 
+        Statut selectedStatus = statutsTv.getSelectionModel().getSelectedItem();
+        if (selectedStatus == null) {
+            // show error message if no item is selected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No status Selected");
+            alert.setContentText("please select a status to like.");
+        } else {
+            if (!isLiked) {
+                isLiked = true;
 
+                s.ajouterLikeStatut(selectedStatus);
+               // icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
 
+            } else {
+                isLiked = false;
+              //  icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
 
+            }
+        }
 
-
-
-
-
-
-
-
-
+    }
 
     @FXML
    public void modifier() {
@@ -189,16 +217,10 @@ public class AfficherStatutController implements Initializable{
     }
 
 
-//    @FXML
-//    void commenter(ActionEvent event) {
-//        try {
-//            Parent loader = FXMLLoader.load(getClass().getResource("AjouterCom.fxml"));
-//            statutsTv.getScene().setRoot(loader);
-//
-//        }catch (IOException ex){
-//            System.out.println("Erreur"+ex.getMessage());
-//        }
-//    }
+
+
+
+
 
    
 }

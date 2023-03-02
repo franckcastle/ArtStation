@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -12,13 +14,15 @@
       <TableView fx:id="statutsTv" layoutX="1.0" layoutY="52.0" prefHeight="222.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="idTv" prefWidth="36.000030517578125" text="id_s" />
-          <TableColumn fx:id="titreTv" prefWidth="49.600006103515625" text="titre" />
-            <TableColumn fx:id="contenuTv" prefWidth="129.5999755859375" text="contenu" />
-            <TableColumn fx:id="createdTv" prefWidth="79.20001220703125" text="created" />
-            <TableColumn fx:id="updatedTv" prefWidth="85.5999755859375" text="updated" />
-            <TableColumn fx:id="supprimer" onEditStart="#supprimer" prefWidth="70.39996337890625" text="supprimer" />
-            <TableColumn fx:id="modifier" onEditStart="#modifier" prefWidth="70.4000244140625" text="modifier" />
+          <TableColumn fx:id="titreTv" prefWidth="38.400028228759766" text="titre" />
+            <TableColumn fx:id="contenuTv" prefWidth="87.20001220703125" text="contenu" />
+            <TableColumn fx:id="createdTv" prefWidth="71.20001220703125" text="created" />
+            <TableColumn fx:id="updatedTv" prefWidth="72.79997253417969" text="updated" />
+            <TableColumn fx:id="supprimer" onEditStart="#supprimer" prefWidth="80.800048828125" text="supprimer" />
+            <TableColumn fx:id="modifier" onEditStart="#modifier" prefWidth="68.0" text="modifier" />
             <TableColumn fx:id="commenter2" prefWidth="71.199951171875" text="commenter" />
+            <TableColumn fx:id="nbrlikeTv" prefWidth="75.0" text="nbrLike" />
+
         </columns>
       </TableView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="121.0" layoutY="14.0" prefHeight="27.0" prefWidth="357.0" text="Liste Statuts" textFill="#455771">
@@ -26,6 +30,18 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+
+
+       <Button fx:id="liker" layoutX="269.0" layoutY="333.0" onAction="#liker" onMouseDragExited="#liker" style="-fx-background-color: white;" text="Like" textFill="#d10909">
+
+           <graphic>
+               <ImageView fx:id="icon" fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true" smooth="true" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+                   <image>
+                       <Image url="C:\\Users\\user\\espritfinal\\src\\assets\\love.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
 
    </children>
 </AnchorPane>

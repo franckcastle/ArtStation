@@ -1,19 +1,17 @@
 package entities;
 
-import com.mysql.cj.jdbc.CallableStatement;
-import org.w3c.dom.Text;
-
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 
 public class Statut {
 
      int id_s;
-    private String contenu;
     private String titre;
+    private String contenu;
+
+
+
+    private int nbrLike;
     private Date created;
     private Date updated;
 
@@ -43,7 +41,21 @@ public class Statut {
         this.updated = updated;
     }
 
-    public int getId_s() {
+    public Statut(int id_s, String titre, String contenu, int nbrlike, Date created, Date updated) {
+        this.id_s = id_s;
+        this.titre = titre;
+        this.contenu = contenu;
+        this.nbrLike = nbrlike;
+        this.created = created;
+        this.updated = updated;
+    }
+
+    public int getNbrLike() {
+        return nbrLike;
+    }
+
+
+    public  int getId_s() {
         return id_s;
     }
 
@@ -75,7 +87,7 @@ public class Statut {
         this.created = created;
     }
 
-    public Date getUpdated() {
+    public  Date getUpdated() {
         return updated;
     }
 
@@ -84,18 +96,20 @@ public class Statut {
         this.updated = updated;
     }
 
-
-
+    public  void setNbrLike(int nbrLike) {
+        this.nbrLike = nbrLike;
+    }
 
 
     @Override
     public String toString() {
         return "Statut{" +
                 "id_s=" + id_s +
-                ", contenu='" + contenu + '\'' +
                 ", titre='" + titre + '\'' +
+                ", contenu='" + contenu + '\'' +
                 ", created=" + created +
                 ", updated=" + updated +
+                ", nbrLike=" + nbrLike +
                 '}';
     }
 }
