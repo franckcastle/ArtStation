@@ -11,5 +11,5 @@ public interface IService <T>{
     public boolean supprimer(T t) throws SQLException;
     public List<T> recuperer() throws SQLException;
     public User GetByUsername(String username) throws SQLException;
-
+    public List<User> GetByRole(String role) throws SQLException;
 }

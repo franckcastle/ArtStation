@@ -93,4 +93,25 @@ public class UserService implements IService<User> {
         }
 
     }
+
+    @Override
+    public List<User> GetByRole(String role) throws SQLException {
+        List<User> users = new ArrayList<>();
+        String req = "Select * from user where role = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1,role);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()){
+            User u = new User();
+            u.setUserId(rs.getInt("userId"));
+            u.setUsername(rs.getString("userName"));
+            u.setPassword(rs.getString("password"));
+            u.setEmail(rs.getString("email"));
+            u.setTel(rs.getInt("tel"));
+            u.setRole(rs.getString("role"));
+            users.add(u);
+        }
+        return users;
+    }
 }
