@@ -103,6 +103,27 @@ public class ProduitService  {
 
         }
 
+    public Produit rechercheProduit (int ID_produit) throws SQLException, ParseException {
+        Produit p = new Produit();
+        try {
+            Statement stmt = cnx.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT * FROM statut  where ID_produit ="+ID_produit);
+            while(result.next()) {
+                p.setID_produit(result.getInt(1));
+                p.setNom(result.getString(2));
+                p.setDescription(result.getString(3));
+                p.setPrix(result.getFloat(4));
+                p.setQte_stock(result.getInt(5));
+                p.setId_ctg(result.getInt(6));
+                p.setImage(result.getString(7));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return p;
+    }
+
 /*    public void modifier(String nom, String description, float prix , int qte_stock) throws SQLException, ParseException {
         String req = "UPDATE produit SET nom = ?,description = ?,prix=?,qte_stock = ? where  = ? "  ;
         PreparedStatement ste = cnx.prepareStatement(req);
