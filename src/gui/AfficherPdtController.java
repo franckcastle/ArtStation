@@ -144,9 +144,12 @@ public class AfficherPdtController implements Initializable {
                                 FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModiffierPdt.fxml"));
                                 Parent root = loader.load();
                                 Produit prod= (Produit) productsTv.getItems().get(getIndex());
-                                System.out.println("hetha even"+prod.getID_produit());
+                                ModiffierPdtController controller = loader.getController();
+                                controller.setProduit(prod);
+                                controller.initialize();
+                               /* System.out.println("the product"+prod.getID_produit());
                                 ModiffierPdtController controller =loader.getController();
-                                controller.p=prod;
+                                controller.p=prod;*/
                                 productsTv.getScene().setRoot(root);
                             } catch (IOException e) {
                                 e.printStackTrace();

@@ -53,7 +53,14 @@ public class ModiffierPdtController implements Initializable {
 
 
 
-
+    @FXML
+    public void initialize() {
+        // Set the text of the text fields with the values of the 'p' object
+        nomTf.setText(p.getNom());
+        descriptionTf.setText(p.getDescription());
+        prixTf.setText(Float.toString(p.getPrix()));
+        qte_stockTf.setText(Integer.toString(p.getQte_stock()));
+    }
 
 
 
@@ -103,6 +110,7 @@ public class ModiffierPdtController implements Initializable {
     }
 
 
-
-
+    public void setProduit(Produit p) {
+        this.p=p;
+    }
 }
