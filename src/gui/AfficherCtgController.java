@@ -1,6 +1,7 @@
 package gui;
 
 import entities.Categorie;
+import entities.Produit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -32,9 +34,9 @@ public class AfficherCtgController implements Initializable {
     @FXML
     public TableColumn nomCtgTv;
     @FXML
-    public TableColumn supprimer;
+    private TableColumn<Categorie, Button> supprimer;
     @FXML
-    public TableColumn modifier;
+    private TableColumn<Categorie, Button> modifier;
     @FXML
     public Button ajouter;
 
@@ -48,9 +50,35 @@ public class AfficherCtgController implements Initializable {
             idCtgTv.setCellValueFactory(new PropertyValueFactory("Id_ctg"));
             nomCtgTv.setCellValueFactory(new PropertyValueFactory("Nom_ctg"));
 
+                this.supprimer();
+                this.modifier();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void supprimer() {
+        supprimer.setCellFactory((param) -> new TableCell() {
+            @Override
+            protected void updateItem(Object item, boolean empty) {
+                super.updateItem(item, empty);
+                if (!empty) {
+                    Button b = new Button("delete");
+                    b.setOnAction((event) -> {
+                        Categorie cat = (Categorie) CategorieTv.getItems().get(getIndex());
+                        if (cs.supprimerCategorie(cat.getId_ctg())) {
+                            CategorieTv.getItems().remove(getIndex());
+
+                        }
+                        CategorieTv.refresh();
+                    });
+                    setGraphic(b);
+
+                }else { setGraphic(null);}
+            }
+        });
+
     }
 
     @FXML
@@ -64,4 +92,37 @@ public class AfficherCtgController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void modifier(){
+        modifier.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("modifier");
+                        b.setOnAction(event -> {
+                            try {
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModifierCtg.fxml"));
+                                Parent root = loader.load();
+                                Categorie cate= (Categorie) CategorieTv.getItems().get(getIndex());
+                                ModifierCtgController controller = loader.getController();
+                                controller.setCategorie(cate);
+                                controller.initialize();
+                               /* System.out.println("the product"+prod.getID_produit());
+                                ModiffierPdtController controller =loader.getController();
+                                controller.p=prod;*/
+                                CategorieTv.getScene().setRoot(root);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        setGraphic(b);
+                    }
+                }
+            };
+
+        });
+    }
+
 }

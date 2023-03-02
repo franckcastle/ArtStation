@@ -31,6 +31,8 @@ public class ModiffierPdtController implements Initializable {
     public TextField qte_stockTf;
     @FXML
     public Button ModifieProduit;
+    @FXML
+    public Button retour;
 
     ProduitService ps = new ProduitService();
     @Override
@@ -108,7 +110,17 @@ public class ModiffierPdtController implements Initializable {
         }*/
 
     }
+    @FXML
+    public void retour(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AffichagePdt.fxml"));
 
+            //Parent root = loader.load();
+            nomTf.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void setProduit(Produit p) {
         this.p=p;

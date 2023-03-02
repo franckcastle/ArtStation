@@ -10,9 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import entities.Produit;
 import utils.MyDb;
-import java.text.ParseException;
 
 
 public class CategorieService {
@@ -57,7 +55,7 @@ public class CategorieService {
 
     }
 
-    public void supprimerCategorie(Integer id_ctg) {
+    public boolean supprimerCategorie(Integer id_ctg) {
         String sql = "delete from categorie where id_ctg=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
@@ -67,6 +65,7 @@ public class CategorieService {
             System.out.println(ex.getMessage());
         }
 
+        return false;
     }
     public void modifierCategorie(Categorie c ) {
         String query = "UPDATE  categorie set nom_ctg=? Where id_ctg ='" + c.getId_ctg() + "'";
