@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherCtgController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e0f3f7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherCtgController">
    <children>
       <TableView fx:id="CategorieTv" layoutX="106.0" layoutY="100.0" prefHeight="200.0" prefWidth="388.0">
         <columns>
@@ -22,6 +22,6 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="ajouter" layoutX="246.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="ajouter categorie" />
+      <Button fx:id="ajouter" layoutX="246.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCategorie" style="-fx-background-color: blue;" text="ajouter categorie" textFill="WHITE" />
    </children>
 </AnchorPane>
