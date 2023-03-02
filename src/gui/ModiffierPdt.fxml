@@ -8,10 +8,10 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e0f3f7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModiffierPdtController">
    <children>
       <Label layoutX="209.0" layoutY="54.0" text="modifier dans votre produit" />
-      <TextField fx:id="nomTf" layoutX="207.0" layoutY="105.0" />
-      <TextField fx:id="descriptionTf" layoutX="207.0" layoutY="165.0" />
-      <TextField fx:id="prixTf" layoutX="208.0" layoutY="230.0" />
-      <TextField fx:id="qte_stockTf" layoutX="208.0" layoutY="289.0" />
+      <TextField fx:id="nomTf" layoutX="207.0" layoutY="105.0" promptText="nom" />
+      <TextField fx:id="descriptionTf" layoutX="207.0" layoutY="165.0" promptText="description" />
+      <TextField fx:id="prixTf" layoutX="208.0" layoutY="230.0" promptText="prix" />
+      <TextField fx:id="qte_stockTf" layoutX="208.0" layoutY="289.0" promptText="quantité" />
       <Button fx:id="ModifieProduit" layoutX="257.0" layoutY="345.0" mnemonicParsing="false" onAction="#modifier" text="modifier" />
    </children>
 </AnchorPane>

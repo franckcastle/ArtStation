@@ -28,12 +28,12 @@ public class Test {
         //ps.ajouterProduit(p1);
 
 
-        p1.setNom("zama takhtef");
+       /* p1.setNom("zama takhtef");
         p1.setDescription("zama takhtef");
         p1.setPrix(2F);
         p1.setQte_stock(3);
         p1.setID_produit(9);
-        ps.modifier(p1.getNom(), p1.getDescription(), p1.getPrix(), p1.getQte_stock());
+        ps.modifier(p1.getNom(), p1.getDescription(), p1.getPrix(), p1.getQte_stock());*/
         //  ps.supprimerProduit(13);
 
 

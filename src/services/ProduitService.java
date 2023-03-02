@@ -86,11 +86,14 @@ public class ProduitService  {
         return false ;
 
     }
-      /* public void modifier(Produit p) {
-            String query = "UPDATE  produit set nom=? Where ID_produit ='" + p.getID_produit() + "'";
+       public void modifier(Produit p) {
+            String query = "UPDATE  produit set nom=?,description=?,prix=?,qte_stock=? Where ID_produit ='" + p.getID_produit() + "'";
             try {
                 PreparedStatement ste = cnx.prepareStatement(query);
                 ste.setString(1, p.getNom());
+                ste.setString(2, p.getDescription());
+                ste.setFloat(3, p.getPrix());
+                ste.setInt(4, p.getQte_stock());
                 ste.executeUpdate();
                 System.out.println("nom produit modifié  ");
 
@@ -98,9 +101,9 @@ public class ProduitService  {
                 System.out.println(ex.getMessage());
             }
 
-        }*/
+        }
 
-    public void modifier(String nom, String description, float prix , int qte_stock) throws SQLException, ParseException {
+/*    public void modifier(String nom, String description, float prix , int qte_stock) throws SQLException, ParseException {
         String req = "UPDATE produit SET nom = ?,description = ?,prix=?,qte_stock = ? where  = ? "  ;
         PreparedStatement ste = cnx.prepareStatement(req);
 
@@ -111,7 +114,7 @@ public class ProduitService  {
         ste.executeUpdate();
         System.out.println("Le produit a été modifié avec succés !");
 
-    }
+    }*/
     }
 
 

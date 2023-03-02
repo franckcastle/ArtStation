@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
@@ -20,48 +21,6 @@ import java.util.ResourceBundle;
 public class ModiffierPdtController implements Initializable {
 
 
-    String nom, description;
-    String n, d;
-    float prix;
-    float p;
-    int qte_stock;
-    int q;
-    int ID_produit;
-    ProduitService ps = new ProduitService();
-
-    public ModiffierPdtController () {
-    }
-
-    public ModiffierPdtController (String nom , String description, float prix , int qte_stock) {
-        this.ID_produit=ID_produit;
-        this.nom=nom;
-        this.description=description;
-        this.prix=prix;
-        this.qte_stock=qte_stock;
-    }
-
-    public void setNom (String nom) {
-        nomTf.setText(nom);
-        n = nomTf.getText();
-    }
-
-    public void setDescription (String description) {
-        descriptionTf.setText(description);
-        d = descriptionTf.getText();
-    }
-
-    public void setPrix (float prix) {
-        prixTf.setText(String.valueOf(prix));
-        p = Float.parseFloat(prixTf.getText());
-    }
-
-    public void setQte_stock (int qte_stock) {
-        qte_stockTf.setText(String.valueOf(qte_stock));
-        q = Integer.parseInt(qte_stockTf.getText());
-    }
-
-
-
     @FXML
     public TextField nomTf;
     @FXML
@@ -73,9 +32,55 @@ public class ModiffierPdtController implements Initializable {
     @FXML
     public Button ModifieProduit;
 
+    ProduitService ps = new ProduitService();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public Produit p;
+
+
+
+    public ModiffierPdtController () {
+    }
+
+    public ModiffierPdtController (Produit p) {
+        this.p=p;
+
+    }
+
+
+
+
+
+
+
+
+
 
     @FXML
     void modifier(ActionEvent event) {
+
+        if(!nomTf.getText().isEmpty()){
+            Produit pp = new Produit();
+            pp.setID_produit(p.getID_produit());
+            pp.setNom(nomTf.getText());
+            pp.setDescription(descriptionTf.getText());
+            pp.setPrix(Float.valueOf(prixTf.getText()));
+            pp.setQte_stock(Integer.parseInt(qte_stockTf.getText()));
+            ps.modifier(pp);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur ");
+            alert.setHeaderText("toutes les champs sont obligatoires");
+
+            alert.showAndWait();
+        }
+
+
+
+    /*    System.out.println(p);
         String nom = nomTf.getText();
         String description = descriptionTf.getText();
         float prix = Float.parseFloat(prixTf.getText());
@@ -83,24 +88,21 @@ public class ModiffierPdtController implements Initializable {
         try {
             ps.modifier(nom,description,prix,qte_stock);
             Parent loader = FXMLLoader.load(getClass().getResource("AffichagePdt.fxml"));
-            nomTf.getScene().setRoot(loader);
+            nomTf.getScene().setRoot(loader);*/
             /*descriptionTf.getScene().setRoot(loader);
             prixTf.getScene().setRoot(loader);
             qte_stockTf.getScene().setRoot(loader);*/
 
 
-        }catch (IOException ex) {
+    /*    }catch (IOException ex) {
             throw new RuntimeException(ex);
         } catch (SQLException | ParseException ex) {
             throw new RuntimeException(ex);
-        }
+        }*/
 
     }
 
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }

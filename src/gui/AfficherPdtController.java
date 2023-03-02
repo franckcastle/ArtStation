@@ -77,7 +77,7 @@ public class AfficherPdtController implements Initializable {
         }
     }
 
-    private void modifier() {
+    /*private void modifier() {
 
         modifier.setCellFactory((param) -> {
             return new TableCell() {
@@ -117,7 +117,7 @@ public class AfficherPdtController implements Initializable {
             };
 
         });
-    }
+    }*/
 
     @FXML
     public void ajouterProduit (ActionEvent event){
@@ -130,6 +130,39 @@ public class AfficherPdtController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void modifier(){
+        modifier.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("modifier");
+                        b.setOnAction(event -> {
+                            try {
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModiffierPdt.fxml"));
+                                Parent root = loader.load();
+                                Produit prod= (Produit) productsTv.getItems().get(getIndex());
+                                System.out.println("hetha even"+prod.getID_produit());
+                                ModiffierPdtController controller =loader.getController();
+                                controller.p=prod;
+                                productsTv.getScene().setRoot(root);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        setGraphic(b);
+                    }
+                }
+            };
+
+        });
+    }
+
+
+
+
 
 
 
