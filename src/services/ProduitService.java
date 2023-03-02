@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import utils.MyDb;
@@ -78,13 +79,14 @@ public class ProduitService  {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, ID_produit);
             ste.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return false ;
 
     }
-        public void modifierProduit(Produit p) {
+      /* public void modifier(Produit p) {
             String query = "UPDATE  produit set nom=? Where ID_produit ='" + p.getID_produit() + "'";
             try {
                 PreparedStatement ste = cnx.prepareStatement(query);
@@ -96,7 +98,20 @@ public class ProduitService  {
                 System.out.println(ex.getMessage());
             }
 
-        }
+        }*/
+
+    public void modifier(String nom, String description, float prix , int qte_stock) throws SQLException, ParseException {
+        String req = "UPDATE produit SET nom = ?,description = ?,prix=?,qte_stock = ? where  = ? "  ;
+        PreparedStatement ste = cnx.prepareStatement(req);
+
+        ste.setString(1,nom);
+        ste.setString(2,description);
+        ste.setFloat(3, prix);
+        ste.setInt(4, qte_stock);
+        ste.executeUpdate();
+        System.out.println("Le produit a été modifié avec succés !");
+
+    }
     }
 
 

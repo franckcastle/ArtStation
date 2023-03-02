@@ -30,7 +30,7 @@ public class CategorieService {
         while (rs.next()) {
             System.out.println(rs);
             Categorie c = new Categorie
-                    (rs.getInt("id_ctg"), rs.getString("nom_ctg"));
+                    (rs.getInt("Id_ctg"), rs.getString("Nom_ctg"));
 
             cat.add(c);
             System.out.println();
@@ -39,22 +39,23 @@ public class CategorieService {
     }
 
     public void ajouterCategorie(Categorie c) throws SQLException, Exception {
-        String sql = "INSERT INTO categorie (nom_ctg) VALUES (?)";
+        String sql = "INSERT INTO categorie(id_ctg,nom_ctg)VALUES (?,?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
-        pstmt.setString(1, c.getNom_ctg());
+        pstmt.setInt(1, c.getId_ctg());
+        pstmt.setString(2, c.getNom_ctg());
         pstmt.executeUpdate();
     }
 
-//    public int GetIdByName(String name) throws SQLException {
-//        String req = "SELECT id_ctg FROM categorie where nom_ctg='"+name+"';";
-//        PreparedStatement pst = cnx.prepareStatement(req);
-//        ResultSet rs = pst.executeQuery();
-//
-//        int i= rs.getInt("id_ctg");
-//
-//        return i;
-//
-//    }
+  public int GetIdByName(String name) throws SQLException {
+        String req = "SELECT id_ctg FROM categorie where nom_ctg='"+name+"';";
+        PreparedStatement pst = cnx.prepareStatement(req);
+        ResultSet rs = pst.executeQuery();
+
+        int i= rs.getInt("id_ctg");
+
+        return i;
+
+    }
 
     public void supprimerCategorie(Integer id_ctg) {
         String sql = "delete from categorie where id_ctg=?";
@@ -68,7 +69,7 @@ public class CategorieService {
 
     }
     public void modifierCategorie(Categorie c ) {
-        String query = "UPDATE  categorie set nom_ctg=? Where id_ctg ='" + c.getid_ctg() + "'";
+        String query = "UPDATE  categorie set nom_ctg=? Where id_ctg ='" + c.getId_ctg() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setString(1, c.getNom_ctg());

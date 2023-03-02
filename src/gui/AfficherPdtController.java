@@ -48,6 +48,8 @@ public class AfficherPdtController implements Initializable {
     @FXML
     private TableColumn<Produit, Button> supprimer;
 
+    @FXML
+    private TableColumn<Produit, Button> modifier;
 
 
 
@@ -67,17 +69,56 @@ public class AfficherPdtController implements Initializable {
             categorieTv.setCellValueFactory(new PropertyValueFactory("id_ctg"));
 
 
-
-
             this.supprimer();
+            this.modifier();
         } catch (SQLException ex) {
 
             System.out.println("error" + ex.getMessage());
-            ex.printStackTrace();
         }
     }
-    private Stage stage;
-    private Scene scene;
+
+    private void modifier() {
+
+        modifier.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("modifier");
+                        b.setOnAction((event) -> {
+
+                            try {
+
+                                TableCell cell = (TableCell) ((Button) event.getSource()).getParent();
+                                int rowIndexModifier = cell.getIndex();
+
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModiffierPdt.fxml"));
+                                Parent root = loader.load();
+
+                                ModiffierPdtController controller = loader.getController();
+
+                                //int rowIndexModifier = getIndex();
+                                controller.setNom((String) nomTv.getCellData(rowIndexModifier));
+                                controller.setDescription((String) descriptionTv.getCellData(rowIndexModifier));
+                                controller.setPrix((Float) prixTv.getCellData(rowIndexModifier));
+                                controller.setQte_stock((Integer) qte_stockTv.getCellData(rowIndexModifier));
+                                productsTv.getScene().setRoot(root);
+
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
+    }
+
     @FXML
     public void ajouterProduit (ActionEvent event){
         try {
@@ -90,43 +131,27 @@ public class AfficherPdtController implements Initializable {
         }
     }
 
-    public void select (ActionEvent event){
-        try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AjouterPdt.fxml"));
-
-            //Parent root = loader.load();
-            productsTv.getScene().setRoot(loader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
 
     public void supprimer() {
-        supprimer.setCellFactory((param) -> {
-            return new TableCell() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    setGraphic(null);
-                    if (!empty) {
-                        Button b = new Button("delete");
-                        b.setOnAction((event) -> {
-                            Produit listProd= (Produit) productsTv.getItems().get(getIndex());
-                            if (ps.supprimerProduit(listProd.getID_produit())) {
-                                productsTv.getItems().remove(getIndex());
-                                productsTv.refresh();
+        supprimer.setCellFactory((param) -> new TableCell() {
+            @Override
+            protected void updateItem(Object item, boolean empty) {
+                super.updateItem(item, empty);
+                if (!empty) {
+                    Button b = new Button("delete");
+                    b.setOnAction((event) -> {
+                        Produit listProd = (Produit) productsTv.getItems().get(getIndex());
+                        if (ps.supprimerProduit(listProd.getID_produit())) {
+                            productsTv.getItems().remove(getIndex());
 
-                            }
+                        }
+                        productsTv.refresh();
+                    });
+                    setGraphic(b);
 
-                        });
-                        setGraphic(b);
-
-                    }
-                }
-            };
-
+                }else { setGraphic(null);}
+            }
         });
 
     }

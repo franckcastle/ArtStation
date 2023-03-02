@@ -16,12 +16,16 @@ public class Categorie {
   this.nom_ctg = nom_ctg;
  }
 
- public int getid_ctg() {
+ public Categorie() {
+
+ }
+
+ public int getId_ctg() {
   return id_ctg;
  }
 
- public void setid_ctg(int id_ctg) {
-  id_ctg = id_ctg;
+ public void setId_ctg(int id_ctg) {
+  this.id_ctg = id_ctg;
  }
 
 
@@ -29,8 +33,8 @@ public class Categorie {
   return nom_ctg;
  }
 
- public void setnom_ctg(String nom_ctg) {
-  nom_ctg = nom_ctg;
+ public void setNom_ctg(String nom_ctg) {
+ this.nom_ctg = nom_ctg;
  }
 
  @Override

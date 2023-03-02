@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherCtgController">
+   <children>
+      <TableView fx:id="CategorieTv" layoutX="106.0" layoutY="100.0" prefHeight="200.0" prefWidth="388.0">
+        <columns>
+          <TableColumn fx:id="idCtgTv" prefWidth="107.20001220703125" text="id du categorie" />
+          <TableColumn fx:id="nomCtgTv" prefWidth="119.20001220703125" text="Nom de categorie" />
+            <TableColumn fx:id="supprimer" prefWidth="75.0" text="supprimer" />
+            <TableColumn fx:id="modifier" prefWidth="84.0" text="modifier" />
+        </columns>
+      </TableView>
+      <Label layoutX="183.0" layoutY="48.0" text="Les Categorie existantes">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="ajouter" layoutX="246.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="ajouter categorie" />
+   </children>
+</AnchorPane>

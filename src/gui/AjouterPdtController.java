@@ -2,14 +2,13 @@ package gui;
 
 import entities.Produit;
 import entities.Categorie;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,9 +17,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.util.StringConverter;
 import services.ProduitService;
 import services.CategorieService;
 import java.lang.Integer;
@@ -39,10 +39,12 @@ public class AjouterPdtController  implements Initializable {
     public TextField prixTf;
     @FXML
     public TextField qte_stockTf;
-    @FXML
-    public TextField categorieTf;
+
     @FXML
     public TextField imageTf;
+
+    @FXML
+    public Button retour;
 
     // instance database Service
     ProduitService ps = new ProduitService();
@@ -77,12 +79,35 @@ public class AjouterPdtController  implements Initializable {
             p.setId_ctg(i);
             p.setImage(imageTf.getText());
             try {
-                ps.ajouterProduit(p);
+
                 reset();
+                if (p.getNom().length()==0 || p.getDescription().length()==0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur lors del'ajout du produit");
+                    alert.setHeaderText("Veuillez remplir les champs afficher.");
+                    alert.showAndWait();
+                    return;
+                }
+                ps.ajouterProduit(p);
+                System.out.println("L'ajout du produit est effectuer avec succès");
+
             } catch (Exception ex) {
                 System.out.println("error" + ex.getMessage());
-            }}
-int i;
+            }
+
+        }
+    @FXML
+    public void retour(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AfficherPdt.fxml"));
+
+            //Parent root = loader.load();
+            nomTf.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+            int i;
             @FXML
             void select (ActionEvent event) throws SQLException {
         String s = comb.getSelectionModel().getSelectedItem().toString();
@@ -90,7 +115,7 @@ int i;
                 List<Categorie> categories = cs.getAll();
                 for (Categorie c : categories) {
                     if (c.getNom_ctg().equals(s)) {
-                       int categoryId = c.getid_ctg();
+                       int categoryId = c.getId_ctg();
 
                         i=categoryId;
                         break; }
@@ -103,7 +128,6 @@ int i;
                 descriptionTf.setText("");
                 prixTf.setText("");
                 qte_stockTf.setText("");
-                categorieTf.setText("");
                 imageTf.setText("");
             }
 
