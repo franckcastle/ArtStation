@@ -34,8 +34,6 @@ public class AfficherCtgController implements Initializable {
     @FXML
     public TableColumn nomCtgTv;
     @FXML
-    private TableColumn<Categorie, Button> supprimer;
-    @FXML
     private TableColumn<Categorie, Button> modifier;
     @FXML
     public Button ajouter;
@@ -50,7 +48,7 @@ public class AfficherCtgController implements Initializable {
             idCtgTv.setCellValueFactory(new PropertyValueFactory("Id_ctg"));
             nomCtgTv.setCellValueFactory(new PropertyValueFactory("Nom_ctg"));
 
-                this.supprimer();
+
                 this.modifier();
 
         } catch (SQLException e) {
@@ -58,28 +56,7 @@ public class AfficherCtgController implements Initializable {
         }
     }
 
-    public void supprimer() {
-        supprimer.setCellFactory((param) -> new TableCell() {
-            @Override
-            protected void updateItem(Object item, boolean empty) {
-                super.updateItem(item, empty);
-                if (!empty) {
-                    Button b = new Button("delete");
-                    b.setOnAction((event) -> {
-                        Categorie cat = (Categorie) CategorieTv.getItems().get(getIndex());
-                        if (cs.supprimerCategorie(cat.getId_ctg())) {
-                            CategorieTv.getItems().remove(getIndex());
 
-                        }
-                        CategorieTv.refresh();
-                    });
-                    setGraphic(b);
-
-                }else { setGraphic(null);}
-            }
-        });
-
-    }
 
     @FXML
     public void AjouterCategorie (ActionEvent event){

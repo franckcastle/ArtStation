@@ -9,12 +9,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e0f3f7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherCtgController">
    <children>
-      <TableView fx:id="CategorieTv" layoutX="106.0" layoutY="100.0" prefHeight="200.0" prefWidth="388.0">
+      <TableView fx:id="CategorieTv" layoutX="131.0" layoutY="100.0" prefHeight="200.0" prefWidth="326.0">
         <columns>
           <TableColumn fx:id="idCtgTv" prefWidth="107.20001220703125" text="id du categorie" />
           <TableColumn fx:id="nomCtgTv" prefWidth="119.20001220703125" text="Nom de categorie" />
-            <TableColumn fx:id="supprimer" prefWidth="75.0" text="supprimer" />
-            <TableColumn fx:id="modifier" prefWidth="84.0" text="modifier" />
+            <TableColumn fx:id="modifier" prefWidth="96.79998779296875" text="modifier" />
         </columns>
       </TableView>
       <Label layoutX="183.0" layoutY="48.0" text="Les Categorie existantes">
@@ -22,6 +21,6 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="ajouter" layoutX="246.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCategorie" style="-fx-background-color: blue;" text="ajouter categorie" textFill="WHITE" />
+      <Button fx:id="ajouter" layoutX="246.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCategorie" style="-fx-background-color: blue; -fx-background-radius: 15;" text="ajouter categorie" textFill="WHITE" />
    </children>
 </AnchorPane>

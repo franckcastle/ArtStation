@@ -15,7 +15,7 @@
       </Label>
       <TextField fx:id="idctgTf" layoutX="213.0" layoutY="126.0" promptText="id de categorie" />
       <TextField fx:id="nomctgTf" layoutX="214.0" layoutY="223.0" promptText="nom de categorie" />
-      <Button layoutX="214.0" layoutY="316.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="ajouter" />
-      <Button fx:id="retour" layoutX="311.0" layoutY="316.0" mnemonicParsing="false" onAction="#retour" text="quitter" />
+      <Button layoutX="214.0" layoutY="316.0" mnemonicParsing="false" onAction="#AjouterCategorie" style="-fx-background-color: blue; -fx-background-radius: 15;" text="ajouter" textFill="WHITE" />
+      <Button fx:id="retour" layoutX="311.0" layoutY="316.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 15;" text="quitter" />
    </children>
 </AnchorPane>

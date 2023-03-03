@@ -99,7 +99,7 @@ public class AjouterPdtController  implements Initializable {
     @FXML
     public void retour(ActionEvent event){
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherPdt.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("AffichagePdt.fxml"));
 
             //Parent root = loader.load();
             nomTf.getScene().setRoot(loader);

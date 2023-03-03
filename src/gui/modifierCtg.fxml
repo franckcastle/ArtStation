@@ -13,8 +13,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="ModifierCategorie" layoutX="194.0" layoutY="240.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: blue;" text="modifier" textFill="WHITE" />
-      <Button fx:id="retour" layoutX="336.0" layoutY="240.0" mnemonicParsing="false" onAction="#retour" text="retour" />
+      <Button fx:id="ModifierCategorie" layoutX="194.0" layoutY="240.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: blue; -fx-background-radius: 15;" text="modifier" textFill="WHITE" />
+      <Button fx:id="retour" layoutX="336.0" layoutY="240.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-radius: 15;" text="retour" />
       <TextField fx:id="nomTf" layoutX="212.0" layoutY="147.0" />
    </children>
 </AnchorPane>
