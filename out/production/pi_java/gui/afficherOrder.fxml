@@ -18,11 +18,11 @@
             <TableColumn fx:id="postale_column" prefWidth="55.20001220703125" text="code_postale" />
             <TableColumn fx:id="prix_column" prefWidth="33.5999755859375" text="prix" />
             <TableColumn fx:id="sta_column" prefWidth="40.0" text="sta" />
-            <TableColumn fx:id="pruducts" prefWidth="35.99993896484375" text="produit" />
-            <TableColumn fx:id="delete" prefWidth="35.99993896484375" text="delete" />
-            <TableColumn fx:id="modifier" prefWidth="35.99993896484375" text="update" />
+            <TableColumn fx:id="pruducts" prefWidth="65.5999755859375" text="produit" />
+            <TableColumn fx:id="delete" prefWidth="45.599945068359375" text="delete" />
+            <TableColumn fx:id="modifier" prefWidth="66.39996337890625" text="update" />
          </columns>
       </TableView>
-      <Button fx:id="ajouter_column" layoutX="285.0" layoutY="37.0" mnemonicParsing="false" onAction="#ajouterbtn" text="ajouter" />
+      <Button fx:id="ajouter_column" layoutX="274.0" layoutY="45.0" mnemonicParsing="false" onAction="#ajouterbtn" text="ajouter" />
    </children>
 </AnchorPane>

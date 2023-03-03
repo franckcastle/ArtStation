@@ -7,12 +7,12 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierOrder">
    <children>
       <TextField fx:id="nom_col" layoutX="171.0" layoutY="55.0" promptText="nom" />
-      <TextField fx:id="prenom_col" layoutX="171.0" layoutY="89.0" promptText="prenom" />
-      <TextField fx:id="ville_col" layoutX="171.0" layoutY="130.0" promptText="ville" />
-      <TextField fx:id="addresse_col" layoutX="173.0" layoutY="218.0" promptText="addresse" />
-      <TextField fx:id="etat_col" layoutX="174.0" layoutY="272.0" promptText="etat " />
-      <Button fx:id="modifier_button" layoutX="198.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnModifier" text="modifier" />
-      <TextField fx:id="postale_id" layoutX="171.0" layoutY="174.0" promptText="code_postale" />
-      <Button fx:id="retourId" layoutX="288.0" layoutY="316.0" mnemonicParsing="false" onAction="#retourAf" text="retour" />
+      <TextField fx:id="prenom_col" layoutX="171.0" layoutY="101.0" promptText="prenom" />
+      <TextField fx:id="ville_col" layoutX="171.0" layoutY="147.0" promptText="ville" />
+      <TextField fx:id="addresse_col" layoutX="171.0" layoutY="245.0" promptText="addresse" />
+      <TextField fx:id="etat_col" layoutX="171.0" layoutY="290.0" promptText="etat " />
+      <Button fx:id="modifier_button" layoutX="388.0" layoutY="55.0" mnemonicParsing="false" onAction="#btnModifier" text="modifier" />
+      <TextField fx:id="postale_id" layoutX="171.0" layoutY="200.0" promptText="code_postale" />
+      <Button fx:id="retourId" layoutX="479.0" layoutY="55.0" mnemonicParsing="false" onAction="#retourAf" text="retour" />
    </children>
 </AnchorPane>

@@ -57,7 +57,7 @@ public class ProduitService implements IService<Produit> {
     }
 
     @Override
-    public List<Produit> recuperer(Produit t) throws SQLException {
+    public List<Produit> recuperer() throws SQLException {
         List<Produit> produits = new ArrayList<>();
         String s = "select * from Produit";
         Statement st = cnx.createStatement();
@@ -103,7 +103,7 @@ return p;
 
 
             List<Produit> prod = new ArrayList<>();
-            String sql = "SELECT produit.nom, produit.prix, produit.qte_stock " +
+            String sql = "SELECT produit.nom, cartitem.price, cartitem.quantity " +
                     "FROM cartitem " +
                     "JOIN produit ON produit.id = cartitem.id " +
                     "WHERE cartitem.orderId = ?";;
@@ -114,8 +114,8 @@ return p;
 
                         String nom = rs.getString("nom");
 
-                        Float price = rs.getFloat("prix");
-                        int quantity = rs.getInt("qte_stock");
+                        Float price = rs.getFloat("price");
+                        int quantity = rs.getInt("quantity");
                         Produit item = new Produit( price,quantity,nom);
                        prod.add(item);
                     }

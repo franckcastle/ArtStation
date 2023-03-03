@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.PanierOrder"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <TextField fx:id="nom_col" layoutX="171.0" layoutY="55.0" promptText="nom" />
+        <TextField fx:id="prenom_col" layoutX="171.0" layoutY="89.0" promptText="prenom" />
+        <TextField fx:id="ville_col" layoutX="171.0" layoutY="130.0" promptText="ville" />
+        <TextField fx:id="addresse_col" layoutX="173.0" layoutY="218.0" promptText="addresse" />
+        <Button fx:id="modifier_button" layoutX="198.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnModifier" text="buy" />
+        <TextField fx:id="postale_id" layoutX="171.0" layoutY="174.0" promptText="code_postale" />
+        <Button fx:id="retourId" layoutX="288.0" layoutY="316.0" mnemonicParsing="false" onAction="#retourAf" text="retour" />
+    </children>
+</AnchorPane>

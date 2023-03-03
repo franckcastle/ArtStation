@@ -14,6 +14,5 @@
       <TextField fx:id="code_column" layoutX="116.0" layoutY="238.0" promptText="code postale" />
       <TextField fx:id="prix_totale" layoutX="116.0" layoutY="289.0" promptText="prix" />
       <Button fx:id="ajouteOrders" layoutX="399.0" layoutY="163.0" mnemonicParsing="false" onAction="#onClickAjouter" text="ajouter" />
-
    </children>
 </AnchorPane>

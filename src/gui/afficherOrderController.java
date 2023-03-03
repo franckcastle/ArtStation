@@ -121,7 +121,6 @@ public class afficherOrderController implements Initializable {
                             //Parent root = loader.load();
 
 
-
                         });
                         setGraphic(b);
 
@@ -163,12 +162,14 @@ public class afficherOrderController implements Initializable {
 
                                 //AnchorPane  = loader.load();
 
-
+                                TableCell cell = (TableCell) ((Button) event.getSource()).getParent();
+                                int rowIndexBtnmodifier = cell.getIndex();
                                 //AnchorPane pane=loader.load();
                                 ShoppingCart shop= (ShoppingCart)carts_table.getItems().get(getIndex());
                                 System.out.println("hetha order"+shop.getOrderId());
                                 ModifierOrder controller =loader.getController();
                                 controller.sc= shop;
+                                controller.setUsername(nom_column.getCellData(rowIndexBtnmodifier));
                                 carts_table.getScene().setRoot(root);
 
                                 //Stage stage = new Stage();
