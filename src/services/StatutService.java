@@ -1,6 +1,7 @@
 
 package services;
 
+import com.sun.source.tree.WhileLoopTree;
 import entities.Commentaire;
 import entities.Statut;
 
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import utils.MyDB;
+
 
 public  class StatutService implements IService <Statut> {
 
@@ -40,22 +42,27 @@ public  class StatutService implements IService <Statut> {
         System.out.println("Like réussi !");
     }
     public void supprimerLikeStatut(Statut statut) throws SQLException {
+
         PreparedStatement statement;
-        statement = cnx.prepareStatement("UPDATE statut SET nbrLike = nbrLike-1  WHERE id_s="+statut.getId_s());
-        statement.executeUpdate();
+            statement = cnx.prepareStatement("UPDATE statut SET nbrLike = nbrLike-1  WHERE id_s=" + statut.getId_s());
+            statement.executeUpdate();
+
+
         System.out.println("Like est supprimé !");
     }
 
 
     @Override
     public void modifier(Statut s) throws SQLException {
-        String query = "UPDATE  statut set titre=?,contenu=?,updated=? Where id_s ='" + s.getId_s() + "'";
-        java.sql.Date updated = Date.valueOf(LocalDate.now());
+        java.util.Date javaDate = new java.util.Date();
+        java.sql.Date created = new java.sql.Date(javaDate.getTime());
+        String query = "UPDATE  statut set titre=?,contenu=? ,updated=? Where id_s ='" + s.getId_s() + "'";
+     //   java.sql.Date updated = Date.valueOf(LocalDate.now());
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setString(1, s.getTitre());
             ste.setString(2, s.getContenu());
-            ste.setDate(3, s.getUpdated());
+            ste.setDate(3, created);
 
             ste.executeUpdate();
             System.out.println("Le statut a ete modifié avec succés");
@@ -65,103 +72,7 @@ public  class StatutService implements IService <Statut> {
         }
 
     }
-//    @Override
-//    public void modifier(String a, String b) throws SQLException, ParseException {
-//
-//        String req = "UPDATE statut SET titre = ?,contenu = ?,updated = ? where id_s ='" + s.getId_s() + "'";
-//        PreparedStatement ps = cnx.prepareStatement(req);
-//        java.sql.Date updated = Date.valueOf(LocalDate.now());
-//
-//        ps.setString(1,a);
-//        ps.setString(2,b);
-//        ps.setDate(3, (Date) s.getUpdated());
-//        // ps.setInt(3, c.getId_c());
-//        ps.executeUpdate();
-//        System.out.println("Le statut a été modifié avec succés !");
-//
-//    }
-//@Override
-//  public void modifier(Statut s) throws SQLException, ParseException {
-//    String query = "UPDATE  evenement set titre=? , contenu=? Where id_s ='" + s.getId_s() + "'";
-//    java.sql.Date updated = Date.valueOf(LocalDate.now());
-//    try {
-//        PreparedStatement ste = cnx.prepareStatement(query);
-//        ste.setString(1, s.getTitre());
-//        ste.setString(2, s.getContenu());
-//        ste.setDate(1, s.getUpdated());
-//
-//
-//        ste.executeUpdate();
-//        System.out.println("Statut modifié  ");
-//
-//    } catch (SQLException ex) {
-//        System.out.println(ex.getMessage());
-//    }
-//
-//
-//
-//}
 
-//    @Override
-//    public void modifier(String a, String b, String c, String e) throws SQLException, ParseException {
-//        Statut s = new Statut();
-//       // String req = "UPDATE statut SET titre = ?,tire = ?,contenu,updated = ? where id_s ='" + s.getId_s() + "'";
-//        String req = "UPDATE statut SET titre = ?,contenu=? where id_s = ?";
-//        PreparedStatement ps = cnx.prepareStatement(req);
-//        java.sql.Date updated = Date.valueOf(LocalDate.now());
-//
-//        ps.setString(1,a);
-//        ps.setString(2,b);
-//        //ps.setDate(3, (Date) s.getUpdated());
-//        // ps.setInt(3, c.getId_c());
-//        ps.executeUpdate();
-//        System.out.println("Le statut a été modifié avec succés !");
-//    }
-
-//        public void modifier(Statut s,String nouveauTitre, String nouveauContenu) throws SQLException, ParseException {
-//        if(nouveauTitre != null && !nouveauTitre.equals("") && nouveauContenu != null && !nouveauContenu.equals("")){
-//            s.setContenu(nouveauContenu);
-//            s.setTitre(nouveauTitre);
-//            String req = "UPDATE statut SET titre = ?,contenu = ?,updated = ? where id_s ='" + s.getId_s() + "'";
-//            PreparedStatement ps = cnx.prepareStatement(req);
-//            java.sql.Date updated= Date.valueOf(LocalDate.now());
-//            ps.setString(1, s.getTitre());
-//            ps.setString(2, s.getContenu());
-//            ps.setDate(3, updated);
-//            //ps.setInt(4, s.getId_s());
-//            ps.executeUpdate();
-//            System.out.println("Le titre et le contenu ont été modifiés avec succés !");
-//        }
-//      else if (nouveauTitre != null && !nouveauTitre.equals("")){
-//          s.setTitre(nouveauTitre);
-//          String req = "UPDATE statut SET titre = ? , updated = ? where id_s ='" + s.getId_s() + "'";
-//          PreparedStatement ps = cnx.prepareStatement(req);
-//          java.sql.Date updated= Date.valueOf(LocalDate.now());
-//          ps.setString(1, s.getTitre());
-//          ps.setDate(2, updated);
-//          //ps.setInt(3, s.getId_s());
-//          ps.executeUpdate();
-//            System.out.println("Le titre a été modifiés avec succés !");
-//
-//
-//        }
-//        else if (nouveauContenu != null && !nouveauContenu.equals("")){
-//            s.setContenu(nouveauContenu);
-//            String req = "UPDATE statut SET contenu = ? , updated = ? where id_s ='" + s.getId_s() + "'";
-//            PreparedStatement ps = cnx.prepareStatement(req);
-//            java.sql.Date updated= Date.valueOf(LocalDate.now());
-//            ps.setString(1, s.getContenu());
-//            ps.setDate(2, updated);
-//            //ps.setInt(3, s.getId_s());
-//            ps.executeUpdate();
-//            System.out.println("Le contenu a été modifiés avec succés !");
-//        }
-//
-//        else {
-//            System.out.println("Modification echouée !");
-//        }
-//
-//    }
     public boolean supprimer (int id_s) throws SQLException{
         boolean ok = false;
         try {

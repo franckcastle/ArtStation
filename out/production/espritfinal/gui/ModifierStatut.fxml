@@ -13,12 +13,12 @@
             <Font name="Berlin Sans FB Demi Bold" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="titreField" alignment="CENTER" layoutX="214.0" layoutY="89.0" prefHeight="43.0" prefWidth="172.0" promptText="Titre" style="-fx-background-color: d2e8f9; -fx-border-color: 455771;">
+      <TextField fx:id="titreField" alignment="CENTER" layoutX="214.0" layoutY="89.0" prefHeight="43.0" prefWidth="172.0" promptText="Titre" style="-fx-background-color: d2e8f9; -fx-border-color: white;">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="contenuField" alignment="CENTER" layoutX="151.0" layoutY="153.0" prefHeight="187.0" prefWidth="298.0" promptText="Contenu" style="-fx-background-color: d2e8f9;">
+      <TextField fx:id="contenuField" alignment="CENTER" layoutX="151.0" layoutY="153.0" prefHeight="187.0" prefWidth="298.0" promptText="Contenu" style="-fx-background-color: d2e8f9; -fx-border-color: white;">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

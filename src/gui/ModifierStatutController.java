@@ -73,12 +73,12 @@ public class ModifierStatutController implements Initializable {
     @FXML
     public void modifier(ActionEvent event) throws SQLException {
         if (!titreField.getText().isEmpty()) {
-            Statut ss = new Statut();
-            ss.setId_s(ss.getId_s());
-            ss.setTitre(titreField.getText());
-            ss.setContenu(contenuField.getText());
 
-            ser.modifier(ss);
+            s.setId_s(s.getId_s());
+            s.setTitre(titreField.getText());
+            s.setContenu(contenuField.getText());
+
+            ser.modifier(s);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur ");
