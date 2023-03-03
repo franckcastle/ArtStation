@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="retour" depthTest="ENABLE" onDragDetected="#retour" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e0f3f7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterPdtController">
+<AnchorPane fx:id="retourr" depthTest="ENABLE" onDragDetected="#retour" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e0f3f7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterPdtController">
    <children>
        <Button layoutX="166.0" layoutY="339.0" maxWidth="300.0" mnemonicParsing="false" onAction="#AjouterProduit" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: blue;" text="ajouter produit" textFill="WHITE" />
       <TextField fx:id="nomTf" layoutX="201.0" layoutY="58.0" promptText="Nom de produit" />
