@@ -7,7 +7,7 @@ public class Commentaire {
     private int id_c ;
     private int id_s;
     private String description;
-    private Date date_ajout;
+    private static Date date_ajout;
     private Statut statut;
 
 
@@ -56,7 +56,7 @@ public class Commentaire {
         this.statut = statut;
     }
 
-    public Date getDate_ajout() {
+    public static Date getDate_ajout() {
         return date_ajout;
     }
 

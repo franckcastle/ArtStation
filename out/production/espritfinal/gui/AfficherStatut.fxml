@@ -9,39 +9,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseClicked="#supprimer" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherStatutController">
+<AnchorPane onMouseClicked="#supprimer" prefHeight="427.0" prefWidth="812.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherStatutController">
    <children>
-      <TableView fx:id="statutsTv" layoutX="1.0" layoutY="52.0" prefHeight="222.0" prefWidth="600.0">
+      <TableView fx:id="statutsTv" layoutX="31.0" layoutY="77.0" prefHeight="225.0" prefWidth="764.0" style="-fx-border-color: f6b49c;">
         <columns>
-          <TableColumn fx:id="idTv" prefWidth="36.000030517578125" text="id_s" />
-          <TableColumn fx:id="titreTv" prefWidth="38.400028228759766" text="titre" />
-            <TableColumn fx:id="contenuTv" prefWidth="87.20001220703125" text="contenu" />
-            <TableColumn fx:id="createdTv" prefWidth="71.20001220703125" text="created" />
-            <TableColumn fx:id="updatedTv" prefWidth="72.79997253417969" text="updated" />
-            <TableColumn fx:id="supprimer" onEditStart="#supprimer" prefWidth="80.800048828125" text="supprimer" />
-            <TableColumn fx:id="modifier" onEditStart="#modifier" prefWidth="68.0" text="modifier" />
-            <TableColumn fx:id="commenter2" prefWidth="71.199951171875" text="commenter" />
-            <TableColumn fx:id="nbrlikeTv" prefWidth="75.0" text="nbrLike" />
+          <TableColumn fx:id="idTv" prefWidth="36.000030517578125" style="-fx-border-color: f6b49c;" text="id_s" />
+          <TableColumn fx:id="titreTv" prefWidth="61.600006103515625" style="-fx-border-color: f6b49c;" text="titre" />
+            <TableColumn fx:id="contenuTv" prefWidth="141.5999984741211" style="-fx-border-color: f6b49c;" text="contenu" />
+            <TableColumn fx:id="createdTv" minWidth="0.0" prefWidth="114.4000244140625" style="-fx-border-color: f6b49c;" text="created" />
+            <TableColumn fx:id="updatedTv" prefWidth="104.79998779296875" style="-fx-border-color: f6b49c;" text="updated" />
+            <TableColumn fx:id="supprimer" onEditStart="#supprimer" prefWidth="90.39999389648438" style="-fx-border-color: f6b49c;" text="supprimer" />
+            <TableColumn fx:id="modifier" onEditStart="#modifier" prefWidth="79.20001220703125" style="-fx-border-color: f6b49c;" text="modifier" />
+            <TableColumn fx:id="commenter2" prefWidth="81.60003662109375" style="-fx-border-color: f6b49c;" text="commenter" />
+            <TableColumn fx:id="nbrlikeTv" prefWidth="55.99993896484375" style="-fx-border-color: f6b49c;" text="Likes" />
 
         </columns>
       </TableView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="121.0" layoutY="14.0" prefHeight="27.0" prefWidth="357.0" text="Liste Statuts" textFill="#455771">
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="14.0" prefHeight="38.0" prefWidth="364.0" text="LES STATUTS" textFill="#455771">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Bernard MT Condensed" size="36.0" />
          </font>
       </Label>
 
 
-       <Button fx:id="liker" layoutX="269.0" layoutY="333.0" onAction="#liker" onMouseDragExited="#liker" style="-fx-background-color: white;" text="Like" textFill="#d10909">
-
-           <graphic>
-               <ImageView fx:id="icon" fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true" smooth="true" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-                   <image>
-                       <Image url="C:\\Users\\user\\espritfinal\\src\\assets\\love.png" />
-                   </image>
-               </ImageView>
-           </graphic>
-       </Button>
+       <Button fx:id="liker" layoutX="328.0" layoutY="355.0" minWidth="38.0" onAction="#liker" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: d2e8f9;" text="Like" textFill="#d41b1b" />
+       <Button fx:id="dislike" layoutX="441.0" layoutY="355.0" minWidth="38.0" onAction="#dislike" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: d2e8f9;" text="dislike" textFill="#d10909" />
+         <ImageView fx:id="icon2" fitHeight="38.0" fitWidth="38.0" layoutX="466.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" smooth="true">
+             <image>
+                 <Image url="C:\\Users\\user\\espritfinal\\src\\assets\\hate.png" />
+             </image>
+         </ImageView>
+         <ImageView fx:id="icon" fitHeight="38.0" fitWidth="45.0" layoutX="352.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" smooth="true">
+             <image>
+                 <Image url="C:\\Users\\user\\espritfinal\\src\\assets\\love.png" />
+             </image>
+         </ImageView>
 
    </children>
 </AnchorPane>

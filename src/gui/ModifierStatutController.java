@@ -1,5 +1,6 @@
 package gui;
 
+import entities.Commentaire;
 import entities.Statut;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -19,26 +20,28 @@ import java.util.ResourceBundle;
 
 public class ModifierStatutController implements Initializable {
 
-    String c,e;
-    String titre,contenu;
+
     StatutService ser = new StatutService();
-    public Statut ss;
+    public Statut s;
 
     public ModifierStatutController () {
     }
-    public ModifierStatutController (Statut ss) {
-        this.ss=ss;
-        //this.titre=titre;
-        //this.contenu=contenu;
+    public ModifierStatutController (Statut s) {
+   this.s=s;
     }
 
-    public void setTitre (String titre) {
-        titreField.setText(titre);
-        c = titreField.getText();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
-    public void setContenu (String contenu) {
-        contenuField.setText(contenu);
-        e = contenuField.getText();
+
+    @FXML
+    public void initialize() {
+        titreField.setText(s.getTitre());
+        contenuField.setText(s.getContenu());
+
+
+
     }
 
     @FXML
@@ -67,12 +70,30 @@ public class ModifierStatutController implements Initializable {
 //
 //    }
 
+    @FXML
+    public void modifier(ActionEvent event) throws SQLException {
+        if (!titreField.getText().isEmpty()) {
+            Statut ss = new Statut();
+            ss.setId_s(ss.getId_s());
+            ss.setTitre(titreField.getText());
+            ss.setContenu(contenuField.getText());
 
+            ser.modifier(ss);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur ");
+            alert.setHeaderText("Vous ne pouvez pas ajouter un commentaire vide !");
 
+            alert.showAndWait();
+        }
+    }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void setStatut(Statut s) {
+        this.s=s;
     }
 }
+
+
+
+
+

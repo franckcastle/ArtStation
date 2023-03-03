@@ -1,0 +1,20 @@
+<!--&lt;!&ndash;-->
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import javafx.scene.control.TableColumn?>-->
+<!--<?import javafx.scene.control.TableView?>-->
+<!--<?import javafx.scene.layout.AnchorPane?>-->
+
+
+<!--<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RecupererController">-->
+<!--   <children>-->
+<!--      <TableView fx:id="commentairesTv" layoutX="166.0" layoutY="99.0" prefHeight="216.0" prefWidth="227.0">-->
+<!--        <columns>-->
+<!--          <TableColumn fx:id="sidTv" prefWidth="75.0" text="id_s" />-->
+<!--          <TableColumn fx:id="idTv" prefWidth="75.0" text="id_c" />-->
+<!--            <TableColumn fx:id="descriptionTv" prefWidth="75.0" text="description" />-->
+<!--        </columns>-->
+<!--      </TableView>-->
+<!--   </children>-->
+<!--</AnchorPane>-->
+<!--&ndash;&gt;-->

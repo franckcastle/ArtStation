@@ -11,10 +11,9 @@ public class Statut {
 
 
 
-    private int nbrLike;
+    private int nbrLike  ;
     private Date created;
     private Date updated;
-
 
 
 //jointure avec table user pour recuperer le nom d'auteur

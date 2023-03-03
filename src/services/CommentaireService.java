@@ -24,9 +24,24 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
                 "(?,?)");
         statement.setString(1, c.getDescription());
         statement.setInt(2, c.getId_s());
-
         statement.executeUpdate();
         System.out.println("l'ajout du commentaire a ete effectué avec succés!");
+
+    }
+
+
+    @Override
+    public void modifierCom(Commentaire c) throws SQLException {
+        String query = "UPDATE  commentaire set description=? Where id_c ='" + c.getId_c() + "'";
+        try {
+            PreparedStatement ste = cnx.prepareStatement(query);
+            ste.setString(1, c.getDescription());
+            ste.executeUpdate();
+            System.out.println("Le commentaire a ete modifié avec succés");
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
 
     }
 //    public void modifierCom (Commentaire c, String nouvelleDescription) throws SQLException{
@@ -47,20 +62,23 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
 //        }
 //
 //    }
-public void modifierCom (String s, String x) throws SQLException{
-        Commentaire c = new Commentaire();
-            String req = "UPDATE commentaire SET description = ?,date_ajout = ? where id_c ='" + c.getId_c() + "'";
-            PreparedStatement ps = cnx.prepareStatement(req);
-            java.sql.Date date_ajout = Date.valueOf(LocalDate.now());
+//public void modifierCom (String s) throws SQLException{
+//        Commentaire c = new Commentaire();
+//            String req = "UPDATE commentaire SET description = ?,date_ajout = ? where id_c ='" + c.getId_c() + "'";
+//            PreparedStatement ps = cnx.prepareStatement(req);
+//            java.sql.Date date_ajout = Date.valueOf(LocalDate.now());
+//
+//            ps.setString(1, s);
+//            ps.setDate(2, (Date) c.getDate_ajout());
+//            // ps.setInt(3, c.getId_c());
+//            ps.executeUpdate();
+//            System.out.println("Le commentaire a été modifié avec succés !");
+//
+//    }
 
-            ps.setString(1, s);
-            ps.setDate(2, (Date) c.getDate_ajout());
-            // ps.setInt(3, c.getId_c());
-            ps.executeUpdate();
-            System.out.println("Le commentaire a été modifié avec succés !");
 
-    }
-    public boolean supprimerCom (int id_c) throws SQLException{
+
+        public boolean supprimerCom (int id_c) throws SQLException{
         boolean ok = false;
         try {
             PreparedStatement req = cnx.prepareStatement("delete from commentaire where id_c = ? ");

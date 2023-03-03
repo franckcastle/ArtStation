@@ -113,10 +113,10 @@ public class AfficherComController implements Initializable {
                                 FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModifierCom.fxml"));
                                 Parent root = loader.load();
 
-                               // Commentaire cm = (Commentaire) commentairesTv.getItems().get(getIndex());
+                               Commentaire com = (Commentaire) commentairesTv.getItems().get(getIndex());
                                 ModifierComController controller = loader.getController();
-                                int rowIndexBtnmodifier = getIndex();
-                                controller.setDescription(descriptionTv.getCellData(rowIndexBtnmodifier));
+                                controller.setCommentaire(com);
+                                controller.initialize();
 
                                // controller.c1=cm;
                                 commentairesTv.getScene().setRoot(root);

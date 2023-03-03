@@ -1,6 +1,7 @@
 
 package services;
 
+import entities.Commentaire;
 import entities.Statut;
 
 import java.sql.*;
@@ -38,7 +39,32 @@ public  class StatutService implements IService <Statut> {
         statement.executeUpdate();
         System.out.println("Like réussi !");
     }
+    public void supprimerLikeStatut(Statut statut) throws SQLException {
+        PreparedStatement statement;
+        statement = cnx.prepareStatement("UPDATE statut SET nbrLike = nbrLike-1  WHERE id_s="+statut.getId_s());
+        statement.executeUpdate();
+        System.out.println("Like est supprimé !");
+    }
 
+
+    @Override
+    public void modifier(Statut s) throws SQLException {
+        String query = "UPDATE  statut set titre=?,contenu=?,updated=? Where id_s ='" + s.getId_s() + "'";
+        java.sql.Date updated = Date.valueOf(LocalDate.now());
+        try {
+            PreparedStatement ste = cnx.prepareStatement(query);
+            ste.setString(1, s.getTitre());
+            ste.setString(2, s.getContenu());
+            ste.setDate(3, s.getUpdated());
+
+            ste.executeUpdate();
+            System.out.println("Le statut a ete modifié avec succés");
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
 //    @Override
 //    public void modifier(String a, String b) throws SQLException, ParseException {
 //

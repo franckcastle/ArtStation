@@ -1,5 +1,6 @@
 package gui;
 
+import api.CommentAPI;
 import entities.Commentaire;
 import entities.Statut;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ResourceBundle;
 
+
 public class AjouterComController implements Initializable {
 
     @FXML
@@ -30,29 +32,51 @@ public class AjouterComController implements Initializable {
 
 
 
+
+
+
+    private boolean checkBadWords (String x){
+        String[] badWords = {"kelma1", "kelma2", "kelma3"}; // liste de gros mots à interdire
+        for (String word : badWords) {
+            if (x.toLowerCase().contains(word.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
     @FXML
     void ajouterCom(ActionEvent event) {
-       // System.out.println(sta.getId_s());
+
+        // System.out.println(sta.getId_s());
         Commentaire c = new Commentaire();
-       c.setDescription(descriptionField.getText());
+        c.setDescription(descriptionField.getText());
         c.setId_s(sta.getId_s());
-           try {
-              if (c.getDescription().length()==0 ) {
-                   Alert alert = new Alert(Alert.AlertType.ERROR);
-                  alert.setTitle("Erreur Commentaire ! ");
-                  alert.setHeaderText("Veuillez ajouter votre commentaire !");
-                   alert.showAndWait();
-                  return;
-             }
-             cms.ajouterCom(c);
-             reset();
+        try {
+            if (c.getDescription().length() == 0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur Commentaire ! ");
+                alert.setHeaderText("Veuillez ajouter votre commentaire !");
+                alert.showAndWait();
+                return;
+            }
+            if (checkBadWords(c.getDescription())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur Commentaire ! ");
+                alert.setHeaderText("Votre commentaire contient des gros mots et ne peut pas être ajouté.");
+                alert.showAndWait();
+                return;
+            }
+            cms.ajouterCom(c);
+            reset();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
     }
     private void reset() {
-
         descriptionField.setText("");
     }
 

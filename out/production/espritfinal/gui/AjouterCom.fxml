@@ -6,14 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterComController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterComController">
    <children>
-      <Label alignment="CENTER" layoutX="94.0" layoutY="25.0" prefHeight="18.0" prefWidth="430.0" text="Ajout Commentaire" textAlignment="CENTER" textFill="#f6b49c">
+      <Label alignment="CENTER" layoutX="94.0" layoutY="25.0" prefHeight="47.0" prefWidth="430.0" text="Ajout Commentaire" textAlignment="CENTER" textFill="#f6b49c">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="descriptionField" layoutX="142.0" layoutY="102.0" prefHeight="155.0" prefWidth="326.0" promptText="Description" style="-fx-background-color: d2e8f9;" />
+      <TextField fx:id="descriptionField" alignment="CENTER" layoutX="142.0" layoutY="102.0" prefHeight="168.0" prefWidth="331.0" promptText="Description" style="-fx-background-color: d2e8f9; -fx-border-color: white;">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></TextField>
       <Button layoutX="498.0" layoutY="347.0" mnemonicParsing="false" onAction="#ajouterCom" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: f6b49c;" text="Commenter" textFill="WHITE" />
       <Button layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#AfficherCommentaire" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: f6b49c;" text="Afficher" textFill="WHITE" />
    </children>

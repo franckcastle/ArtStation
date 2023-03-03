@@ -1,5 +1,6 @@
 package gui;
 
+import entities.Commentaire;
 import entities.Statut;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +17,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import services.StatutService;
+
+
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 
 import javax.swing.*;
 import java.io.IOException;
@@ -49,13 +56,21 @@ public class AfficherStatutController implements Initializable{
     private TableColumn<Statut, Integer> nbrlikeTv;
 
 
-    @FXML
-    private Button liker;
+
 
     private boolean isLiked;
 
     @FXML
+    private Button dislike;
+    @FXML
+    private Button liker;
+
+    @FXML
     private ImageView icon;
+
+    @FXML
+    private ImageView icon2;
+
 
     StatutService s = new StatutService();
 
@@ -147,6 +162,33 @@ public class AfficherStatutController implements Initializable{
     }
 
     @FXML
+    void dislike(ActionEvent event) throws SQLException {
+
+        Statut selectedStatus = statutsTv.getSelectionModel().getSelectedItem();
+        if (selectedStatus == null) {
+            // show error message if no item is selected
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No status Selected");
+            alert.setContentText("please select a status to like.");
+        } else {
+            if (!isLiked) {
+                isLiked = true;
+
+                s.supprimerLikeStatut(selectedStatus);
+                //icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
+
+            } else {
+                isLiked = false;
+                //  icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
+
+            }
+        }
+
+    }
+
+
+    @FXML
    public void modifier() {
         modifier.setCellFactory((param) -> {
             return new TableCell() {
@@ -160,13 +202,13 @@ public class AfficherStatutController implements Initializable{
                             try {
                                 FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModifierStatut.fxml"));
                                 Parent root = loader.load();
+                                Statut stat = (Statut) statutsTv.getItems().get(getIndex());
 
                                 ModifierStatutController controller = loader.getController();
 
                                 int rowIndexBtnmodifier = getIndex();
-                                controller.setTitre(titreTv.getCellData(rowIndexBtnmodifier));
-                                controller.setContenu(contenuTv.getCellData(rowIndexBtnmodifier));
-
+                                controller.setStatut(stat);
+                                controller.initialize();
                                 statutsTv.getScene().setRoot(root);
 
                             } catch (IOException e) {

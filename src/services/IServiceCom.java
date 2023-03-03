@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IServiceCom <Q>{
     public void ajouterCom (Q q) throws SQLException;
-    public void modifierCom(String s, String x) throws SQLException;
+    public void modifierCom(Q q) throws SQLException;
     public boolean supprimerCom(int id) throws SQLException;
 
     public List<Q> recupererCom() throws SQLException;

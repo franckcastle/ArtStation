@@ -5,22 +5,24 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherComController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherComController">
    <children>
-      <TableView fx:id="commentairesTv" layoutX="8.0" layoutY="79.0" prefHeight="217.0" prefWidth="585.0">
+      <TableView fx:id="commentairesTv" layoutX="7.0" layoutY="91.0" prefHeight="217.0" prefWidth="585.0" style="-fx-border-color: f6b49c;">
         <columns>
-          <TableColumn fx:id="idTv" prefWidth="47.20001220703125" text="id_c" />
-          <TableColumn fx:id="descriptionTv" prefWidth="259.20001220703125" text="description" />
-            <TableColumn fx:id="dateajoutTv" minWidth="0.0" prefWidth="107.20001220703125" text="date_ajout" />
-            <TableColumn fx:id="delete" onEditStart="#supprimerCom" prefWidth="83.20001220703125" text="supprimer" />
-            <TableColumn fx:id="modifier" prefWidth="87.19997558593752" text="modifier" />
+          <TableColumn fx:id="idTv" prefWidth="47.20001220703125" style="-fx-border-color: f6b49c;" text="id_c" />
+          <TableColumn fx:id="descriptionTv" prefWidth="259.20001220703125" style="-fx-border-color: f6b49c;" text="description" />
+            <TableColumn fx:id="dateajoutTv" minWidth="0.0" prefWidth="107.20001220703125" style="-fx-border-color: f6b49c;" text="date_ajout" />
+            <TableColumn fx:id="delete" onEditStart="#supprimerCom" prefWidth="83.20001220703125" style="-fx-border-color: f6b49c;" text="supprimer" />
+            <TableColumn fx:id="modifier" prefWidth="87.19997558593752" style="-fx-border-color: f6b49c;" text="modifier" />
         </columns>
       </TableView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="26.0" prefHeight="18.0" prefWidth="440.0" text="Liste Des Commentaires Pour Ce Statut" textAlignment="CENTER" textFill="#bc2222">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="26.0" prefHeight="43.0" prefWidth="573.0" text="LES COMMENTAIRES" textAlignment="CENTER" textFill="#f6b49c">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="36.0" />
          </font>
       </Label>
+      <Text layoutX="240.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: f6b49c;" text="Search" wrappingWidth="107.73675537109375" />
    </children>
 </AnchorPane>
