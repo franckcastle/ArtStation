@@ -31,10 +31,10 @@ public class AjouterUserController implements Initializable {
     @FXML
     private ChoiceBox<String> roleCb;
 
-    private String[] roles = {"Artiste","Client"};
+    private final String[] roles = {"Artiste","Client"};
     UserService us = new UserService();
 
-    private String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    private final String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
 
     @Override

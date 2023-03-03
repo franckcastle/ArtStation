@@ -6,7 +6,7 @@ public class SendMail {
     static String username ="artstation2223@gmail.com";
     static String password ="fvnqagwswpclhjst";
 
-    public static void sendMail(String subject,String msg){
+    public static void sendMail(String to,String subject,String msg){
 
             Properties pros = new Properties();
             pros.put("mail.smtp.auth",true);
@@ -22,7 +22,7 @@ Session session = Session.getInstance(pros, new Authenticator() {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
-            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("@esprit.tn"));
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(to));
             message.setSubject(subject);
             message.setText(msg);
             Transport.send(message);

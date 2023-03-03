@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import services.UserService;
 
 import java.io.IOException;
@@ -71,6 +72,17 @@ public class ConnexionController implements Initializable {
             }catch (SQLException e){
                 System.out.println(e);
             }
+
+    }
+
+    @FXML
+    void RecupererMdp(MouseEvent event) {
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("RecupererMdp.fxml"));
+            usernameTf.getScene().setRoot(loader);
+        }catch (IOException ex){
+            System.out.println(ex);
+        }
 
     }
 

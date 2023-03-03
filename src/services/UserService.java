@@ -114,4 +114,40 @@ public class UserService implements IService<User> {
         }
         return users;
     }
+
+    public User GetByMail(String email) throws SQLException {
+        List<User> users = new ArrayList<>();
+        String req = "Select * from user where email = ?";
+
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        User u = new User();
+        rs.next();
+        if (rs.getRow() != 0) {
+            u.setUserId(rs.getInt(1));
+            u.setUsername(rs.getString(2));
+            u.setPassword(rs.getString(3));
+            u.setEmail(email);
+            u.setUserId(rs.getInt(5));
+            u.setRole(rs.getString(6));
+
+            return u;
+        } else {
+            System.out.println("Utilisateur inexistant");
+            return null;
+        }
+    }
+
+
+    public void updatePwd(String email,String newPassword) throws SQLException {
+        String req = "UPDATE user SET password=? where email = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1,newPassword);
+        ps.setString(2,email);
+
+        ps.executeUpdate();
+    }
+
+
 }

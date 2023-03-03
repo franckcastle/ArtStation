@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ConnexionController">
    <children>
-      <Label accessibleRole="BUTTON" alignment="CENTER" layoutX="87.0" layoutY="238.0" prefHeight="26.0" prefWidth="153.0" text="Mot de passe oublié ?" textAlignment="CENTER">
+      <Label accessibleRole="BUTTON" alignment="CENTER" layoutX="87.0" layoutY="238.0" onMouseClicked="#RecupererMdp" prefHeight="26.0" prefWidth="153.0" text="Mot de passe oublié ?" textAlignment="CENTER">
          <font>
             <Font size="11.0" />
          </font>
