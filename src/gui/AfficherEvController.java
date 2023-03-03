@@ -3,6 +3,8 @@ package gui;
 import entities.Evenement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class AfficherEvController implements Initializable {
@@ -53,6 +53,10 @@ public class AfficherEvController implements Initializable {
     private TableColumn<Evenement, Button> modifier;
     @FXML
     private AnchorPane AnchorPane;
+    @FXML
+    private TextField keywordsId;
+    @FXML
+    private TableColumn<Evenement, Button> feedback;
 
 
     @Override
@@ -65,7 +69,7 @@ public class AfficherEvController implements Initializable {
 
 
             EventsTv.setItems(olp);
-            evaluatinTv.setCellValueFactory(new PropertyValueFactory("evaluation"));
+            //evaluatinTv.setCellValueFactory(new PropertyValueFactory("evaluation"));
             titreTv.setCellValueFactory(new PropertyValueFactory("titre"));
             descriptionTv.setCellValueFactory(new PropertyValueFactory("description"));
             localisationTv.setCellValueFactory(new PropertyValueFactory("localisation"));
@@ -73,9 +77,28 @@ public class AfficherEvController implements Initializable {
             dateFinTv.setCellValueFactory(new PropertyValueFactory("dateFin"));
             prixTv.setCellValueFactory(new PropertyValueFactory("prix"));
             nbPlaceTv.setCellValueFactory(new PropertyValueFactory("nbPlace"));
+            FilteredList<Evenement> filtredData=new FilteredList<>(olp,b ->true);
+            keywordsId.textProperty().addListener((observable,oldVlaue,newValue)->{
+              filtredData.setPredicate(evenement -> {
+                  if(newValue.isEmpty()||newValue.isBlank()||newValue==null){
+                      return true;
+
+                  }
+                  String searchKeyword=newValue.toLowerCase();
+                  if(evenement.getTitre().toLowerCase().indexOf(searchKeyword) > -1){
+                      return true;
+                  }else if(evenement.getLocalisation().toLowerCase().indexOf(searchKeyword) > -1){return true;}
+                  else return false;
+              });
+            });
+            SortedList<Evenement> sortedData=new SortedList<>(filtredData);
+            sortedData.comparatorProperty().bind(EventsTv.comparatorProperty());
+            EventsTv.setItems(sortedData);
+
 
             this.delete();
             this.modifier();
+            this.commenter();
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -145,6 +168,54 @@ public class AfficherEvController implements Initializable {
                                 Evenement even= (Evenement) EventsTv.getItems().get(getIndex());
                                 System.out.println("hetha even"+even.getId());
                                 ModiffierEvController controller =loader.getController();
+                                controller.ee=even;
+                                EventsTv.getScene().setRoot(root);
+
+                                //Stage stage = new Stage();
+                                //stage.setScene(new Scene(root));
+                                //stage.show();
+                                //AnchorPane anchorPane = (AnchorPane) root;
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            //Parent root = loader.load();
+
+
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
+    }
+    public void commenter(){
+        feedback.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("feedback");
+                        b.setOnAction(event -> {
+
+
+                            try {
+
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("FeedEv.fxml"));
+                                Parent root = loader.load();
+
+                                //AnchorPane  = loader.load();
+
+
+                                //AnchorPane pane=loader.load();
+                                Evenement even= (Evenement) EventsTv.getItems().get(getIndex());
+                                System.out.println("hetha even"+even.getId());
+                                FeedEvController controller =loader.getController();
                                 controller.ee=even;
                                 EventsTv.getScene().setRoot(root);
 

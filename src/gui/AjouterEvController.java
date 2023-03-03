@@ -23,8 +23,7 @@ import java.util.ResourceBundle;
 public class AjouterEvController implements Initializable {
     @FXML
     public AnchorPane evaluationField;
-    @FXML
-    public TextField evaluationIField;
+
     @FXML
     public TextField titreField;
     @FXML
@@ -52,18 +51,9 @@ public class AjouterEvController implements Initializable {
         @FXML
     public void ajouterEv(ActionEvent event){
             Evenement e = new Evenement();
-            String evaluationValue = evaluationIField.getText();
-            if(!titreField.getText().isEmpty() && !descriptionField.getText().isEmpty() && !localisationField.getText().isEmpty() && !nbPlaceField.getText().isEmpty()  && !prixField.getText().isEmpty()) {
-                if (evaluationValue.matches("[1-9]|10")) {
-                    e.setEvaluation(Integer.parseInt(evaluationValue));
-                } else {
-                    // Afficher un message d'erreur ou prendre une action pour informer l'utilisateur que la saisie est invalide
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erreur ");
-                    alert.setHeaderText("l'evaluation doit etre entre 1 et 10");
 
-                    alert.showAndWait();
-                }
+            if(!titreField.getText().isEmpty() && !descriptionField.getText().isEmpty() && !localisationField.getText().isEmpty() && !nbPlaceField.getText().isEmpty()  && !prixField.getText().isEmpty()) {
+
                 e.setTitre(titreField.getText());
                 e.setDescription(descriptionField.getText());
                 e.setLocalisation(localisationField.getText());
@@ -96,7 +86,7 @@ public class AjouterEvController implements Initializable {
 
         }
     private void reset() {
-        evaluationIField.setText("");
+
         titreField.setText("");
         descriptionField.setText("");
         localisationField.setText("");
@@ -111,7 +101,7 @@ public class AjouterEvController implements Initializable {
             Parent loader = FXMLLoader.load(getClass().getResource("AfficherEv.fxml"));
 
             //Parent root = loader.load();
-            evaluationIField.getScene().setRoot(loader);
+            titreField.getScene().setRoot(loader);
         } catch (IOException e) {
             e.printStackTrace();
         }

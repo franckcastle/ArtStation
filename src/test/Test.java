@@ -3,7 +3,9 @@ package test;
 
 
 import entities.Evenement;
+import entities.Feedback;
 import services.EvenementService;
+import services.FeedService;
 import services.UserService;
 import utils.MyDb;
 
@@ -16,25 +18,33 @@ public class Test {
 
             MyDb db= new MyDb();
         EvenementService es= new EvenementService();
+        FeedService fs=new FeedService();
+
+       /* es.rateEvent(2,10);
+
         UserService us= new UserService();
         Evenement e=new Evenement();
         e.setId(5);
         e.setNbPlace(1);
         boolean vb =us.annulerRes(20,e);
        //boolean vb =us.participerEv(14,e);
-        System.out.println(vb);
+        System.out.println(vb);*/
 
 
         try {
-            Evenement e1= new Evenement(4,"aslema","event","raddes",new java.util.Date(),new java.util.Date(),12.66F,6 ) ;
+            //Evenement e1= new Evenement(4,"aslema","event","raddes",new java.util.Date(),new java.util.Date(),12.66F,6 ) ;
             //es.ajouterEv(e1);
             //Evenement e1=new Evenement();
             //e1.setTitre("haja modifié");
             //e1.setId(2);
             //es.supprimerEv(6);
             //es.modifierEvent(e1);
-            System.out.println(es.getAll());
-
+            //System.out.println(es.getAll());
+            //Feedback f1=new Feedback();
+            //f1.setText("ahlaa biik");
+           // f1.setId(2);
+            //fs.modifer(f1);
+            System.out.println(es.GetByTitre("hii"));
         }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

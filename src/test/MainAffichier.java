@@ -18,7 +18,7 @@ public class MainAffichier extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficherEv.fxml"));
 
             Parent root = loader.load();
-            Scene scene = new Scene(root,600,400);
+            Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Affichier Evennement ");
             primaryStage.show();
