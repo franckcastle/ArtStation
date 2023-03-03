@@ -48,7 +48,7 @@ public class ConnexionController implements Initializable {
                     if (password.equals(u.getPassword())) {
                         try {
                             Session.setUserCon(u);
-                            Parent loader = FXMLLoader.load(getClass().getResource("AfficherUsers.fxml"));
+                            Parent loader = FXMLLoader.load(getClass().getResource("Verification.fxml"));
                             usernameTf.getScene().setRoot(loader);
 
                         } catch (IOException ex) {

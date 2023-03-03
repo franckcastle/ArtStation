@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="190.0" prefWidth="511.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.VerificationController">
+   <children>
+      <TextField fx:id="codeTf" alignment="CENTER" layoutX="114.0" layoutY="68.0" prefHeight="26.0" prefWidth="301.0" promptText="Entrer le code envoyé par SMS" />
+      <Button layoutX="114.0" layoutY="123.0" mnemonicParsing="false" onAction="#VerifierCode" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: f6b49c;" text="Verifier" textFill="WHITE">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="300.0" layoutY="123.0" mnemonicParsing="false" onAction="#EnvoyerSms" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: f6b49c;" text="Envoyer SMS" textFill="WHITE">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
