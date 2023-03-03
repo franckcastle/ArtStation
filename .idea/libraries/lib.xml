@@ -2,6 +2,7 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../Downloads/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/jar_files/controlsfx-8.40.11.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

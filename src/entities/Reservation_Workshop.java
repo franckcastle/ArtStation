@@ -21,7 +21,9 @@ public class Reservation_Workshop {
         this.categorie=categorie;
     }
 
-
+    public Reservation_Workshop(int id_workshop) {
+        this.id_workshop=id_workshop;
+    }
 
 
 

@@ -35,7 +35,7 @@ public class Reservation_WorkshopServices {
     public void ajouterR(Reservation_Workshop t) throws SQLException, Exception {
 
 
-        String sql = "INSERT INTO reservation_workshop (id_workshop,id_user,categorie) VALUES (?, ?,?)";
+        String sql = "INSERT INTO reservation_workshop (id_workshop,id_user,categorie) VALUES (?, ?, ?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
         pstmt.setInt(1, t.getId_workshop());
         pstmt.setInt(2, t.getId_user());

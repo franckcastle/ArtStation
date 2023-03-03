@@ -1,6 +1,7 @@
 package gui;
 
 
+import entities.Reservation_Workshop;
 import entities.Workshop;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,14 +12,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import services.Reservation_WorkshopServices;
 import services.WorkshopServices;
+import utils.MyDB;
 
 import java.io.IOException;
+import java.sql.*;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -58,43 +61,54 @@ public class ChoisirWorkshopController implements Initializable {
     private String etatSelectionne ;
 
 
+    private int idCategorieSelectionnee;
 
-    WorkshopServices ws =new WorkshopServices();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        WorkshopServices ws =new WorkshopServices();
         try{
+
             List<Workshop> cat = ws.getAll();
             ObservableList<String> catNames = FXCollections.observableArrayList();
+            catNames.add(0, "All");
 
             // liste temporaire pour stocker les noms de catégories uniques
             List<String> uniqueCatNames = new ArrayList<>();
-
             for (Workshop c : cat) {
                 String catName = c.getCategorie();
-
                 // Vérifier si le nom de catégorie est déjà présent dans la liste des catégories uniques
                 if (!uniqueCatNames.contains(catName)) {
+
                     uniqueCatNames.add(catName);
                     catNames.add(catName);
                 }
             }
+
             catId.setItems(catNames);
-
-
 
             catId.setOnAction(event->{
 
                 etatSelectionne = catId.getSelectionModel().getSelectedItem();
+
                 System.out.println(etatSelectionne);
 
+                if (etatSelectionne.equals("All")) {
+                    // récupérer tous les workshops
+                    ObservableList<Workshop> liste = null;
+                    try {
+                        liste = FXCollections.observableArrayList(ws.getAll());
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    tableChoix.setItems(liste);
+                } else {
+                    // filtrer par catégorie sélectionnée
+                    ObservableList<Workshop> liste = WorkshopServices.getIdByCategorie(etatSelectionne);
+                    tableChoix.setItems(liste);
+                }
 
-
-                // Appeler la méthode rechercherReclamation avec l'état sélectionné
-                /// CRUDReclamation crudReclamation = new CRUDReclamation();
-                // ObservableList<Reclamation> reclamations = reclamations.RechercherReclamation(etatSelectionne);
-                Workshop workshop = new Workshop();
-                ObservableList<Workshop> listeReclamations = WorkshopServices.assister(etatSelectionne);
-                ObservableList<Workshop> reclamations = FXCollections.observableArrayList(listeReclamations);
                 titreChoix.setCellValueFactory(new PropertyValueFactory<>("titre"));
                 DureeChoix.setCellValueFactory(new PropertyValueFactory<>("duree"));
                 dateChoix.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -103,19 +117,16 @@ public class ChoisirWorkshopController implements Initializable {
                 nom_artisteChoix.setCellValueFactory(new PropertyValueFactory<>("nom_artiste"));
                 prixChoix.setCellValueFactory(new PropertyValueFactory<>("prix"));
 
-
-
-                tableChoix.setItems(FXCollections.observableArrayList(reclamations));
             } );
 
-           this.choisir();
+
+            this.choisir();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
     }
-
 
 
     public void choisir(){
@@ -128,25 +139,42 @@ public class ChoisirWorkshopController implements Initializable {
                     if (!empty) {
                         Button b = new Button("Choisir");
                         b.setOnAction((event) -> {
+                            Workshop ws= (Workshop)tableChoix.getItems().get(getIndex());
+
+                            System.out.println(ws);
+
+                            int id_workshop = ws.getId();
+
+                            System.out.println(id_workshop);
+
+                            int id_user = 10;// Remplacez 1 par l'ID de l'utilisateur connecté
+                            String categorie = etatSelectionne;
+
+                            Reservation_Workshop r= new Reservation_Workshop();
+                            r.setId_workshop(id_workshop);
+                            r.setId_user(id_user);
+                            r.setCategorie(categorie);
+                            System.out.println("sucessssss");
+
+
+                            Reservation_WorkshopServices rs= new Reservation_WorkshopServices();
                             try {
-                                if (ws.supprimerWs((Workshop) tableChoix.getItems().get(getIndex()))) {
-                                    tableChoix.getItems().remove(getIndex());
-                                    tableChoix.refresh();
-
-                                }
-                            } catch (SQLException ex) {
-                                System.out.println("erreor:" + ex.getMessage());
-
+                                rs.ajouterR(r);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
                             }
 
                         });
                         setGraphic(b);
-
                     }
                 }
             };
-
         });
-
     }
+
+
+
+
+
+
 }

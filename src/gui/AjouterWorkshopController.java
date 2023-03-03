@@ -9,8 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import org.controlsfx.control.Notifications;
 import services.WorkshopServices;
-
+import org.controlsfx.control.Notifications;
+import javax.management.Notification;
 import java.io.IOException;
 import java.time.ZoneId;
 import java.util.Date;
@@ -101,7 +103,10 @@ public class AjouterWorkshopController implements Initializable {
             w.setCategorie(categorieField.getText());
             reset();
 
-            if (w.getTitre().length()==0 || w.getDescription().length()==0 || w.getNom_artiste().length()==0|| w.getHeure_debut().length()==0|| w.getHeure_fin().length()==0) {
+
+            if (w.getTitre().length()==0 || w.getDescription().length()==0 || w.getNom_artiste().length()==0|| w.getHeure_debut().length()==0|| w.getHeure_fin().length()==0 || w.getCategorie().length()==0)
+
+            {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur d'insertion");
                 alert.setHeaderText("Veuillez remplir tous les champs.");
@@ -119,13 +124,33 @@ public class AjouterWorkshopController implements Initializable {
                 return;
             }
 
+            if (w.getTitre().length()==0 && w.getDescription().length()==0 && w.getNom_artiste().length()==0&& w.getHeure_debut().length()==0 && w.getHeure_fin().length()==0 && w.getCategorie().length()==0)
+
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur d'insertion");
+                alert.setHeaderText("Veuillez remplir tous les champs.");
+                alert.showAndWait();
+
+                return;
+            }
+
             ws.ajouterWs(w);
-            System.out.println("Ajout avec succes");
+
+
+
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
+
+            Notifications.create()
+                    .title("Nouvelle Réclamation")
+                    .text("Une nouvelle Réclamation a été créé")
+                    .showInformation();
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
     }
 
 

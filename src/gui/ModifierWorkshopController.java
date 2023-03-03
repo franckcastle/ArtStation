@@ -44,11 +44,15 @@ public class ModifierWorkshopController implements Initializable {
     WorkshopServices ws = new WorkshopServices();
 
 
-
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
+
     public Workshop w;
+
+
+
+
 
     public ModifierWorkshopController() {
     }
@@ -59,16 +63,57 @@ public class ModifierWorkshopController implements Initializable {
 
 
 
-    public void modifier(ActionEvent event){
+    @FXML
+    public void initialize() {
+        titreId.setText(w.getTitre());
+        descriptionId.setText(w.getDescription());
+        nom_artisteId.setText(w.getNom_artiste());
+        categorieId.setText(w.getCategorie());
+        heure_debutId.setText(w.getHeure_debut());
+        heure_finId.setText(w.getHeure_fin());
+        prixId.setText(Float.toString(w.getPrix()));
+        dureeId.setText(Integer.toString(w.getDuree()));
+        nbPlacesId.setText(Integer.toString(w.getNbPlaces()));
+
+
+    }
+
+    public void modifier(ActionEvent event) {
+        if (!titreId.getText().isEmpty() ) {
+            Workshop ww= new Workshop();
+            ww.setId(ww.getId());
+            ww.setTitre(titreId.getText());
+            ww.setDescription(descriptionId.getText());
+            ww.setDuree(Integer.parseInt(dureeId.getText()));
+            ww.setNom_artiste(nom_artisteId.getText());
+            ww.setHeure_debut(heure_debutId.getText());
+            ww.setHeure_fin(heure_finId.getText());
+            ww.setPrix(Integer.parseInt(prixId.getText()));
+            ww.setNbPlaces(Integer.parseInt(nbPlacesId.getText()));
+            ww.setCategorie(categorieId.getText());
+            ws.modifierWs(ww);
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur ");
+            alert.setHeaderText("toutes les champs sont obligatoires");
+
+            alert.showAndWait();
+        }
+
+    }
+
+
+
+    /*public void modifier(ActionEvent event) {
         System.out.println(w);
 
 
-
-        if(!titreId.getText().isEmpty() && !descriptionId.getText().isEmpty()
+        if (!titreId.getText().isEmpty() && !descriptionId.getText().isEmpty()
                 && !dureeId.getText().isEmpty() && !nom_artisteId.getText().isEmpty()
                 && !heure_debutId.getText().isEmpty() && !heure_finId.getText().isEmpty()
                 && !prixId.getText().isEmpty() && !nbPlacesId.getText().isEmpty()
-                && !categorieId.getText().isEmpty()){
+                && !categorieId.getText().isEmpty()) {
             Workshop e = new Workshop();
             e.setId(w.getId());
             e.setTitre(titreId.getText());
@@ -99,7 +144,7 @@ public class ModifierWorkshopController implements Initializable {
         //e.setTitre(titreId.getText());
         //es.modifierEvent(e);
         //cmnt
-    }
+    }*/
     @FXML
     public void retourAf(ActionEvent event){
         try {
@@ -110,5 +155,9 @@ public class ModifierWorkshopController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setWorkshop(Workshop w) {
+        this.w=w;
     }
 }

@@ -57,6 +57,7 @@ public class WorkshopServices {
 
 
         pstmt.executeUpdate();
+        System.out.println("ajouté avec succes");
     }
 
 
@@ -135,8 +136,9 @@ public class WorkshopServices {
     }
 
 
-    public static ObservableList<Workshop> assister(String cat){
+    public static ObservableList<Workshop> getIdByCategorie(String cat){
            ObservableList<Workshop> workshops= FXCollections.observableArrayList();
+
         try {
             String requete="SELECT * FROM workshop where categorie=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
@@ -144,13 +146,15 @@ public class WorkshopServices {
             ResultSet result =pst.executeQuery();
             while (result.next()) {
                 workshops.add(new Workshop(
+                        result.getInt("id"),
+                        result.getInt("duree"),
+                        result.getFloat("prix"),
                         result.getString("titre"),
                         result.getString("description"),
-                        result.getInt("duree"),
                         result.getString("nom_artiste"),
                         result.getString("heure_debut"),
-                        result.getString("heure_fin"),
-                        result.getInt("prix")
+                        result.getString("heure_fin")
+
                 ));
             }
         } catch (SQLException ex) {
@@ -158,5 +162,22 @@ public class WorkshopServices {
         }
         return workshops;
     }
+
+
+
+    /*public static int getIdWorkshopByCategorie(String categorie) throws SQLException {
+        int idWorkshop = -1;
+
+        String requete = "SELECT id FROM workshop WHERE categorie = ?";
+        PreparedStatement pst = cnx.prepareStatement(requete);
+        pst.setString(1, categorie);
+        ResultSet result = pst.executeQuery();
+
+        if (result.next()) {
+            idWorkshop = result.getInt("id");
+        }
+
+        return idWorkshop;
+    }*/
 
 }

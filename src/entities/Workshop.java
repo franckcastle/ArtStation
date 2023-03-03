@@ -15,7 +15,19 @@ public class Workshop {
         this.titre=titre;
     }
 
-    public Workshop(int id, int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin,String categorie) {
+    public Workshop(int id, int duree, float prix,  String titre, String nom_artiste, String description, String heure_debut, String heure_fin) {
+        this.id = id;
+        this.duree = duree;
+        this.prix = prix;
+
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+        this.description = description;
+        this.heure_debut = heure_debut;
+        this.heure_fin = heure_fin;
+    }
+
+    public Workshop(int id, int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String categorie) {
         this.id = id;
         this.duree = duree;
         this.nbPlaces = nbPlaces;

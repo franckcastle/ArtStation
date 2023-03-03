@@ -129,22 +129,29 @@ public class AfficherWorkshopController implements Initializable {
 
 
                             try {
-                                TableCell cell = (TableCell) ((Button) event.getSource()).getParent();
-                                int rowIndexBtnmodifier = cell.getIndex();
-
-
-
                                 FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModifierWorkshop.fxml"));
                                 Parent root = loader.load();
-
-
-
-
                                 Workshop wp= (Workshop) AfficherId.getItems().get(getIndex());
-
                                 ModifierWorkshopController controller =loader.getController();
-                                controller.w=wp;
+                                controller.setWorkshop(wp);
+                                controller.initialize();
                                 AfficherId.getScene().setRoot(root);
+
+                             //   TableCell cell = (TableCell) ((Button) event.getSource()).getParent();
+                              //  int rowIndexBtnmodifier = cell.getIndex();
+
+
+
+
+
+
+
+
+
+
+
+                              //  controller.w=wp;
+                                // AfficherId.getScene().setRoot(root);
 
                                 //Stage stage = new Stage();
                                 //stage.setScene(new Scene(root));
