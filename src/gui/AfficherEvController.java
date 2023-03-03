@@ -57,14 +57,14 @@ public class AfficherEvController implements Initializable {
     private TextField keywordsId;
     @FXML
     private TableColumn<Evenement, Button> feedback;
-
+    ObservableList<Evenement> olp;
 //
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             List<Evenement> ev =es.getAll();
 
-            ObservableList<Evenement> olp = FXCollections.observableArrayList(ev);
+            olp = FXCollections.observableArrayList(ev);
 
 
 
@@ -130,8 +130,9 @@ public class AfficherEvController implements Initializable {
                         b.setOnAction((event) -> {
                             Evenement ev= (Evenement) EventsTv.getItems().get(getIndex());
                             if (es.supprimerEv(ev.getId())) {
-                                EventsTv.getItems().remove(getIndex());
-                                EventsTv.refresh();
+                                /*EventsTv.getItems().remove(getIndex());
+                                EventsTv.refresh();*/
+                                olp.remove(getIndex());
 
                             }
 

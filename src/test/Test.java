@@ -16,21 +16,23 @@ public class Test {
     public static void main(String[] args) throws Exception {
 
 
-            MyDb db= new MyDb();
-        EvenementService es= new EvenementService();
-        FeedService fs=new FeedService();
+        MyDb db = new MyDb();
+        EvenementService es = new EvenementService();
+        FeedService fs = new FeedService();
 
-       /* es.rateEvent(2,10);
+        //es.rateEvent(2,10);
 
-        UserService us= new UserService();
-        Evenement e=new Evenement();
-        e.setId(5);
-        e.setNbPlace(1);
-        boolean vb =us.annulerRes(20,e);
-       //boolean vb =us.participerEv(14,e);
-        System.out.println(vb);*/
+        UserService us = new UserService();
+        Evenement e = new Evenement();
+        e.setId(42);
+        e.setNbPlace(12);
+        System.out.println(e);
+        //e.setNbPlace(1);
+        //boolean vb =us.annulerRes(20,e);
+        boolean vb = us.participerEv(20, e);
+        System.out.println(vb);
 //
-
+/*
         try {
             //Evenement e1= new Evenement(4,"aslema","event","raddes",new java.util.Date(),new java.util.Date(),12.66F,6 ) ;
             //es.ajouterEv(e1);
@@ -51,7 +53,8 @@ public class Test {
 
 
         }
-
+*/
+    }
 }
 /*=======
 import javafx.application.Application;
