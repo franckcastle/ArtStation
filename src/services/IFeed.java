@@ -9,3 +9,4 @@ public interface IFeed<T> {
     public boolean supprimer(T t) throws SQLException;
     public List<T> recuperer() throws SQLException;
 }
+//

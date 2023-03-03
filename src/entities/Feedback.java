@@ -25,7 +25,7 @@ public class Feedback {
     public void setId_Ev(int id_Ev) {
         this.id_Ev = id_Ev;
     }
-
+//
     public Feedback() {
     }
 

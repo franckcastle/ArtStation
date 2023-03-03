@@ -11,7 +11,7 @@ import java.util.List;
 public class FeedService implements IFeed<Feedback> {
     Connection cnx;
     public FeedService(){cnx = MyDb.getInstance().getCnx();}
-//test
+//
     @Override
     public void ajouter(Feedback feedback) throws SQLException {
         String req = "INSERT INTO feedback ( text,id_Ev) VALUES (?,?)";

@@ -18,7 +18,7 @@ public class Evenement {
     private float rating;
     private int ratingNumber;
    private  int points;
-
+//
     private byte[] image;
     private int nbPlace;
     //jointure

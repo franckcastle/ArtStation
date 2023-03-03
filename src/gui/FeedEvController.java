@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-//test
+
 public class FeedEvController implements Initializable {
     @FXML
     public TextArea feedField;

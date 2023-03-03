@@ -124,7 +124,7 @@ public class EvenementService {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+//
     }
     public Evenement GetByTitre(String titre) throws SQLException {
         List<Evenement> listEv = new ArrayList<>();

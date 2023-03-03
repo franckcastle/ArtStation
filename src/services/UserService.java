@@ -22,7 +22,7 @@ public class UserService implements IService<User> {
         st.executeUpdate(req);
         System.out.println("done");
     }
-
+//
     @Override
     public void modifer(String s,String s1,String s2,String s3,String s4) throws SQLException {
         String req = "UPDATE user SET userName=?,password=?,email=?,role=? where username = ?";

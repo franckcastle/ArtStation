@@ -58,7 +58,7 @@ public class AfficherEvController implements Initializable {
     @FXML
     private TableColumn<Evenement, Button> feedback;
 
-
+//
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
