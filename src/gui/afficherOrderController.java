@@ -40,6 +40,8 @@ public class afficherOrderController implements Initializable {
     @FXML
     private TableColumn  postale_column;
     @FXML
+    private TableColumn  imprimer;
+    @FXML
     private TableColumn  modifier;
     @FXML
     private TableColumn  pruducts ;
@@ -83,6 +85,7 @@ public class afficherOrderController implements Initializable {
             this.getProducts();
             this.delete();
             this.modifier();
+            this.imprimer();
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -241,7 +244,44 @@ public class afficherOrderController implements Initializable {
 
 
 
+    public void imprimer(){
+        imprimer.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("imprimer");
+                        b.setOnAction(event -> {
 
+
+                     System.out.println("asslema");
+                           ShoppingCartService as = new ShoppingCartService();
+                            try {
+                                as.createPDF(carts_table);
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setTitle("Information Dialog");
+                                alert.setHeaderText(null);
+                                alert.setContentText("PDF créé avec succès !");
+                                alert.showAndWait();
+                            } catch (Exception e) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Error Dialog");
+                                alert.setHeaderText("Une erreur s'est produite");
+                                alert.setContentText("Impossible de créer le PDF : " + e.getMessage());
+                                alert.showAndWait();
+                            }
+
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
+    }
 
 
 

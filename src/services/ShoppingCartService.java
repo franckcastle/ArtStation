@@ -1,9 +1,25 @@
 package services;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import entities.ShoppingCart;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import utils.MyDB;
 
-import java.sql.*;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import javafx.scene.control.ListView;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +59,24 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     }
 
 
+    public static Document createPDF(TableView<ShoppingCart> listView) throws DocumentException, FileNotFoundException {
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("output.pdf"));
+        document.open();
 
+        ObservableList<ShoppingCart> items = listView.getItems();
+        PdfPTable table = new PdfPTable(1);
+        table.setWidthPercentage(100);
+
+        for (ShoppingCart item : items) {
+            table.addCell(new Paragraph(item.toString()));
+        }
+
+        document.add(table);
+        document.close();
+
+        return document;
+    }
 
     @Override
     public  boolean supprimer(ShoppingCart t) throws SQLException {

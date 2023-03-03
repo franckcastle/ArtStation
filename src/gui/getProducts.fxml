@@ -5,15 +5,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GetProducts">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: D2E8F9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GetProducts">
    <children>
       <TableView fx:id="itemstable" layoutX="105.0" layoutY="77.0" prefHeight="200.0" prefWidth="384.0">
         <columns>
           <TableColumn fx:id="nom_column" prefWidth="75.0" text="nom" />
-          <TableColumn fx:id="quantity_column" prefWidth="75.0" text="quantity" />
-            <TableColumn fx:id="price_column" prefWidth="75.0" text="price" />
+          <TableColumn fx:id="quantity_column" prefWidth="208.79995727539062" text="quantity" />
+            <TableColumn fx:id="price_column" prefWidth="99.20002746582031" text="price" />
         </columns>
       </TableView>
-      <Button fx:id="btn" layoutX="264.0" layoutY="298.0" mnemonicParsing="false" onAction="#test" text="btn" />
+      <Button fx:id="btn" layoutX="264.0" layoutY="298.0" mnemonicParsing="false" onAction="#test" prefHeight="24.0" prefWidth="62.0" style="-fx-background-color: F6B49C;" text="btn" />
    </children>
 </AnchorPane>

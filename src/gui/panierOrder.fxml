@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gui.PanierOrder"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PanierOrder">
     <children>
-        <TextField fx:id="nom_col" layoutX="171.0" layoutY="55.0" promptText="nom" />
-        <TextField fx:id="prenom_col" layoutX="171.0" layoutY="89.0" promptText="prenom" />
-        <TextField fx:id="ville_col" layoutX="171.0" layoutY="130.0" promptText="ville" />
-        <TextField fx:id="addresse_col" layoutX="173.0" layoutY="218.0" promptText="addresse" />
-        <Button fx:id="modifier_button" layoutX="198.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnModifier" text="buy" />
-        <TextField fx:id="postale_id" layoutX="171.0" layoutY="174.0" promptText="code_postale" />
-        <Button fx:id="retourId" layoutX="288.0" layoutY="316.0" mnemonicParsing="false" onAction="#retourAf" text="retour" />
+        <TextField fx:id="nom_col" layoutX="39.0" layoutY="91.0" prefHeight="36.0" prefWidth="150.0" promptText="nom" />
+        <TextField fx:id="prenom_col" layoutX="39.0" layoutY="134.0" prefHeight="36.0" prefWidth="150.0" promptText="prenom" />
+        <TextField fx:id="ville_col" layoutX="39.0" layoutY="180.0" prefHeight="36.0" prefWidth="150.0" promptText="ville" />
+        <TextField fx:id="addresse_col" layoutX="39.0" layoutY="272.0" prefHeight="36.0" prefWidth="150.0" promptText="addresse" />
+        <Button fx:id="modifier_button" layoutX="470.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnModifier" prefHeight="36.0" prefWidth="87.0" style="-fx-background-color: f6b49c; -fx-border-color: white;" text="buy" />
+        <TextField fx:id="postale_id" layoutX="39.0" layoutY="224.0" prefHeight="36.0" prefWidth="150.0" promptText="code_postale" />
+        <Button fx:id="retourId" layoutX="470.0" layoutY="242.0" mnemonicParsing="false" onAction="#retourAf" prefHeight="36.0" prefWidth="87.0" style="-fx-background-color: f6b49c; -fx-border-color: white;" text="retour" />
+      <Text layoutX="46.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER" wrappingWidth="201.88670349121094">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="36.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

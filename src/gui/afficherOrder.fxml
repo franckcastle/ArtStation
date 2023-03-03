@@ -5,24 +5,25 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.afficherOrderController">
+<AnchorPane prefHeight="403.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.afficherOrderController">
    <children>
-      <TableView fx:id="carts_table" layoutY="89.0" prefHeight="314.0" prefWidth="601.0">
+      <TableView fx:id="carts_table" layoutY="89.0" prefHeight="314.0" prefWidth="739.0">
          <columns>
 
-            <TableColumn fx:id="id_column" prefWidth="38.39999312162399" text="id" />
-            <TableColumn fx:id="nom_column" prefWidth="56.80002212524414" text="nom" />
-            <TableColumn fx:id="prenom_column" prefWidth="57.60003662109375" text="prenom" />
-            <TableColumn fx:id="ville_column" prefWidth="59.20001220703125" text="ville" />
-            <TableColumn fx:id="addresse_column" prefWidth="79.19993591308594" text="addresse" />
-            <TableColumn fx:id="postale_column" prefWidth="55.20001220703125" text="code_postale" />
-            <TableColumn fx:id="prix_column" prefWidth="33.5999755859375" text="prix" />
-            <TableColumn fx:id="sta_column" prefWidth="40.0" text="sta" />
-            <TableColumn fx:id="pruducts" prefWidth="65.5999755859375" text="produit" />
-            <TableColumn fx:id="delete" prefWidth="45.599945068359375" text="delete" />
-            <TableColumn fx:id="modifier" prefWidth="66.39996337890625" text="update" />
+            <TableColumn fx:id="id_column" prefWidth="31.2000732421875" text="id" />
+            <TableColumn fx:id="nom_column" prefWidth="47.199951171875" text="nom" />
+            <TableColumn fx:id="prenom_column" prefWidth="50.4000244140625" text="prenom" />
+            <TableColumn fx:id="ville_column" prefWidth="59.199951171875" text="ville" />
+            <TableColumn fx:id="addresse_column" prefWidth="73.59991455078125" text="addresse" />
+            <TableColumn fx:id="postale_column" text="code_postale" />
+            <TableColumn fx:id="prix_column" prefWidth="60.79998779296875" text="prix" />
+            <TableColumn fx:id="sta_column" prefWidth="58.4000244140625" text="sta" />
+            <TableColumn fx:id="pruducts" prefWidth="81.59991455078125" text="produit" />
+            <TableColumn fx:id="delete" prefWidth="64.0" text="delete" />
+            <TableColumn fx:id="modifier" prefWidth="55.99993896484375" text="update" />
+            <TableColumn fx:id="imprimer" minWidth="0.0" prefWidth="78.39990234375" text="imprimer" />
          </columns>
       </TableView>
-      <Button fx:id="ajouter_column" layoutX="274.0" layoutY="45.0" mnemonicParsing="false" onAction="#ajouterbtn" text="ajouter" />
+      <Button fx:id="ajouter_column" layoutX="358.0" layoutY="43.0" mnemonicParsing="false" onAction="#ajouterbtn" text="ajouter" />
    </children>
 </AnchorPane>

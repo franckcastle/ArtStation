@@ -60,7 +60,7 @@ CItemService ci =new CItemService();
             nom.setCellValueFactory(new PropertyValueFactory("nom"));
             prix.setCellValueFactory(new PropertyValueFactory("prix"));
             quantity.setCellValueFactory(new PropertyValueFactory("qte_stock"));
-this.addtocartt();
+            this.addtocartt();
 
 
         } catch (SQLException ex) {
