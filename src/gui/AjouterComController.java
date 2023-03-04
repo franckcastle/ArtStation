@@ -1,6 +1,6 @@
 package gui;
 
-import api.CommentAPI;
+
 import entities.Commentaire;
 import entities.Statut;
 import javafx.event.ActionEvent;
@@ -11,13 +11,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import services.CommentaireService;
-import services.StatutService;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ResourceBundle;
+import static api.BadWords.checkWords;
 
 
 public class AjouterComController implements Initializable {
@@ -28,24 +27,6 @@ public class AjouterComController implements Initializable {
     CommentaireService cms = new CommentaireService();
     public Statut sta ;
     public AjouterComController(){}
-
-
-
-
-
-
-
-    private boolean checkBadWords (String x){
-        String[] badWords = {"kelma1", "kelma2", "kelma3"}; // liste de gros mots à interdire
-        for (String word : badWords) {
-            if (x.toLowerCase().contains(word.toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
 
 
     @FXML
@@ -63,9 +44,10 @@ public class AjouterComController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            if (checkBadWords(c.getDescription())) {
+           // if (checkBadWords(c.getDescription())) {
+            if(checkWords(c.getDescription()).equals("false")){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur Commentaire ! ");
+                alert.setTitle("ATTENTION ! ");
                 alert.setHeaderText("Votre commentaire contient des gros mots et ne peut pas être ajouté.");
                 alert.showAndWait();
                 return;
@@ -76,6 +58,8 @@ public class AjouterComController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+
+
     private void reset() {
         descriptionField.setText("");
     }
