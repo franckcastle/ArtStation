@@ -15,7 +15,7 @@ public class FXMmain extends Application {
     public void start(Stage stage) throws Exception {
         try {
            // FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ajouterItem.fxml"));
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Home.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Cart.fxml"));
            // FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/afficherOrder.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root, 600, 400);
