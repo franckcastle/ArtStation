@@ -26,7 +26,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES />
         <JAVADOC />
@@ -45,6 +45,15 @@
           <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/experimental/viennacl-omp/src/main/java" />
           <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/experimental/viennacl/src/main/java" />
         </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/apache-mahout-distribution-14.1/lib/mahout-core-14.1-scala_2.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>
