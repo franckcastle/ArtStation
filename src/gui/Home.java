@@ -119,15 +119,10 @@ CItemService ci =new CItemService();
                         }
                     }
                 };
-
             });
-
-
         }
-
         public void addedItem(Produit p,int c) throws SQLException {
             CartItem item = new CartItem();
-
             item.setId(p.getId());
             item.setOrderId(c);
             item.setQuantity(3);

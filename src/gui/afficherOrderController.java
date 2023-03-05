@@ -70,6 +70,7 @@ public class afficherOrderController implements Initializable {
         try {
             // TODO
             List<ShoppingCart> ShoppingCarts = ss.recuperer();
+            System.out.println(ShoppingCarts);
             ObservableList<ShoppingCart> olu = FXCollections.observableArrayList(ShoppingCarts);
 
             carts_table.setItems(olu);
@@ -239,11 +240,6 @@ public class afficherOrderController implements Initializable {
 
 
 
-
-
-
-
-
     public void imprimer(){
         imprimer.setCellFactory((param) -> {
             return new TableCell() {
@@ -258,7 +254,8 @@ public class afficherOrderController implements Initializable {
                      System.out.println("asslema");
                            ShoppingCartService as = new ShoppingCartService();
                             try {
-                                as.createPDF(carts_table);
+                             //   as.createPDF(carts_table);
+                                as.createPDF(carts_table.getItems().get(getIndex()));
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                 alert.setTitle("Information Dialog");
                                 alert.setHeaderText(null);

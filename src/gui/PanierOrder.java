@@ -41,10 +41,10 @@ public class PanierOrder {
 
     public int p;
 
-
+    public float price;
 
     @FXML
-    void btnModifier(ActionEvent event) throws SQLException {
+    void btnModifier(ActionEvent event) throws SQLException, IOException {
     System.out.println(p);
 
         if(/*!nom_col.getText().isEmpty()||!prenom_col.getText().isEmpty()||!prenom_col.getText().isEmpty()||!*//*ville_col.getText().isEmpty()||*/!addresse_col.getText().isEmpty()){
@@ -57,6 +57,12 @@ public class PanierOrder {
             s.setCode_postale(Integer.parseInt(postale_id.getText()));
 
             ss.modifier(s);
+            FXMLLoader loader =  new FXMLLoader(getClass().getResource("cart.fxml"));
+            Parent root = loader.load();
+             Cart c =loader.getController();
+            c.setPrice(price);
+            c.amount=price;
+            nom_col.getScene().setRoot(root);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur ");

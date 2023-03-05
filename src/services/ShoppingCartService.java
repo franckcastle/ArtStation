@@ -1,8 +1,7 @@
 package services;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.*;
 import entities.ShoppingCart;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
@@ -59,18 +58,31 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     }
 
 
-    public static Document createPDF(TableView<ShoppingCart> listView) throws DocumentException, FileNotFoundException {
+    public static Document createPDF(ShoppingCart s) throws DocumentException, FileNotFoundException {
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream("output.pdf"));
         document.open();
-
-        ObservableList<ShoppingCart> items = listView.getItems();
-        PdfPTable table = new PdfPTable(1);
+        PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(100);
+        table.addCell("Nom:");
+        table.addCell(s.getNom());
 
-        for (ShoppingCart item : items) {
-            table.addCell(new Paragraph(item.toString()));
-        }
+        table.addCell("Prenom:");
+        table.addCell(s.getPrenom());
+
+        table.addCell("Ville:");
+        table.addCell(s.getVille());
+
+        table.addCell("Adresse:");
+        table.addCell(s.getAdresse());
+
+        table.addCell("Code Postal:");
+        table.addCell(Integer.toString(s.getCode_postale()));
+
+
+
+        table.addCell("Total Price:");
+        table.addCell(Float.toString(s.getTotal_price()));
 
         document.add(table);
         document.close();
@@ -105,15 +117,15 @@ public class ShoppingCartService implements SService<ShoppingCart> {
 
 
                 ShoppingCart c = new ShoppingCart();
-            c.setOrderId(rs.getInt("orderId"));
+           c.setOrderId(rs.getInt("orderId"));
            c.setNom(rs.getString("nom"));
             c.setPrenom(rs.getString("prenom"));
             c.setVille(rs.getString("ville"));
             c.setAdresse(rs.getString("Adresse"));
             c.setCode_postale(rs.getInt("code_postale"));
-            c.setOrderDate(rs.getDate("orderDate"));
+
             c.setTotal_price(rs.getInt("Total_price"));
-            c.setSta(rs.getString("sta"));
+
             ShoppingCarts.add(c);
 
         }

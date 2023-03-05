@@ -11,8 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import services.ProduitService;
 
+import services.ProduitService;
+import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -24,6 +25,8 @@ public class Panier {
 
     @FXML
     private TableColumn<?, ?> nom_column;
+    @FXML
+    private Text total;
 
     @FXML
     private TableColumn<?, ?> price_column;
@@ -35,33 +38,47 @@ public class Panier {
 
 ProduitService ps=new ProduitService();
 int s;
-
+Float t ;
     public void display(int i){
 System.out.println(i);
         try {
             List<Produit> cartItems = ps.getByorderId(i);
             System.out.println(cartItems);
-            ObservableList<Produit> olu = FXCollections.observableArrayList(cartItems);
+            System.out.println(getTotalPrice(cartItems));
 
+           Float tot =getTotalPrice(cartItems);
+           t =tot ;
+            ObservableList<Produit> olu = FXCollections.observableArrayList(cartItems);
             itemstable.setItems(olu);
             nom_column.setCellValueFactory(new PropertyValueFactory("nom"));
             price_column.setCellValueFactory(new PropertyValueFactory("prix"));
             quantity_column.setCellValueFactory(new PropertyValueFactory("qte_stock"));
-
+            total.setText(String.valueOf(tot));
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
     }
 
 
-    public void buy(ActionEvent actionEvent) throws IOException {
 
+    public void buy(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader =  new FXMLLoader(getClass().getResource("panierOrder.fxml"));
         Parent root = loader.load();
         PanierOrder controller =loader.getController();
+       // Cart c =loader.getController();
+        //c.setUsername(t);
         System.out.println(s);
        controller.p=s;
+        controller.price=t;
         itemstable.getScene().setRoot(root);
+    }
+
+    public static Float getTotalPrice(List<Produit> produits) {
+        Float total = 0.0f;
+        for (Produit p : produits) {
+            total += p.getPrix();
+        }
+        return total;
     }
 
     public void retour(ActionEvent actionEvent) {

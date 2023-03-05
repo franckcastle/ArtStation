@@ -54,7 +54,8 @@ public class ModifierOrder implements Initializable {
 
     public ModifierOrder(ShoppingCart sc) {
         this.sc=sc;
-    }  public void setUsername(String username) {
+    }
+    public void setUsername(String username) {
         nom_col.setText(username);
         whe =nom_col.getText();
     }
