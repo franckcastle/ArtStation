@@ -26,5 +26,26 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/community-engines/h2o/src/main/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/integration/src/main/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/integration/src/test/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr-examples/src/main/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr-examples/src/test/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr/src/main/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr/src/test/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/core/src/main/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/core/src/test/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/engine/hdfs/src/main/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/engine/hdfs/src/test/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/experimental/viennacl-omp/src/main/java" />
+          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/experimental/viennacl/src/main/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
