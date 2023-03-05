@@ -1,0 +1,32 @@
+.search-box{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+.trasparent {
+    -fx-background-color: rgba(0,0,0,0);
+}
+.search-button{
+    -fx-background-color: #D2E8F9;
+    -fx-background-radius: 30;
+}
+.right-bar{
+    -fx-background-color: #eed9c8;
+}
+.shadow {
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,10.0);
+}
+.light-background{
+    -fx-background-color: #FFFFFF;
+}
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #eed9c8;
+}
+.mouse-moved :hover{
+    -fx-background-color: #E4E4E4;
+
+}
+.Product-item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}

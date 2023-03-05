@@ -12,8 +12,9 @@ public class TestApp extends Application  {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffichagePdt.fxml"));
+           // FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffichagePdt.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficherCtg.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/market.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root,600,400);
             primaryStage.setScene(scene);
