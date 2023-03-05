@@ -15,7 +15,7 @@ public class MainAffichier extends Application {
             //Ajout
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterEv.fxml"));
             //GetAll+DEl
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficherEv.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Event.fxml"));
 
             Parent root = loader.load();
             Scene scene = new Scene(root);

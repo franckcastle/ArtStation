@@ -5,6 +5,7 @@ import entities.User;
 import utils.MyDb;
 
 import java.sql.*;
+import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class EvenementService {
         while (rs.next()) {
             System.out.println(rs);
             //    public Evenement(int id, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, float rating, int ratingNumber, int points, int nbPlace) {
-            Evenement e = new Evenement(rs.getInt("id"),  rs.getString("titre"), rs.getString("description"), rs.getString("localisation"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getFloat("prix"),rs.getFloat("rating"),rs.getInt("ratingNumber"),rs.getInt("points"), rs.getInt("nbPlace"));
+            Evenement e = new Evenement(rs.getInt("id"),  rs.getString("titre"), rs.getString("description"), rs.getString("localisation"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getFloat("prix"),rs.getFloat("rating"),rs.getInt("ratingNumber"),rs.getInt("points"),rs.getString("image"), rs.getInt("nbPlace"));
 
             listEv.add(e);
         }
@@ -47,6 +48,26 @@ public class EvenementService {
         pstmt.setTimestamp(5, new java.sql.Timestamp(e.getDateFin().getTime()));
         pstmt.setFloat(6, e.getPrix());
         pstmt.setInt(7, e.getNbPlace());
+        //Statement st=cnx.createStatement();
+        //st.executeUpdate(req);
+        pstmt.executeUpdate();
+    }
+    public void ajouter(Evenement e) throws SQLException, Exception {
+        String sDateDebut = "31/12/1998";
+        Date dateDebut = new SimpleDateFormat("dd/MM/yyyy").parse(sDateDebut);
+        //String req="INSERT INTO evenement VALUES(" +
+        // "'"+e.getEvaluation()+"','"+e.getTitre()+"','"+e.getDescription()+"','"+e.getLocalisation()+"','"+dateDebut+"','"+dateDebut+"','"+e.getPrix()+"',"+e.getNbPlace()+ ")";
+        String sql = "INSERT INTO evenement (titre,description,localisation,dateDebut,dateFin,prix,image,nbPlace) VALUES (?, ?, ?, ?,?, ?,?, ?)";
+        PreparedStatement pstmt = cnx.prepareStatement(sql);
+
+        pstmt.setString(1, e.getTitre());
+        pstmt.setString(2, e.getDescription());
+        pstmt.setString(3, e.getLocalisation());
+        pstmt.setTimestamp(4, new java.sql.Timestamp(e.getDateDebut().getTime()));
+        pstmt.setTimestamp(5, new java.sql.Timestamp(e.getDateFin().getTime()));
+        pstmt.setFloat(6, e.getPrix());
+        pstmt.setString(7,e.getImage());
+        pstmt.setInt(8, e.getNbPlace());
         //Statement st=cnx.createStatement();
         //st.executeUpdate(req);
         pstmt.executeUpdate();

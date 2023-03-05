@@ -19,7 +19,7 @@ public class Evenement {
     private int ratingNumber;
    private  int points;
 //
-    private byte[] image;
+    private String image;
     private int nbPlace;
     //jointure
     private List<Reservation> reservations;
@@ -40,7 +40,7 @@ public class Evenement {
     //private Categorie categorie;
 
 
-    public Evenement(int id, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, byte[] image, int nbPlace) {
+    public Evenement(int id, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, String image, int nbPlace) {
         this.id = id;
 
         this.titre = titre;
@@ -67,6 +67,17 @@ public class Evenement {
         this.nbPlace = nbPlace;
     }
 
+    public Evenement(String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, String image, int nbPlace) {
+        this.titre = titre;
+        this.description = description;
+        this.localisation = localisation;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.prix = prix;
+        this.image = image;
+        this.nbPlace = nbPlace;
+    }
+
     public Evenement(int id, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, float rating, int ratingNumber, int points, int nbPlace) {
         this.id = id;
         this.titre = titre;
@@ -78,6 +89,21 @@ public class Evenement {
         this.rating = rating;
         this.ratingNumber = ratingNumber;
         this.points = points;
+        this.nbPlace = nbPlace;
+    }
+
+    public Evenement(int id, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, float rating, int ratingNumber, int points, String image, int nbPlace) {
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.localisation = localisation;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.prix = prix;
+        this.rating = rating;
+        this.ratingNumber = ratingNumber;
+        this.points = points;
+        this.image = image;
         this.nbPlace = nbPlace;
     }
 
@@ -147,25 +173,12 @@ public class Evenement {
     }
 
 
-
-
-    public BufferedImage getImage() {
-        try {
-            ByteArrayInputStream bis = new ByteArrayInputStream(this.image);
-            return ImageIO.read(bis);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public String getImage() {
+        return image;
     }
-    public void setImage(BufferedImage image) {
-        try {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ImageIO.write(image, "png", bos);
-            this.image = bos.toByteArray();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getNbPlace() {
@@ -200,9 +213,7 @@ public class Evenement {
         this.points = points;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
+
 
     @Override
     public String toString() {
@@ -215,7 +226,7 @@ public class Evenement {
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 ", prix=" + prix +
-                ", image=" + Arrays.toString(image) +
+                ", image=" + image +
                 ", nbPlace=" + nbPlace +
                 '}';
     }
