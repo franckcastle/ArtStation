@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 public class ModifierStatutController implements Initializable {
 
 
+    public Statut statut;
+
     StatutService ser = new StatutService();
     public Statut s;
 

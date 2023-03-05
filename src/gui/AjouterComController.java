@@ -45,13 +45,13 @@ public class AjouterComController implements Initializable {
                 return;
             }
            // if (checkBadWords(c.getDescription())) {
-            if(checkWords(c.getDescription()).equals("false")){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ATTENTION ! ");
-                alert.setHeaderText("Votre commentaire contient des gros mots et ne peut pas être ajouté.");
-                alert.showAndWait();
-                return;
-            }
+//            if(checkWords(c.getDescription()).equals("false")){
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("ATTENTION ! ");
+//                alert.setHeaderText("Votre commentaire contient des gros mots et ne peut pas être ajouté.");
+//                alert.showAndWait();
+//                return;
+//            }
             cms.ajouterCom(c);
             reset();
         } catch (SQLException ex) {

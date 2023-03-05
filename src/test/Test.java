@@ -29,17 +29,17 @@ public class Test {
 //            Statut s1 = new Statut("Musique", "qui est interese par un workshop le 19 mars? ");
 //            Statut s2 = new Statut("peinture", "comment vous interpretez la joconde ");
 //            Statut s3 = new Statut("Poterie", "Tout se transorme ");
-Statut s4 = new Statut("Guitare", "jeu facile ");
+//Statut s4 = new Statut("Guitare", "jeu facile ");
 //
-StatutService ss = new StatutService();
+//CommentaireService  cs = new CommentaireService();
  //ss.modifier();
 ////            ss.ajouter(s1);
 ////            ss.ajouter(s2);
 ////            ss.ajouter(s3);
  //ss.ajouter(s4);
 // ss.recuperer();
- s4.setId_s(27);
- ss.ajouterLikeStatut(s4);
+ //s4.setId_s(27);
+// ss.ajouterLikeStatut(s4);
 //           Statut statut = ss.rechStatut(17);
         //  ss.modifier(statut, "ESSAI", "contenu");
         // ss.supprimer(3);

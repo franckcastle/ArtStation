@@ -102,7 +102,7 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
     }
     public List<Commentaire> recupererComByIdStatut(int id_s) throws SQLException {
         List<Commentaire> commentaires = new ArrayList<>();
-        String q = "select * from commentaire where id_c ="+id_s;
+        String q = "select * from commentaire where id_s ="+id_s;
         Statement st = cnx.createStatement();
         ResultSet rs =  st.executeQuery(q);
         while(rs.next()){
