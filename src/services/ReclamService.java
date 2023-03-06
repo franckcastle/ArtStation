@@ -1,6 +1,7 @@
 package services;
 
 import entities.Reclamation;
+import entities.User;
 import utils.MyDb;
 
 import java.sql.*;
@@ -68,4 +69,28 @@ public class ReclamService implements IServiceReclam<Reclamation>{
         }
         return reclamations;
     }
+
+    public Reclamation GetReclamBySujet (String sujet ) throws SQLException {
+        List<Reclamation> reclamations = new ArrayList<>();
+        String req = "Select * from reclamation where sujet = ?";
+
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1, sujet);
+        ResultSet rs = ps.executeQuery();
+        Reclamation r = new Reclamation();
+        rs.next();
+        if (rs.getRow() != 0) {
+            r.setReclamationId(rs.getInt(1));
+            r.setUserId(rs.getInt(2));
+            r.setSujet(rs.getString(3));
+            r.setPlainte(rs.getString(4));
+
+            return r;
+        } else {
+            System.out.println("Utilisateur inexistant");
+            return null;
+        }
+    }
+
+
 }

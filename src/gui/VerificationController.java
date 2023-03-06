@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import services.SendSms;
 
@@ -36,6 +37,9 @@ public class VerificationController implements Initializable {
              System.out.println(ex);
          }
      }else {
+         Alert alert = new Alert(Alert.AlertType.WARNING);
+         alert.setTitle("Erreur de connexion");
+         alert.setHeaderText("Code Invalide");
 
      }
  }
@@ -47,6 +51,6 @@ public class VerificationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
+
 }

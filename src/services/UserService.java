@@ -23,14 +23,14 @@ public class UserService implements IService<User> {
 
     @Override
     public void modifer(String s,String s1,String s2,int s3,String s4,String s5) throws SQLException {
-        String req = "UPDATE user SET userName=?,password=?,email=?,role=? where username = ?";
+        String req = "UPDATE user SET userName=?,password=?,email=?,tel=?,role=? where username = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1,s);
         ps.setString(2,s1);
         ps.setString(3,s2);
         ps.setInt(4, s3);
         ps.setString(5, s4);
-        ps.setString(5, s5);
+        ps.setString(6, s5);
         ps.executeUpdate();
     }
 
