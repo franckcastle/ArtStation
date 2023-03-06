@@ -52,25 +52,6 @@ public class ModifierStatutController implements Initializable {
     @FXML
     private TextField titreField;
 
-//    @FXML
-//    void modifier(ActionEvent event) {
-//       // Statut s= new Statut();
-//        String titre = titreField.getText();
-//        String contenu = contenuField.getText();
-//        try {
-//            ser.modifier(titre,contenu,c,e);
-//            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
-//            titreField.getScene().setRoot(loader);
-//            //contenuField.getScene().setRoot(loader);
-//
-//
-//        }catch (IOException ex) {
-//            throw new RuntimeException(ex);
-//        } catch (SQLException | ParseException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//
-//    }
 
     @FXML
     public void modifier(ActionEvent event) throws SQLException {
@@ -88,6 +69,17 @@ public class ModifierStatutController implements Initializable {
 
             alert.showAndWait();
         }
+    }
+    @FXML
+    void forum(ActionEvent event) {
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+            titreField.getScene().setRoot(loader);
+
+        }catch (IOException ex){
+            System.out.println("Erreur"+ex.getMessage());
+        }
+
     }
 
     public void setStatut(Statut s) {

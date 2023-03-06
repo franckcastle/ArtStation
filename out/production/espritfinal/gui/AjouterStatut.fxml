@@ -17,7 +17,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterStatutController">
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" styleClass="white-background" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" styleClass="white-background" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="58.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
                <image>
@@ -31,7 +31,7 @@
                <opaqueInsets>
                   <Insets left="150.0" />
                </opaqueInsets></Separator>
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="38.0" prefWidth="187.0" spacing="20.0" styleClass="round-layout" stylesheets="@../css/styles.css">
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="38.0" prefWidth="187.0" spacing="20.0" styleClass="round-layout" stylesheets="@styles.css">
                <children>
                   <ImageView fitHeight="17.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,7 +68,7 @@
       </HBox>
    </top>
    <left>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="162.0" styleClass="white-background" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="162.0" styleClass="white-background" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
             <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="90.0">
                <VBox.margin>
@@ -208,7 +208,7 @@
                <children>
                   <HBox layoutY="-1.0" prefHeight="53.0" prefWidth="574.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="72.0" prefWidth="574.0" style="-fx-background-color: 455771;" stylesheets="@../css/styles.css" text="Exprimez_vous !" textAlignment="CENTER" textFill="#446c71">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="72.0" prefWidth="574.0" style="-fx-background-color: 455771;" stylesheets="@styles.css" text="Exprimez_vous !" textAlignment="CENTER" textFill="#446c71">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
@@ -221,23 +221,31 @@
                         <Insets top="15.0" />
                      </opaqueInsets>
                   </HBox>
-                  <VBox layoutX="83.0" layoutY="107.0" prefHeight="221.0" prefWidth="408.0" styleClass="white-background" stylesheets="@../css/styles.css">
+                  <VBox layoutX="83.0" layoutY="107.0" prefHeight="221.0" prefWidth="408.0" styleClass="white-background" stylesheets="@styles.css">
                      <children>
-                        <TextField fx:id="titreField" alignment="CENTER" prefHeight="53.0" prefWidth="204.0" promptText="Titre" styleClass="white-background" stylesheets="@../css/styles.css">
+                        <TextField fx:id="titreField" alignment="CENTER" prefHeight="53.0" prefWidth="204.0" promptText="Titre" style="-fx-font-style: #446c71;" styleClass="white-background" stylesheets="@styles.css">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Baskerville Old Face" size="14.0" />
                            </font>
                         </TextField>
                         <Separator prefWidth="200.0" />
                         <TextField fx:id="contenuField" alignment="CENTER" prefHeight="170.0" prefWidth="408.0" promptText="Contenu" styleClass="white-background">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial" size="13.0" />
                            </font>
                         </TextField>
                      </children>
                   </VBox>
-                  <Button layoutX="475.0" layoutY="377.0" mnemonicParsing="false" onAction="#AfficherStatut" prefHeight="38.0" prefWidth="89.0" styleClass="round-layout" stylesheets="@../css/styles.css" text="AFFICHER" textFill="#052730" />
-                  <Button layoutX="21.0" layoutY="377.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="39.0" prefWidth="81.0" styleClass="round-layout" stylesheets="@../css/styles.css" text="PUBLIER" textFill="#052730" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="488.0" AnchorPane.topAnchor="377.0" />
+                  <Button layoutX="21.0" layoutY="377.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="39.0" prefWidth="81.0" styleClass="round-layout" stylesheets="@styles.css" text="PUBLIER" textFill="#052730" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="488.0" AnchorPane.topAnchor="377.0" />
+                  <Button layoutX="427.0" layoutY="379.0" mnemonicParsing="false" onAction="#forum" prefHeight="35.0" prefWidth="106.0" styleClass="round-layout" stylesheets="@styles.css" text="Forum">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/logoforum.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
          </content>

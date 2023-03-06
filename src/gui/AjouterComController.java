@@ -44,38 +44,49 @@ public class AjouterComController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-           // if (checkBadWords(c.getDescription())) {
-//            if(checkWords(c.getDescription()).equals("false")){
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("ATTENTION ! ");
-//                alert.setHeaderText("Votre commentaire contient des gros mots et ne peut pas être ajouté.");
-//                alert.showAndWait();
-//                return;
-//            }
+
+            if (checkWords(c.getDescription()).equals("true")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ATTENTION ! ");
+                alert.setHeaderText("Votre commentaire contient des gros mots et ne peut pas être ajouté.");
+                alert.showAndWait();
+                return;
+            }
             cms.ajouterCom(c);
             reset();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        } catch(SQLException ex){
+                System.out.println(ex.getMessage());
+            }
         }
-    }
+
 
 
     private void reset() {
         descriptionField.setText("");
     }
 
+//    @FXML
+//    void AfficherCommentaire(ActionEvent event){
+//        try {
+//
+//            Parent loader = FXMLLoader.load(getClass().getResource("AfficherCom.fxml"));
+//            descriptionField.getScene().setRoot(loader);
+//
+//        }catch (IOException ex){
+//            System.out.println("Erreur "+ex);
+//        }
+//    }
     @FXML
-    void AfficherCommentaire(ActionEvent event){
+    void forum(ActionEvent event) {
         try {
-
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherCom.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
             descriptionField.getScene().setRoot(loader);
 
         }catch (IOException ex){
-            System.out.println("Erreur "+ex);
+            System.out.println("Erreur"+ex.getMessage());
         }
-    }
 
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

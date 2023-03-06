@@ -1,22 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierComController">
-   <children>
-      <Label alignment="CENTER" layoutX="100.0" layoutY="25.0" prefHeight="18.0" prefWidth="430.0" text="Modifier Commentaire" textAlignment="CENTER" textFill="#f6b49c">
-         <font>
-            <Font name="Berlin Sans FB Demi Bold" size="36.0" />
-         </font>
-      </Label>
-      <TextField fx:id="descriptionField" alignment="CENTER" layoutX="136.0" layoutY="112.0" prefHeight="155.0" prefWidth="326.0" promptText="Description" style="-fx-background-color: d2e8f9;">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font></TextField>
-      <Button layoutX="244.0" layoutY="326.0" mnemonicParsing="false" onAction="#modifierCom" prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: f6b49c;" text="valider modification" textFill="WHITE" />
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierComController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" styleClass="white-background" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="170.0" text="Forum" textFill="#fac881">
+               <font>
+                  <Font name="Baskerville Old Face" size="24.0" />
+               </font>
+            </Label>
+            <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="36.0" prefWidth="8.0" />
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="203.0" spacing="20.0" styleClass="round-layout" stylesheets="@styles.css">
+               <children>
+                  <TextField alignment="CENTER" prefHeight="16.0" prefWidth="125.0" promptText="Search" styleClass="transparent" stylesheets="@styles.css" />
+                  <ImageView fitHeight="17.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logosearch.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </HBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="130.0" text="User account">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="162.0" styleClass="white-background" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="90.0">
+               <VBox.margin>
+                  <Insets left="35.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="63.0" prefWidth="106.0" styleClass="mouse-moved" stylesheets="@styles.css">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logohome.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="9.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="106.0" text="Home">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="168.0" styleClass="mouse-moved" stylesheets="@styles.css">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logoworkshop.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="106.0" text="Workshops">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0" styleClass="mouse-moved" stylesheets="@styles.css">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logocalendar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Events">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0" styleClass="mouse-moved" stylesheets="@styles.css">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logoproduit.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Products">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0" styleClass="mouse-moved" stylesheets="@styles.css">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/order.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Orders">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0" stylesheets="@styles.css">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logoforum.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Forum">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="mouse-moved" />
+                  <String fx:value="selected" />
+               </styleClass>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane prefHeight="427.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+               <children>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="53.0" prefHeight="49.0" prefWidth="469.0" text="Modifier Votre Commentaire" textAlignment="CENTER" textFill="#fac881">
+                     <font>
+                        <Font name="Baskerville Old Face" size="36.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="descriptionField" alignment="CENTER" layoutX="77.0" layoutY="136.0" prefHeight="173.0" prefWidth="342.0" promptText="Description" style="-fx-background-radius: 15;">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></TextField>
+                  <Button layoutX="35.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierCom" prefHeight="38.0" prefWidth="141.0" styleClass="round-layout" stylesheets="@styles.css" text="Valider" textFill="WHITE" />
+                  <Button layoutX="431.0" layoutY="363.0" mnemonicParsing="false" onAction="#forum" prefHeight="35.0" prefWidth="105.0" stylesheets="@styles.css" text="Forum">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/logoforum.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

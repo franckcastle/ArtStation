@@ -56,17 +56,18 @@ public class AjouterStatutController implements Initializable {
         titreField.setText("");
         contenuField.setText("");
     }
+
     @FXML
-    void AfficherStatut (ActionEvent event){
+    void forum(ActionEvent event) {
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
             titreField.getScene().setRoot(loader);
 
         }catch (IOException ex){
             System.out.println("Erreur"+ex.getMessage());
         }
-    }
 
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -5,265 +5,166 @@ import entities.Statut;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import java.awt.event.MouseEvent;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import services.CommentaireService;
 import services.StatutService;
 
-
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class AfficherStatutController implements Initializable{
-    @FXML
-    public TableView<Statut> statutsTv;
-    @FXML
-    private TableColumn<Statut, Integer> idTv;
-    @FXML
-    private TableColumn<Statut, String> titreTv;
-    @FXML
-    private TableColumn<Statut, String> contenuTv;
-    @FXML
-    private TableColumn<Statut, Date> createdTv;
-    @FXML
-    private TableColumn<Statut, Date> updatedTv;
-    @FXML
-    private TableColumn<Statut , Button> supprimer;
-    @FXML
-    private TableColumn<Statut, Button> modifier;
-    @FXML
-    private TableColumn<String, Button> commenter2;
-    @FXML
-    private TableColumn<Statut, Integer> nbrlikeTv;
 
+public class AfficherStatutController implements Initializable {
+    @FXML
+    private VBox statutsVBox;
+    @FXML
+    private Button ajouterStatutBtn;
 
-
+    private StatutService s = new StatutService();
 
     private boolean isLiked;
-
-    @FXML
-    private Button dislike;
-    @FXML
-    private Button liker;
-
-    @FXML
-    private ImageView icon;
-
-    @FXML
-    private ImageView icon2;
+    CommentaireService cs = new CommentaireService();
 
 
-    StatutService s = new StatutService();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            List<Statut> stt =s.recuperer();
-
-            ObservableList<Statut> olp = FXCollections.observableArrayList(stt);
-            statutsTv.setItems(olp);
-            idTv.setCellValueFactory(new PropertyValueFactory<>("id_s"));
-            titreTv.setCellValueFactory(new PropertyValueFactory<>("titre"));
-            contenuTv.setCellValueFactory(new PropertyValueFactory<>("contenu"));
-            createdTv.setCellValueFactory(new PropertyValueFactory<>("created"));
-            updatedTv.setCellValueFactory(new PropertyValueFactory<>("updated"));
-            nbrlikeTv.setCellValueFactory(new PropertyValueFactory<>("nbrLike"));
+            List<Statut> stt = s.recuperer();
 
 
-
-            this.supprimer();
-            this.modifier();
-            this.commenter2();
+            for (Statut statut : stt) {
+                statutsVBox.getChildren().add(createStatutVBox(statut));
+            }
         } catch (SQLException ex) {
             System.out.println("Erreur" + ex.getMessage());
         }
-        }
-
-
-
-
-    @FXML
-    public void commenter2() {
-        commenter2.setCellFactory((param) -> {
-            return new TableCell() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    setGraphic(null);
-                    if (!empty) {
-                        Button b = new Button("commenter");
-                        b.setOnAction((event) -> {
-
-                            try {
-                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("AjouterCom.fxml"));
-                                Parent root = loader.load();
-
-                               Statut st =(Statut)statutsTv.getItems().get(getIndex());
-                               AjouterComController controller = loader.getController();
-                               controller.sta=st;
-                                statutsTv.getScene().setRoot(root);
-
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-
-                        });
-                        setGraphic(b);
-
-                    }
-                }
-            };
-
-        });
     }
 
-    @FXML
-    void liker(ActionEvent event) throws SQLException {
+    private VBox createStatutVBox(Statut statut) {
+        VBox vbox = new VBox();
+        vbox.setSpacing(10);
 
-        Statut selectedStatus = statutsTv.getSelectionModel().getSelectedItem();
-        if (selectedStatus == null) {
-            // show error message if no item is selected
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No status Selected");
-            alert.setContentText("please select a status to like.");
-        } else {
-            if (!isLiked) {
-                isLiked = true;
 
-                s.ajouterLikeStatut(selectedStatus);
-               // icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
+        Label titreLabel = new Label(statut.getTitre());
+        titreLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-            } else {
-                isLiked = false;
-              //  icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
+        Text contenuText = new Text(statut.getContenu());
+        contenuText.setWrappingWidth(400);
 
+        Label createdLabel = new Label("Publié le " + statut.getCreated());
+        //Label updatedLabel = new Label("Modifié le " + statut.getUpdated());
+        Label nbrLikeLabel = new Label(statut.getNbrLike() + " personnes aiment ça");
+        Label comLabel = new Label("Commentaires: ");
+
+        List<Commentaire> commentairesList = null;
+        try {
+            commentairesList = cs.recupererComByIdStatut(statut.getId_s());
+        } catch (SQLException e) {
+            System.out.println("Erreur" + e.getMessage());
+        }
+        for (Commentaire commentaire : commentairesList) {
+            Text commentaireText = new Text(commentaire.getDescription());
+            vbox.getChildren().add(commentaireText);
+        }
+
+        Button commenterBtn = new Button("Commenter");
+        commenterBtn.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCom.fxml"));
+                Parent root = loader.load();
+
+                AjouterComController controller = loader.getController();
+                controller.sta = statut;
+
+                statutsVBox.getScene().setRoot(root);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        }
+        });
+        Button modifierBtn = new Button("modifier");
+        modifierBtn.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierStatut.fxml"));
+                Parent root = loader.load();
 
-    }
+                ModifierStatutController controller = loader.getController();
+                controller.s = statut;
 
-    @FXML
-    void dislike(ActionEvent event) throws SQLException {
+                statutsVBox.getScene().setRoot(root);
 
-        Statut selectedStatus = statutsTv.getSelectionModel().getSelectedItem();
-        if (selectedStatus == null) {
-            // show error message if no item is selected
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No status Selected");
-            alert.setContentText("please select a status to like.");
-        } else {
-            if (!isLiked) {
-                isLiked = true;
-
-                s.supprimerLikeStatut(selectedStatus);
-                //icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
-
-            } else {
-                isLiked = false;
-                //  icon.setImage(new Image(getClass().getResourceAsStream("https: //www.flaticon.com/free-icons/heart")));
-
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        }
+        });
 
+        Button likeBtn = new Button("Like");
+        likeBtn.setOnAction(event -> {
+            try {
+                if (!isLiked) {
+                    isLiked = true;
+                    s.ajouterLikeStatut(statut);
+                    nbrLikeLabel.setText((statut.getNbrLike() + 1) + " personnes aiment ça");
+                } else {
+                    isLiked = false;
+                    s.supprimerLikeStatut(statut);
+                    nbrLikeLabel.setText((statut.getNbrLike()) + " personnes aiment ça");
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erreur" + ex.getMessage());
+            }
+        });
+
+
+        Button supprimerBtn = new Button("Supprimer");
+        supprimerBtn.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation de suppression");
+            alert.setHeaderText(null);
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer ce statut?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                try {
+                    s.supprimer(statut.getId_s());
+                    statutsVBox.getChildren().remove(vbox);
+                } catch (SQLException ex) {
+                    System.out.println("Erreur" + ex.getMessage());
+                }
+            }
+        });
+
+        vbox.getChildren().addAll(titreLabel, contenuText, createdLabel, nbrLikeLabel,comLabel,commenterBtn, likeBtn,modifierBtn,supprimerBtn);
+
+
+
+        return vbox;
     }
-
 
     @FXML
-   public void modifier() {
-        modifier.setCellFactory((param) -> {
-            return new TableCell() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    setGraphic(null);
-                    if (!empty) {
-                        Button b = new Button("modifier");
-                        b.setOnAction((event) -> {
+    public void ajouterStatut(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterStatut.fxml"));
+            Parent root = loader.load();
 
-                            try {
-                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModifierStatut.fxml"));
-                                Parent root = loader.load();
-                                Statut stat = (Statut) statutsTv.getItems().get(getIndex());
-
-                                ModifierStatutController controller = loader.getController();
-
-                                int rowIndexBtnmodifier = getIndex();
-                                controller.setStatut(stat);
-                                controller.initialize();
-                                statutsTv.getScene().setRoot(root);
-
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-
-                        });
-                        setGraphic(b);
-
-                    }
-                }
-            };
-
-        });
+            statutsVBox.getScene().setRoot(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
-
-    public void supprimer() {
-        supprimer.setCellFactory((param) -> {
-            return new TableCell() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    setGraphic(null);
-                    if (!empty) {
-                        Button b = new Button("supprimer");
-                        b.setOnAction((event) -> {
-                            Statut stt= (Statut) statutsTv.getItems().get(getIndex());
-                            try {
-                                if (s.supprimer(stt.getId_s())) {
-                                    statutsTv.getItems().remove(getIndex());
-                                    statutsTv.refresh();
-
-                                }
-                            } catch (SQLException e) {
-                                throw new RuntimeException(e);
-                            }
-
-                        });
-                        setGraphic(b);
-
-                    }
-                }
-            };
-
-        });
-
-    }
-
-
-
-
-
-
-
-   
 }
-

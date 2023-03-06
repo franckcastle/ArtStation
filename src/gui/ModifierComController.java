@@ -76,7 +76,17 @@ public void initialize() {
             alert.showAndWait();
         }
     }
+    @FXML
+    void forum(ActionEvent event) {
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+            descriptionField.getScene().setRoot(loader);
 
+        }catch (IOException ex){
+            System.out.println("Erreur"+ex.getMessage());
+        }
+
+    }
     public void setCommentaire(Commentaire c) {
         this.c=c;
     }
