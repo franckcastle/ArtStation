@@ -7,6 +7,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -161,6 +162,27 @@ public class WorkshopServices {
             System.err.println(ex.getMessage());
         }
         return workshops;
+    }
+
+    public List<Integer> getCountByCategory() throws SQLException {
+        List<Integer> countList = new ArrayList<>();
+
+        // Prepare a statement to query the count of each category
+        String query = "SELECT COUNT(*) from workshop WHERE categorie = ?";
+        PreparedStatement statement = cnx.prepareStatement(query);
+
+        // Loop through each category and retrieve its count
+        for (String category : Arrays.asList("Musique","Theatre","Dessin")) {
+            statement.setString(1, category);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+            countList.add(count);
+        }
+
+        // Close the database connection and return the count list
+        cnx.close();
+        return countList;
     }
 
 

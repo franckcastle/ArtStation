@@ -11,8 +11,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import services.WorkshopServices;
-import org.controlsfx.control.Notifications;
-import javax.management.Notification;
 import java.io.IOException;
 import java.time.ZoneId;
 import java.util.Date;
@@ -90,23 +88,43 @@ public class AjouterWorkshopController implements Initializable {
             Workshop w = new Workshop();
             w.setTitre(titreField.getText());
             w.setDescription(descriptionField.getText());
-            w.setDuree(Integer.parseInt(dureeField.getText()));
+
+            if (!dureeField.getText().isEmpty()) {
+                w.setDuree(Integer.parseInt(dureeField.getText()));
+            }
+
             w.setNom_artiste(nom_artisteField.getText());
-            LocalDate localDate = dateField.getValue();
+
+
+
+            if (dateField.getValue() != null) {
+                LocalDate localDate = dateField.getValue();
+                Date newDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                w.setDate(newDate);
+            }
+            /*LocalDate localDate = dateField.getValue();
             Date newDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            w.setDate(newDate);
+            w.setDate(newDate);*/
 
             w.setHeure_debut(heure_debutField.getText());
             w.setHeure_fin(heure_finField.getText());
-            w.setPrix(Float.parseFloat(prixField.getText()));
-            w.setNbPlaces(Integer.parseInt(nbPlacesField.getText()));
+
+            if (!prixField.getText().isEmpty()) {
+                w.setPrix(Float.parseFloat(prixField.getText()));
+            }
+
+            if (!nbPlacesField.getText().isEmpty()) {
+                w.setNbPlaces(Integer.parseInt(nbPlacesField.getText()));
+            }
+
             w.setCategorie(categorieField.getText());
             reset();
 
+            if (w.getTitre().isEmpty() || w.getDescription().isEmpty() || w.getNom_artiste().isEmpty()
+                    || w.getHeure_debut().isEmpty() || w.getHeure_fin().isEmpty() || w.getCategorie().isEmpty()
+                    || (w.getDate() == null || dateField.getValue() == null )) {
 
-            if (w.getTitre().length()==0 || w.getDescription().length()==0 || w.getNom_artiste().length()==0|| w.getHeure_debut().length()==0|| w.getHeure_fin().length()==0 || w.getCategorie().length()==0)
 
-            {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur d'insertion");
                 alert.setHeaderText("Veuillez remplir tous les champs.");
@@ -124,16 +142,7 @@ public class AjouterWorkshopController implements Initializable {
                 return;
             }
 
-            if (w.getTitre().length()==0 && w.getDescription().length()==0 && w.getNom_artiste().length()==0&& w.getHeure_debut().length()==0 && w.getHeure_fin().length()==0 && w.getCategorie().length()==0)
 
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur d'insertion");
-                alert.setHeaderText("Veuillez remplir tous les champs.");
-                alert.showAndWait();
-
-                return;
-            }
 
             ws.ajouterWs(w);
 

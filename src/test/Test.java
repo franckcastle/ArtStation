@@ -11,9 +11,9 @@ import java.text.ParseException;
 
 
 public class Test{
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
-        try {
+      try {
             Reservation_Workshop p = new Reservation_Workshop(8,10,"hhhh");
             Reservation_WorkshopServices ps = new Reservation_WorkshopServices();
             try {
@@ -31,7 +31,7 @@ public class Test{
 
             // ps.supprimerWs(3);
 
-            System.out.println(ps.recupererR(p));
+            System.out.println(ps.recupererR());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

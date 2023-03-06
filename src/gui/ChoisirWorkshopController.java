@@ -1,6 +1,7 @@
 package gui;
 
 
+import com.mysql.cj.xdevapi.Client;
 import entities.Reservation_Workshop;
 import entities.Workshop;
 import javafx.collections.FXCollections;
@@ -15,7 +16,30 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import services.Reservation_WorkshopServices;
 import services.WorkshopServices;
 import utils.MyDB;
+import java.util.Arrays;
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.PasswordAuthentication;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+
+import javax.mail.Message;
+import javax.mail.Authenticator;
+
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
+
+
+
+import services.Reservation_WorkshopServices;
 import java.io.IOException;
 import java.sql.*;
 import java.time.ZoneId;
@@ -26,6 +50,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+
+
+
+
 
 public class ChoisirWorkshopController implements Initializable {
 
@@ -62,6 +90,7 @@ public class ChoisirWorkshopController implements Initializable {
 
 
     private int idCategorieSelectionnee;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -129,6 +158,8 @@ public class ChoisirWorkshopController implements Initializable {
     }
 
 
+
+
     public void choisir(){
 
         choisir.setCellFactory((param) -> {
@@ -142,7 +173,12 @@ public class ChoisirWorkshopController implements Initializable {
                             Workshop ws= (Workshop)tableChoix.getItems().get(getIndex());
 
                             System.out.println(ws);
+                            // Envoyer un e-mail avec les informations de l'atelier choisi
+                            String to = "nour.elghali@esprit.tn ";
+                            String subject = "Nouveu Workshop choisi : " + ws.getTitre();
+                            String message = "Bonjour,\nVous avez choisi l'atelier \"" + ws.getTitre() + "\" qui aura lieu le " + ws.getDate() + ".\n\nCordialement,\nL'équipe de artStation";
 
+                            sendEmail(to, subject, message);
                             int id_workshop = ws.getId();
 
                             System.out.println(id_workshop);
@@ -156,16 +192,66 @@ public class ChoisirWorkshopController implements Initializable {
                             r.setCategorie(categorie);
                             System.out.println("sucessssss");
 
-
                             Reservation_WorkshopServices rs= new Reservation_WorkshopServices();
                             try {
                                 rs.ajouterR(r);
+
+
                             } catch (Exception e) {
                                 throw new RuntimeException(e);
                             }
 
+
+
                         });
+
+
+
+
+
                         setGraphic(b);
+                    }
+                }
+
+                public void sendEmail(String to, String subject, String message) {
+
+                    String from = "nour.elghali@esprit.tn";
+                    String password = "223JFT15744";
+
+                    // Paramètres de connexion au serveur SMTP
+                    Properties props = new Properties();
+                    props.put("mail.smtp.auth", "true");
+                    props.put("mail.smtp.starttls.enable", "true");
+                    props.put("mail.smtp.host", "smtp.gmail.com");
+                    props.put("mail.smtp.port", "587");
+                    props.setProperty("mail.smtp.starttls.enable", "true");
+                    props.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
+
+                    // Créer une session d'authentification SMTP
+                    Authenticator auth = new Authenticator() {
+                        @Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(from, password);
+                        }
+                    };
+
+                    Session session = Session.getInstance(props, auth);
+
+                    try {
+                        // Créer un message électronique
+                        Message email = new MimeMessage(session);
+                        email.setFrom(new InternetAddress(from));
+                        email.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                        email.setSubject(subject);
+                        email.setText(message);
+
+                        // Envoyer le message électronique
+                        Transport.send(email);
+
+                        System.out.println("E-mail envoyé avec succès à " + to);
+
+                    } catch (MessagingException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             };

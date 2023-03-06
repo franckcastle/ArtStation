@@ -4,14 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import entities.Workshop;
 import utils.MyDB;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 
 public class Reservation_WorkshopServices {
-
+    public Reservation_WorkshopServices ws;
     Connection cnx;
 
     public Reservation_WorkshopServices() {
@@ -43,9 +40,20 @@ public class Reservation_WorkshopServices {
 
         pstmt.executeUpdate();
     }
+    public boolean  supprimerR(Reservation_Workshop t) throws SQLException {
+        boolean ok = false;
+        try {
+            PreparedStatement req = cnx.prepareStatement("delete from reservation_workshop where id_reservation = ? ");
+            req.setInt(1, t.getId_reservation());
+            req.executeUpdate();
+            ok = true;
+        } catch (SQLException ex) {
+            System.out.println("error in delete " + ex);
+        }
+        return ok;
+    }
 
-
-    public void supprimerR(Integer id) {
+    /*public void supprimerR(Integer id) {
         String sql = "delete from reservation_workshop where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
@@ -56,10 +64,30 @@ public class Reservation_WorkshopServices {
             System.out.println(ex.getMessage());
         }
 
+    }*/
+    public List<Reservation_Workshop> recupererR() throws SQLException {
+        List<Reservation_Workshop> reservations = new ArrayList<>();
+        String s = "select * from Reservation_Workshop";
+        Statement st = cnx.createStatement();
+        ResultSet rs =  st.executeQuery(s);
+        while(rs.next()){
+            Reservation_Workshop p = new Reservation_Workshop();
+            p.setId_reservation(rs.getInt("id_reservation"));
+            p.setId_workshop(rs.getInt("id_workshop"));
+            p.setId_user(rs.getInt("id_user"));
+            p.setCategorie(rs.getString("categorie"));
+
+
+
+
+            reservations.add(p);
+
+        }
+        return reservations;
     }
 
 
-    public List<Reservation_Workshop> recupererR(Reservation_Workshop t) throws SQLException {
+   /* public List<Reservation_Workshop> recupererR(Reservation_Workshop t) throws SQLException {
         List<Reservation_Workshop> reservations = new ArrayList<>();
         String s = "select * from Reservation_Workshop";
         Statement st = cnx.createStatement();
@@ -75,7 +103,7 @@ public class Reservation_WorkshopServices {
 
         }
         return reservations;
-    }
+    }*/
 
     public void modifierR(Reservation_Workshop t) {
         String query = "UPDATE  reservation_workshop set id_workshop=? Where id ='" + t.getId_reservation() + "'";
@@ -88,6 +116,11 @@ public class Reservation_WorkshopServices {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
 
+
+
+    public int getReservationWorkshop(int id_user) {
+        return id_user;
     }
 }

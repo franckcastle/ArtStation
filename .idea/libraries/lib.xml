@@ -3,9 +3,25 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../Downloads/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib" />
       <root url="jar://$PROJECT_DIR$/../Downloads/jar_files/controlsfx-8.40.11.jar!/" />
+      <root url="file://$PROJECT_DIR$/../Downloads/google-api-client-assembly-2.2.0-2.2.0/google-api-java-client/libs" />
+      <root url="file://$PROJECT_DIR$/../Downloads/google-oauth-client-assembly-1.33.2-1.33.2/google-oauth-java-client/libs" />
+      <root url="file://$PROJECT_DIR$/../Downloads/jfreechart-1.0.19 (1)/jfreechart-1.0.19/lib" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/sendinblue-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/sib-api-v3-sdk-6.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/dsn.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/imap.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/mailapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/pop3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/SMSLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/smtp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/activation-1.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../Downloads/google-api-client-assembly-2.2.0-2.2.0/google-api-java-client/libs" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../Downloads/google-oauth-client-assembly-1.33.2-1.33.2/google-oauth-java-client/libs" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../Downloads/jfreechart-1.0.19 (1)/jfreechart-1.0.19/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../Downloads/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib" recursive="false" />
   </library>
 </component>

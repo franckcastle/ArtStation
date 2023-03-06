@@ -4,6 +4,7 @@ import com.mysql.cj.protocol.Message;
 import entities.Workshop;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -177,6 +178,17 @@ public class AfficherWorkshopController implements Initializable {
     }
 
 
+    @FXML
+    public void retourAf(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AjouterWorkshop.fxml"));
+
+            //Parent root = loader.load();
+            AfficherId.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

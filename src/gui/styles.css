@@ -1,0 +1,20 @@
+.white-background{
+    -fx-background-color: #fff;
+}
+
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #fac881;
+}
+
+.button{
+    -fx-background-radius:50;
+    -fx-background-color: #fac881;
+    -fx-border-color: #fac881;
+}
