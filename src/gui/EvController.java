@@ -45,13 +45,12 @@ public class EvController implements Initializable {
     public void setData(Evenement e){
         //System.out.println(e);
         this.e=e;
-        File file = new File(e.getImage());
-        Image image = new Image(file.toURI().toString());
-        ImageView evImg = new ImageView(image);
-        //evImg.setImage(image);
-        //e.setImage("@..\image/eminem.jpg");
-       // Image image=new Image(getClass().getResourceAsStream(e.getImage()));
-      //  evImg.setImage(image);
+        String img = e.getImage();
+        URL imageURL = getClass().getResource(img);
+        if (imageURL != null) {
+            Image image = new Image(imageURL.toString());
+            evImg.setImage(image);}
+
        evTitre.setText(e.getTitre());
         evLocal.setText(e.getLocalisation());
     }

@@ -20,9 +20,9 @@ public class Test {
         EvenementService es = new EvenementService();
         FeedService fs = new FeedService();
 
-        //es.rateEvent(2,10);
+        //es.rateEvent(42,5);
 
-        UserService us = new UserService();
+       /* UserService us = new UserService();
         Evenement e = new Evenement();
         e.setId(42);
         e.setNbPlace(12);
@@ -30,7 +30,7 @@ public class Test {
         //e.setNbPlace(1);
         //boolean vb =us.annulerRes(20,e);
         boolean vb = us.participerEv(20, e);
-        System.out.println(vb);
+        System.out.println(vb);*/
 //
 /*
         try {
