@@ -109,6 +109,9 @@
                                  <HBox.margin>
                                     <Insets left="4.0" top="22.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Label>
                            </children>
                         </HBox>
@@ -127,6 +130,9 @@
                                  <HBox.margin>
                                     <Insets left="9.0" top="22.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Label>
                            </children>
                         </HBox>
@@ -145,6 +151,9 @@
                                  <HBox.margin>
                                     <Insets left="12.0" top="22.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Label>
                            </children>
                         </HBox>
@@ -172,6 +181,9 @@
                                  <HBox.margin>
                                     <Insets left="4.0" top="22.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Label>
                            </children>
                         </HBox>
@@ -190,6 +202,9 @@
                                  <HBox.margin>
                                     <Insets left="4.0" top="22.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Label>
                            </children>
                         </HBox>
@@ -208,6 +223,9 @@
                                  <HBox.margin>
                                     <Insets left="4.0" top="22.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Label>
                            </children>
                         </HBox>
@@ -219,9 +237,9 @@
          <center>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fx:id="scrollPane" prefHeight="540.0" prefWidth="663.0" styleClass="trasparent" stylesheets="@../values/style.css">
+                  <ScrollPane fx:id="scrollPane" prefHeight="540.0" prefWidth="736.0" styleClass="trasparent" stylesheets="@../values/style.css">
                      <content>
-                        <FlowPane fx:id="productsFlowPane" hgap="20" prefHeight="400" prefWidth="600" vgap="20" />
+                        <FlowPane fx:id="productsFlowPane" hgap="20" prefHeight="538.0" prefWidth="727.0" vgap="20" />
                      </content>
                   </ScrollPane>
                </children>
