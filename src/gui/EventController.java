@@ -1,6 +1,7 @@
 package gui;
 
 import entities.Evenement;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +23,8 @@ public class EventController implements Initializable {
     @FXML
     public GridPane eventContainer;
 
+    @FXML
+    private VBox lkbir;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,11 +39,11 @@ public class EventController implements Initializable {
                VBox eventBox = loader.load();
                 //Parent root = loader.load();
 
-                System.out.println("test");
+                //System.out.println("test");
                 EvController controller=loader.getController();
                 controller.setData(ev.get(i));
 
-                System.out.println("test");
+                //System.out.println("test");
                 //eventBox.getChildren().add(root);
 
                 if(column==6){
@@ -52,6 +55,17 @@ public class EventController implements Initializable {
 
         }
         }catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void ajouterEv(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("Aj.fxml"));
+
+            //Parent root = loader.load();
+            eventContainer.getScene().setRoot(loader);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
