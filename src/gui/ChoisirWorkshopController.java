@@ -1,8 +1,6 @@
 package gui;
 
 
-import com.mysql.cj.xdevapi.Client;
-import entities.Reservation_Workshop;
 import entities.Workshop;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,51 +9,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import services.Reservation_WorkshopServices;
+import javafx.stage.Stage;
 import services.WorkshopServices;
-import utils.MyDB;
-import java.util.Arrays;
-import java.util.Properties;
-import javax.mail.*;
-import javax.mail.PasswordAuthentication;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 
-import javax.mail.Message;
-import javax.mail.Authenticator;
 
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
-
-
-
-import services.Reservation_WorkshopServices;
 import java.io.IOException;
 import java.sql.*;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-
-
-
 
 
 public class ChoisirWorkshopController implements Initializable {
+    WorkshopServices ws = new WorkshopServices();
 
     @FXML
     private ComboBox<String> catId;
@@ -84,20 +57,24 @@ public class ChoisirWorkshopController implements Initializable {
     @FXML
     private TableColumn prixChoix;
 
-    @FXML
-    private TableColumn choisir;
+
     private String etatSelectionne ;
 
+    @FXML
+    private TableColumn <Workshop,Button> details;
+    @FXML
+    private TableColumn<Workshop, Button> modifier;
 
-    private int idCategorieSelectionnee;
-
-
+    @FXML
+    private TextField ess;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        WorkshopServices ws =new WorkshopServices();
-        try{
+        WorkshopServices ws = new WorkshopServices();
+
+
+        try {
 
             List<Workshop> cat = ws.getAll();
             ObservableList<String> catNames = FXCollections.observableArrayList();
@@ -105,6 +82,7 @@ public class ChoisirWorkshopController implements Initializable {
 
             // liste temporaire pour stocker les noms de catégories uniques
             List<String> uniqueCatNames = new ArrayList<>();
+
             for (Workshop c : cat) {
                 String catName = c.getCategorie();
                 // Vérifier si le nom de catégorie est déjà présent dans la liste des catégories uniques
@@ -117,7 +95,7 @@ public class ChoisirWorkshopController implements Initializable {
 
             catId.setItems(catNames);
 
-            catId.setOnAction(event->{
+            catId.setOnAction(event -> {
 
                 etatSelectionne = catId.getSelectionModel().getSelectedItem();
 
@@ -139,28 +117,81 @@ public class ChoisirWorkshopController implements Initializable {
                 }
 
                 titreChoix.setCellValueFactory(new PropertyValueFactory<>("titre"));
-                DureeChoix.setCellValueFactory(new PropertyValueFactory<>("duree"));
-                dateChoix.setCellValueFactory(new PropertyValueFactory<>("date"));
-                heure_debutChoix.setCellValueFactory(new PropertyValueFactory<>("heure_debut"));
-                heure_finChoix.setCellValueFactory(new PropertyValueFactory<>("heure_fin"));
                 nom_artisteChoix.setCellValueFactory(new PropertyValueFactory<>("nom_artiste"));
+                dateChoix.setCellValueFactory(new PropertyValueFactory<>("date"));
                 prixChoix.setCellValueFactory(new PropertyValueFactory<>("prix"));
 
-            } );
+                this.details();
 
 
-            this.choisir();
+
+
+
+
+            });
+
+
+
+
+
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
+
+
+    }
+
+
+    public void details(){
+        details.setCellFactory((param) -> {
+            return new TableCell() {
+                @Override
+                protected void updateItem(Object item, boolean empty) {
+                    setGraphic(null);
+                    if (!empty) {
+                        Button b = new Button("Plus de détails");
+                        b.setOnAction(event -> {
+                           /* try {
+                                Parent root = FXMLLoader.load(getClass().getResource("/gui/Details.fxml"));
+                                Scene scene = new Scene(root);
+                                Stage stage = new Stage();
+                                stage.setTitle("Consultation des réclamations");
+                                stage.setScene(scene);
+                                stage.show();*/
+
+                            try {
+                                FXMLLoader loader =  new FXMLLoader(getClass().getResource("Details.fxml"));
+                                Parent root = loader.load();
+                                Workshop wp= (Workshop) tableChoix.getItems().get(getIndex());
+                                DetailsController controller =loader.getController();
+                                controller.setWorkshop(wp);
+                                controller.initialize();
+                                tableChoix.getScene().setRoot(root);
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+
+
+
+                        });
+                        setGraphic(b);
+
+                    }
+                }
+            };
+
+        });
     }
 
 
 
 
-    public void choisir(){
+    /*public void choisir(){
 
         choisir.setCellFactory((param) -> {
             return new TableCell() {
@@ -257,7 +288,7 @@ public class ChoisirWorkshopController implements Initializable {
             };
         });
     }
-
+*/
 
 
 

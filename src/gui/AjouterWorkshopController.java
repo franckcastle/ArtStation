@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.controlsfx.control.Notifications;
 import services.WorkshopServices;
 import java.io.IOException;
@@ -44,15 +46,16 @@ public class AjouterWorkshopController implements Initializable {
 
     @FXML
     private TextField categorieField;
+    @FXML
+    private TextField imageField;
+
 
     WorkshopServices ws = new WorkshopServices();
-
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-
 
 
     @FXML
@@ -80,6 +83,7 @@ public class AjouterWorkshopController implements Initializable {
         nbPlacesField.setText("");
         categorieField.setText("");
 
+
     }
 
     @FXML
@@ -96,7 +100,6 @@ public class AjouterWorkshopController implements Initializable {
             w.setNom_artiste(nom_artisteField.getText());
 
 
-
             if (dateField.getValue() != null) {
                 LocalDate localDate = dateField.getValue();
                 Date newDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -109,6 +112,7 @@ public class AjouterWorkshopController implements Initializable {
             w.setHeure_debut(heure_debutField.getText());
             w.setHeure_fin(heure_finField.getText());
 
+
             if (!prixField.getText().isEmpty()) {
                 w.setPrix(Float.parseFloat(prixField.getText()));
             }
@@ -118,54 +122,52 @@ public class AjouterWorkshopController implements Initializable {
             }
 
             w.setCategorie(categorieField.getText());
+            w.setImage(imageField.getText());
+
+
+
             reset();
 
-            if (w.getTitre().isEmpty() || w.getDescription().isEmpty() || w.getNom_artiste().isEmpty()
-                    || w.getHeure_debut().isEmpty() || w.getHeure_fin().isEmpty() || w.getCategorie().isEmpty()
-                    || (w.getDate() == null || dateField.getValue() == null )) {
+                if (w.getTitre().isEmpty() || w.getDescription().isEmpty() || w.getNom_artiste().isEmpty()
+                        || w.getHeure_debut().isEmpty() || w.getHeure_fin().isEmpty() || w.getCategorie().isEmpty()
+                        || (w.getDate() == null || dateField.getValue() == null)) {
 
 
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur d'insertion");
-                alert.setHeaderText("Veuillez remplir tous les champs.");
-                alert.showAndWait();
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur d'insertion");
+                    alert.setHeaderText("Veuillez remplir tous les champs.");
+                    alert.showAndWait();
 
-                return;
+                    return;
+                }
+
+                if (w.getNbPlaces() > 50) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur d'insertion");
+                    alert.setHeaderText("Le nombre de participants maximal est 50");
+                    alert.showAndWait();
+
+                    return;
+                }
+
+
+                ws.ajouterWs(w);
+
+
+            } catch(SQLException ex){
+                System.out.println("error" + ex.getMessage());
+
+                Notifications.create()
+                        .title("Nouvelle Réclamation")
+                        .text("Une nouvelle Réclamation a été créé")
+                        .showInformation();
+
+            } catch(Exception e){
+                throw new RuntimeException(e);
             }
 
-            if (w.getNbPlaces()>50 ) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur d'insertion");
-                alert.setHeaderText("Le nombre de participants maximal est 50");
-                alert.showAndWait();
-
-                return;
-            }
-
-
-
-            ws.ajouterWs(w);
-
-
-
-        } catch (SQLException ex) {
-            System.out.println("error" + ex.getMessage());
-
-            Notifications.create()
-                    .title("Nouvelle Réclamation")
-                    .text("Une nouvelle Réclamation a été créé")
-                    .showInformation();
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
 
+
     }
-
-
-
-
-
-}
-
 

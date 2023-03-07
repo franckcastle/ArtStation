@@ -43,7 +43,7 @@ public class Stat extends ApplicationFrame {
         dataset.addValue(list.get(0), "Musique", " ");
         dataset.addValue(list.get(1), "Theatre", " ");
         dataset.addValue(list.get(2), "Dessin", " ");
-        dataset.addValue(list.get(0), "f", " ");
+
         // dataset.addValue(19, "Taux de couverture Incar", " ");
         return dataset;
     }

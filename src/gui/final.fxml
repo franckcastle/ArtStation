@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,7 +24,6 @@
                 <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="36.0" prefWidth="8.0" />
                 <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="203.0" spacing="20.0" styleClass="round-layout" stylesheets="styles.css">
                     <children>
-                        <TextField alignment="CENTER" prefHeight="16.0" prefWidth="125.0" promptText="Search" styleClass="transparent" stylesheets="styles.css" />
                         <ImageView fitHeight="17.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../assets/logosearch.png" />
@@ -72,7 +70,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="C:\Users\Lenovo\Desktop\assets\home.png" />
+                                <Image url="@../../../Desktop/assets/home.png" />
                             </image>
                             <HBox.margin>
                                 <Insets left="5.0" top="9.0" />
@@ -195,7 +193,10 @@
         </VBox>
     </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="385.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" />
+         </children></AnchorPane>
    </center>
 
 </BorderPane>

@@ -48,6 +48,7 @@ public class AfficherWorkshopController implements Initializable {
     public TableColumn prixField;
     @FXML
     public TableColumn categorieField;
+
     @FXML
     public TableColumn nbPlacesField;
     @FXML

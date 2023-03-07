@@ -20,10 +20,13 @@
       <TextField fx:id="heure_finField" layoutX="226.0" layoutY="230.0" promptText="heure_fin" />
       <TextField fx:id="prixField" layoutX="34.0" layoutY="280.0" promptText="prix" />
       <TextField fx:id="nbPlacesField" layoutX="215.0" layoutY="280.0" promptText="nbPlaces" />
-      <Button layoutX="416.0" layoutY="160.0" mnemonicParsing="false" onAction="#AjouterWorkshop" prefHeight="30.0" prefWidth="97.0" text="Ajouter " textFill="#bf6017" />
+      <Button layoutX="416.0" layoutY="255.0" mnemonicParsing="false" onAction="#AjouterWorkshop" prefHeight="30.0" prefWidth="97.0" text="Ajouter " textFill="#bf6017" />
       <DatePicker fx:id="dateField" layoutX="96.0" layoutY="178.0" promptText="date" />
       <TextField fx:id="descriptionField" layoutX="205.0" layoutY="90.0" promptText="description" />
-      <Button layoutX="416.0" layoutY="200.0" mnemonicParsing="false" onAction="#Afficher" prefHeight="30.0" prefWidth="97.0" text="Afficher" textFill="#bf6017" />
+
+      <Button layoutX="416.0" layoutY="290.0" mnemonicParsing="false" onAction="#Afficher" prefHeight="30.0" prefWidth="97.0" text="Afficher" textFill="#bf6017" />
       <TextField fx:id="categorieField" layoutX="109.0" layoutY="341.0" promptText="categorie" />
+      <TextField fx:id="imageField" layoutX="390.0" layoutY="114.0" promptText="image" />
+
    </children>
 </AnchorPane>

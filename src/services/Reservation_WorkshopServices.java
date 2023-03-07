@@ -2,7 +2,9 @@ package services;
 import entities.Reservation_Workshop;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import utils.MyDB;
 
@@ -119,6 +121,17 @@ public class Reservation_WorkshopServices {
     }
 
 
+    public int getNombreReservations(int id_workshop) throws SQLException {
+        int nombreReservations = 0;
+        String req = "SELECT COUNT(*) AS nombre_reservations FROM reservation_workshop WHERE id_workshop = ?";
+        PreparedStatement pstmt = cnx.prepareStatement(req);
+        pstmt.setInt(1, id_workshop);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            nombreReservations = rs.getInt("nombre_reservations");
+        }
+        return nombreReservations;
+    }
 
     public int getReservationWorkshop(int id_user) {
         return id_user;

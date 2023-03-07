@@ -10,16 +10,13 @@
    <children>
       <Label layoutX="52.0" layoutY="29.0" prefHeight="26.0" prefWidth="146.0" text="Liste des Workshops" />
       <ComboBox fx:id="catId" layoutX="207.0" layoutY="30.0" prefWidth="150.0" promptText="Catégories" />
-      <TableView fx:id="tableChoix" layoutX="9.0" layoutY="100.0" prefHeight="200.0" prefWidth="583.0">
+      <TableView fx:id="tableChoix" layoutX="9.0" layoutY="100.0" prefHeight="200.0" prefWidth="679.0">
         <columns>
-          <TableColumn fx:id="titreChoix" prefWidth="45.0" text="Titre" />
-          <TableColumn fx:id="DureeChoix" prefWidth="61.0" text="Duree" />
-            <TableColumn fx:id="nom_artisteChoix" prefWidth="75.0" text="nom_artiste" />
-            <TableColumn fx:id="dateChoix" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="heure_debutChoix" prefWidth="75.0" text="Heure_debut" />
-            <TableColumn fx:id="heure_finChoix" prefWidth="75.0" text="Heure_fin" />
-            <TableColumn fx:id="prixChoix" prefWidth="75.0" text="Prix" />
-            <TableColumn fx:id="choisir" prefWidth="101.0" text="Choisir" />
+          <TableColumn fx:id="titreChoix" prefWidth="114.0" text="Titre" />
+            <TableColumn fx:id="nom_artisteChoix" prefWidth="138.0" text="nom_artiste" />
+            <TableColumn fx:id="dateChoix" prefWidth="127.0" text="Date" />
+            <TableColumn fx:id="prixChoix" prefWidth="151.0" text="Prix" />
+            <TableColumn fx:id="details" prefWidth="148.0" text="Détails" />
         </columns>
       </TableView>
    </children>

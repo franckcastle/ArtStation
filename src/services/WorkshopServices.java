@@ -32,7 +32,7 @@ public class WorkshopServices {
         ResultSet rs = st.executeQuery(req);
         while (rs.next()) {
             System.out.println(rs);
-            Workshop t = new Workshop(rs.getInt("id"), rs.getInt("duree"), rs.getInt("nbPlaces"), rs.getFloat("prix"), rs.getDate("date"), rs.getString("titre"), rs.getString("nom_artiste"), rs.getString("description"), rs.getString("heure_debut"), rs.getString("heure_fin"), rs.getString("categorie"));
+            Workshop t = new Workshop(rs.getInt("id"), rs.getInt("duree"), rs.getInt("nbPlaces"), rs.getFloat("prix"), rs.getDate("date"), rs.getString("titre"), rs.getString("nom_artiste"), rs.getString("description"), rs.getString("heure_debut"), rs.getString("heure_fin"), rs.getString("categorie" ), rs.getString("image" ));
 
             listEv.add(t);
         }
@@ -43,7 +43,7 @@ public class WorkshopServices {
 
     public void ajouterWs(Workshop t) throws SQLException, Exception {
 
-        String sql = "INSERT INTO workshop (duree,nbPlaces,prix,date,titre,nom_artiste,description,heure_debut,heure_fin,categorie) VALUES (?, ?, ?, ?,?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO workshop (duree,nbPlaces,prix,date,titre,nom_artiste,description,heure_debut,heure_fin,categorie,image) VALUES (?, ?, ?, ?,?, ?, ?, ?,?,?,?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
         pstmt.setInt(1, t.getDuree());
         pstmt.setInt(2, t.getNbPlaces());
@@ -55,6 +55,8 @@ public class WorkshopServices {
         pstmt.setString(8, t.getHeure_debut());
         pstmt.setString(9, t.getHeure_fin());
         pstmt.setString(10, t.getCategorie());
+        pstmt.setString(11, t.getImage());
+
 
 
         pstmt.executeUpdate();
@@ -94,6 +96,8 @@ public class WorkshopServices {
             p.setPrix(rs.getFloat("prix"));
             p.setDate(rs.getDate("date"));
             p.setCategorie(rs.getString("categorie"));
+            p.setImage(rs.getString("image"));
+
 
 
 
@@ -107,7 +111,7 @@ public class WorkshopServices {
 
 
     public void modifierWs(Workshop t) {
-        String query = "UPDATE  workshop set titre=? , description=? , duree=?, nom_artiste=? , heure_debut=?, heure_fin=?, prix=?, nbPlaces=?, categorie=?  Where id ='" + t.getId() + "'";
+        String query = "UPDATE  workshop set titre=? , description=? , duree=?, nom_artiste=? , heure_debut=?, heure_fin=?, prix=?, nbPlaces=?, categorie=? , image=?  Where id ='" + t.getId() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setString(1, t.getTitre());
@@ -119,10 +123,7 @@ public class WorkshopServices {
             ste.setFloat(7, t.getPrix());
             ste.setInt(8, t.getNbPlaces());
             ste.setString(9, t.getCategorie());
-
-
-
-
+            ste.setString(10, t.getImage());
 
 
 
@@ -151,12 +152,19 @@ public class WorkshopServices {
                         result.getInt("duree"),
                         result.getFloat("prix"),
                         result.getString("titre"),
-                        result.getString("description"),
-                        result.getString("nom_artiste"),
-                        result.getString("heure_debut"),
-                        result.getString("heure_fin")
 
-                ));
+                        result.getString("nom_artiste"),
+                        result.getString("description"),
+                        result.getString("heure_debut"),
+                        result.getString("heure_fin"),
+                        result.getString("image"),
+                        result.getDate("date")
+
+
+
+
+
+                        ));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

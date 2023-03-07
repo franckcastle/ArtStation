@@ -6,7 +6,7 @@ public class Workshop {
     private int id, duree, nbPlaces;
     private float prix;
     private Date date;
-    private String titre, nom_artiste, description, heure_debut, heure_fin,categorie;
+    private String titre, nom_artiste, description, heure_debut, heure_fin,categorie,image;
 
     public Workshop() {
     }
@@ -15,7 +15,7 @@ public class Workshop {
         this.titre=titre;
     }
 
-    public Workshop(int id, int duree, float prix,  String titre, String nom_artiste, String description, String heure_debut, String heure_fin) {
+    public Workshop(int id, int duree, float prix,  String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String image, Date date) {
         this.id = id;
         this.duree = duree;
         this.prix = prix;
@@ -25,9 +25,11 @@ public class Workshop {
         this.description = description;
         this.heure_debut = heure_debut;
         this.heure_fin = heure_fin;
+        this.image=image;
+        this.date=date;
     }
 
-    public Workshop(int id, int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String categorie) {
+    public Workshop(int id, int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String categorie,String image) {
         this.id = id;
         this.duree = duree;
         this.nbPlaces = nbPlaces;
@@ -39,9 +41,11 @@ public class Workshop {
         this.heure_debut = heure_debut;
         this.heure_fin = heure_fin;
         this.categorie=categorie;
+        this.image=image;
+
     }
 
-    public Workshop(int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin,String categorie) {
+    public Workshop(int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin,String categorie, String image) {
         this.duree =duree;
         this.nbPlaces = nbPlaces;
         this.prix = prix;
@@ -52,9 +56,11 @@ public class Workshop {
         this.heure_debut = heure_debut;
         this.heure_fin = heure_fin;
         this.categorie=categorie;
+        this.image=image;
+
     }
 
-    public Workshop(String titre, String description, int duree, String nom_artiste, String heure_debut, String heure_fin, int prix) {
+    public Workshop(String titre, String description, int duree, String nom_artiste, String heure_debut, String heure_fin, int prix,String image) {
         this.nom_artiste = nom_artiste;
         this.description = description;
         this.heure_debut = heure_debut;
@@ -62,8 +68,29 @@ public class Workshop {
         this.duree =duree;
         this.titre = titre;
         this.prix=prix;
+        this.image=image;
+
     }
 
+    public Workshop(int id, int duree, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String image) {
+        this.id = id;
+        this.duree = duree;
+        this.prix = prix;
+        this.date = date;
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+        this.description = description;
+        this.heure_debut = heure_debut;
+        this.heure_fin = heure_fin;
+        this.image = image;
+    }
+
+    public Workshop(float prix, Date date, String titre, String nom_artiste) {
+        this.prix = prix;
+        this.date = date;
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+    }
 
     public int getId() {
         return id;
@@ -151,6 +178,14 @@ public class Workshop {
 
     public void setCategorie(String categorie) {
         this.categorie = categorie;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
