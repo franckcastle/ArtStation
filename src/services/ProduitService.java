@@ -61,6 +61,12 @@ public class ProduitService  {
         Collections.sort(produits, Comparator.comparing(Produit::getPrix));
         return produits;
     }
+    public List<Produit> getByName() throws SQLException {
+        List<Produit> produits = getAll();
+        Collections.sort(produits, Comparator.comparing(Produit::getNom));
+        return produits;
+    }
+
 
    /* public List<Produit> recuperer() throws SQLException {
         List<Produit> listProduit = new ArrayList<Produit>();

@@ -32,6 +32,8 @@ public class MarketController implements Initializable {
     private TextField searchField;
     @FXML
     public Button trierparprix;
+    @FXML
+    public Button trierparnom;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -120,4 +122,27 @@ public class MarketController implements Initializable {
         }
     }
 
+    @FXML
+    private void updateViewByName() {
+        if (productsFlowPane != null) {
+            try {
+                List<Produit> listProd = ps.getByName();
+                productsFlowPane.getChildren().clear();
+
+                for (Produit produit : listProd) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/product.fxml"));
+                    Parent parent = fxmlLoader.load();
+                    ProductController productController = fxmlLoader.getController();
+                    productController.setProduct(produit);
+                    Region region = (Region) parent;
+                    Node node = region.getChildrenUnmodifiable().get(0);
+                    productsFlowPane.getChildren().add(node);
+                }
+            } catch (IOException | SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("productsFlowPane is null");
+        }
+    }
 }

@@ -130,7 +130,7 @@
                         <Separator prefWidth="200.0" />
                         <HBox prefHeight="54.0" prefWidth="166.0">
                            <children>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="trier par nom" textFill="WHITE">
+                              <Button fx:id="trierparnom" mnemonicParsing="false" onAction="#updateViewByName" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="trier par nom" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
