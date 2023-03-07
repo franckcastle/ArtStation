@@ -25,6 +25,7 @@ public class ModifierStatutController implements Initializable {
 
     StatutService ser = new StatutService();
     public Statut s;
+    public Commentaire c;
 
     public ModifierStatutController () {
     }
@@ -73,7 +74,7 @@ public class ModifierStatutController implements Initializable {
     @FXML
     void forum(ActionEvent event) {
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
             titreField.getScene().setRoot(loader);
 
         }catch (IOException ex){

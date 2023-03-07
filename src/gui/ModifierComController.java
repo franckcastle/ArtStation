@@ -57,7 +57,6 @@ public class ModifierComController implements Initializable {
     @FXML
 public void initialize() {
 
-        descriptionField.setText(c.getDescription());
 
 
 }
@@ -79,7 +78,7 @@ public void initialize() {
     @FXML
     void forum(ActionEvent event) {
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
             descriptionField.getScene().setRoot(loader);
 
         }catch (IOException ex){

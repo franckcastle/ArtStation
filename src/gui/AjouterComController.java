@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import services.CommentaireService;
@@ -31,7 +32,6 @@ public class AjouterComController implements Initializable {
 
     @FXML
     void ajouterCom(ActionEvent event) {
-
         // System.out.println(sta.getId_s());
         Commentaire c = new Commentaire();
         c.setDescription(descriptionField.getText());
@@ -55,9 +55,9 @@ public class AjouterComController implements Initializable {
             cms.ajouterCom(c);
             reset();
         } catch(SQLException ex){
-                System.out.println(ex.getMessage());
-            }
+            System.out.println(ex.getMessage());
         }
+    }
 
 
 
@@ -65,7 +65,7 @@ public class AjouterComController implements Initializable {
         descriptionField.setText("");
     }
 
-//    @FXML
+    //    @FXML
 //    void AfficherCommentaire(ActionEvent event){
 //        try {
 //
@@ -79,7 +79,7 @@ public class AjouterComController implements Initializable {
     @FXML
     void forum(ActionEvent event) {
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
             descriptionField.getScene().setRoot(loader);
 
         }catch (IOException ex){
@@ -91,4 +91,6 @@ public class AjouterComController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 }

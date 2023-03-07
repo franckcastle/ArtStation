@@ -1,13 +1,10 @@
 
 package services;
 
-import com.sun.source.tree.WhileLoopTree;
-import entities.Commentaire;
 import entities.Statut;
 
 import java.sql.*;
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import utils.MyDB;
@@ -126,7 +123,24 @@ public  class StatutService implements IService <Statut> {
 
         return statut;
     }
+    public Statut rechStatutByTitre(String titre) throws SQLException, ParseException {
+        Statut statut = null;
+        try {
+            Statement stmt = cnx.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT * FROM statut  where titre ="+titre);
+            while(result.next()) {
+                statut.setId_s(result.getInt(1));
+                statut.setTitre(result.getString(2));
+                statut.setContenu(result.getString(3));
+                statut.setCreated(result.getDate(4));
+                statut.setUpdated(result.getDate(5));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
 
+        return statut;
+    }
     @Override
     public int recupererIdStatut(String titre) throws SQLException, ParseException {
         int id=0;
@@ -140,6 +154,29 @@ public  class StatutService implements IService <Statut> {
     }
 
 
+    @Override
+    public Statut recupererStatutByTitre(String titre) throws SQLException {
+        List<Statut> stat = new ArrayList<>();
+        String req = "Select * from statut where titre = ?";
 
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1,titre);
+        ResultSet rs = ps.executeQuery();
+        Statut s = new Statut();
+        rs.next();
+        if (rs.getRow()!=0){
+            s.setId_s(rs.getInt(1));
+            s.setTitre(titre);
+            s.setContenu(rs.getString(3));
+
+
+            return s;
+        }
+        else {
+            System.out.println("Statut inexistant !");
+            return null;
+        }
+
+    }
 }
 

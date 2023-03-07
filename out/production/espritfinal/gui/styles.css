@@ -1,0 +1,92 @@
+.white-background{
+    -fx-background-color: #fff;
+}
+
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #fac881;
+}
+
+.button{
+    -fx-background-radius:50;
+    -fx-background-color: #fac881;
+}
+
+.BorderPane{
+    -fx-border-color: #455771;
+    -fx-border-width: 3;
+
+}
+
+.HBox{
+    -fx-background-color: #d2e8f9;
+    -fx-border-color: #455771;
+    -fx-border-width: 1.5;
+}
+
+.VBox{
+    -fx-border-color: #455771;
+    -fx-border-width: 1.5;
+}
+
+.selected{
+    -fx-background-color: #F4F5F9;
+}
+
+.mouse-moved:hover{
+    -fx-background-color:F4F5F9;
+
+}
+.separator {
+    -fx-padding: 10 0;
+}
+
+.statut-vbox {
+    -fx-padding: 10;
+}
+
+.statut-titre {
+    -fx-text-fill: #fac881;
+    -fx-font-family: "Baskerville Old Face";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.search-box{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+.trasparent {
+    -fx-background-color: rgba(0,0,0,0);
+}
+.search-button{
+    -fx-background-color: #D2E8F9;
+    -fx-background-radius: 30;
+}
+.right-bar{
+    -fx-background-color: #eed9c8;
+}
+.shadow {
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,10.0);
+}
+.light-background{
+    -fx-background-color: #FFFFFF;
+}
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #eed9c8;
+}
+.mouse-moved :hover{
+    -fx-background-color: #E4E4E4;
+
+}
+.Product-item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}

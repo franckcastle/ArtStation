@@ -17,7 +17,7 @@ public class Test {
     public static void main(String[] args) throws RuntimeException, SQLException, ParseException {
 
   //      Commentaire c = new Commentaire("hhh");
-        CommentaireService cs = new CommentaireService();
+        //CommentaireService cs = new CommentaireService();
 //        try {
 //         //   cs.ajouterCom(c);
 //
@@ -43,6 +43,8 @@ public class Test {
 //           Statut statut = ss.rechStatut(17);
         //  ss.modifier(statut, "ESSAI", "contenu");
         // ss.supprimer(3);
+        StatutService ss = new StatutService();
+       ss.recupererStatutByTitre("Musique");
     }
 
     }

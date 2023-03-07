@@ -20,4 +20,5 @@ public interface IService <P>{
 
 
 
+     Statut recupererStatutByTitre(String titre) throws SQLException;
 }

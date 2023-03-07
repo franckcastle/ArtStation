@@ -1,7 +1,8 @@
 package entities;
 
-import java.awt.desktop.UserSessionEvent;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 public class Commentaire {
     private int id_c ;
@@ -40,6 +41,7 @@ public class Commentaire {
         this.id_c = id_c;
     }
 
+
     public String getDescription() {
         return description;
     }
@@ -62,6 +64,19 @@ public class Commentaire {
 
     public void setDate_ajout(Date date_ajout) {
         this.date_ajout = date_ajout;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Commentaire that = (Commentaire) o;
+        return id_c == that.id_c && id_s == that.id_s && Objects.equals(description, that.description) && Objects.equals(statut, that.statut);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_c, id_s, description, statut);
     }
 
     @Override

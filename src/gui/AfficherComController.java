@@ -1,15 +1,19 @@
 package gui;
 
+
 import entities.Commentaire;
 
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+
+import entities.Statut;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,14 +23,20 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import services.CommentaireService;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
+
+
 public class AfficherComController implements Initializable {
 
+
+    public Commentaire com;
     @FXML
     private TableView<Commentaire> commentairesTv;
     @FXML
@@ -41,26 +51,37 @@ public class AfficherComController implements Initializable {
     private TableColumn<Commentaire, Button> modifier;
 
 
+
+
     CommentaireService cs = new CommentaireService();
+
+Statut statut;
+
+    @FXML
+    private TableView<Commentaire> tableView; // or ListView<Commentaire> if you prefer
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            List<Commentaire> cm = cs.recupererCom();
 
-            ObservableList<Commentaire> olp = FXCollections.observableArrayList(cm);
+            //List<Commentaire> commentairesList = cs.recupererComByIdStatut(statut.getId_s());
+           List<Commentaire> commentairesList = cs.recupererCom();
+
+            ObservableList<Commentaire> olp = FXCollections.observableArrayList(commentairesList);
             commentairesTv.setItems(olp);
             idTv.setCellValueFactory(new PropertyValueFactory<>("id_c"));
             descriptionTv.setCellValueFactory(new PropertyValueFactory<>("description"));
             dateajoutTv.setCellValueFactory(new PropertyValueFactory<>("date_ajout"));
+
 
             this.supprimerCom();
             this.modifier();
         } catch (SQLException ex) {
             System.out.println("Erreur" + ex.getMessage());
         }
-
     }
+
+
 
 
     @FXML
@@ -79,21 +100,30 @@ public class AfficherComController implements Initializable {
                                     commentairesTv.getItems().remove(getIndex());
                                     commentairesTv.refresh();
 
+
                                 }
                             } catch (SQLException e) {
                                 throw new RuntimeException(e);
                             }
 
+
                         });
                         setGraphic(b);
+
 
                     }
                 }
             };
 
+
         });
 
+
     }
+
+
+
+
 
 
 
@@ -109,33 +139,55 @@ public class AfficherComController implements Initializable {
                         Button b = new Button("modifier");
                         b.setOnAction((event) -> {
 
+
                             try {
                                 FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModifierCom.fxml"));
                                 Parent root = loader.load();
 
-                               Commentaire com = (Commentaire) commentairesTv.getItems().get(getIndex());
+
+                                Commentaire com = (Commentaire) commentairesTv.getItems().get(getIndex());
                                 ModifierComController controller = loader.getController();
                                 controller.setCommentaire(com);
                                 controller.initialize();
 
-                               // controller.c1=cm;
+
+                                // controller.c1=cm;
                                 commentairesTv.getScene().setRoot(root);
+
 
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
 
+
                         });
                         setGraphic(b);
+
 
                     }
                 }
             };
 
+
         });
+
 
     }
 
 
 
+    @FXML
+    void forum(ActionEvent event) {
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
+            commentairesTv.getScene().setRoot(loader);
+
+        }catch (IOException ex){
+            System.out.println("Erreur"+ex.getMessage());
+        }
+
+    }
+
+
 }
+

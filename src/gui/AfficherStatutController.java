@@ -2,14 +2,15 @@ package gui;
 
 import entities.Commentaire;
 import entities.Statut;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import services.CommentaireService;
@@ -18,11 +19,10 @@ import services.StatutService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+import java.util.stream.Collectors;
 
 
 public class AfficherStatutController implements Initializable {
@@ -34,13 +34,20 @@ public class AfficherStatutController implements Initializable {
     private StatutService s = new StatutService();
 
     private boolean isLiked;
+    @FXML
+    private TextField searchField;
+    Statut ss ;
     CommentaireService cs = new CommentaireService();
 
-
+    @FXML
+    private VBox com;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            updateView(newValue);
+        });
         try {
             List<Statut> stt = s.recuperer();
 
@@ -51,7 +58,11 @@ public class AfficherStatutController implements Initializable {
         } catch (SQLException ex) {
             System.out.println("Erreur" + ex.getMessage());
         }
+
+
     }
+
+
 
     private VBox createStatutVBox(Statut statut) {
         VBox vbox = new VBox();
@@ -68,7 +79,8 @@ public class AfficherStatutController implements Initializable {
         //Label updatedLabel = new Label("Modifié le " + statut.getUpdated());
         Label nbrLikeLabel = new Label(statut.getNbrLike() + " personnes aiment ça");
         Label comLabel = new Label("Commentaires: ");
-
+        HBox commentairesHBox = new HBox();
+        commentairesHBox.setSpacing(10);
         List<Commentaire> commentairesList = null;
         try {
             commentairesList = cs.recupererComByIdStatut(statut.getId_s());
@@ -77,7 +89,7 @@ public class AfficherStatutController implements Initializable {
         }
         for (Commentaire commentaire : commentairesList) {
             Text commentaireText = new Text(commentaire.getDescription());
-            vbox.getChildren().add(commentaireText);
+            commentairesHBox.getChildren().add(commentaireText);
         }
 
         Button commenterBtn = new Button("Commenter");
@@ -147,7 +159,7 @@ public class AfficherStatutController implements Initializable {
             }
         });
 
-        vbox.getChildren().addAll(titreLabel, contenuText, createdLabel, nbrLikeLabel,comLabel,commenterBtn, likeBtn,modifierBtn,supprimerBtn);
+        vbox.getChildren().addAll(titreLabel, contenuText, createdLabel, nbrLikeLabel,comLabel,commentairesHBox,commenterBtn, likeBtn,modifierBtn,supprimerBtn);
 
 
 
@@ -165,6 +177,48 @@ public class AfficherStatutController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+        private void updateView(String searchQuery) {
+            if (statutsVBox != null) {
+                try {
+                    List<Statut> listProd = null;
+                    try {
+                        listProd = s.recuperer();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    statutsVBox.getChildren().clear(); // clear the current products
 
+                    // filter the list of products based on the search query
+                    List<Statut> filteredProducts = listProd.stream()
+                            .filter(ss -> ss.getTitre().toLowerCase().contains(searchQuery.toLowerCase()))
+                            .collect(Collectors.toList());
 
+                    for (Statut statut : filteredProducts) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
+                        Parent parent = fxmlLoader.load();
+                        RechStatController productController = fxmlLoader.getController();
+                        productController.setStatut(statut);
+                        Region region = (Region) parent;
+                        Node node = region.getChildrenUnmodifiable().get(0);
+                        statutsVBox.getChildren().add(node);
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                System.out.println("productsFlowPane is null");
+            }
+        }
+
+    @FXML
+    void forum(ActionEvent event) {
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
+            statutsVBox.getScene().setRoot(loader);
+
+        }catch (IOException ex){
+            System.out.println("Erreur"+ex.getMessage());
+        }
+
+    }
 }
