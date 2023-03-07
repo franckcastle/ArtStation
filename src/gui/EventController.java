@@ -53,6 +53,7 @@ public class EventController implements Initializable {
                 eventContainer.add(eventBox,column++,row);
                 GridPane.setMargin(eventBox,new Insets(10));
 
+
         }
         }catch (IOException | SQLException e) {
             e.printStackTrace();

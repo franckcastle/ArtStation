@@ -9,9 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="toj" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="180.0" spacing="5.0" style="-fx-background-radius: 20;" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EvController">
+
+<VBox fx:id="toj" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="180.0" spacing="5.0" style="-fx-background-radius: 20;" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EvController">
    <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="50.0" />
+      <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
    </padding>
    <children>
       <ImageView fx:id="evImg" fitHeight="223.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />

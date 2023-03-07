@@ -2,12 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import org.controlsfx.control.Rating?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsController">
    <children>
@@ -51,10 +49,9 @@
             </Label>
             <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="2.0" onMouseClicked="#retour" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/en-arriere.png" />
+                  <Image url="@../image/contour-du-bouton-circulaire-fleche-arriere-gauche.png" />
                </image>
             </ImageView>
-            <Slider fx:id="mySlider" blockIncrement="1.0" layoutX="389.0" layoutY="352.0" majorTickUnit="2.0" max="10.0" minorTickCount="1" prefHeight="14.0" prefWidth="185.0" showTickLabels="true" showTickMarks="true" />
             <Label fx:id="prixFiel2" layoutX="42.0" layoutY="311.0" text="Evaluation:">
                <font>
                   <Font name="Berlin Sans FB" size="35.0" />
@@ -65,8 +62,7 @@
                   <Font name="Berlin Sans FB" size="35.0" />
                </font>
             </Label>
-            <Rating fx:id="ratee" layoutX="318.0" layoutY="129.0" />
-            <Button layoutX="442.0" layoutY="280.0" mnemonicParsing="false" onAction="#eval" text="evaluer" />
+            <Button layoutX="456.0" layoutY="318.0" mnemonicParsing="false" onAction="#eval" text="evaluer" />
          </children>
       </AnchorPane>
    </children>
