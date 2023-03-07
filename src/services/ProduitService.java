@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import utils.MyDb;
 
@@ -53,6 +55,11 @@ public class ProduitService  {
             System.out.println(p);
         }
         return listProd;
+    }
+    public List<Produit> getByPrice() throws SQLException {
+        List<Produit> produits = getAll();
+        Collections.sort(produits, Comparator.comparing(Produit::getPrix));
+        return produits;
     }
 
    /* public List<Produit> recuperer() throws SQLException {

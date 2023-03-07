@@ -14,8 +14,8 @@ public class TestApp extends Application  {
         try {
            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffichagePdt.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficherCtg.fxml"));
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/market.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/statistique.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/market.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/statistique.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root,600,400);
             primaryStage.setScene(scene);
