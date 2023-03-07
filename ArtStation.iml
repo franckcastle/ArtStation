@@ -5,7 +5,6 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library>
@@ -17,6 +16,7 @@
         <jarDirectory url="file://C:/Java/javafx-sdk-19.0.2.1/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -28,42 +28,11 @@
     </orderEntry>
     <orderEntry type="module-library">
       <library>
-        <CLASSES />
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/community-engines/h2o/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/integration/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/integration/src/test/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr-examples/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr-examples/src/test/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/community/mahout-mr/mr/src/test/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/core/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/core/src/test/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/engine/hdfs/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/engine/hdfs/src/test/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/experimental/viennacl-omp/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/mahout-14.1-source-release/apache-mahout-14.1/experimental/viennacl/src/main/java" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
         <CLASSES>
           <root url="jar://$USER_HOME$/Downloads/apache-mahout-distribution-14.1/lib/mahout-core-14.1-scala_2.11.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES />
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$USER_HOME$/Downloads/javafx-sdk-17.0.6" />
-        </SOURCES>
-        <jarDirectory url="file://$USER_HOME$/Downloads/javafx-sdk-17.0.6" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
@@ -83,6 +52,27 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/smile-3.0.1/smile-3.0.1/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Downloads/smile-3.0.1/smile-3.0.1/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/jfreechart-1.0.19/jfreechart-1.0.19/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Downloads/jfreechart-1.0.19/jfreechart-1.0.19/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

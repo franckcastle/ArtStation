@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StatistiqueController">
+    <BarChart fx:id="chart" layoutX="31.0" layoutY="44.0" prefHeight="302.0" prefWidth="534.0" title="Product Ratings">
+        <xAxis>
+            <CategoryAxis label="Product ID"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Rating"/>
+        </yAxis>
+    </BarChart>
+</AnchorPane>
+
+
+

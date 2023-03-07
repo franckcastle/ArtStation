@@ -1,5 +1,7 @@
 package services;
 
+import entities.Categorie;
+import entities.Produit;
 import entities.Rating;
 import java.sql.Connection;
 
@@ -32,4 +34,21 @@ public class RatingService {
             ex.printStackTrace();
         }
     }
+
+    public List<Rating> getAll() throws SQLException {
+        List<Rating> raating = new ArrayList<Rating>();
+        String req = "select * from rating";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        while (rs.next()) {
+            System.out.println(rs);
+            Rating c = new Rating
+                    (rs.getInt("id"), rs.getInt("rating"),rs.getInt("id_produit"));
+
+            raating.add(c);
+            System.out.println();
+        }
+        return raating;
+    }
+
 }
