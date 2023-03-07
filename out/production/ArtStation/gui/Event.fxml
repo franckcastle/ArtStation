@@ -44,7 +44,7 @@
             <Separator maxWidth="-Infinity" orientation="VERTICAL" prefHeight="41.0" prefWidth="0.0" />
             <HBox alignment="CENTER" prefHeight="70.0" prefWidth="224.0" styleClass="round-layout" stylesheets="@../css/Style.css">
                <children>
-                  <TextField prefHeight="26.0" prefWidth="174.0" promptText="search" styleClass="transparent" stylesheets="@../css/Style.css" />
+                  <TextField fx:id="searchField" prefHeight="26.0" prefWidth="174.0" promptText="search" styleClass="transparent" stylesheets="@../css/Style.css" />
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/rechercher.png" />
@@ -230,18 +230,11 @@
                   <Insets />
                </VBox.margin>
                <content>
-                  <Pane prefHeight="54.0" prefWidth="685.0">
-                     <children>
-                        <GridPane fx:id="eventContainer" layoutX="1.0" layoutY="167.0" prefHeight="0.0" prefWidth="0.0">
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <padding>
-                              <Insets bottom="10.0" top="20.0" />
-                           </padding>
-                        </GridPane>
-                     </children>
-                  </Pane>
+                  <GridPane fx:id="eventContainer" prefHeight="0.0" prefWidth="0.0">
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
                </content>
             </ScrollPane>
          </children>
