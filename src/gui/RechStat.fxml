@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="245.0" prefWidth="230.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RechStatController">
+<AnchorPane prefHeight="245.0" prefWidth="230.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProductController">
 <VBox fx:id="statutContainer" layoutY="63.0" maxHeight="-Infinity" prefHeight="246.0" prefWidth="230.0" style="-fx-padding: 10;">
 
     <Label fx:id="statutTitre" style="-fx-font-size: 10pt;" text="Titre Statut">

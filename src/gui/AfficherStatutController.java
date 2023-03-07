@@ -196,7 +196,7 @@ public class AfficherStatutController implements Initializable {
                     for (Statut statut : filteredProducts) {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
                         Parent parent = fxmlLoader.load();
-                        RechStatController productController = fxmlLoader.getController();
+                        ProductController productController = fxmlLoader.getController();
                         productController.setStatut(statut);
                         Region region = (Region) parent;
                         Node node = region.getChildrenUnmodifiable().get(0);

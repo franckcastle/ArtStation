@@ -111,7 +111,7 @@ public class ForumController implements Initializable {
                 for (Statut statut : filteredProducts) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
                     Parent parent = fxmlLoader.load();
-                    RechStatController productController = fxmlLoader.getController();
+                    ProductController productController = fxmlLoader.getController();
                     productController.setStatut(statut);
                     Region region = (Region) parent;
                     Node node = region.getChildrenUnmodifiable().get(0);
@@ -239,8 +239,52 @@ public class ForumController implements Initializable {
         }
 
     }
+    @FXML
+    private void updateViewByNbrLike() {
+        if (statutsVBox != null) {
+            try {
+                List<Statut > listStatut = s.getByNbrLike();
+                statutsVBox.getChildren().clear();
 
+                for (Statut statut : listStatut) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
+                    Parent parent = fxmlLoader.load();
+                    ProductController productController = fxmlLoader.getController();
+                    productController.setStatut(statut);
+                    Region region = (Region) parent;
+                    Node node = region.getChildrenUnmodifiable().get(0);
+                    statutsVBox.getChildren().add(node);
+                }
+            } catch (IOException | SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("productsFlowPane is null");
+        }
+    }
+    @FXML
+    private void updateViewByTitre() {
+        if (statutsVBox != null) {
+            try {
+                List<Statut > listStatut = s.getByTitre();
+                statutsVBox.getChildren().clear();
 
+                for (Statut statut : listStatut) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
+                    Parent parent = fxmlLoader.load();
+                    ProductController productController = fxmlLoader.getController();
+                    productController.setStatut(statut);
+                    Region region = (Region) parent;
+                    Node node = region.getChildrenUnmodifiable().get(0);
+                    statutsVBox.getChildren().add(node);
+                }
+            } catch (IOException | SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("productsFlowPane is null");
+        }
+    }
 
     }
 

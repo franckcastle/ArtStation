@@ -21,4 +21,7 @@ public interface IService <P>{
 
 
      Statut recupererStatutByTitre(String titre) throws SQLException;
+    public List<Statut> getByNbrLike() throws SQLException;
+    public List<Statut> getByTitre() throws SQLException;
+
 }

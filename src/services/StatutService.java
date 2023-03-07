@@ -6,6 +6,8 @@ import entities.Statut;
 import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import utils.MyDB;
 
@@ -178,5 +180,16 @@ public  class StatutService implements IService <Statut> {
         }
 
     }
+    public List<Statut> getByNbrLike() throws SQLException {
+        List<Statut> statuts = recuperer();
+        Collections.sort(statuts, Comparator.comparing(Statut::getNbrLike));
+        return statuts;
+    }
+    public List<Statut> getByTitre() throws SQLException {
+        List<Statut> statuts = recuperer();
+        Collections.sort(statuts, Comparator.comparing(Statut::getTitre));
+        return statuts;
+    }
+
 }
 
