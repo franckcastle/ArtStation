@@ -86,7 +86,7 @@
          <left>
             <VBox prefHeight="540.0" prefWidth="166.0" styleClass="light-background" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="159.0" prefWidth="166.0" spacing="3.0">
+                  <VBox prefHeight="209.0" prefWidth="166.0" spacing="3.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="43.0" prefWidth="102.0" text="Brows ">
                            <font>
@@ -97,7 +97,7 @@
                            </VBox.margin>
                         </Label>
                         <Separator prefWidth="200.0" />
-                        <HBox prefHeight="50.0" prefWidth="200.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
+                        <HBox prefHeight="86.0" prefWidth="166.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -118,21 +118,21 @@
                            </children>
                         </HBox>
                         <Separator prefWidth="200.0" />
-                        <HBox prefHeight="52.0" prefWidth="166.0">
+                        <HBox prefHeight="62.0" prefWidth="166.0">
                            <children>
                               <Button fx:id="trierparprix" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#updateViewByPrice" style="-fx-background-color: #F6B49C;" styleClass="search-button" stylesheets="@../values/style.css" text="trier par prix" textFill="WHITE">
                                  <HBox.margin>
-                                    <Insets left="20.0" />
+                                    <Insets left="25.0" top="5.0" />
                                  </HBox.margin>
                               </Button>
                            </children>
                         </HBox>
                         <Separator prefWidth="200.0" />
-                        <HBox prefHeight="54.0" prefWidth="166.0">
+                        <HBox prefHeight="62.0" prefWidth="166.0">
                            <children>
                               <Button fx:id="trierparnom" mnemonicParsing="false" onAction="#updateViewByName" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="trier par nom" textFill="WHITE">
                                  <HBox.margin>
-                                    <Insets left="20.0" />
+                                    <Insets left="25.0" top="5.0" />
                                  </HBox.margin>
                               </Button>
                            </children>

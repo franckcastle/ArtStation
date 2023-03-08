@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import services.ProduitService;
@@ -30,6 +27,8 @@ public class AfficherPdtController implements Initializable {
     @FXML
     private Button AjouterProduit;
     @FXML
+    private Button stat;
+    @FXML
     public TableView productsTv;
     @FXML
     public TableColumn idproduitTv;
@@ -45,6 +44,8 @@ public class AfficherPdtController implements Initializable {
     public TableColumn categorieTv;
     @FXML
     public TableColumn imageTv;
+    @FXML
+    private Label brows;
     @FXML
     private TableColumn<Produit, Button> supprimer;
 
@@ -190,5 +191,16 @@ public class AfficherPdtController implements Initializable {
             }
         });
 
+    }
+    @FXML
+    public void consulterStat(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("statistique.fxml"));
+
+            //Parent root = loader.load();
+            brows.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
