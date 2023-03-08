@@ -77,7 +77,7 @@ public class ForumController implements Initializable {
     @FXML
     void com(ActionEvent event) {
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherCom.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("AffichComAdmin.fxml"));
             textfield.getScene().setRoot(loader);
 
         } catch (IOException ex) {

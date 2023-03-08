@@ -30,7 +30,7 @@
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="202.0" spacing="20.0" styleClass="round-layout" stylesheets="@styles.css">
                <children>
                   <TextField fx:id="searchField" alignment="CENTER" prefHeight="16.0" prefWidth="125.0" promptText="searchField" styleClass="transparent" stylesheets="@styles.css" />
-                 
+
                </children>
                <padding>
                   <Insets left="10.0" />

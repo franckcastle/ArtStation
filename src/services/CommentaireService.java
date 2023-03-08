@@ -71,7 +71,7 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
             cm.setDescription(rs.getString("description"));
             cm.setDate_ajout(rs.getDate("date_ajout"));
             cm.setId_c(rs.getInt("id_c"));
-            cm.setId_c(rs.getInt("id_s"));
+            cm.setId_s(rs.getInt("id_s"));
 
             commentaires.add(cm);
 
@@ -107,7 +107,7 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
             cm.setId_c(rs.getInt("id_c"));
             cm.setDescription(rs.getString("description"));
             cm.setDate_ajout(rs.getDate("date_ajout"));
-            cm.setId_c(rs.getInt("id_s"));
+            cm.setId_s(rs.getInt("id_s"));
 
             commentaires.add(cm);
 

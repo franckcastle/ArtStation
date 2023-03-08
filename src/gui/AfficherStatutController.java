@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -45,6 +46,7 @@ public class AfficherStatutController implements Initializable {
     private TextField searchField;
     Statut ss ;
     CommentaireService cs = new CommentaireService();
+    Separator separator = new Separator();
 
     @FXML
     private VBox com;
@@ -92,23 +94,12 @@ public class AfficherStatutController implements Initializable {
         nbrLikeLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
         Label comLabel = new Label("Commentaires: ");
         comLabel.setStyle("-fx-font-size: 17px; -fx-font-weight: bold;-fx-text-fill: #455771");
-//        HBox commentairesHBox = new HBox();
-//        commentairesHBox.setSpacing(20);
-//        List<Commentaire> commentairesList = null;
-//        try {
-//            commentairesList = cs.recupererComByIdStatut(statut.getId_s());
-//        } catch (SQLException e) {
-//            System.out.println("Erreur" + e.getMessage());
-//        }
-//        for (Commentaire commentaire : commentairesList) {
-//            Text commentaireText = new Text(commentaire.getDescription());
-//            commentairesHBox.getChildren().add(commentaireText);
-//        }
-
 
         FlowPane commentairesFlowPane = new FlowPane();
         commentairesFlowPane.setHgap(25);
         commentairesFlowPane.setVgap(25);
+        commentairesFlowPane.getChildren().add(separator);
+
         List<Commentaire> commentairesList = null;
         try {
             commentairesList = cs.recupererComByIdStatut(statut.getId_s());
@@ -118,20 +109,26 @@ public class AfficherStatutController implements Initializable {
             Label commentaireLabel = new Label(commentaire.getDescription());
             Label comsLabel = new Label(Integer.toString(commentaire.getId_c()));
 
-
-
             commentaireLabel.setContentDisplay(ContentDisplay.LEFT);
             commentaireLabel.setOnMouseClicked(event -> {
 
                 try {
-                    Parent loader = FXMLLoader.load(getClass().getResource("AfficherCom.fxml"));
-                    statutsVBox.getScene().setRoot(loader);
+                    FXMLLoader loader =new  FXMLLoader(getClass().getResource("ModifierCom.fxml"));
+                    Parent root = loader.load();
 
+                    ModifierComController controller = loader.getController();
+                    controller.id=commentaire.getId_c();
+                    statutsVBox.getScene().setRoot(root);
                 }catch (IOException ex){
                     System.out.println("Erreur"+ex.getMessage());
                 }
             });
-            commentairesFlowPane.getChildren().add(commentaireLabel);
+            Separator separator = new Separator();
+            separator.setPrefWidth(1);
+            separator.setStyle("-fx-background-color: gray ; -fx-padding: 5px 0px; -fx-background-radius: 50%;");
+
+
+            commentairesFlowPane.getChildren().addAll(commentaireLabel,separator);
         }
 
 

@@ -215,12 +215,21 @@
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font></TextField>
-                  <Button layoutX="35.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierCom" prefHeight="38.0" prefWidth="141.0" styleClass="round-layout" stylesheets="@styles.css" text="Valider" textFill="WHITE" />
-                  <Button layoutX="431.0" layoutY="363.0" mnemonicParsing="false" onAction="#forum" prefHeight="35.0" prefWidth="105.0" stylesheets="@styles.css" text="Forum">
+                  <Button layoutX="35.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifierCom" prefHeight="38.0" prefWidth="102.0" styleClass="round-layout" stylesheets="@styles.css" text="Valider" textFill="WHITE" />
+                  <Button layoutX="226.0" layoutY="365.0" mnemonicParsing="false" onAction="#forum" prefHeight="32.0" prefWidth="106.0" styleClass="button2" stylesheets="@styles.css" text="Forum" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/logoforum.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="supprimer" layoutX="432.0" layoutY="368.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="35.0" prefWidth="123.0" stylesheets="@styles.css" text="Supprimer" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/iconsupprimer.png" />
                            </image>
                         </ImageView>
                      </graphic>

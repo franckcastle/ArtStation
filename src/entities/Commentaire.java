@@ -1,7 +1,6 @@
 package entities;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 public class Commentaire {
@@ -10,10 +9,6 @@ public class Commentaire {
     private String description;
     private static Date date_ajout;
     private Statut statut;
-
-
-
-
 
 
     public Commentaire(){

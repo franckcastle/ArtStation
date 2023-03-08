@@ -1,12 +1,15 @@
 package gui;
 
 import entities.Commentaire;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import services.CommentaireService;
 
@@ -21,10 +24,18 @@ public class ModifierComController implements Initializable {
 
     @FXML
     private TextField descriptionField;
+    @FXML
+    private TextField idField;
 
+    @FXML
+    private Button supprimer;
 
     CommentaireService cs = new CommentaireService();
     public Commentaire c;
+
+    int id;
+
+
 
     public ModifierComController() {
     }
@@ -33,9 +44,6 @@ public class ModifierComController implements Initializable {
 
         this.c = c;
     }
-
-
-
 
 
 
@@ -55,10 +63,11 @@ public void initialize() {
     @FXML
     public void modifierCom(ActionEvent event) throws SQLException {
         if (!descriptionField.getText().isEmpty()) {
-
-             c.setId_c(c.getId_c());
-             c.setDescription(descriptionField.getText());
-             cs.modifierCom(c);
+            Commentaire com = new Commentaire();
+            com.setId_c(id);
+            System.out.println(id);
+            com.setDescription(descriptionField.getText());
+            cs.modifierCom(com);
         } if (checkWords(c.getDescription()).equals("true")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ATTENTION ! ");
@@ -73,7 +82,8 @@ public void initialize() {
 
             alert.showAndWait();
         }
-    }
+        }
+
     @FXML
     void forum(ActionEvent event) {
         try {
@@ -83,6 +93,17 @@ public void initialize() {
         }catch (IOException ex){
             System.out.println("Erreur"+ex.getMessage());
         }
+
+    }
+
+    @FXML
+    void supprimer(ActionEvent event) throws SQLException {
+
+        //  String date_ajout=dateajouTf.getText();
+
+        cs.supprimerCom(id);
+
+
 
     }
     public void setCommentaire(Commentaire c) {
