@@ -62,7 +62,7 @@ public class AjouterWorkshopController implements Initializable {
     private void Afficher(ActionEvent event) {
         try {
             //navigation
-            Parent loader = FXMLLoader.load(getClass().getResource("AfficherWorkshop.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("affichage.fxml"));
 
             titreField.getScene().setRoot(loader);
         } catch (IOException ex) {

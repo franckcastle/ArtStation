@@ -20,7 +20,7 @@ public class MainAjouter extends Application {
             //Ajout
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterEv.fxml"));
             //GetAll+DEl
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ChoisirWorkshop.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterWorkshop.fxml"));
 
             Parent root = loader.load();
             Scene scene = new Scene(root,600,400);

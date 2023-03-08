@@ -109,21 +109,34 @@ public class WorkshopServices {
     }
 
 
+  /*  public void modifer(String s1,String s2,String s3,String s4,String s5,int s6,int s7,float s8) throws SQLException {
+        String req = "UPDATE workshop SET titre=?,heure_debut=?, heure_fin=?,categorie=?,nom_artiste=?,duree=?,nbPlaces=?,prix=? where id = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1,s1);
+        ps.setString(2,s2);
+        ps.setString(3,s3);
+        ps.setString(4,s4);
+        ps.setString(5,s5);
+        ps.setInt(6, s6);
+        ps.setInt(7, s7);
+        ps.setFloat(8, s8);
 
+        ps.executeUpdate();
+    }*/
     public void modifierWs(Workshop t) {
-        String query = "UPDATE  workshop set titre=? , description=? , duree=?, nom_artiste=? , heure_debut=?, heure_fin=?, prix=?, nbPlaces=?, categorie=? , image=?  Where id ='" + t.getId() + "'";
+        String query = "UPDATE  workshop set titre=? , duree=?, nom_artiste=? , heure_debut=?, heure_fin=?, prix=?, nbPlaces=?, categorie=?   Where id ='" + t.getId() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setString(1, t.getTitre());
-            ste.setString(2, t.getDescription());
-            ste.setInt(3, t.getDuree());
-            ste.setString(4, t.getNom_artiste());
-            ste.setString(5, t.getHeure_debut());
-            ste.setString(6, t.getHeure_fin());
-            ste.setFloat(7, t.getPrix());
-            ste.setInt(8, t.getNbPlaces());
-            ste.setString(9, t.getCategorie());
-            ste.setString(10, t.getImage());
+
+            ste.setInt(2, t.getDuree());
+            ste.setString(3, t.getNom_artiste());
+            ste.setString(4, t.getHeure_debut());
+            ste.setString(5, t.getHeure_fin());
+            ste.setFloat(6, t.getPrix());
+            ste.setInt(7, t.getNbPlaces());
+            ste.setString(8, t.getCategorie());
+
 
 
 
@@ -180,7 +193,7 @@ public class WorkshopServices {
         PreparedStatement statement = cnx.prepareStatement(query);
 
         // Loop through each category and retrieve its count
-        for (String category : Arrays.asList("Musique","Theatre","Dessin")) {
+        for (String category : Arrays.asList("Musique","Dessin","g")) {
             statement.setString(1, category);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();

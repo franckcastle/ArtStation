@@ -166,7 +166,7 @@ public class DetailsController implements Initializable {
             // Envoyer un e-mail avec les informations de l'atelier choisi
             String to = "nour.elghali@esprit.tn ";
             String subject = "Nouveu Workshop choisi : " + workshop.getTitre();
-            String message = "Bonjour,\nVous avez choisi l'atelier \"" + workshop.getTitre() + "\" qui aura lieu le " + workshop.getDate() + ".\n\nCordialement,\nL'équipe de artStation";
+            String message = "Bonjour,\nVous avez choisi l'atelier \"" + workshop.getTitre() + "\" qui aura lieu le " + workshop.getDate() +" Ceci est votre lien meet: https://meet.google.com/omn-hjwa-quz" +".\n\nCordialement,\nL'équipe de artStation";
 
             sendEmail(to, subject, message);
             reservationService.ajouterR(reservation);
@@ -176,7 +176,7 @@ public class DetailsController implements Initializable {
             // Créer le contenu de la boîte de dialogue
             DialogPane dialogPane = new DialogPane();
             dialogPane.getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.OK_DONE));
-            dialogPane.setContent(new Label("La réservation a été ajoutée avec succès."));
+            dialogPane.setContent(new Label("La réservation a été effectuée avec succès ! Un mail vous a été envoyé contenant le lien Meet pour votre Réservation."));
 
             // Afficher la boîte de dialogue et attendre la réponse
             dialog.setDialogPane(dialogPane);

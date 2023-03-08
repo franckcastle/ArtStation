@@ -41,8 +41,8 @@ public class Stat extends ApplicationFrame {
         WorkshopServices Rec = new WorkshopServices();
         List<Integer> list = Rec.getCountByCategory();
         dataset.addValue(list.get(0), "Musique", " ");
-        dataset.addValue(list.get(1), "Theatre", " ");
-        dataset.addValue(list.get(2), "Dessin", " ");
+        dataset.addValue(list.get(1), "Dessin", " ");
+        dataset.addValue(list.get(2), "g", " ");
 
         // dataset.addValue(19, "Taux de couverture Incar", " ");
         return dataset;
