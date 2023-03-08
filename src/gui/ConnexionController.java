@@ -13,11 +13,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import services.UserService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.scene.control.Alert;
@@ -42,10 +44,11 @@ public class ConnexionController implements Initializable {
 
 
     @FXML
-    void Connexion(ActionEvent event) {
+    void Connexion(ActionEvent event) throws NoSuchAlgorithmException {
 
         String username = usernameTf.getText();
             String password = passwordTf.getText();
+
             try {
                 u = us.GetByUsername(username);
 
@@ -54,7 +57,7 @@ public class ConnexionController implements Initializable {
                         try {
                             Session.setUserCon(u);
                             if (Session.getUserCon().getRole().equals("Admin")){
-                                AnchorPane root = FXMLLoader.load(getClass().getResource("AfficherUsers.fxml"));
+                                BorderPane root = FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
                                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 stage.setWidth(800);
                                 stage.setHeight(500);
@@ -63,7 +66,8 @@ public class ConnexionController implements Initializable {
                                 stage.setMaximized(false);
                                 stage.show();
                             }else {
-                                System.out.println("Hello");
+                                Parent loader = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                                usernameTf.getScene().setRoot(loader);
                             }
 
 

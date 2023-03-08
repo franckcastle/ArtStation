@@ -55,7 +55,7 @@ public class AjouterUserController implements Initializable {
         try {
             User u = new User();
             u.setUsername(usernameTf.getText());
-            u.setPassword( passwordTf.getText());
+            u.setPassword(passwordTf.getText());
             u.setEmail(emailTf.getText());
             u.setTel(Integer.parseInt(telTf.getText()));
             u.setRole(roleCb.getValue());

@@ -14,6 +14,7 @@ import services.UserService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -53,7 +54,7 @@ public class RecupererMdpController implements Initializable {
     }
 
     @FXML
-    void RecupererMdp(ActionEvent event) throws SQLException {
+    void RecupererMdp(ActionEvent event) throws SQLException, NoSuchAlgorithmException {
         if (!emailTf.getText().matches(emailRegex) ){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur d'inscription");

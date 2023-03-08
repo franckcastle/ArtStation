@@ -82,7 +82,7 @@ public class UserService implements IService<User> {
                 u.setUsername(username);
                 u.setPassword(rs.getString(3));
                 u.setEmail(rs.getString(4));
-                u.setUserId(rs.getInt(5));
+                u.setTel(rs.getInt(5));
                 u.setRole(rs.getString(6));
 
                 return u;

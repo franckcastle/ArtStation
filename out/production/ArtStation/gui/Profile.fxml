@@ -3,9 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherReclamController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfileController">
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" styleClass="white-background" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
             <children>
@@ -198,17 +197,35 @@
         </VBox>
     </left>
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <ListView fx:id="reclamLv" layoutX="14.0" layoutY="66.0" prefHeight="320.0" prefWidth="366.0" />
-                <TextField fx:id="sujetTf" layoutX="414.0" layoutY="66.0" prefHeight="26.0" prefWidth="200.0" />
-                <TextArea fx:id="plainteTf" layoutX="414.0" layoutY="108.0" prefHeight="206.0" prefWidth="199.0" />
-                <Button layoutX="414.0" layoutY="359.0" mnemonicParsing="false" onAction="#SupprimerReclam" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: f6b49c;" text="Supprimer" textFill="WHITE">
-                    <font>
-                        <Font name="Ebrima Bold" size="12.0" />
-                    </font>
-                </Button>
-            </children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: d2e8f9;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="usernameTf" editable="false" layoutX="13.0" layoutY="100.0" prefHeight="26.0" prefWidth="221.0" style="-fx-background-image: fff;" />
+            <TextField fx:id="emailTf" alignment="CENTER" layoutX="13.0" layoutY="205.0" prefHeight="26.0" prefWidth="221.0" promptText="Email" style="-fx-background-color: fff;">
+               <font>
+                  <Font name="Ebrima" size="12.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordTf" alignment="CENTER" layoutX="368.0" layoutY="100.0" prefHeight="26.0" prefWidth="221.0" promptText="Password" style="-fx-background-color: fff;">
+               <font>
+                  <Font name="Ebrima" size="12.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="telTf" alignment="CENTER" layoutX="368.0" layoutY="205.0" prefHeight="26.0" prefWidth="221.0" promptText="Tel" style="-fx-background-color: fff;">
+               <font>
+                  <Font name="Ebrima" size="12.0" />
+               </font>
+            </TextField>
+            <Button layoutX="363.0" layoutY="318.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="26.0" prefWidth="227.0" style="-fx-background-color: f6b49c;" text="Modifier mes infos" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="318.0" mnemonicParsing="false" onAction="#AjouterReclam" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: f6b49c;" text="Ajouter une Reclamation" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
         </AnchorPane>
     </center>
 </BorderPane>

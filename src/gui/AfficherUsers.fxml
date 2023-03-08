@@ -5,39 +5,218 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="472.0" prefWidth="781.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherUsersController">
-   <children>
-      <Label layoutX="335.0" layoutY="21.0" text="Affichage Users" textAlignment="CENTER">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button layoutX="636.0" layoutY="21.0" mnemonicParsing="false" onAction="#Reclam" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: f6b49c;" text="Rec" textFill="WHITE">
-         <font>
-            <Font name="Ebrima Bold" size="12.0" />
-         </font></Button>
-      <ListView fx:id="usersLv" layoutX="14.0" layoutY="106.0" prefHeight="338.0" prefWidth="430.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets></ListView>
-      <TextField fx:id="usernameTf" editable="false" layoutX="527.0" layoutY="106.0" prefHeight="26.0" prefWidth="218.0" />
-      <TextField fx:id="passwordTf" layoutX="527.0" layoutY="151.0" prefHeight="26.0" prefWidth="218.0" />
-      <TextField fx:id="emailTf" layoutX="527.0" layoutY="192.0" prefHeight="26.0" prefWidth="218.0" />
-      <TextField fx:id="telTf" layoutX="527.0" layoutY="236.0" prefHeight="26.0" prefWidth="218.0" />
-      <ChoiceBox fx:id="roleTf" layoutX="527.0" layoutY="275.0" prefHeight="26.0" prefWidth="218.0" />
-      <Button layoutX="531.0" layoutY="327.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: f6b49c;" text="Modifier" textFill="WHITE">
-         <font>
-            <Font name="Ebrima Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="530.0" layoutY="377.0" mnemonicParsing="false" onAction="#SupprimerUser" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: f6b49c;" text="Supprimer" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherUsersController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" styleClass="white-background" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="170.0" text="Forum" textFill="#fac881">
+               <font>
+                  <Font name="Baskerville Old Face" size="24.0" />
+               </font>
+            </Label>
+            <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="36.0" prefWidth="8.0" />
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="203.0" spacing="20.0" styleClass="round-layout" stylesheets="@../css/style.css">
+               <children>
+                  <TextField alignment="CENTER" prefHeight="16.0" prefWidth="125.0" promptText="Search" styleClass="transparent" stylesheets="@../css/style.css" />
+                  <ImageView fitHeight="17.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logosearch.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </HBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="130.0" text="User account">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="162.0" styleClass="white-background" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="90.0">
+               <VBox.margin>
+                  <Insets left="35.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="63.0" prefWidth="106.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logohome.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="9.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="106.0" text="Home">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="168.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logoworkshop.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="106.0" text="Workshops">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logocalendar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Events">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logoproduit.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Products">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/order.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Orders">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="106.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/logoforum.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Forum">
+                     <font>
+                        <Font name="Baskerville Old Face" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="usersLv" editable="false" layoutX="14.0" layoutY="48.0" prefHeight="362.0" prefWidth="309.0" />
+            <TextField fx:id="usernameTf" layoutX="373.0" layoutY="48.0" prefHeight="26.0" prefWidth="176.0" />
+            <TextField fx:id="emailTf" layoutX="373.0" layoutY="138.0" prefHeight="26.0" prefWidth="176.0" />
+            <PasswordField fx:id="passwordTf" layoutX="373.0" layoutY="93.0" prefHeight="26.0" prefWidth="176.0" />
+            <TextField fx:id="telTf" layoutX="373.0" layoutY="184.0" prefHeight="26.0" prefWidth="176.0" />
+            <ChoiceBox fx:id="roleTf" layoutX="373.0" layoutY="229.0" prefHeight="26.0" prefWidth="176.0" />
+            <Button layoutX="373.0" layoutY="304.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="26.0" prefWidth="176.0" style="-fx-background-color: f6b49c;" text="Modifier" textFill="WHITE">
+            <font>
+               <Font name="Ebrima Bold" size="12.0" />
+            </font>
+            </Button>
+            <Button layoutX="373.0" layoutY="352.0" mnemonicParsing="false" onAction="#SupprimerUser" prefHeight="26.0" prefWidth="176.0" style="-fx-background-color: f6b49c;" text="Supprimer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
