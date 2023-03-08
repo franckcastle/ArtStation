@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="472.0" prefWidth="781.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.affichageController">
+    <children>
+        <Label layoutX="275.0" layoutY="20.0" styleClass="white-background" stylesheets="@styles.css" text="Affichage des Workshops" textAlignment="CENTER" textFill="#fac881">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <ListView fx:id="AfficherId" layoutX="14.0" layoutY="69.0" prefHeight="338.0" prefWidth="430.0" styleClass="white-background">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets></ListView>
+        <TextField fx:id="titreField"  layoutX="527.0" layoutY="56.0" prefHeight="26.0" prefWidth="218.0" promptText="Titre" />
+        <TextField fx:id="heure_debutField" layoutX="527.0" layoutY="93.0" prefHeight="26.0" prefWidth="218.0" promptText="Heure Début" />
+        <TextField fx:id="heure_finField" layoutX="527.0" layoutY="142.0" prefHeight="26.0" prefWidth="218.0" promptText="Heure Fin" />
+        <TextField fx:id="categorieField" layoutX="527.0" layoutY="181.0" prefHeight="26.0" prefWidth="218.0" promptText="Catégorie" />
+        <Button layoutX="531.0" layoutY="381.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="26.0" prefWidth="210.0" text="Modifier" textFill="WHITE">
+            <font>
+                <Font name="Ebrima Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="531.0" layoutY="427.0" mnemonicParsing="false" onAction="#SupprimerUser" prefHeight="26.0" prefWidth="210.0" text="Supprimer" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+      <TextField fx:id="nom_artisteField" layoutX="527.0" layoutY="223.0" prefHeight="26.0" prefWidth="218.0" promptText="Nom d'artiste" />
+      <TextField fx:id="dureeField" layoutX="527.0" layoutY="262.0" prefHeight="26.0" prefWidth="218.0" promptText="Durée" />
+      <TextField fx:id="nbPlacesField" layoutX="527.0" layoutY="306.0" prefHeight="26.0" prefWidth="218.0" promptText="Nombre de places" />
+      <TextField fx:id="prixField" layoutX="527.0" layoutY="343.0" prefHeight="26.0" prefWidth="218.0" promptText="Prix" />
+      <Button layoutX="159.0" layoutY="427.0" mnemonicParsing="false" onAction="#retourAf" prefHeight="35.0" prefWidth="94.0" text="Retour" />
+    </children>
+</AnchorPane>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

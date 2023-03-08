@@ -1,0 +1,40 @@
+
+
+
+.white-background{
+    -fx-background-color: #fff;
+}
+
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #fac881;
+}
+
+.button{
+        -fx-background-color: #fac881;
+        -fx-background-radius: 20;
+        -fx-padding: 10 10;
+        -fx-font-size: 12px;
+        -fx-text-fill: white;
+        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
+    }
+
+    .button:hover {
+        -fx-background-color: #f6ae3a;
+        -fx-cursor: hand;
+    }
+
+    .button:pressed {
+        -fx-background-color: #f39c12;
+    }
+
+.table-view .column-header .label {
+    -fx-text-fill: #f6ae3a;
+}
+
