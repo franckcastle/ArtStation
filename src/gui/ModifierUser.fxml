@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="459.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierUserController">
-   <children>
-      <Label layoutX="255.0" layoutY="29.0" text="Modifier User">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <TextField fx:id="emailTf" layoutX="433.0" layoutY="131.0" promptText="email" />
-      <TextField fx:id="usernameTf" layoutX="36.0" layoutY="131.0" promptText="username" />
-      <PasswordField fx:id="passwordTf" layoutX="36.0" layoutY="217.0" promptText="password" />
-      <TextField fx:id="roleTf" layoutX="433.0" layoutY="217.0" promptText="role" />
-      <Button alignment="CENTER" layoutX="260.0" layoutY="325.0" mnemonicParsing="false" onAction="#ModifierUtilisateur" prefHeight="26.0" prefWidth="121.0" text="Modifier" />
-   </children>
+<AnchorPane fx:id="root" prefHeight="459.0" prefWidth="642.0" style="-fx-background-color: d2e8f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierUserController">
+    <children>
+        <Label layoutX="255.0" layoutY="29.0" text="Modifier User">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+        <TextField fx:id="emailTf" alignment="CENTER" layoutX="367.0" layoutY="131.0" prefWidth="224.0" promptText="Email" />
+        <TextField fx:id="usernameTf" alignment="CENTER" layoutX="36.0" layoutY="130.0" prefHeight="26.0" prefWidth="224.0" promptText="Nom d'utilisateur">
+            <font>
+                <Font name="Ebrima" size="12.0" />
+            </font></TextField>
+        <PasswordField fx:id="passwordTf" alignment="CENTER" layoutX="36.0" layoutY="217.0" prefHeight="26.0" prefWidth="224.0" promptText="Mot de passe" />
+        <TextField fx:id="roleTf" alignment="CENTER" layoutX="367.0" layoutY="216.0" prefHeight="26.0" prefWidth="224.0" promptText="Rôle" />
+        <Button alignment="CENTER" layoutX="184.0" layoutY="378.0" mnemonicParsing="false" onAction="#ModifierUtilisateur" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: f6b49c;" text="Modifier" textFill="WHITE">
+            <font>
+                <Font name="Ebrima" size="12.0" />
+            </font></Button>
+        <TextField fx:id="telTf" alignment="CENTER" layoutX="209.0" layoutY="298.0" prefHeight="26.0" prefWidth="224.0" promptText="Tel" />
+    </children>
 </AnchorPane>

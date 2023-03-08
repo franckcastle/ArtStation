@@ -1,137 +1,141 @@
 package gui;
 
 import entities.User;
-
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
+import javafx.util.Callback;
 import services.UserService;
 
+import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AfficherUsersController implements Initializable {
-    @FXML
-    public TableView<User> usersTv;
-    @FXML
-    public TableColumn<User,Integer> UserIdTv;
-    @FXML
-    public TableColumn<User,String> usernameTv;
-    @FXML
-    public TableColumn<User,String> passwordTv;
-    @FXML
-    public TableColumn<User,String> emailTv;
-    @FXML
-    public TableColumn<User,String> role;
-    @FXML
-    private TableColumn<User, Button> supprimer;
-    @FXML
-    private TableColumn<User, Button> modifier;
-
     UserService us = new UserService();
+    @FXML
+    private TextField emailTf;
+
+    @FXML
+    private TextField passwordTf;
+
+    @FXML
+    private ChoiceBox<String> roleTf;
+
+    @FXML
+    private TextField telTf;
+
+    @FXML
+    private TextField usernameTf;
+
+    @FXML
+    private ListView<User> usersLv;
+
+    private final String[] roles = {"Admin","Artiste","Client"};
+
+
+    @FXML
+    void ModifierUser(ActionEvent event) throws SQLException, NoSuchAlgorithmException {
+        String username=usernameTf.getText();
+        String password = passwordTf.getText();
+        String email = emailTf.getText();
+        int tel = Integer.parseInt(telTf.getText());
+        String role = roleTf.getValue();
+        us.modifer(username,password,email,tel,role,username);
+        usersLv.refresh();
+        // Mise à jour de la liste des utilisateurs après suppression
+        ObservableList<User> observableUserList = FXCollections.observableList(us.recuperer());
+        usersLv.setItems(observableUserList);
+        // Réinitialisation de la sélection de la ListView
+        usersLv.getSelectionModel().clearSelection();
+        // Réinitialisation des champs de texte et de la sélection de la ChoiceBox
+        usernameTf.clear();
+        emailTf.clear();
+        passwordTf.clear();
+        telTf.clear();
+        roleTf.getSelectionModel().clearSelection();
+
+    }
+
+    @FXML
+    void Reclam(ActionEvent event) throws IOException {
+        Parent loader = null;
+        loader = FXMLLoader.load(getClass().getResource("AfficherReclam.fxml"));
+        emailTf.getScene().setRoot(loader);
+
+    }
+
+    @FXML
+    void SupprimerUser(ActionEvent event) throws SQLException{
+            String username=usernameTf.getText();
+
+            us.supprimer(us.GetByUsername(username));
+            usersLv.refresh();
+        // Mise à jour de la liste des utilisateurs après suppression
+        ObservableList<User> observableUserList = FXCollections.observableList(us.recuperer());
+        usersLv.setItems(observableUserList);
+        // Réinitialisation de la sélection de la ListView
+        usersLv.getSelectionModel().clearSelection();
+        // Réinitialisation des champs de texte et de la sélection de la ChoiceBox
+        usernameTf.clear();
+        emailTf.clear();
+        passwordTf.clear();
+        telTf.clear();
+        roleTf.getSelectionModel().clearSelection();
+
+    }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        try {
-            // TODO
-            List<User> users = us.recuperer();
-            ObservableList<User> olu = FXCollections.observableArrayList(users);
-            usersTv.setItems(olu);
-            UserIdTv.setCellValueFactory(new PropertyValueFactory("userId"));
-            usernameTv.setCellValueFactory(new PropertyValueFactory("username"));
-            passwordTv.setCellValueFactory(new PropertyValueFactory("email"));
-            emailTv.setCellValueFactory(new PropertyValueFactory("password"));
-            role.setCellValueFactory(new PropertyValueFactory("role"));
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-            this.delete();
-            this.modifier();
+        roleTf.getItems().addAll(roles);
+        try {
+
+            ObservableList<User> observableUserList = FXCollections.observableList(us.recuperer());
+            usersLv.setItems(observableUserList);
+            usersLv.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            usersLv.setCellFactory(new Callback<ListView<User>, ListCell<User>>() {
+                @Override
+                public ListCell<User> call(ListView<User> listView) {
+                    return new ListCell<User>() {
+                        @Override
+                        protected void updateItem(User user, boolean empty) {
+                            super.updateItem(user, empty);
+                            if (user != null) {
+                                setText(user.getUsername() + " - " +user.getEmail()+ " - " + user.getRole());
+                            } else {
+                                setText(null);
+                            }
+                        }
+                    };
+                }
+            });
+
+            usersLv.setOnMouseClicked(event -> {
+                User userSelectionne = usersLv.getSelectionModel().getSelectedItem();
+                if (userSelectionne != null) {
+
+                    usernameTf.setText(userSelectionne.getUsername());
+                    emailTf.setText(userSelectionne.getEmail());
+                    passwordTf.setText(userSelectionne.getPassword());
+
+                    emailTf.setText(userSelectionne.getEmail());
+                    telTf.setText(Integer.toString(userSelectionne.getTel()));
+                    SingleSelectionModel<String> selectionModel = roleTf.getSelectionModel();
+                    selectionModel.select(userSelectionne.getRole());
+
+                }
+            });
         } catch (SQLException ex) {
-            System.out.println("error" + ex.getMessage());
+            System.out.println(ex);
         }
 
     }
-
-
-    public void delete() {
-        supprimer.setCellFactory((param) -> {
-            return new TableCell() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    setGraphic(null);
-                    if (!empty) {
-                        Button b = new Button("delete");
-                        b.setOnAction((event) -> {
-                            try {
-                                if (us.supprimer(usersTv.getItems().get(getIndex()))) {
-                                    usersTv.getItems().remove(getIndex());
-                                    usersTv.refresh();
-
-                                }
-                            } catch (SQLException ex) {
-                                System.out.println("erreor:" + ex.getMessage());
-
-                            }
-
-                        });
-                        setGraphic(b);
-
-                    }
-                }
-            };
-
-        });
-
-    }
-
-
-    public void modifier() {
-
-        modifier.setCellFactory((param) -> {
-            return new TableCell() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    setGraphic(null);
-                    if (!empty) {
-                        Button b = new Button("modifier");
-                            b.setOnAction(event -> {
-                                try {
-                                    TableCell cell = (TableCell) ((Button) event.getSource()).getParent();
-                                    int rowIndexBtnmodifier = cell.getIndex();
-
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierUser.fxml"));
-                                    Parent root = loader.load();
-
-                                    ModifierUserController controller = loader.getController();
-
-                                    controller.setUsername(usernameTv.getCellData(rowIndexBtnmodifier));
-
-
-                                    usersTv.getScene().setRoot(root);
-                                }catch (IOException e){
-                                    System.out.println("Erreur lors du chargement de l'interface utilisateur : " + e.getMessage());
-                                }
-
-                            });
-                        setGraphic(b);
-
-                    }
-                }
-            };
-
-        });
-
-    }
-
 }

@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.PasswordField?>
-<AnchorPane prefHeight="470.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterUserController">
+<AnchorPane prefHeight="525.0" prefWidth="815.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterUserController">
    <children>
-      <Label layoutX="327.0" layoutY="36.0" text="Inscription" />
-      <TextField fx:id="usernameTf" layoutX="280.0" layoutY="100.0" promptText="username" />
-      <PasswordField fx:id="passwordTf" layoutX="280.0" layoutY="157.0" promptText="password" />
-      <TextField fx:id="emailTf" layoutX="280.0" layoutY="222.0" promptText="email" />
-      <TextField fx:id="roleTf" layoutX="280.0" layoutY="283.0" promptText="role" />
-      <Button layoutX="323.0" layoutY="344.0" mnemonicParsing="false" onAction="#AjouterUser" text="s'inscrire" />
+      <TextField fx:id="usernameTf" alignment="CENTER" layoutX="26.0" layoutY="74.0" prefHeight="26.0" prefWidth="274.0" promptText="Nom d'utilisateur">
+         <font>
+            <Font name="Ebrima" size="12.0" />
+         </font></TextField>
+      <PasswordField fx:id="passwordTf" alignment="CENTER" layoutX="26.0" layoutY="144.0" prefHeight="26.0" prefWidth="274.0" promptText="Mot de passe" />
+      <TextField fx:id="emailTf" alignment="CENTER" layoutX="26.0" layoutY="214.0" prefHeight="26.0" prefWidth="274.0" promptText="Email">
+         <font>
+            <Font name="Ebrima" size="12.0" />
+         </font></TextField>
+      <Button alignment="CENTER" layoutX="26.0" layoutY="424.0" mnemonicParsing="false" onAction="#AjouterUser" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: f6b49c;" text="S'inscrire" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font></Button>
+      <AnchorPane layoutX="361.0" layoutY="2.0" prefHeight="526.0" prefWidth="458.0" style="-fx-background-color: d2e8f9;" />
+      <TextField fx:id="telTf" alignment="CENTER" layoutX="26.0" layoutY="284.0" prefHeight="26.0" prefWidth="274.0" promptText="Tel" />
+      <ChoiceBox fx:id="roleCb" layoutX="26.0" layoutY="354.0" prefHeight="26.0" prefWidth="274.0" />
    </children>
 </AnchorPane>

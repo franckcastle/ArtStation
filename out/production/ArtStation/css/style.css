@@ -1,0 +1,41 @@
+.white-background{
+    -fx-background-color: #fff;
+}
+
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #fac881;
+}
+
+.button{
+    -fx-background-radius:50;
+    -fx-background-color: #fac881;
+    -fx-border-color: #fac881;
+}
+
+.BorderPane{
+    -fx-background-radius:50;
+    -fx-background-color: #d2e8f9;
+    -fx-border-color: #455771;
+    -fx-border-width: 3;
+    prefHeight:400.0;
+    prefWidth:600.0;
+}
+
+.HBox{
+    -fx-background-color: #d2e8f9;
+    -fx-border-color: #455771;
+    -fx-border-width: 1.5;
+}
+
+.VBox{
+    -fx-background-color: #d2e8f9;
+    -fx-border-color: #455771;
+    -fx-border-width: 1.5;
+}

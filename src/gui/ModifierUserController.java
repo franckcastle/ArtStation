@@ -43,29 +43,25 @@ public class ModifierUserController implements Initializable {
 
     @FXML
     private TextField usernameTf;
+    @FXML
+    private TextField telTf;
 
     @FXML
     void ModifierUtilisateur(ActionEvent event) {
         String username = usernameTf.getText();
         String password = passwordTf.getText();
-        String role = roleTf.getText();
         String email = emailTf.getText();
+        int tel = Integer.parseInt(telTf.getText());
+        String role = roleTf.getText();
         try {
-            us.modifer(username,password,email,role,whe);
+            us.modifer(username,password,email,tel,role,whe);
             Parent loader = FXMLLoader.load(getClass().getResource("AfficherUsers.fxml"));
             usernameTf.getScene().setRoot(loader);
         }catch (SQLException | IOException ex){
             System.out.println(ex);
         }
-
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
-
     }
-
-
 }
