@@ -19,7 +19,7 @@ package gui;
         import java.util.ResourceBundle;
 
 public class affichageController implements Initializable {
-    WorkshopServices us = new WorkshopServices();
+    WorkshopServices ws = new WorkshopServices();
     @FXML
     private TextField titreField;
 
@@ -50,10 +50,10 @@ public class affichageController implements Initializable {
 
     @FXML
     private ListView<Workshop> AfficherId;
-int i;
+    int i;
 
     @FXML
-    void ModifierUser(ActionEvent event) throws SQLException{
+    void Modifier(ActionEvent event) throws SQLException{
         Workshop wp = new Workshop();
 
         String titre = titreField.getText();
@@ -64,7 +64,7 @@ int i;
         int duree = Integer.parseInt(dureeField.getText());
         int nbPlaces= Integer.parseInt(nbPlacesField.getText());
         int prix = (int) Float.parseFloat(prixField.getText());
- wp.setId(i);
+        wp.setId(i);
         wp.setTitre(titreField.getText());
         wp.setHeure_debut(heure_debutField.getText());
         wp.setHeure_fin(heure_finField.getText());
@@ -74,7 +74,7 @@ int i;
         wp.setNbPlaces(Integer.parseInt(nbPlacesField.getText()));
         wp.setPrix(Float.parseFloat(prixField.getText()));
 
-        us.modifierWs(wp);
+        ws.modifierWs(wp);
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Modification");
 
@@ -89,7 +89,7 @@ int i;
 
         AfficherId.refresh();
         // Mise à jour de la liste des utilisateurs après suppression
-        ObservableList<Workshop> observableUserList = FXCollections.observableList(us.recuperer());
+        ObservableList<Workshop> observableUserList = FXCollections.observableList(ws.recuperer());
         AfficherId.setItems(observableUserList);
         // Réinitialisation de la sélection de la ListView
         AfficherId.getSelectionModel().clearSelection();
@@ -107,65 +107,10 @@ int i;
 
 
 
-       /* @FXML
-        void modifierCom(ActionEvent event) throws SQLException{
-            Commentaire c = new Commentaire();
 
-            String description = descriptionTf.getText();
-            // String date_ajout = dateajouTf.getText();
-            c.setId_c(Integer.parseInt(idcTf.getText()));
-            c.setDescription(descriptionTf.getText());
-            cs.modifierCom(c);
-            comsLv.refresh();
-            // Mise à jour de la liste des utilisateurs après suppression
-            ObservableList<Commentaire> observableUserList = FXCollections.observableList(cs.recupererCom());
-            comsLv.setItems(observableUserList);
-            // Réinitialisation de la sélection de la ListView
-            comsLv.getSelectionModel().clearSelection();
-            // Réinitialisation des champs de texte et de la sélection de la ChoiceBox
-            //     idcTf.clear();
-            descriptionTf.clear();
-            //   dateajouTf.clear();
-        }*/
-
-    /*@FXML
-    void ModifierUser(ActionEvent event) throws SQLException{
-        String titre=titreField.getText();
-        String heure_debut=heure_debutField.getText();
-        String heure_fin=heure_finField.getText();
-        String categorie=categorieField.getText();
-        String nom_artiste=nom_artisteField.getText();
-        int duree = Integer.parseInt(dureeField.getText());
-        int nbPlaces= Integer.parseInt(nbPlacesField.getText());
-        int prix = (int) Float.parseFloat(prixField.getText());
-
-
-        us.modifer(titre,heure_debut,heure_fin,categorie,nom_artiste,duree,nbPlaces,prix);
-        AfficherId.refresh();
-        // Mise à jour de la liste des utilisateurs après suppression
-        ObservableList<Workshop> observableUserList = FXCollections.observableList(us.recuperer());
-        AfficherId.setItems(observableUserList);
-        // Réinitialisation de la sélection de la ListView
-        AfficherId.getSelectionModel().clearSelection();
-        // Réinitialisation des champs de texte et de la sélection de la ChoiceBox
-        titreField.clear();
-        heure_debutField.clear();
-        heure_finField.clear();
-        categorieField.clear();
-        nom_artisteField.clear();
-        dureeField.clear();
-        nbPlacesField.clear();
-        prixField.clear();
-
-
-
-
-    }
-
-*/
 
    @FXML
-    void SupprimerUser(ActionEvent event) throws SQLException{
+    void Supprimer(ActionEvent event) throws SQLException{
 
        Workshop wp = new Workshop();
 
@@ -178,7 +123,7 @@ int i;
        int nbPlaces= Integer.parseInt(nbPlacesField.getText());
        int prix = (int) Float.parseFloat(prixField.getText());
        wp.setId(i);
-        us.supprimerWs(wp);
+       ws.supprimerWs(wp);
        Dialog<String> dialog = new Dialog<>();
        dialog.setTitle("Suppression");
 
@@ -192,7 +137,7 @@ int i;
        dialog.showAndWait();
         AfficherId.refresh();
         // Mise à jour de la liste des utilisateurs après suppression
-        ObservableList<Workshop> observableUserList = FXCollections.observableList(us.recuperer());
+        ObservableList<Workshop> observableUserList = FXCollections.observableList(ws.recuperer());
         AfficherId.setItems(observableUserList);
         // Réinitialisation de la sélection de la ListView
         AfficherId.getSelectionModel().clearSelection();
@@ -213,7 +158,7 @@ int i;
 
         try {
 
-            ObservableList<Workshop> observableUserList = FXCollections.observableList(us.recuperer());
+            ObservableList<Workshop> observableUserList = FXCollections.observableList(ws.recuperer());
             AfficherId.setItems(observableUserList);
             AfficherId.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             AfficherId.setCellFactory(new Callback<ListView<Workshop>, ListCell<Workshop>>() {

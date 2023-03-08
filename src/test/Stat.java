@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import entities.Workshop;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -19,6 +20,7 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 
+import services.Reservation_WorkshopServices;
 import services.WorkshopServices;
 import utils.MyDB;
 
@@ -37,21 +39,35 @@ public class Stat extends ApplicationFrame {
     private CategoryDataset createDataset() throws IOException, SQLException {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         MyDB cnx = MyDB.getInstance();
+        Reservation_WorkshopServices rws = new Reservation_WorkshopServices();
+        WorkshopServices ws = new WorkshopServices();
 
-        WorkshopServices Rec = new WorkshopServices();
-        List<Integer> list = Rec.getCountByCategory();
-        dataset.addValue(list.get(0), "Musique", " ");
-        dataset.addValue(list.get(1), "Dessin", " ");
-        dataset.addValue(list.get(2), "g", " ");
+        // Récupérer les catégories de workshops
+        List<String> categories = ws.getAllCategories();
 
-        // dataset.addValue(19, "Taux de couverture Incar", " ");
+        // Pour chaque catégorie, récupérer les workshops et leur nombre de réservations
+        for (String category : categories) {
+            List<Workshop> workshops = ws.getWorkshopsByCategory(category);
+            int maxReservations = 0;
+            Workshop mostPopularWorkshop = null;
+            for (Workshop workshop : workshops) {
+                int reservations = rws.getNombreReservations(workshop.getId());
+                if (reservations > maxReservations) {
+                    maxReservations = reservations;
+                    mostPopularWorkshop = workshop;
+                }
+            }
+            if (mostPopularWorkshop != null) {
+                dataset.addValue(maxReservations, category, mostPopularWorkshop.getCategorie());
+            }
+        }
         return dataset;
     }
 
     private JFreeChart createChart(final CategoryDataset dataset) {
         final JFreeChart chart = ChartFactory.createBarChart3D(" Categories ", // chart title
                 " ", // domain axis label
-                "  Le nombre de workshops ", // range axis label
+                "  Le nombre de réservations ", // range axis label
                 dataset, // data
                 PlotOrientation.VERTICAL, // orientation
                 true, // include legend

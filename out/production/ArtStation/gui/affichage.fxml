@@ -5,53 +5,140 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="472.0" prefWidth="781.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.affichageController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.affichageController">
     <children>
-        <Label layoutX="275.0" layoutY="20.0" styleClass="white-background" stylesheets="@styles.css" text="Affichage des Workshops" textAlignment="CENTER" textFill="#fac881">
+        <AnchorPane prefHeight="47.0" prefWidth="819.0" style="-fx-background-color: white;">
+            <children>
+                <ImageView fitHeight="28.0" fitWidth="38.0" layoutX="592.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/user.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="643.0" layoutY="10.0" prefHeight="28.0" prefWidth="112.0" text="User Account">
+                    <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Label layoutX="281.0" layoutY="62.0" styleClass="white-background" stylesheets="@styles.css" text="Affichage des Workshops" textAlignment="CENTER" textFill="#fac881">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <ListView fx:id="AfficherId" layoutX="14.0" layoutY="69.0" prefHeight="338.0" prefWidth="430.0" styleClass="white-background">
+        <ListView fx:id="AfficherId" layoutX="203.0" layoutY="98.0" prefHeight="270.0" prefWidth="385.0" styleClass="white-background">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets></ListView>
-        <TextField fx:id="titreField"  layoutX="527.0" layoutY="56.0" prefHeight="26.0" prefWidth="218.0" promptText="Titre" />
-        <TextField fx:id="heure_debutField" layoutX="527.0" layoutY="93.0" prefHeight="26.0" prefWidth="218.0" promptText="Heure Début" />
-        <TextField fx:id="heure_finField" layoutX="527.0" layoutY="142.0" prefHeight="26.0" prefWidth="218.0" promptText="Heure Fin" />
-        <TextField fx:id="categorieField" layoutX="527.0" layoutY="181.0" prefHeight="26.0" prefWidth="218.0" promptText="Catégorie" />
-        <Button layoutX="531.0" layoutY="381.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="26.0" prefWidth="210.0" text="Modifier" textFill="WHITE">
+        <TextField fx:id="titreField" layoutX="603.0" layoutY="62.0" prefHeight="26.0" prefWidth="165.0" promptText="Titre" />
+        <TextField fx:id="heure_debutField" layoutX="603.0" layoutY="101.0" prefHeight="26.0" prefWidth="165.0" promptText="Heure Début" />
+        <TextField fx:id="heure_finField" layoutX="603.0" layoutY="139.0" prefHeight="26.0" prefWidth="165.0" promptText="Heure Fin" />
+        <TextField fx:id="categorieField" layoutX="603.0" layoutY="178.0" prefHeight="26.0" prefWidth="165.0" promptText="Catégorie" />
+        <Button layoutX="617.0" layoutY="374.0" mnemonicParsing="false" onAction="#Modifier" prefHeight="35.0" prefWidth="121.0" text="Modifier" textFill="WHITE">
             <font>
                 <Font name="Ebrima Bold" size="12.0" />
             </font>
         </Button>
-        <Button layoutX="531.0" layoutY="427.0" mnemonicParsing="false" onAction="#SupprimerUser" prefHeight="26.0" prefWidth="210.0" text="Supprimer" textFill="WHITE">
+        <Button layoutX="619.0" layoutY="416.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="35.0" prefWidth="121.0" text="Supprimer" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-      <TextField fx:id="nom_artisteField" layoutX="527.0" layoutY="223.0" prefHeight="26.0" prefWidth="218.0" promptText="Nom d'artiste" />
-      <TextField fx:id="dureeField" layoutX="527.0" layoutY="262.0" prefHeight="26.0" prefWidth="218.0" promptText="Durée" />
-      <TextField fx:id="nbPlacesField" layoutX="527.0" layoutY="306.0" prefHeight="26.0" prefWidth="218.0" promptText="Nombre de places" />
-      <TextField fx:id="prixField" layoutX="527.0" layoutY="343.0" prefHeight="26.0" prefWidth="218.0" promptText="Prix" />
-      <Button layoutX="159.0" layoutY="427.0" mnemonicParsing="false" onAction="#retourAf" prefHeight="35.0" prefWidth="94.0" text="Retour" />
+      <TextField fx:id="nom_artisteField" layoutX="603.0" layoutY="220.0" prefHeight="26.0" prefWidth="165.0" promptText="Nom d'artiste" />
+      <TextField fx:id="dureeField" layoutX="603.0" layoutY="259.0" prefHeight="26.0" prefWidth="165.0" promptText="Durée" />
+      <TextField fx:id="nbPlacesField" layoutX="603.0" layoutY="302.0" prefHeight="26.0" prefWidth="165.0" promptText="Nombre de places" />
+      <TextField fx:id="prixField" layoutX="603.0" layoutY="339.0" prefHeight="26.0" prefWidth="165.0" promptText="Prix" />
+      <Button layoutX="326.0" layoutY="392.0" mnemonicParsing="false" onAction="#retourAf" prefHeight="35.0" prefWidth="94.0" text="Retour" />
+        <AnchorPane layoutX="50.0" layoutY="47.0" prefHeight="355.0" prefWidth="140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="45.0">
+            <children>
+                <AnchorPane layoutX="-60.0" layoutY="-69.0" prefHeight="79.0" prefWidth="200.0" style="-fx-background-color: white;">
+                    <children>
+                        <Label layoutX="34.0" layoutY="34.0" prefHeight="28.0" prefWidth="132.0" text="   Worksops" textFill="#fac881">
+                            <font>
+                                <Font name="Baskerville Old Face" size="25.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <VBox layoutY="6.0" prefHeight="349.0" prefWidth="140.0" spacing="30.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                    <children>
+                        <Label prefHeight="28.0" prefWidth="140.0" text="      Home">
+                            <font>
+                                <Font name="Baskerville Old Face" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="28.0" prefWidth="140.0" text="     Workshops">
+                            <font>
+                                <Font name="Baskerville Old Face" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="28.0" prefWidth="140.0" text="      Events">
+                            <font>
+                                <Font name="Baskerville Old Face" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="28.0" prefWidth="140.0" text="      Products">
+                            <font>
+                                <Font name="Baskerville Old Face" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="28.0" prefWidth="140.0" text="      Orders">
+                            <font>
+                                <Font name="Baskerville Old Face" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="28.0" prefWidth="140.0" text="      Forum">
+                            <font>
+                                <Font name="Baskerville Old Face" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+      <AnchorPane layoutY="55.0" prefHeight="396.0" prefWidth="50.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="55.0">
+         <children>
+            <VBox prefHeight="345.0" prefWidth="50.0" spacing="22.0" AnchorPane.topAnchor="6.0">
+               <children>
+                  <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/home.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/workhsop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/event.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/order.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/checkout.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/forum.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

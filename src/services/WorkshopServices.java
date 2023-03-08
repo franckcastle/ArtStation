@@ -206,6 +206,36 @@ public class WorkshopServices {
         return countList;
     }
 
+    public List<Workshop> getWorkshopsByCategory(String category) throws SQLException {
+        List<Workshop> workshops = new ArrayList<>();
+        String req = "SELECT * FROM workshop WHERE categorie = ?";
+        PreparedStatement pstmt = cnx.prepareStatement(req);
+        pstmt.setString(1, category);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            Workshop workshop = new Workshop();
+            workshop.setId(rs.getInt("id"));
+            workshop.setTitre(rs.getString("titre"));
+            workshop.setCategorie(rs.getString("categorie"));
+            workshop.setPrix(rs.getFloat("prix"));
+            workshops.add(workshop);
+        }
+        return workshops;
+    }
+
+    public List<String> getAllCategories() throws SQLException {
+        List<String> categories = new ArrayList<>();
+        String req = "SELECT DISTINCT categorie FROM workshop";
+        Statement stmt = cnx.createStatement();
+        ResultSet rs = stmt.executeQuery(req);
+        while (rs.next()) {
+            String category = rs.getString("categorie");
+            categories.add(category);
+        }
+        return categories;
+    }
+
+
 
 
     /*public static int getIdWorkshopByCategorie(String categorie) throws SQLException {

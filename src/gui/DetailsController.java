@@ -73,6 +73,8 @@ public class DetailsController implements Initializable {
     @FXML
     private Label dessId;
 
+    @FXML
+    private Label categorieField;
 
     private Workshop workshop;
     private Reservation_WorkshopServices reservation;
@@ -98,6 +100,7 @@ public class DetailsController implements Initializable {
             prixWs.setText(String.format("%.0f DT", workshop.getPrix()));
             dureeWs.setText(String.valueOf(workshop.getDuree()));
             dessId.setText(workshop.getDescription());
+            categorieField.setText(workshop.getCategorie());
 
 
 
@@ -124,6 +127,7 @@ public class DetailsController implements Initializable {
             dureeWs.setText("");
             prixWs.setText("");
             imageeField.setImage(null);
+            categorieField.setText("");
 
         }
     }
@@ -160,10 +164,10 @@ public class DetailsController implements Initializable {
         int nombreReservations = reservationService.getNombreReservations(id_workshop);
 
 
-        if (nombreReservations <= 5) {
+        if (nombreReservations <= workshop.getNbPlaces()) {
 
             reservationService.ajouterR(reservation);
-            // Envoyer un e-mail avec les informations de l'atelier choisi
+            // Envoyer un e-mail avec les informations de workshop choisi
             String to = "nour.elghali@esprit.tn ";
             String subject = "Nouveu Workshop choisi : " + workshop.getTitre();
             String message = "Bonjour,\nVous avez choisi l'atelier \"" + workshop.getTitre() + "\" qui aura lieu le " + workshop.getDate() +" Ceci est votre lien meet: https://meet.google.com/omn-hjwa-quz" +".\n\nCordialement,\nL'équipe de artStation";
