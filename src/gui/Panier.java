@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import services.ProduitService;
@@ -40,7 +41,8 @@ ProduitService ps=new ProduitService();
 int s;
 Float t ;
     public void display(int i){
-System.out.println(i);
+
+
         try {
             List<Produit> cartItems = ps.getByorderId(i);
             System.out.println(cartItems);

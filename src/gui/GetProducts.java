@@ -38,13 +38,11 @@ public class GetProducts implements Initializable {
     private Button btn;
 
     ProduitService Ps = new ProduitService();
-
-    public ShoppingCart sc;
-
+    public int sc;
 
     public GetProducts() {
     }
-    public GetProducts(ShoppingCart sc) {
+    public GetProducts(int sc) {
         this.sc = sc;
     }
 
@@ -70,7 +68,7 @@ public class GetProducts implements Initializable {
     public void test(javafx.event.ActionEvent actionEvent) {
        System.out.println(sc);
            try {
-            List<Produit> cartItems = Ps.getByorderId(sc.getOrderId());
+            List<Produit> cartItems = Ps.getByorderId(sc);
                 System.out.println(cartItems);
             ObservableList<Produit> olu = FXCollections.observableArrayList(cartItems);
 

@@ -29,6 +29,8 @@
          <Font size="24.0" />
       </font>
    </Text>
+   <TextField fx:id="code" layoutX="423.0" layoutY="124.0" promptText="code coupant" />
+   <Button fx:id="remise" layoutX="457.0" layoutY="164.0" mnemonicParsing="false" onAction="#remisebtn" text="remise" />
 
 
 </AnchorPane>

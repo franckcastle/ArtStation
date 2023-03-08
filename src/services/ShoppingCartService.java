@@ -1,20 +1,16 @@
 package services;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.*;
+
 import entities.ShoppingCart;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TableView;
+
 import utils.MyDB;
 
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
+
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import javafx.scene.control.ListView;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -40,7 +36,7 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     @Override
     public void modifier(ShoppingCart s) throws SQLException {
 
-        String req = "UPDATE shoppingcart SET nom = ?,prenom = ?,ville = ? ,Adresse = ?,code_postale = ?,sta = ? where orderId ='" + s.getOrderId() + "'";
+        String req = "UPDATE shoppingcart SET nom = ?,prenom = ?,ville = ? ,Adresse = ?,code_postale = ?,Total_price = ? ,sta = ? where orderId ='" + s.getOrderId() + "'";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, s.getNom());
@@ -49,7 +45,8 @@ public class ShoppingCartService implements SService<ShoppingCart> {
 
             ps.setString(4, s.getAdresse());
             ps.setInt(5, s.getCode_postale());
-            ps.setString(6, s.getSta());
+            ps.setFloat(6, s.getTotal_price());
+            ps.setString(7, s.getSta());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -79,8 +76,6 @@ public class ShoppingCartService implements SService<ShoppingCart> {
         table.addCell("Code Postal:");
         table.addCell(Integer.toString(s.getCode_postale()));
 
-
-
         table.addCell("Total Price:");
         table.addCell(Float.toString(s.getTotal_price()));
 
@@ -91,11 +86,11 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     }
 
     @Override
-    public  boolean supprimer(ShoppingCart t) throws SQLException {
+    public  boolean supprimer(int t) throws SQLException {
         boolean ok = false;
         try {
             PreparedStatement req = cnx.prepareStatement("delete from shoppingcart where orderId= ? ");
-            req.setInt(1, t.getOrderId());
+            req.setInt(1, t);
             req.executeUpdate();
             ok = true;
         } catch (SQLException ex) {
@@ -103,10 +98,6 @@ public class ShoppingCartService implements SService<ShoppingCart> {
         }
         return ok;
     }
-
-
-
-
 @Override
     public List<ShoppingCart> recuperer() throws SQLException {
         List<ShoppingCart> ShoppingCarts = new ArrayList<>();
@@ -123,9 +114,9 @@ public class ShoppingCartService implements SService<ShoppingCart> {
             c.setVille(rs.getString("ville"));
             c.setAdresse(rs.getString("Adresse"));
             c.setCode_postale(rs.getInt("code_postale"));
-
             c.setTotal_price(rs.getInt("Total_price"));
-
+            c.setOrderDate(rs.getDate("orderDate"));
+            c.setSta(rs.getString("sta"));
             ShoppingCarts.add(c);
 
         }
@@ -159,6 +150,4 @@ public class ShoppingCartService implements SService<ShoppingCart> {
         }
         return ShoppingCarts;
     }
-
-
 }
