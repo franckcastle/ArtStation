@@ -102,6 +102,7 @@ public class UserService implements IService<User> {
             st.setInt(1, e.getId());
             st.setInt(2, id_u);
             st.executeUpdate();
+            dimNbPlace(e);
             System.out.println("done");
             return true;
 //"update evenement set nbPlace = nbPlace - 1"
@@ -120,7 +121,7 @@ public class UserService implements IService<User> {
     }
 
     public int nbPlacesRes(int id_e) throws SQLException {
-        String req = "Select * as nbr from reservation where event_id = " + id_e;
+        String req = "Select *  from reservation where event_id=" + id_e;
         Statement st = cnx.createStatement();
         ResultSet rs = st.executeQuery(req);
 
@@ -132,4 +133,14 @@ public class UserService implements IService<User> {
         }
         return nb;
     }
+    public void dimNbPlace(Evenement ev) throws SQLException{
+
+            String req = "UPDATE evenement SET nbPlace =? where id = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+             ps.setInt(1, ev.getNbPlace()-1);
+             ps.setInt(2, ev.getId());
+
+            ps.executeUpdate();
+        }
+
 }

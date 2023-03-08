@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -34,9 +35,13 @@ public class EventController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       /* searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            updateView(newValue);
-        });*/
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                updateView(newValue);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         try {
             List<Evenement> ev =es.getAll();
             int column=0;
@@ -60,7 +65,7 @@ public class EventController implements Initializable {
                     ++row;
                 }
                 eventContainer.add(eventBox,column++,row);
-                GridPane.setMargin(eventBox,new Insets(10));
+                GridPane.setMargin(eventBox,new  Insets(10));
 
 
         }
@@ -79,7 +84,7 @@ public class EventController implements Initializable {
             e.printStackTrace();
         }
     }
-    /*private void updateView(String searchQuery) {
+    private void updateView(String searchQuery) throws IOException {
         if (eventContainer != null) {
             List<Evenement> listEvent = null;
             try {
@@ -94,18 +99,40 @@ public class EventController implements Initializable {
                     .filter(e -> e.getTitre().toLowerCase().contains(searchQuery.toLowerCase()))
                     .collect(Collectors.toList());
 
-                *//*for (Evenement ev : filteredProducts) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Ev.fxml"));
-                    Parent parent = fxmlLoader.load();
-                    EvController productController = fxmlLoader.getController();
-                    productController.setData(ev);
-                    Region region = (Region) parent;
-                    Node node = region.getChildrenUnmodifiable().get(0);
-                    eventContainer.getChildren().add(node);
-                }*//*
+            int numColumns = 3; // the number of columns you want to display
+            int rowIndex = 1;
+            int columnIndex = 0;
+            for (Evenement ev : filteredProducts) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Ev.fxml"));
+                Parent parent = fxmlLoader.load();
+                EvController productController = fxmlLoader.getController();
+                productController.setData(ev);
+                Node node = parent;
+                eventContainer.add(node, columnIndex, rowIndex);
+                columnIndex++;
+                if (columnIndex == numColumns) {
+                    columnIndex = 0;
+                    rowIndex++;
+                }
+                GridPane.setMargin(node, new Insets(10));
+            }
         } else {
-            System.out.println("productsFlowPane is null");
+            System.out.println("eventContainer is null");
         }
-    }*/
+    }
+  /* public static void filterGridPane(GridPane gridPane, String searchString) {
+       for (Node node : gridPane.getChildren()) {
+           if (node instanceof Label) {
+               Label label = (Label) node;
+               if (label.getText().toLowerCase().contains(searchString.toLowerCase())) {
+                   label.setVisible(true);
+                   label.setManaged(true);
+               } else {
+                   label.setVisible(false);
+                   label.setManaged(false);
+               }
+           }
+       }
+   }*/
 
 }

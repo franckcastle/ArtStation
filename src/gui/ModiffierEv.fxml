@@ -12,16 +12,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D2E7F8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModiffierEvController">
    <children>
-      <Label layoutX="243.0" layoutY="26.0" text="Modifier">
+      <Label layoutX="208.0" layoutY="26.0" text="Modifier">
          <font>
-            <Font size="36.0" />
+            <Font name="Berlin Sans FB" size="54.0" />
          </font></Label>
-      <Button layoutX="388.0" layoutY="175.0" mnemonicParsing="false" onAction="#modifierEv" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #F6B49C; -fx-background-radius: 20;" text="Modifier" textFill="WHITE" />
+      <Button layoutX="385.0" layoutY="199.0" mnemonicParsing="false" onAction="#modifierEv" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #F6B49C; -fx-background-radius: 20;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="12.0" />
+         </font></Button>
       <TextField fx:id="titreId" layoutX="108.0" layoutY="200.0" style="-fx-background-radius: 15;" />
-      <Button fx:id="retourId" layoutX="391.0" layoutY="234.0" mnemonicParsing="false" onAction="#retourAf" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #F6B49C; -fx-background-radius: 20;" text="retour" textFill="WHITE" />
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="1.0" onMouseClicked="#retour" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/en-arriere.png" />
+            <Image url="@../image/contour-du-bouton-circulaire-fleche-arriere-gauche.png" />
          </image>
       </ImageView>
    </children>

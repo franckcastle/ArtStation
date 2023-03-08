@@ -22,15 +22,15 @@ public class Test {
 
         //es.rateEvent(42,5);
 
-       /* UserService us = new UserService();
+       UserService us = new UserService();
         Evenement e = new Evenement();
         e.setId(42);
         e.setNbPlace(12);
-        System.out.println(e);
+       //System.out.println(e);
         //e.setNbPlace(1);
         //boolean vb =us.annulerRes(20,e);
-        boolean vb = us.participerEv(20, e);
-        System.out.println(vb);*/
+        boolean vb = us.participerEv(17, e);
+        System.out.println(vb);
 //
 /*
         try {

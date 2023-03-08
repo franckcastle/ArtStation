@@ -53,6 +53,7 @@ public class EvController implements Initializable {
 
        evTitre.setText(e.getTitre());
         evLocal.setText(e.getLocalisation());
+
     }
     public void modifier(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader =  new FXMLLoader(getClass().getResource("ModiffierEv.fxml"));

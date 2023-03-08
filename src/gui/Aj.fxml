@@ -33,7 +33,7 @@
       <TextField fx:id="imgField" layoutX="35.0" layoutY="292.0" prefHeight="26.0" prefWidth="158.0" promptText="image src" style="-fx-background-radius: 15;" />
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="4.0" onMouseClicked="#retour" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/en-arriere.png" />
+            <Image url="@../image/contour-du-bouton-circulaire-fleche-arriere-gauche.png" />
          </image>
       </ImageView>
    </children>

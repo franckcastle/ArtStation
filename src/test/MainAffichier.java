@@ -20,7 +20,7 @@ public class MainAffichier extends Application {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Affichier Evennement ");
+            primaryStage.setTitle("ArtStation ");
             primaryStage.show();
 
         } catch (IOException ex) {
