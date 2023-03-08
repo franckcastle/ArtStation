@@ -134,7 +134,7 @@ public class UserService implements IService<User> {
         return nb;
     }
     public void dimNbPlace(Evenement ev) throws SQLException{
-
+    //
             String req = "UPDATE evenement SET nbPlace =? where id = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
              ps.setInt(1, ev.getNbPlace()-1);
