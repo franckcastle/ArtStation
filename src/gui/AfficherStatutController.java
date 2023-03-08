@@ -8,11 +8,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import services.CommentaireService;
 import services.StatutService;
 
@@ -42,6 +49,7 @@ public class AfficherStatutController implements Initializable {
     @FXML
     private VBox com;
 
+    Commentaire commentaire;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,28 +78,68 @@ public class AfficherStatutController implements Initializable {
 
 
         Label titreLabel = new Label(statut.getTitre());
-        titreLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        titreLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #455771 ");
 
         Text contenuText = new Text(statut.getContenu());
         contenuText.setWrappingWidth(400);
+        contenuText.setStyle("-fx-font-size: 15px");
+
 
         Label createdLabel = new Label("Publié le " + statut.getCreated());
-        //Label updatedLabel = new Label("Modifié le " + statut.getUpdated());
+        createdLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
+
         Label nbrLikeLabel = new Label(statut.getNbrLike() + " personnes aiment ça");
+        nbrLikeLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
         Label comLabel = new Label("Commentaires: ");
-        HBox commentairesHBox = new HBox();
-        commentairesHBox.setSpacing(10);
+        comLabel.setStyle("-fx-font-size: 17px; -fx-font-weight: bold;-fx-text-fill: #455771");
+//        HBox commentairesHBox = new HBox();
+//        commentairesHBox.setSpacing(20);
+//        List<Commentaire> commentairesList = null;
+//        try {
+//            commentairesList = cs.recupererComByIdStatut(statut.getId_s());
+//        } catch (SQLException e) {
+//            System.out.println("Erreur" + e.getMessage());
+//        }
+//        for (Commentaire commentaire : commentairesList) {
+//            Text commentaireText = new Text(commentaire.getDescription());
+//            commentairesHBox.getChildren().add(commentaireText);
+//        }
+
+
+        FlowPane commentairesFlowPane = new FlowPane();
+        commentairesFlowPane.setHgap(25);
+        commentairesFlowPane.setVgap(25);
         List<Commentaire> commentairesList = null;
         try {
             commentairesList = cs.recupererComByIdStatut(statut.getId_s());
         } catch (SQLException e) {
             System.out.println("Erreur" + e.getMessage());
-        }
-        for (Commentaire commentaire : commentairesList) {
-            Text commentaireText = new Text(commentaire.getDescription());
-            commentairesHBox.getChildren().add(commentaireText);
+        }for (Commentaire commentaire : commentairesList) {
+            Label commentaireLabel = new Label(commentaire.getDescription());
+            Label comsLabel = new Label(Integer.toString(commentaire.getId_c()));
+
+
+
+            commentaireLabel.setContentDisplay(ContentDisplay.LEFT);
+            commentaireLabel.setOnMouseClicked(event -> {
+
+                try {
+                    Parent loader = FXMLLoader.load(getClass().getResource("AfficherCom.fxml"));
+                    statutsVBox.getScene().setRoot(loader);
+
+                }catch (IOException ex){
+                    System.out.println("Erreur"+ex.getMessage());
+                }
+            });
+            commentairesFlowPane.getChildren().add(commentaireLabel);
         }
 
+
+
+
+
+            HBox boutons = new HBox();
+        boutons.setSpacing(30);
         Button commenterBtn = new Button("Commenter");
         commenterBtn.setOnAction(event -> {
             try {
@@ -108,6 +156,7 @@ public class AfficherStatutController implements Initializable {
             }
         });
         Button modifierBtn = new Button("modifier");
+
         modifierBtn.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierStatut.fxml"));
@@ -158,8 +207,8 @@ public class AfficherStatutController implements Initializable {
                 }
             }
         });
-
-        vbox.getChildren().addAll(titreLabel, contenuText, createdLabel, nbrLikeLabel,comLabel,commentairesHBox,commenterBtn, likeBtn,modifierBtn,supprimerBtn);
+        boutons.getChildren().addAll(supprimerBtn,modifierBtn,likeBtn,commenterBtn);
+        vbox.getChildren().addAll(titreLabel, contenuText, createdLabel, nbrLikeLabel,comLabel,commentairesFlowPane,boutons);
 
 
 

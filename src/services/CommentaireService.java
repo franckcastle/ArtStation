@@ -104,9 +104,9 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
         ResultSet rs =  st.executeQuery(q);
         while(rs.next()){
             Commentaire cm = new Commentaire();
+            cm.setId_c(rs.getInt("id_c"));
             cm.setDescription(rs.getString("description"));
             cm.setDate_ajout(rs.getDate("date_ajout"));
-            cm.setId_c(rs.getInt("id_c"));
             cm.setId_c(rs.getInt("id_s"));
 
             commentaires.add(cm);

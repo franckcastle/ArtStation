@@ -2,9 +2,6 @@ package test;
 
 import java.io.IOException;
 
-import api.ForumReader;
-import entities.Commentaire;
-import entities.Statut;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +17,7 @@ public class NewFXMain1 extends Application {
         //   FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterCom.fxml"));
            // FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficherStatut.fxml"));
         // FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffS.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/forum.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Forum.fxml"));
 
             Parent root = loader.load();
             Scene sc = new Scene(root);

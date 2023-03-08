@@ -15,6 +15,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static api.BadWords.checkWords;
+
 public class ModifierComController implements Initializable {
 
     @FXML
@@ -42,20 +44,10 @@ public class ModifierComController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-//    @FXML
-//    void modifierCom(ActionEvent event) throws SQLException {
-//        String description = descriptionField.getText();
-//        try {
-//            cs.modifierCom(c);
-//            Parent loader = FXMLLoader.load(getClass().getResource("AfficherCom.fxml"));
-//            descriptionField.getScene().setRoot(loader);
-//        }catch (SQLException | IOException ex){
-//            System.out.println(ex);
-//        }
-//
-//    }
+
     @FXML
 public void initialize() {
+        descriptionField.setText(c.getDescription());
 
 
 
@@ -63,11 +55,18 @@ public void initialize() {
     @FXML
     public void modifierCom(ActionEvent event) throws SQLException {
         if (!descriptionField.getText().isEmpty()) {
-            Commentaire cc = new Commentaire();
-           cc.setId_c(cc.getId_c());
-            cc.setDescription(descriptionField.getText());
-            cs.modifierCom(cc);
-        } else {
+
+             c.setId_c(c.getId_c());
+             c.setDescription(descriptionField.getText());
+             cs.modifierCom(c);
+        } if (checkWords(c.getDescription()).equals("true")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ATTENTION ! ");
+            alert.setHeaderText("Votre commentaire contient des gros mots et ne peut pas être ajouté.");
+            alert.showAndWait();
+            return;
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur ");
             alert.setHeaderText("Vous ne pouvez pas ajouter un commentaire vide !");

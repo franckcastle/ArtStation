@@ -27,7 +27,7 @@
                </font>
             </Label>
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="36.0" prefWidth="8.0" />
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="203.0" spacing="20.0" styleClass="round-layout" stylesheets="@styles.css">
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="202.0" spacing="20.0" styleClass="round-layout" stylesheets="@styles.css">
                <children>
                   <TextField fx:id="searchField" alignment="CENTER" prefHeight="16.0" prefWidth="125.0" promptText="searchField" styleClass="transparent" stylesheets="@styles.css" />
                  
@@ -41,14 +41,16 @@
             </HBox>
             <Pane prefHeight="60.0" prefWidth="258.0">
                <children>
-                  <Button fx:id="forum" layoutX="14.0" layoutY="11.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#forum" prefHeight="38.0" prefWidth="54.0" stylesheets="@styles.css" textFill="WHITE" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="26.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="Forum" layoutX="60.0" layoutY="15.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#Forum" prefHeight="30.0" prefWidth="128.0" styleClass="button2" stylesheets="@styles.css" text="Forum" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="77.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/logoforum.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="trititre" layoutX="83.0" layoutY="18.0" mnemonicParsing="false" onAction="#updateViewByTitre" text="TRI-T" />
-                  <Button fx:id="trilike" layoutX="158.0" layoutY="18.0" mnemonicParsing="false" onAction="#updateViewByNbrLike" text="TRI-L" />
                </children></Pane>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="141.0" HBox.hgrow="ALWAYS">
                <children>
@@ -74,7 +76,7 @@
       </HBox>
    </top>
    <left>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="162.0" styleClass="white-background" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="436.0" prefWidth="158.0" styleClass="white-background" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
             <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="90.0">
                <VBox.margin>
@@ -217,7 +219,7 @@
          <children>
             <ScrollPane prefHeight="433.0" prefWidth="584.0">
                <content>
-                  <VBox prefHeight="404.0" prefWidth="547.0">
+                  <VBox prefHeight="404.0" prefWidth="570.0">
                      <children>
                         <HBox prefHeight="59.0" prefWidth="483.0">
                            <children>
@@ -226,10 +228,10 @@
                                     <Image url="@../assets/user.png" />
                                  </image>
                                  <HBox.margin>
-                                    <Insets top="15.0" />
+                                    <Insets left="2.0" top="15.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <TextField fx:id="textfield" maxHeight="-Infinity" prefHeight="44.0" prefWidth="418.0" promptText="Libérez vos idées !">
+                              <TextField fx:id="textfield" maxHeight="-Infinity" prefHeight="37.0" prefWidth="418.0" promptText="Libérez vos idées !">
                                  <HBox.margin>
                                     <Insets left="10.0" top="8.0" />
                                  </HBox.margin>
@@ -238,28 +240,46 @@
                                  <HBox.margin>
                                     <Insets left="3.0" right="2.0" top="12.0" />
                                  </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
-                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="41.0" prefWidth="241.0">
-                           <VBox.margin>
-                              <Insets left="400.0" />
-                           </VBox.margin>
-                           <children>
-                              <Button fx:id="com" maxWidth="-Infinity" mnemonicParsing="false" onAction="#com" prefHeight="27.0" prefWidth="86.0" styleClass="round-layout" stylesheets="@styles.css" text="Comments" textFill="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="53.0" />
-                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Baskerville Old Face" size="13.0" />
+                                 </font>
                               </Button>
                            </children>
                         </HBox>
 
-                                    <VBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="542.0" spacing="10.0">
+                                    <VBox alignment="TOP_CENTER" prefHeight="22.0" prefWidth="547.0" spacing="10.0">
                                  <Label prefHeight="18.0" prefWidth="129.0" text="Liste des statuts" textFill="#455771">
                                     <font>
                                        <Font name="Baskerville Old Face" size="18.0" />
                                     </font>
                                  </Label>
+                           <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="550.0" spacing="10.0">
+                              <children>
+                                 <Button mnemonicParsing="false" onAction="#updateViewByTitre" prefHeight="53.0" prefWidth="120.0" styleClass="button2" stylesheets="@styles.css" text="TRI-Titre" textFill="WHITE">
+                                    <font>
+                                       <Font name="Arial Black" size="12.0" />
+                                    </font>
+                                 </Button>
+                                 <Button fx:id="trilike" mnemonicParsing="false" onAction="#updateViewByNbrLike" prefHeight="28.0" prefWidth="120.0" text="TRI-Likes" textFill="WHITE">
+                                    <font>
+                                       <Font name="Arial Black" size="12.0" />
+                                    </font>
+                                 </Button>
+                                 <Button fx:id="com" maxWidth="-Infinity" mnemonicParsing="false" onAction="#com" prefHeight="28.0" prefWidth="117.0" styleClass="button2" stylesheets="@styles.css" text="Comments" textFill="WHITE">
+                                    <HBox.margin>
+                                       <Insets left="53.0" />
+                                    </HBox.margin>
+                                    <font>
+                                       <Font name="Arial Black" size="12.0" />
+                                    </font>
+                                 </Button>
+                                 <Button fx:id="afficher" maxWidth="-Infinity" mnemonicParsing="false" onAction="#afficher" prefHeight="30.0" prefWidth="122.0" styleClass="round-layout" stylesheets="@styles.css" text="Afficher" textFill="WHITE">
+                                    <font>
+                                       <Font name="Arial Black" size="12.0" />
+                                    </font>
+                                 </Button>
+                              </children>
+                           </HBox>
                                     <VBox fx:id="statutsVBox" prefWidth="764.0" spacing="10.0" />
                               </VBox>
                      </children>

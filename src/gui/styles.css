@@ -17,7 +17,10 @@
     -fx-background-radius:50;
     -fx-background-color: #fac881;
 }
-
+.button2{
+    -fx-background-radius:50;
+    -fx-background-color: #455771;
+}
 .BorderPane{
     -fx-border-color: #455771;
     -fx-border-width: 3;

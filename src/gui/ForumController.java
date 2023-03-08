@@ -34,6 +34,22 @@ public class ForumController implements Initializable {
 
     @FXML
     private VBox statutsVBox;
+    @FXML
+    private Button afficher;
+
+    @FXML
+    private Button ajouter;
+
+    @FXML
+    private Button com;
+
+    @FXML
+    private Button forum;
+
+
+
+    @FXML
+    private Button trilike;
 
     @FXML
     private TextField titreField;
@@ -43,9 +59,7 @@ public class ForumController implements Initializable {
     private TextArea resultatArea;
 
     Commentaire commentaire;
-
-    @FXML
-    private Button ajouter;
+    private boolean isLiked;
 
 
     @FXML
@@ -72,8 +86,26 @@ public class ForumController implements Initializable {
 
     }
 
+    @FXML
+    void Forum(ActionEvent event) {
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
+            textfield.getScene().setRoot(loader);
 
-    private boolean isLiked;
+        }catch (IOException ex){
+            System.out.println("Erreur"+ex.getMessage());
+        }
+    }
+    @FXML
+    void afficher(ActionEvent event) {
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
+            textfield.getScene().setRoot(loader);
+
+        }catch (IOException ex){
+            System.out.println("Erreur"+ex.getMessage());
+        }
+    }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -81,6 +113,7 @@ public class ForumController implements Initializable {
         });
         try {
             List<Statut> stt = s.recuperer();
+
 
             for (Statut statut : stt) {
                 HBox hbox = createStatutHBox(statut);
@@ -133,25 +166,7 @@ public class ForumController implements Initializable {
         Label createdLabel = new Label("Publié le " + statut.getCreated());
         Label nbrLikeLabel = new Label(statut.getNbrLike() + " personnes aiment ça");
 
-        Button afficherBtn = new Button("Afficher");
-        afficherBtn.setOnAction(event -> {
-//    VBox vbox = createStatutVBox(statut);
-//                Scene scene = new Scene(vbox);
-//                Stage stage = new Stage();
-//                stage.setScene(scene);
-//                stage.show();
-            try {
-                Parent loader = FXMLLoader.load(getClass().getResource("AfficherStatut.fxml"));
-                statutsVBox.getScene().setRoot(loader);
-
-            } catch (IOException ex) {
-                System.out.println("Erreur" + ex.getMessage());
-            }
-
-        });
-
-
-        hbox.getChildren().addAll(titreLabel, createdLabel, nbrLikeLabel, afficherBtn);
+        hbox.getChildren().addAll(titreLabel, createdLabel, nbrLikeLabel);
         return hbox;
     }
 
@@ -231,7 +246,7 @@ public class ForumController implements Initializable {
     @FXML
     void forum(ActionEvent event) {
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("forum.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
             statutsVBox.getScene().setRoot(loader);
 
         }catch (IOException ex){
@@ -285,6 +300,8 @@ public class ForumController implements Initializable {
             System.out.println("productsFlowPane is null");
         }
     }
+
+
 
     }
 

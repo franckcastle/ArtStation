@@ -116,8 +116,7 @@ import java.util.List;
 
 public class BadWords {
 
-    private static final String BAD_WORDS_FILE = "C:\\Users\\user\\OneDrive\\Bureau\\badwords.txt";
-
+   private static final String BAD_WORDS_FILE = "C:\\Users\\user\\OneDrive\\Bureau\\badwords.txt";
     public static String checkWords(String paragraph) {
         List<String> badWords = loadBadWords();
         String[] words = paragraph.split("\\s+");

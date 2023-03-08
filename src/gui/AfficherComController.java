@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 
-import entities.Statut;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +22,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
 import services.CommentaireService;
 
 
@@ -36,7 +34,6 @@ import java.util.ResourceBundle;
 public class AfficherComController implements Initializable {
 
 
-    public Commentaire com;
     @FXML
     private TableView<Commentaire> commentairesTv;
     @FXML
@@ -55,19 +52,14 @@ public class AfficherComController implements Initializable {
 
     CommentaireService cs = new CommentaireService();
 
-Statut statut;
-
-    @FXML
-    private TableView<Commentaire> tableView; // or ListView<Commentaire> if you prefer
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            List<Commentaire> cm = cs.recupererCom();
 
-            //List<Commentaire> commentairesList = cs.recupererComByIdStatut(statut.getId_s());
-           List<Commentaire> commentairesList = cs.recupererCom();
 
-            ObservableList<Commentaire> olp = FXCollections.observableArrayList(commentairesList);
+            ObservableList<Commentaire> olp = FXCollections.observableArrayList(cm);
             commentairesTv.setItems(olp);
             idTv.setCellValueFactory(new PropertyValueFactory<>("id_c"));
             descriptionTv.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -79,6 +71,8 @@ Statut statut;
         } catch (SQLException ex) {
             System.out.println("Erreur" + ex.getMessage());
         }
+
+
     }
 
 
@@ -175,9 +169,8 @@ Statut statut;
     }
 
 
-
     @FXML
-    void forum(ActionEvent event) {
+    void Forum(ActionEvent event) {
         try {
             Parent loader = FXMLLoader.load(getClass().getResource("Forum.fxml"));
             commentairesTv.getScene().setRoot(loader);
@@ -189,5 +182,5 @@ Statut statut;
     }
 
 
-}
 
+}
