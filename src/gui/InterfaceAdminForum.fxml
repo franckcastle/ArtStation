@@ -44,12 +44,7 @@
                 <Pane prefHeight="200.0" prefWidth="200.0" />
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="130.0" text="User account">
-                            <font>
-                                <Font name="Baskerville Old Face" size="18.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#Admin" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../assets/user.png" />
                             </image>
@@ -80,7 +75,7 @@
                                 <Insets left="5.0" top="9.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="106.0" text="Home">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#home" prefHeight="63.0" prefWidth="106.0" text="Home">
                             <font>
                                 <Font name="Baskerville Old Face" size="18.0" />
                             </font>
@@ -103,7 +98,7 @@
                                 <Insets left="5.0" top="10.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="106.0" text="Workshops">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#workshops" prefHeight="63.0" prefWidth="106.0" text="Workshops">
                             <font>
                                 <Font name="Baskerville Old Face" size="18.0" />
                             </font>
@@ -123,7 +118,7 @@
                                 <Insets left="5.0" top="10.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Events">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#events" prefHeight="54.0" prefWidth="99.0" text="Events">
                             <font>
                                 <Font name="Baskerville Old Face" size="18.0" />
                             </font>
@@ -146,7 +141,7 @@
                                 <Insets left="5.0" top="10.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Products">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#products" prefHeight="54.0" prefWidth="99.0" text="Products">
                             <font>
                                 <Font name="Baskerville Old Face" size="18.0" />
                             </font>
@@ -166,7 +161,7 @@
                                 <Insets left="5.0" top="10.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Orders">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#orders" prefHeight="54.0" prefWidth="99.0" text="Orders">
                             <font>
                                 <Font name="Baskerville Old Face" size="18.0" />
                             </font>
@@ -183,7 +178,7 @@
                                 <Insets left="5.0" top="10.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="99.0" text="Forum">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#forum" prefHeight="54.0" prefWidth="99.0" text="Forum">
                             <font>
                                 <Font name="Baskerville Old Face" size="18.0" />
                             </font>

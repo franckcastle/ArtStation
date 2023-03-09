@@ -131,6 +131,17 @@ public class ModiffierPdtController implements Initializable {
         this.p=p;
     }
     @FXML
+    public void prod(ActionEvent event)throws IOException{
+        AnchorPane root = FXMLLoader.load(getClass().getResource("market.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(750 );
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+    @FXML
     public void panier(ActionEvent event)throws IOException{
 
         AnchorPane root = FXMLLoader.load(getClass().getResource("OrderAffiche.fxml"));

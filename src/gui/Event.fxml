@@ -58,15 +58,7 @@
             <Pane prefHeight="70.0" prefWidth="182.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="102.0" text="User Name" textAlignment="CENTER">
-                     <font>
-                        <Font name="Berlin Sans FB" size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="20.0" top="20.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#Admin" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/utilisateur.png" />
                      </image>
@@ -103,7 +95,7 @@
                               <Image url="@../image/bouton-daccueil.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="99.0" text="Home" textAlignment="CENTER">
+                        <Label onMouseClicked="#home" prefHeight="22.0" prefWidth="99.0" text="Home" textAlignment="CENTER">
                            <font>
                               <Font name="Berlin Sans FB" size="18.0" />
                            </font>
@@ -131,7 +123,7 @@
                               <Image url="@../image/workshop.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="100.0" text="Workshops" textAlignment="CENTER">
+                        <Label onMouseClicked="#workshops" prefHeight="22.0" prefWidth="100.0" text="Workshops" textAlignment="CENTER">
                            <font>
                               <Font name="Berlin Sans FB" size="18.0" />
                            </font>
@@ -145,7 +137,7 @@
                               <Image url="@../image/event.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="99.0" text="Events" textAlignment="CENTER">
+                        <Label onMouseClicked="#events" prefHeight="22.0" prefWidth="99.0" text="Events" textAlignment="CENTER">
                            <font>
                               <Font name="Berlin Sans FB" size="18.0" />
                            </font>
@@ -163,7 +155,7 @@
                               <Image url="@../image/produit.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="108.0" text="Produit" textAlignment="CENTER">
+                        <Label onMouseClicked="#products" prefHeight="22.0" prefWidth="108.0" text="Produit" textAlignment="CENTER">
                            <font>
                               <Font name="Berlin Sans FB" size="18.0" />
                            </font>
@@ -177,7 +169,7 @@
                               <Image url="@../image/forum.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="22.0" prefWidth="105.0" text="Forum" textAlignment="CENTER">
+                        <Label onMouseClicked="#forum" prefHeight="22.0" prefWidth="105.0" text="Forum" textAlignment="CENTER">
                            <font>
                               <Font name="Berlin Sans FB" size="18.0" />
                            </font>

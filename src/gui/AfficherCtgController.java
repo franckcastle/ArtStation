@@ -108,7 +108,7 @@ public class AfficherCtgController implements Initializable {
     }
     @FXML
     public void prod(ActionEvent event)throws IOException{
-        AnchorPane root = FXMLLoader.load(getClass().getResource("market.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("AffichagePdt.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setWidth(750 );
         stage.setHeight(500);

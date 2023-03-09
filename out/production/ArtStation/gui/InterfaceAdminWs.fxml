@@ -12,16 +12,11 @@
    <children>
        <AnchorPane prefHeight="47.0" prefWidth="819.0" style="-fx-background-color: white;">
            <children>
-               <ImageView fitHeight="28.0" fitWidth="38.0" layoutX="592.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="28.0" fitWidth="38.0" layoutX="592.0" layoutY="10.0" onMouseClicked="#Admin" pickOnBounds="true" preserveRatio="true">
                    <image>
                        <Image url="@../assets/user.png" />
                    </image>
                </ImageView>
-               <Label layoutX="643.0" layoutY="10.0" prefHeight="28.0" prefWidth="112.0" text="User Account">
-                   <font>
-                       <Font name="Baskerville Old Face" size="20.0" />
-                   </font>
-               </Label>
            </children>
        </AnchorPane>
       <Button layoutX="355.0" layoutY="175.0" mnemonicParsing="false" onAction="#workshops" prefHeight="37.0" prefWidth="183.0" text="Acceder aux workshops">
@@ -43,32 +38,32 @@
                </AnchorPane>
                <VBox layoutY="6.0" prefHeight="349.0" prefWidth="140.0" spacing="30.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                    <children>
-                       <Label prefHeight="28.0" prefWidth="140.0" text="      Home">
+                       <Label onMouseClicked="#home" prefHeight="28.0" prefWidth="140.0" text="      Home">
                            <font>
                                <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                        </Label>
-                       <Label prefHeight="28.0" prefWidth="140.0" text="     Workshops">
+                       <Label onMouseClicked="#workshops" prefHeight="28.0" prefWidth="140.0" text="     Workshops">
                            <font>
                                <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                        </Label>
-                       <Label prefHeight="28.0" prefWidth="140.0" text="      Events">
+                       <Label onMouseClicked="#events" prefHeight="28.0" prefWidth="140.0" text="      Events">
                            <font>
                                <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                        </Label>
-                       <Label prefHeight="28.0" prefWidth="140.0" text="      Products">
+                       <Label onMouseClicked="#products" prefHeight="28.0" prefWidth="140.0" text="      Products">
                            <font>
                                <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                        </Label>
-                       <Label prefHeight="28.0" prefWidth="140.0" text="      Orders">
+                       <Label onMouseClicked="#orders" prefHeight="28.0" prefWidth="140.0" text="      Orders">
                            <font>
                                <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                        </Label>
-                       <Label prefHeight="28.0" prefWidth="140.0" text="      Forum">
+                       <Label onMouseClicked="#forum" prefHeight="28.0" prefWidth="140.0" text="      Forum">
                            <font>
                                <Font name="Baskerville Old Face" size="20.0" />
                            </font>
@@ -115,7 +110,7 @@
                </VBox>
            </children>
        </AnchorPane>
-      <Label fx:id="labelField" layoutX="284.0" layoutY="86.0" prefHeight="31.0" prefWidth="348.0" text="Bienvenu a votre espace ADMIN">
+      <Label fx:id="labelField" layoutX="284.0" layoutY="86.0" prefHeight="36.0" prefWidth="375.0" text="Bienvenu a votre espace ADMIN">
          <font>
             <Font name="Baskerville Old Face" size="25.0" />
          </font>

@@ -15,8 +15,13 @@ public class HomeAppController {
 
     @FXML
     void Events(ActionEvent event)throws IOException {
-        Parent loader = FXMLLoader.load(getClass().getResource("Event.fxml"));
-        home.getScene().setRoot(loader);
+        if (Session.getUserCon().getRole().equals("Admin")){
+            Parent loader = FXMLLoader.load(getClass().getResource("Event.fxml"));
+            home.getScene().setRoot(loader);
+        }else {
+            Parent loader = FXMLLoader.load(getClass().getResource("Usevent.fxml"));
+            home.getScene().setRoot(loader);
+        }
     }
 
     @FXML

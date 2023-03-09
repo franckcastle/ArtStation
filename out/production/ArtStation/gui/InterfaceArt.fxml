@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.IterfaceArtController">
+    <children>
+        <BorderPane prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox prefHeight="60.0" prefWidth="200.0" styleClass="light-background" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="140.0" text="Les produits" textFill="#f6b49c">
+                            <font>
+                                <Font name="Arial" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Label>
+                        <Separator orientation="VERTICAL" prefHeight="20.0" prefWidth="6.0">
+                            <HBox.margin>
+                                <Insets bottom="12.0" left="20.0" top="12.0" />
+                            </HBox.margin>
+                        </Separator>
+                        <HBox maxHeight="-Infinity" prefHeight="36.0" prefWidth="213.0" spacing="20.0" styleClass="round-layout" stylesheets="@../values/style.css">
+                            <HBox.margin>
+                                <Insets left="20.0" top="10.0" />
+                            </HBox.margin>
+                            <children>
+                                <TextField fx:id="searchField" prefHeight="26.0" prefWidth="198.0" promptText="chercher des produits" styleClass="search-box" stylesheets="@../values/style.css">
+                                    <HBox.margin>
+                                        <Insets left="4.0" top="3.75" />
+                                    </HBox.margin>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                </TextField>
+                                <ImageView fitHeight="20.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/loupe.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                    <HBox.margin>
+                                        <Insets right="10.0" top="5.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Pane prefHeight="60.0" prefWidth="148.0" HBox.hgrow="ALWAYS" />
+                        <HBox prefHeight="60.0" prefWidth="131.0">
+                            <children>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#profile" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/user.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+            </top>
+            <left>
+                <VBox prefHeight="540.0" prefWidth="166.0" styleClass="light-background" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox prefHeight="173.0" prefWidth="166.0" spacing="3.0">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="43.0" prefWidth="102.0" text="Brows ">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets left="25.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="66.0" prefWidth="166.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
+                                    <children>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="5.0" />
+                                            </HBox.margin>
+                                            <image>
+                                                <Image url="@../img/new-product.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" text="touts les produit">
+                                            <HBox.margin>
+                                                <Insets left="9.0" top="22.0" />
+                                            </HBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="62.0" prefWidth="166.0">
+                                    <children>
+                                        <Button fx:id="trierparprix" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#updateViewByPrice" style="-fx-background-color: #F6B49C;" styleClass="search-button" stylesheets="@../values/style.css" text="trier par prix" textFill="WHITE">
+                                            <HBox.margin>
+                                                <Insets left="25.0" top="5.0" />
+                                            </HBox.margin>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                                <Separator prefHeight="15.0" prefWidth="166.0" />
+                                <HBox prefHeight="62.0" prefWidth="166.0">
+                                    <children>
+                                        <Button fx:id="trierparnom" mnemonicParsing="false" onAction="#updateViewByName" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="trier par nom" textFill="WHITE">
+                                            <HBox.margin>
+                                                <Insets left="25.0" top="5.0" />
+                                            </HBox.margin>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="369.0" prefWidth="166.0" spacing="6.0">
+                            <children>
+                                <Separator prefHeight="10.0" prefWidth="166.0" />
+                                <Label alignment="CENTER" graphicTextGap="0.0" prefHeight="43.0" prefWidth="183.0" text="vous trouvez de plus">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <HBox prefHeight="50.0" prefWidth="200.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
+                                    <children>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="5.0" />
+                                            </HBox.margin>
+                                            <image>
+                                                <Image url="@../img/workshop.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#workshops" prefHeight="18.0" prefWidth="107.0" text="Workshops">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="22.0" />
+                                            </HBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="50.0" prefWidth="200.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
+                                    <children>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="5.0" />
+                                            </HBox.margin>
+                                            <image>
+                                                <Image url="@../img/event.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#events" prefHeight="18.0" prefWidth="107.0" text="Evenment">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="22.0" />
+                                            </HBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="50.0" prefWidth="200.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
+                                    <children>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="5.0" />
+                                            </HBox.margin>
+                                            <image>
+                                                <Image url="@../img/chat.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#forum" prefHeight="18.0" prefWidth="107.0" text="Forum">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="22.0" />
+                                            </HBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox prefHeight="44.0" prefWidth="166.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" onAction="#panierbtn" style="-fx-background-color: #F6B49C;" styleClass="search-box" stylesheets="@../values/style.css" text="Panier" textFill="WHITE">
+                                            <HBox.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                            </HBox.margin>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="63.0" prefWidth="166.0">
+                           <children>
+                              <Button mnemonicParsing="false" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="Ajouter Produit" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="30.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </left>
+            <center>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ScrollPane fx:id="scrollPane" prefHeight="540.0" prefWidth="736.0" styleClass="trasparent" stylesheets="@../values/style.css">
+                            <content>
+                                <FlowPane fx:id="productsFlowPane" hgap="20" prefHeight="538.0" prefWidth="727.0" vgap="20" />
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </HBox>
+            </center>
+        </BorderPane>
+    </children>
+
+</AnchorPane>

@@ -1,5 +1,6 @@
 package gui;
 
+import entities.Session;
 import entities.Workshop;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -223,29 +224,51 @@ public class AjouterWorkshopController implements Initializable {
 
     @FXML
     void products(MouseEvent event) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("HomeApp.fxml"));
+        if(Session.getUserCon().getRole().equals("Client")){
+
+
+        AnchorPane root = FXMLLoader.load(getClass().getResource("market.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setWidth(800);
         stage.setHeight(500);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setMaximized(false);
-        stage.show();
+        stage.show();}
+        else {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("InterfaceArt.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setWidth(800);
+            stage.setHeight(500);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setMaximized(false);
+            stage.show();
+        }
     }
 
     @FXML
-    void workshops(MouseEvent event)  throws IOException{
-
-        AnchorPane root = FXMLLoader.load(getClass().getResource("ChoisirWorkshop.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setWidth(800);
-        stage.setHeight(500);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMaximized(false);
-        stage.show();
+    void workshops(MouseEvent event)  throws IOException {
+        if (Session.getUserCon().getRole().equals("Admin")) {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("InterfaceAdminWs.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setWidth(800);
+            stage.setHeight(500);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setMaximized(false);
+            stage.show();
+        }
+    else {
+            AnchorPane root = FXMLLoader.load(getClass().getResource("AjouterWorkshop.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setWidth(800);
+            stage.setHeight(500);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setMaximized(false);
+            stage.show();
     }
 
-
-    }
+    }}
 
