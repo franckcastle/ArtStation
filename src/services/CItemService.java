@@ -21,9 +21,6 @@ public class CItemService implements ItemService<CartItem> {
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
     }
-
-
-
     @Override
     public void modifier(CartItem t) throws SQLException {
         String req = "UPDATE cartitem SET orderId = ?,id = ?,quantity = ?,price = ? where cart_id = ?";

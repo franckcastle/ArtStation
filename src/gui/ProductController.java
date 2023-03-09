@@ -1,9 +1,13 @@
 package gui;
 
+import entities.CartItem;
 import entities.Produit;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,12 +15,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.Rating;
 
+import services.CItemService;
 import services.RatingService;
 import javafx.scene.control.ButtonType;
 
 
-
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
@@ -66,7 +70,6 @@ public class ProductController implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateUI();
@@ -106,7 +109,36 @@ public class ProductController implements Initializable {
 
             }
         }
+
+
+CItemService ci =new CItemService();
+
+    public void addedItem(Produit p, int c) throws SQLException {
+        CartItem item = new CartItem();
+        item.setId(p.getID_produit());
+        item.setOrderId(c);
+        item.setQuantity(1);
+        item.setPrice((float)p.getPrix()*item.getQuantity());
+        ci.ajouter(item);
     }
+    int c ;
+
+    public void ajouterCol(ActionEvent actionEvent) throws IOException {
+        Produit p = this.produit;
+        System.out.println(produit);
+        System.out.println(p);
+
+        try {
+            addedItem(p,c);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+      /*  FXMLLoader loader =  new FXMLLoader(getClass().getResource("Market.fxml"));
+        Parent root = loader.load();
+        MarketController controller =loader.getController();
+        controller.c=c;*/
+    }
+}
 
 
 

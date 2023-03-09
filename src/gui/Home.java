@@ -115,6 +115,7 @@ CItemService ci =new CItemService();
                 };
             });
         }
+        int c=22;
         public void addedItem(Produit p, int c) throws SQLException {
             CartItem item = new CartItem();
             item.setId(p.getID_produit());
@@ -126,11 +127,10 @@ CItemService ci =new CItemService();
 
 
     public void ajouterPanier(javafx.event.ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader =  new FXMLLoader(getClass().getResource("panier.fxml"));
+        FXMLLoader loader =  new FXMLLoader(getClass().getResource("panierT.fxml"));
         Parent root = loader.load();
-       Panier controller =loader.getController();
-       controller.display(a);
-       controller.s=a;
+       PanierT controller =loader.getController();
+
         hometab.getScene().setRoot(root);
     }
 }

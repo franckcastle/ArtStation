@@ -75,7 +75,7 @@ public class PanierOrder {
     @FXML
     void retourAf(ActionEvent event) {
         try {
-            Parent loader = FXMLLoader.load(getClass().getResource("panier.fxml"));
+            Parent loader = FXMLLoader.load(getClass().getResource("PanierT.fxml"));
 
             //Parent root = loader.load();
             nom_col.getScene().setRoot(loader);

@@ -1,5 +1,4 @@
 package gui;
-
 import entities.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,10 +20,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class MarketController implements Initializable {
-
+public class IterfaceArtController implements Initializable {
     ProduitService ps = new ProduitService();
-  int c =22;
+
     @FXML
     public ScrollPane scroll;
     @FXML
@@ -53,9 +51,7 @@ public class MarketController implements Initializable {
                 for (Produit produit : listProd) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/product.fxml"));
                     Parent parent = fxmlLoader.load();
-
                     ProductController productController = fxmlLoader.getController();
-                    productController.c=c;
                     productController.setProduct(produit);
                     Region region = (Region) parent;
                     Node node = region.getChildrenUnmodifiable().get(0);
@@ -112,7 +108,6 @@ public class MarketController implements Initializable {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/product.fxml"));
                     Parent parent = fxmlLoader.load();
                     ProductController productController = fxmlLoader.getController();
-
                     productController.setProduct(produit);
                     Region region = (Region) parent;
                     Node node = region.getChildrenUnmodifiable().get(0);
@@ -151,11 +146,6 @@ public class MarketController implements Initializable {
     }
 
     public void panierbtn(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader =  new FXMLLoader(getClass().getResource("panierT.fxml"));
-        Parent root = loader.load();
-        PanierT controller =loader.getController();
-        controller.display(c);
-        controller.s=c;
-        trierparnom.getScene().setRoot(root);
+
     }
-}
+    }

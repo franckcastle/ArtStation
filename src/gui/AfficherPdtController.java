@@ -29,6 +29,10 @@ public class AfficherPdtController implements Initializable {
     @FXML
     private Button stat;
     @FXML
+    private Button prod;
+    @FXML
+    private Button panier;
+    @FXML
     public TableView productsTv;
     @FXML
     public TableColumn idproduitTv;
@@ -203,4 +207,28 @@ public class AfficherPdtController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void prod(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("market.fxml"));
+
+            //Parent root = loader.load();
+            brows.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void panier(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("panier.fxml"));
+
+            //Parent root = loader.load();
+            brows.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+       }
+    }
+
 }

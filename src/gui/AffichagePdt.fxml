@@ -90,9 +90,9 @@
       </HBox>
       <VBox layoutX="-2.0" layoutY="62.0" prefHeight="538.0" prefWidth="158.0" styleClass="light-background" stylesheets="@../values/style.css">
          <children>
-            <VBox prefHeight="262.0" prefWidth="158.0" spacing="7.0">
+            <VBox prefHeight="551.0" prefWidth="158.0" spacing="7.0">
                <children>
-                  <Label fx:id="brows" alignment="CENTER" contentDisplay="CENTER" text="Brows">
+                  <Label fx:id="brows" alignment="CENTER" contentDisplay="CENTER" text="Gestion">
                      <VBox.margin>
                         <Insets left="40.0" top="5.0" />
                      </VBox.margin>
@@ -101,81 +101,57 @@
                      </font>
                   </Label>
                   <Separator prefWidth="200.0" />
-                  <HBox prefHeight="57.0" prefWidth="158.0">
+                  <HBox prefHeight="45.0" prefWidth="158.0">
                      <children>
-                        <ImageView fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="prod" mnemonicParsing="false" onAction="#prod" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #455771;" text="Produit" textFill="WHITE">
                            <HBox.margin>
-                              <Insets left="8.0" top="5.0" />
+                              <Insets left="40.0" top="10.0" />
                            </HBox.margin>
-                           <image>
-                              <Image url="@../img/workshop.png" />
-                           </image>
-                        </ImageView>
-                        <Label text="Workshops">
-                           <HBox.margin>
-                              <Insets left="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0" />
-                  <HBox prefHeight="61.0" prefWidth="158.0">
+                  <HBox prefHeight="42.0" prefWidth="158.0">
                      <children>
-                        <ImageView fitHeight="48.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/event.png" />
-                           </image>
+                        <Button fx:id="panier" mnemonicParsing="false" onAction="#panier" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #455771;" text="Panier" textFill="WHITE">
                            <HBox.margin>
-                              <Insets left="8.0" top="5.0" />
+                              <Insets left="40.0" top="10.0" />
                            </HBox.margin>
-                        </ImageView>
-                        <Label text="Evenements">
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="49.0" prefWidth="158.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #455771;" text="Worshop" textFill="WHITE">
                            <HBox.margin>
-                              <Insets left="10.0" top="15.0" />
+                              <Insets left="40.0" top="10.0" />
                            </HBox.margin>
-                        </Label>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="39.0" prefWidth="158.0">
+                     <children>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #455771;" text="Evenement" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="40.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0" />
                   <HBox prefHeight="66.0" prefWidth="158.0">
                      <children>
-                        <ImageView fitHeight="48.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/chat.png" />
-                           </image>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #455771;" text="Forum" textFill="WHITE">
                            <HBox.margin>
-                              <Insets left="8.0" top="5.0" />
+                              <Insets left="40.0" top="10.0" />
                            </HBox.margin>
-                        </ImageView>
-                        <Label text="Forum">
-                           <HBox.margin>
-                              <Insets left="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <Separator prefWidth="200.0" />
-            <HBox prefHeight="57.0" prefWidth="158.0">
-               <children>
-                  <Button fx:id="AjouterProduit" mnemonicParsing="false" onAction="#ajouterProduit" style="-fx-background-color: #F6B49C;" styleClass="search-box" stylesheets="@../values/style.css" text="Ajouter produit" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets left="27.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-            <Separator prefWidth="200.0" />
-            <HBox prefHeight="57.0" prefWidth="158.0">
-               <children>
-                  <Button fx:id="Stat" mnemonicParsing="false" onAction="#consulterStat" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="Statistique" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets left="27.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
             <Separator prefWidth="200.0" />
          </children>
       </VBox>

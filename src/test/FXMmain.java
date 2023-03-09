@@ -5,17 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
-
 public class FXMmain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
           // FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/pdf.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Market.fxml"));
-         // FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Home.fxml"));
+      //  FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffichagePdt.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/OrderAffiche.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root, 600, 400);
             stage.setScene(scene);

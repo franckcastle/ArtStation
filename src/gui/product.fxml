@@ -26,7 +26,7 @@
       </VBox.margin></Label>
       <HBox prefHeight="38.0" prefWidth="210.0">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #F6B49C;" text="acheter" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#ajouterCol" style="-fx-background-color: #F6B49C;" text="acheter" textFill="WHITE" />
             <Button fx:id="rate" mnemonicParsing="false" onAction="#rateProdcut" style="-fx-background-color: #455771;" text="evaluer" textFill="WHITE">
                <HBox.margin>
                   <Insets left="20.0" />

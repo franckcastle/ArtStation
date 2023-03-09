@@ -147,6 +147,20 @@ public class ProduitService  {
             }
 
         }
+    public void modifierQte(Produit p) {
+        String query = "UPDATE  produit set qte_stock=? Where ID_produit ='" + p.getID_produit() + "'";
+        try {
+            PreparedStatement ste = cnx.prepareStatement(query);
+
+            ste.setInt(1, p.getQte_stock());
+            ste.executeUpdate();
+            System.out.println("nom produit modifié  ");
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
 
     public Produit rechercheProduit (int ID_produit) throws SQLException, ParseException {
         Produit p = new Produit();

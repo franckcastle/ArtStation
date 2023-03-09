@@ -97,7 +97,7 @@
                            </VBox.margin>
                         </Label>
                         <Separator prefWidth="200.0" />
-                        <HBox prefHeight="86.0" prefWidth="166.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
+                        <HBox prefHeight="66.0" prefWidth="166.0" styleClass="mouse-moved" stylesheets="@../values/style.css">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -127,7 +127,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Separator prefWidth="200.0" />
+                        <Separator prefHeight="15.0" prefWidth="166.0" />
                         <HBox prefHeight="62.0" prefWidth="166.0">
                            <children>
                               <Button fx:id="trierparnom" mnemonicParsing="false" onAction="#updateViewByName" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="trier par nom" textFill="WHITE">
@@ -139,7 +139,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="254.0" prefWidth="166.0" spacing="6.0">
+                  <VBox prefHeight="332.0" prefWidth="166.0" spacing="6.0">
                      <children>
                         <Separator prefWidth="200.0" />
                         <Label alignment="CENTER" prefHeight="43.0" prefWidth="183.0" text="vous trouvez de plus">
@@ -207,6 +207,16 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="70.0" prefWidth="166.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#panierbtn" style="-fx-background-color: #F6B49C;" styleClass="search-box" stylesheets="@../values/style.css" text="Panier" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="50.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
                            </children>
                         </HBox>
                      </children>
