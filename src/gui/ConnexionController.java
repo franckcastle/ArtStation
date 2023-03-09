@@ -7,13 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import services.UserService;
 
@@ -56,8 +54,8 @@ public class ConnexionController implements Initializable {
                     if (password.equals(u.getPassword())) {
                         try {
                             Session.setUserCon(u);
-                            if (Session.getUserCon().getRole().equals("Admin")){
-                                BorderPane root = FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+
+                                AnchorPane root = FXMLLoader.load(getClass().getResource("HomeApp.fxml"));
                                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 stage.setWidth(800);
                                 stage.setHeight(500);
@@ -65,10 +63,7 @@ public class ConnexionController implements Initializable {
                                 stage.setScene(scene);
                                 stage.setMaximized(false);
                                 stage.show();
-                            }else {
-                                Parent loader = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-                                usernameTf.getScene().setRoot(loader);
-                            }
+
 
 
                         } catch (IOException ex) {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="245.0" prefWidth="230.0" styleClass="shadow" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProductController">
+<VBox fx:id="productContainer" layoutX="-1.0" layoutY="41.0" maxHeight="-Infinity" prefHeight="237.0" prefWidth="230.0" style="-fx-padding: 10;" styleClass="shadow" stylesheets="@../values/style.css">
+
+    <ImageView fx:id="productImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" style="-fx-margin: 10;" />
+    <Label fx:id="productName" style="-fx-font-size: 10pt;" text="Product Name">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+    <Label fx:id="productPrice" style="-fx-font-size: 9pt;" text="Product Price">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin></Label>
+      <HBox prefHeight="38.0" prefWidth="210.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#ajouterCol" style="-fx-background-color: #F6B49C;" text="acheter" textFill="WHITE" />
+            <Button fx:id="rate" mnemonicParsing="false" onAction="#rateProdcut" style="-fx-background-color: #455771;" text="evaluer" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </HBox>
+</VBox>
+</AnchorPane>

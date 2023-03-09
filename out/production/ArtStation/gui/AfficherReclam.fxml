@@ -18,7 +18,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherReclamController">
     <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" styleClass="white-background" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" styleClass="white-background" stylesheets="@../css/styleSkander.css" BorderPane.alignment="CENTER">
             <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="170.0" text="Forum" textFill="#fac881">
                     <font>
@@ -26,9 +26,9 @@
                     </font>
                 </Label>
                 <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="36.0" prefWidth="8.0" />
-                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="203.0" spacing="20.0" styleClass="round-layout" stylesheets="@../css/style.css">
+                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="34.0" prefWidth="203.0" spacing="20.0" styleClass="round-layout" stylesheets="@../css/styleSkander.css">
                     <children>
-                        <TextField alignment="CENTER" prefHeight="16.0" prefWidth="125.0" promptText="Search" styleClass="transparent" stylesheets="@../css/style.css" />
+                        <TextField alignment="CENTER" prefHeight="16.0" prefWidth="125.0" promptText="Search" styleClass="transparent" stylesheets="@../css/styleSkander.css" />
                         <ImageView fitHeight="17.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../assets/logosearch.png" />
@@ -64,7 +64,7 @@
         </HBox>
     </top>
     <left>
-        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="162.0" styleClass="white-background" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="162.0" styleClass="white-background" stylesheets="@../css/styleSkander.css" BorderPane.alignment="CENTER">
             <children>
                 <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="0.0" prefWidth="90.0">
                     <VBox.margin>

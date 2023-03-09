@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<!--cmnt -->
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D2E7F8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModiffierEvController">
+   <children>
+      <Label layoutX="208.0" layoutY="26.0" text="Modifier">
+         <font>
+            <Font name="Berlin Sans FB" size="54.0" />
+         </font></Label>
+      <Button layoutX="385.0" layoutY="199.0" mnemonicParsing="false" onAction="#modifierEv" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #F6B49C; -fx-background-radius: 20;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="12.0" />
+         </font></Button>
+      <TextField fx:id="titreId" layoutX="108.0" layoutY="200.0" style="-fx-background-radius: 15;" />
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutY="1.0" onMouseClicked="#retour" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/contour-du-bouton-circulaire-fleche-arriere-gauche.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

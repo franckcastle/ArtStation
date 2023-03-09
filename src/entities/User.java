@@ -1,7 +1,11 @@
 package entities;
+
+import java.util.List;
+
 public class User {
     private int userId ,tel;
     private String username,password,email,role;
+    private List<Reservation> reservations;
 
     public User() {}
 
@@ -20,6 +24,18 @@ public class User {
         this.email = email;
         this.tel = tel;
         this.role = role;
+    }
+
+    public User(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public int getUserId() {

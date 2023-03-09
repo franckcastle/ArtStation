@@ -1,5 +1,6 @@
 package services;
 
+import entities.Evenement;
 import entities.User;
 import utils.MyDb;
 import java.sql.*;
@@ -145,6 +146,54 @@ public class UserService implements IService<User> {
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1,newPassword);
         ps.setString(2,email);
+
+        ps.executeUpdate();
+    }
+    @Override
+    public boolean participerEv(int id_u, Evenement e) throws SQLException {
+        if (nbPlacesRes(e.getId()) < e.getNbPlace()) {
+            String req = "INSERT INTO reservation(event_id,user_id) values(?,?)";
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setInt(1, e.getId());
+            st.setInt(2, id_u);
+            st.executeUpdate();
+            dimNbPlace(e);
+            System.out.println("done");
+            return true;
+//"update evenement set nbPlace = nbPlace - 1"
+        }
+        return false;
+    }
+
+    //test
+    @Override
+    public boolean annulerRes(int id_u, Evenement e) throws SQLException {
+        PreparedStatement req = cnx.prepareStatement("delete from reservation where event_id= ? and user_id=? ");
+        req.setInt(1, e.getId());
+        req.setInt(2, id_u);
+        req.executeUpdate();
+        return true;
+    }
+
+    public int nbPlacesRes(int id_e) throws SQLException {
+        String req = "Select *  from reservation where event_id=" + id_e;
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+
+        System.out.println(rs.getRow());
+        int nb = 0;
+        while (rs.next()) {
+            nb++;
+
+        }
+        return nb;
+    }
+    public void dimNbPlace(Evenement ev) throws SQLException{
+        //
+        String req = "UPDATE evenement SET nbPlace =? where id = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, ev.getNbPlace()-1);
+        ps.setInt(2, ev.getId());
 
         ps.executeUpdate();
     }

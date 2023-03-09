@@ -7,9 +7,33 @@
       <root url="jar://$PROJECT_DIR$/../../Téléchargement 2/javax.mail.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../Téléchargement 2/javax.mail-1.4.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../Téléchargement 2/jaf-1.1.1/activation.jar!/" />
+      <root url="file://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/zxing.jar" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/jar_files (4)/controlsfx-11.1.2.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/sib-api-v3-sdk-6.0.0.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/activation-1.1.1.jar!/" />
+      <root url="file://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/jfreechart-1.0.19 (1)/jfreechart-1.0.19/lib" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javax.mail.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.4.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.3.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.2.jar!/" />
+      <root url="file://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/stripe/jfreechart-1.0.19/jfreechart-1.0.19/lib" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/stripe/gson-2.10.1.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/stripe/itextpdf-5.5.9.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/stripe/pdfbox-app-3.0.0-alpha3 (1).jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/stripe/stripe-java-22.11.0.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/stripe/controlsfx-11.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.4.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.3.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/javafx-ui-sandbox-master/javafx-ui-sandbox-master/javafx-dialogs/dist/javafx-dialogs-0.0.2.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/nour/jfreechart-1.0.19 (1)/jfreechart-1.0.19/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/stripe/jfreechart-1.0.19/jfreechart-1.0.19/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/OneDrive - Ministere de l'Enseignement Superieur et de la Recherche Scientifique/Bureau/zxing.jar" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../../Téléchargement 2/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib" recursive="false" />
   </library>
 </component>

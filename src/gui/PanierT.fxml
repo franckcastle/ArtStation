@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PanierT">
+    <children>
+        <Label layoutX="143.0" layoutY="20.0" text="panier" textAlignment="CENTER">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button layoutX="719.0" layoutY="92.0" mnemonicParsing="false" onAction="#retourbtn" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: f6b49c;" text="retour" textFill="WHITE">
+            <font>
+                <Font name="Ebrima Bold" size="12.0" />
+            </font></Button>
+        <ListView fx:id="ProduitTable" layoutX="174.0" layoutY="162.0" prefHeight="338.0" prefWidth="430.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets></ListView>
+      <Text layoutX="450.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix total">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="prixcol" layoutX="614.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="151.199951171875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="766.0" layoutY="274.0" mnemonicParsing="false" onAction="#buybtn" text="buy" />
+        <HBox prefHeight="48.0" prefWidth="900.0" styleClass="light-background" stylesheets="@../values/style.css">
+            <children>
+                <Label alignment="CENTER" onMouseClicked="#home" text="Art Station" textFill="#f6b49c">
+                    <font>
+                        <Font name="Arial" size="20.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                    </HBox.margin>
+                </Label>
+                <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="0.0">
+                    <HBox.margin>
+                        <Insets left="40.0" />
+                    </HBox.margin>
+                </Separator>
+                <HBox prefHeight="41.0" prefWidth="200.0" styleClass="round-layout" stylesheets="@../values/style.css">
+                    <HBox.margin>
+                        <Insets bottom="15.0" left="20.0" top="15.0" />
+                    </HBox.margin>
+                    <children>
+                        <TextField promptText="rechercher" styleClass="search-box" stylesheets="@../values/style.css">
+                            <HBox.margin>
+                                <Insets left="3.0" top="3.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/loupe.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets top="5.0" />
+                            </HBox.margin>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <HBox prefHeight="66.0" prefWidth="302.0" />
+                <Label text="User account">
+                    <HBox.margin>
+                        <Insets left="5.0" top="20.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <VBox layoutX="-2.0" layoutY="62.0" prefHeight="538.0" prefWidth="158.0" styleClass="light-background" stylesheets="@../values/style.css">
+            <children>
+                <VBox prefHeight="541.0" prefWidth="158.0" spacing="7.0">
+                    <children>
+                        <Label fx:id="brows" alignment="CENTER" contentDisplay="CENTER" text="Brows">
+                            <VBox.margin>
+                                <Insets left="40.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="45.0" prefWidth="158.0">
+                            <children>
+                                <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/best-seller.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="2.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <Label onMouseClicked="#products" text="Produit">
+                                    <HBox.margin>
+                                        <Insets left="5.0" top="15.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="42.0" prefWidth="158.0">
+                            <children>
+                                <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/workshop.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="2.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <Label onMouseClicked="#workshops" text="Workshop">
+                                    <HBox.margin>
+                                        <Insets left="4.0" top="10.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="49.0" prefWidth="158.0">
+                            <children>
+                                <ImageView fitHeight="47.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/event.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="2.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <Label onMouseClicked="#events" text="Evenement">
+                                    <HBox.margin>
+                                        <Insets left="4.0" top="10.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="39.0" prefWidth="158.0">
+                            <children>
+                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <ImageView fitHeight="48.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../img/chat.png" />
+                                            </image>
+                                            <HBox.margin>
+                                                <Insets left="10.0" top="2.0" />
+                                            </HBox.margin>
+                                        </ImageView>
+                                        <Label onMouseClicked="#forum" text="Forum">
+                                            <HBox.margin>
+                                                <Insets left="4.0" top="10.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <Separator prefWidth="200.0" />
+            </children>
+        </VBox>
+
+    </children>
+</AnchorPane>

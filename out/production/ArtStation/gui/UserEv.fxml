@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="toj" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="180.0" spacing="5.0" style="-fx-background-radius: 20;" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserEvController">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+   </padding>
+   <children>
+      <ImageView fx:id="evImg" fitHeight="223.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox prefHeight="55.0" prefWidth="159.0" spacing="5.0">
+         <children>
+            <Label fx:id="evTitre" prefHeight="22.0" prefWidth="106.0" text="EMINEM">
+               <font>
+                  <Font name="Berlin Sans FB" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="evLocal" prefHeight="22.0" prefWidth="106.0" text="RADES">
+               <font>
+                  <Font name="Berlin Sans FB" size="13.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="159.0" spacing="30.0">
+               <children>
+                  <ImageView fx:id="evDetails" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#deatils" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/info.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="evMod1" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#commenter" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/feedback.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="white-background" />
+      <String fx:value="shadow" />
+   </styleClass>
+</VBox>

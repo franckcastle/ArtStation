@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="308.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StatutController">
+<VBox fx:id="statutContainer" layoutY="56.0" maxHeight="-Infinity" prefHeight="246.0" prefWidth="362.0" style="-fx-padding: 10;">
+      <HBox prefHeight="20.0" prefWidth="356.0">
+         <children>
+      
+          <Label fx:id="statutTitre" prefHeight="20.0" prefWidth="163.0" style="-fx-font-size: 10pt;" text="Titre Statut">
+              <font>
+                  <Font size="10.0" />
+              </font>
+            </Label>
+          <Label fx:id="statutContenu" style="-fx-font-size: 10pt;" text="Contenu">
+              <font>
+                  <Font size="10.0" />
+              </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="nbrLike" prefHeight="18.0" prefWidth="142.0" text="nbrLike">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+</VBox>
+</AnchorPane>
