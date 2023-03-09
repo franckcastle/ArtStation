@@ -50,6 +50,8 @@ public class AdminController implements Initializable {
     private Button btnShowStats;
 
     @FXML
+    private Button retourAF;
+    @FXML
     public void afficherStat(ActionEvent event) {
         try {
             Stat demo = new Stat("Statistiques sur les workshops les plus assistés");
@@ -110,6 +112,17 @@ public class AdminController implements Initializable {
 
         });
 
+    }
+    @FXML
+    public void retourAf(ActionEvent event){
+        try {
+            Parent loader = FXMLLoader.load(getClass().getResource("InterfaceAdminWs.fxml"));
+
+            //Parent root = loader.load();
+            tablee.getScene().setRoot(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

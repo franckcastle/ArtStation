@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InterfaceAdminWsController">
+   <children>
+       <AnchorPane prefHeight="47.0" prefWidth="819.0" style="-fx-background-color: white;">
+           <children>
+               <ImageView fitHeight="28.0" fitWidth="38.0" layoutX="592.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../assets/user.png" />
+                   </image>
+               </ImageView>
+               <Label layoutX="643.0" layoutY="10.0" prefHeight="28.0" prefWidth="112.0" text="User Account">
+                   <font>
+                       <Font name="Baskerville Old Face" size="20.0" />
+                   </font>
+               </Label>
+           </children>
+       </AnchorPane>
+      <Button layoutX="355.0" layoutY="175.0" mnemonicParsing="false" onAction="#workshops" prefHeight="37.0" prefWidth="183.0" text="Acceder aux workshops">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button layoutX="355.0" layoutY="230.0" mnemonicParsing="false" onAction="#reservations" prefHeight="37.0" prefWidth="183.0" text="Acceder aux réservations" />
+       <AnchorPane layoutX="50.0" layoutY="47.0" prefHeight="355.0" prefWidth="140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="45.0">
+           <children>
+               <AnchorPane layoutX="-60.0" layoutY="-69.0" prefHeight="79.0" prefWidth="200.0" style="-fx-background-color: white;">
+                   <children>
+                       <Label layoutX="34.0" layoutY="34.0" prefHeight="28.0" prefWidth="132.0" text="   Worksops" textFill="#fac881">
+                           <font>
+                               <Font name="Baskerville Old Face" size="25.0" />
+                           </font>
+                       </Label>
+                   </children>
+               </AnchorPane>
+               <VBox layoutY="6.0" prefHeight="349.0" prefWidth="140.0" spacing="30.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                   <children>
+                       <Label prefHeight="28.0" prefWidth="140.0" text="      Home">
+                           <font>
+                               <Font name="Baskerville Old Face" size="20.0" />
+                           </font>
+                       </Label>
+                       <Label prefHeight="28.0" prefWidth="140.0" text="     Workshops">
+                           <font>
+                               <Font name="Baskerville Old Face" size="20.0" />
+                           </font>
+                       </Label>
+                       <Label prefHeight="28.0" prefWidth="140.0" text="      Events">
+                           <font>
+                               <Font name="Baskerville Old Face" size="20.0" />
+                           </font>
+                       </Label>
+                       <Label prefHeight="28.0" prefWidth="140.0" text="      Products">
+                           <font>
+                               <Font name="Baskerville Old Face" size="20.0" />
+                           </font>
+                       </Label>
+                       <Label prefHeight="28.0" prefWidth="140.0" text="      Orders">
+                           <font>
+                               <Font name="Baskerville Old Face" size="20.0" />
+                           </font>
+                       </Label>
+                       <Label prefHeight="28.0" prefWidth="140.0" text="      Forum">
+                           <font>
+                               <Font name="Baskerville Old Face" size="20.0" />
+                           </font>
+                       </Label>
+                   </children>
+               </VBox>
+           </children>
+       </AnchorPane>
+       <AnchorPane layoutY="55.0" prefHeight="396.0" prefWidth="50.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="55.0">
+           <children>
+               <VBox prefHeight="345.0" prefWidth="50.0" spacing="22.0" AnchorPane.topAnchor="6.0">
+                   <children>
+                       <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../assets/home.png" />
+                           </image>
+                       </ImageView>
+                       <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../assets/workhsop.png" />
+                           </image>
+                       </ImageView>
+                       <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../assets/event.png" />
+                           </image>
+                       </ImageView>
+                       <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../assets/order.png" />
+                           </image>
+                       </ImageView>
+                       <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../assets/checkout.png" />
+                           </image>
+                       </ImageView>
+                       <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../assets/forum.png" />
+                           </image>
+                       </ImageView>
+                   </children>
+               </VBox>
+           </children>
+       </AnchorPane>
+      <Label fx:id="labelField" layoutX="284.0" layoutY="86.0" prefHeight="31.0" prefWidth="348.0" text="Bienvenu a votre espace ADMIN">
+         <font>
+            <Font name="Baskerville Old Face" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

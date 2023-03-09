@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ public class MainAjouter extends Application {
             //Ajout
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterEv.fxml"));
             //GetAll+DEl
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterWorkshop.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/InterfaceAdminWs.fxml"));
 
             Parent root = loader.load();
             Scene scene = new Scene(root,800,400);

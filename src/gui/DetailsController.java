@@ -167,13 +167,13 @@ public class DetailsController implements Initializable {
         if (nombreReservations <= workshop.getNbPlaces()) {
 
             reservationService.ajouterR(reservation);
+            System.out.println("reservation ajoutée");
             // Envoyer un e-mail avec les informations de workshop choisi
             String to = "nour.elghali@esprit.tn ";
             String subject = "Nouveu Workshop choisi : " + workshop.getTitre();
             String message = "Bonjour,\nVous avez choisi l'atelier \"" + workshop.getTitre() + "\" qui aura lieu le " + workshop.getDate() +" Ceci est votre lien meet: https://meet.google.com/omn-hjwa-quz" +".\n\nCordialement,\nL'équipe de artStation";
 
             sendEmail(to, subject, message);
-            reservationService.ajouterR(reservation);
             Dialog<String> dialog = new Dialog<>();
             dialog.setTitle("Réservation ajoutée");
 
