@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class InterfaceAdminController {
+public class InterfaceAdminForumController {
 
     @FXML
     private Button consulterCom;
