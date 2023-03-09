@@ -142,10 +142,10 @@ public class ForumController implements Initializable {
                         .collect(Collectors.toList());
 
                 for (Statut statut : filteredProducts) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Statut.fxml"));
                     Parent parent = fxmlLoader.load();
-                    ProductController productController = fxmlLoader.getController();
-                    productController.setStatut(statut);
+                    StatutController statutController = fxmlLoader.getController();
+                    statutController.setStatut(statut);
                     Region region = (Region) parent;
                     Node node = region.getChildrenUnmodifiable().get(0);
                     statutsVBox.getChildren().add(node);
@@ -262,10 +262,10 @@ public class ForumController implements Initializable {
                 statutsVBox.getChildren().clear();
 
                 for (Statut statut : listStatut) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Statut.fxml"));
                     Parent parent = fxmlLoader.load();
-                    ProductController productController = fxmlLoader.getController();
-                    productController.setStatut(statut);
+                    StatutController statutController = fxmlLoader.getController();
+                    statutController.setStatut(statut);
                     Region region = (Region) parent;
                     Node node = region.getChildrenUnmodifiable().get(0);
                     statutsVBox.getChildren().add(node);
@@ -285,10 +285,10 @@ public class ForumController implements Initializable {
                 statutsVBox.getChildren().clear();
 
                 for (Statut statut : listStatut) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Statut.fxml"));
                     Parent parent = fxmlLoader.load();
-                    ProductController productController = fxmlLoader.getController();
-                    productController.setStatut(statut);
+                    StatutController statutController = fxmlLoader.getController();
+                    statutController.setStatut(statut);
                     Region region = (Region) parent;
                     Node node = region.getChildrenUnmodifiable().get(0);
                     statutsVBox.getChildren().add(node);

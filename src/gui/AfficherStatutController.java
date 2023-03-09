@@ -6,21 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import services.CommentaireService;
 import services.StatutService;
 
@@ -240,10 +233,10 @@ public class AfficherStatutController implements Initializable {
                             .collect(Collectors.toList());
 
                     for (Statut statut : filteredProducts) {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/RechStat.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Statut.fxml"));
                         Parent parent = fxmlLoader.load();
-                        ProductController productController = fxmlLoader.getController();
-                        productController.setStatut(statut);
+                        StatutController statutController = fxmlLoader.getController();
+                        statutController.setStatut(statut);
                         Region region = (Region) parent;
                         Node node = region.getChildrenUnmodifiable().get(0);
                         statutsVBox.getChildren().add(node);

@@ -125,24 +125,7 @@ public  class StatutService implements IService <Statut> {
 
         return statut;
     }
-    public Statut rechStatutByTitre(String titre) throws SQLException, ParseException {
-        Statut statut = null;
-        try {
-            Statement stmt = cnx.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM statut  where titre ="+titre);
-            while(result.next()) {
-                statut.setId_s(result.getInt(1));
-                statut.setTitre(result.getString(2));
-                statut.setContenu(result.getString(3));
-                statut.setCreated(result.getDate(4));
-                statut.setUpdated(result.getDate(5));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
 
-        return statut;
-    }
     @Override
     public int recupererIdStatut(String titre) throws SQLException, ParseException {
         int id=0;

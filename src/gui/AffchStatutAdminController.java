@@ -10,14 +10,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Callback;
-import services.CommentaireService;
 import services.StatutService;
 
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-public class AffchStaController implements  Initializable{
+public class AffchStatutAdminController implements  Initializable{
     StatutService ss = new StatutService();
     @FXML
     private TextField titreTf;
@@ -49,8 +47,8 @@ public class AffchStaController implements  Initializable{
         s.setId_s(Integer.parseInt(idsTf.getText()));
         s.setTitre(titreTf.getText());
         s.setContenu(contenuTf.getText());
-        s.setCreated(Date.valueOf(createdTf.getText()));
-        s.setUpdated(Date.valueOf(updatedTf.getText()));
+       // s.setCreated(Date.valueOf(createdTf.getText()));
+       // s.setUpdated(Date.valueOf(updatedTf.getText()));
         ss.modifier(s);
         statLv.refresh();
         // Mise à jour de la liste des utilisateurs après suppression
