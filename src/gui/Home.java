@@ -14,12 +14,9 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.converter.IntegerStringConverter;
 import services.CItemService;
 import services.ProduitService;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -89,9 +86,6 @@ CItemService ci =new CItemService();
 
 
 
-
-
-
     int a =22;
     public void addtocartt(){
 
@@ -121,9 +115,9 @@ CItemService ci =new CItemService();
                 };
             });
         }
-        public void addedItem(Produit p,int c) throws SQLException {
+        public void addedItem(Produit p, int c) throws SQLException {
             CartItem item = new CartItem();
-            item.setId(p.getId());
+            item.setId(p.getID_produit());
             item.setOrderId(c);
             item.setQuantity(3);
             item.setPrice((float)p.getPrix()*item.getQuantity());

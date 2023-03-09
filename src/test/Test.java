@@ -45,9 +45,11 @@ public class Test {
         CartItem cs =new CartItem(20,3,2,1.0f);
        ProduitService ss = new ProduitService();
        System.out.println(ss.getByorderId(20).toString());*/
-        Remise r = new Remise(12346,"amine",0);
-        RemiseService rs = new RemiseService();
-       rs.modifier(r);
+        //Remise r = new Remise(12346,"amine",0);
+       // RemiseService rs = new RemiseService();
+       //rs.modifier(r);
+       ProduitService ps =new ProduitService();
+       ps.recuperer();
     }
     
 }

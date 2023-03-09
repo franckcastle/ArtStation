@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="retourr" depthTest="ENABLE" onDragDetected="#retour" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterPdtController">
+   <children>
+       <Button layoutX="409.0" layoutY="520.0" maxWidth="300.0" mnemonicParsing="false" onAction="#AjouterProduit" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: blue;" text="ajouter produit" textFill="WHITE" />
+      <TextField fx:id="nomTf" layoutX="459.0" layoutY="181.0" promptText="Nom de produit" />
+      <TextField fx:id="descriptionTf" layoutX="698.0" layoutY="181.0" promptText="Description de produit" />
+      <TextField fx:id="prixTf" layoutX="231.0" layoutY="287.0" promptText="prix de produit" />
+      <TextField fx:id="qte_stockTf" layoutX="459.0" layoutY="287.0" promptText="quantité du produit" />
+      <TextField fx:id="imageTf" depthTest="ENABLE" layoutX="459.0" layoutY="417.0" promptText="Image du produit" />
+      <ComboBox fx:id="comb" layoutX="231.0" layoutY="417.0" onAction="#select" prefWidth="150.0" promptText="categorie" />
+      <Label layoutX="194.0" layoutY="178.0" text="Ajouter un produit ">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="retour" layoutX="598.0" layoutY="507.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="57.0" text="quitter" />
+      <VBox layoutY="79.0" prefHeight="520.0" prefWidth="136.0" styleClass="light-background" stylesheets="@../values/style.css" />
+      <HBox prefHeight="79.0" prefWidth="900.0" styleClass="light-background" stylesheets="@../values/style.css" />
+   </children>
+   
+</AnchorPane>

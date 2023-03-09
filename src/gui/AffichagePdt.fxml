@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherPdtController">
+   <children>
+      <TableView fx:id="productsTv" layoutX="194.0" layoutY="173.0" prefHeight="294.0" prefWidth="586.0" stylesheets="@../values/style.css">
+        <columns>
+          <TableColumn fx:id="idproduitTv" prefWidth="40.000030517578125" style="-fx-background-color: #f0f0f0; -fx-font-weight: bold;" text="id produit" />
+          <TableColumn fx:id="nomTv" prefWidth="59.199981689453125" text="nom produit" />
+            <TableColumn fx:id="descriptionTv" prefWidth="60.0" text="description" />
+            <TableColumn fx:id="prixTv" prefWidth="54.4000244140625" text="prix" />
+            <TableColumn fx:id="imageTv" prefWidth="68.0" text="image" />
+            <TableColumn fx:id="qte_stockTv" prefWidth="72.0" text="quantité stock" />
+            <TableColumn fx:id="categorieTv" prefWidth="66.4000244140625" text="categorie" />
+            <TableColumn fx:id="supprimer" prefWidth="83.199951171875" text="supprimer" />
+            <TableColumn fx:id="modifier" prefWidth="80.40008544921875" text="modifier" />
+        </columns>
+      </TableView>
+      <Label layoutX="412.0" layoutY="115.0" text="Liste des produits">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="48.0" prefWidth="900.0" styleClass="light-background" stylesheets="@../values/style.css">
+         <children>
+            <Label alignment="CENTER" text="Art Station" textFill="#f6b49c">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </HBox.margin>
+            </Label>
+            <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="0.0">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </Separator>
+            <HBox prefHeight="41.0" prefWidth="200.0" styleClass="round-layout" stylesheets="@../values/style.css">
+               <HBox.margin>
+                  <Insets bottom="15.0" left="20.0" top="15.0" />
+               </HBox.margin>
+               <children>
+                  <TextField promptText="rechercher" styleClass="search-box" stylesheets="@../values/style.css">
+                     <HBox.margin>
+                        <Insets left="3.0" top="3.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/loupe.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox prefHeight="66.0" prefWidth="302.0" />
+            <Label text="User account">
+               <HBox.margin>
+                  <Insets left="5.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../img/user.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox layoutX="-2.0" layoutY="62.0" prefHeight="538.0" prefWidth="158.0" styleClass="light-background" stylesheets="@../values/style.css">
+         <children>
+            <VBox prefHeight="262.0" prefWidth="158.0" spacing="7.0">
+               <children>
+                  <Label fx:id="brows" alignment="CENTER" contentDisplay="CENTER" text="Brows">
+                     <VBox.margin>
+                        <Insets left="40.0" top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="57.0" prefWidth="158.0">
+                     <children>
+                        <ImageView fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="8.0" top="5.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../img/workshop.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Workshops">
+                           <HBox.margin>
+                              <Insets left="10.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="61.0" prefWidth="158.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/event.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="8.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label text="Evenements">
+                           <HBox.margin>
+                              <Insets left="10.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="66.0" prefWidth="158.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/chat.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="8.0" top="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label text="Forum">
+                           <HBox.margin>
+                              <Insets left="10.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefHeight="57.0" prefWidth="158.0">
+               <children>
+                  <Button fx:id="AjouterProduit" mnemonicParsing="false" onAction="#ajouterProduit" style="-fx-background-color: #F6B49C;" styleClass="search-box" stylesheets="@../values/style.css" text="Ajouter produit" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="27.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefHeight="57.0" prefWidth="158.0">
+               <children>
+                  <Button fx:id="Stat" mnemonicParsing="false" onAction="#consulterStat" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="Statistique" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="27.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

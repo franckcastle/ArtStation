@@ -1,29 +1,49 @@
 package entities;
 
+import java.util.Objects;
+
 public class Categorie {
-    int Cat;
-    String nom ;
 
-    public Categorie() {
-    }
+ private int id_ctg;
+ private String nom_ctg ;
 
-    public Categorie(String nom) {
-        this.nom = nom;
-    }
+ public Categorie(int id_ctg, String nom_ctg) {
+  this.id_ctg = id_ctg;
+  this.nom_ctg = nom_ctg;
+ }
 
-    public int getCat() {
-        return Cat;
-    }
+ public Categorie(String nom_ctg) {
+  this.nom_ctg = nom_ctg;
+ }
 
-    public void setCat(int cat) {
-        Cat = cat;
-    }
+ public Categorie() {
 
-    public String getNom() {
-        return nom;
-    }
+ }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+ public int getId_ctg() {
+  return id_ctg;
+ }
+
+ public void setId_ctg(int id_ctg) {
+  this.id_ctg = id_ctg;
+ }
+
+
+ public String getNom_ctg() {
+  return nom_ctg;
+ }
+
+ public void setNom_ctg(String nom_ctg) {
+ this.nom_ctg = nom_ctg;
+ }
+
+ @Override
+ public String toString() {
+  return "Categorie{" +
+          "id_ctg=" + id_ctg +
+          ", nom_ctg='" + nom_ctg + '\'' +
+          '}';
+ }
+
+
 }

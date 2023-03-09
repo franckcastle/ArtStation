@@ -1,5 +1,4 @@
 package gui;
-
 import entities.Remise;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

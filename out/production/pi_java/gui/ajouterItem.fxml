@@ -5,6 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import java.awt.Button?>
+<?import java.awt.TextField?>
 <AnchorPane id="order_id_field" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterItem">
    <children>
       <TextField fx:id="price_field" layoutX="226.0" layoutY="258.0" promptText="price" />
