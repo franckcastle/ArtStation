@@ -6,7 +6,6 @@
       <root url="file://$PROJECT_DIR$/../Downloads/google-api-client-assembly-2.2.0-2.2.0/google-api-java-client/libs" />
       <root url="file://$PROJECT_DIR$/../Downloads/google-oauth-client-assembly-1.33.2-1.33.2/google-oauth-java-client/libs" />
       <root url="file://$PROJECT_DIR$/../Downloads/jfreechart-1.0.19 (1)/jfreechart-1.0.19/lib" />
-      <root url="jar://$PROJECT_DIR$/../Downloads/sendinblue-2.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/sib-api-v3-sdk-6.0.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/dsn.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/workshop-Mail-master/workshop-Mail-master/mail-lib/imap.jar!/" />
