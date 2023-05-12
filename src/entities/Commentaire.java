@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class Commentaire {
     private String username;
-    private int id_c ;
-    private int id_s;
+    private int id;
+    private int id_s_id;
     private String description;
     private static Date date_ajout;
     private Statut statut;
@@ -16,25 +16,25 @@ public class Commentaire {
     }
 
 
-    public Commentaire(int id_s, String description) {
-        this.id_s = id_s;
+    public Commentaire(int id_s_id, String description) {
+        this.id_s_id = id_s_id;
         this.description = description;
     }
 
-    public int getId_s() {
-        return id_s;
+    public int getId_s_id() {
+        return id_s_id;
     }
 
-    public void setId_s(int id_s) {
-        this.id_s = id_s;
+    public void setId_s_id(int id_s_id) {
+        this.id_s_id = id_s_id;
     }
 
-    public int getId_c() {
-        return id_c;
+    public int getId() {
+        return id;
     }
 
-    public void setId_c(int id_c) {
-        this.id_c = id_c;
+    public void setId(int id) {
+        this.id = id;
     }
 
 
@@ -67,12 +67,12 @@ public class Commentaire {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Commentaire that = (Commentaire) o;
-        return id_c == that.id_c && id_s == that.id_s && Objects.equals(description, that.description) && Objects.equals(statut, that.statut);
+        return id == that.id && id_s_id == that.id_s_id && Objects.equals(description, that.description) && Objects.equals(statut, that.statut);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_c, id_s, description, statut);
+        return Objects.hash(id, id_s_id, description, statut);
     }
 
     public String getUsername() {
@@ -87,8 +87,8 @@ public class Commentaire {
     public String toString() {
         return "Commentaire{" +
                 "username='" + username + '\'' +
-                ", id_c=" + id_c +
-                ", id_s=" + id_s +
+                ", id=" + id +
+                ", id=" + id_s_id +
                 ", description='" + description + '\'' +
                 ", statut=" + statut +
                 '}';

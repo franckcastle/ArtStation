@@ -5,14 +5,14 @@ import java.sql.Date;
 
 public class Statut {
 
-    int id_s;
+    int id;
     private String titre;
     private String contenu;
     private String username;
 
 
 
-    private int nbrLike  ;
+    private int nbr_like;
     private Date created;
     private Date updated;
 
@@ -27,40 +27,40 @@ public class Statut {
 
     }
 
-    public Statut(int id_s, String contenu, String titre) {
-        this.id_s = id_s;
+    public Statut(int id, String contenu, String titre) {
+        this.id = id;
         this.contenu = contenu;
         this.titre = titre;
     }
 
-    public Statut(int id_s, String contenu, String titre, Date created, Date updated) {
-        this.id_s = id_s;
+    public Statut(int id, String contenu, String titre, Date created, Date updated) {
+        this.id = id;
         this.contenu = contenu;
         this.titre = titre;
         this.created = created;
         this.updated = updated;
     }
 
-    public Statut(int id_s, String titre, String contenu, int nbrlike, Date created, Date updated) {
-        this.id_s = id_s;
+    public Statut(int id, String titre, String contenu, int nbrlike, Date created, Date updated) {
+        this.id = id;
         this.titre = titre;
         this.contenu = contenu;
-        this.nbrLike = nbrlike;
+        this.nbr_like = nbrlike;
         this.created = created;
         this.updated = updated;
     }
 
-    public int getNbrLike() {
-        return nbrLike;
+    public int getNbr_like() {
+        return nbr_like;
     }
 
 
-    public  int getId_s() {
-        return id_s;
+    public  int getId() {
+        return id;
     }
 
-    public void setId_s(int id_s) {
-        this.id_s = id_s;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitre() {
@@ -96,8 +96,8 @@ public class Statut {
         this.updated = updated;
     }
 
-    public  void setNbrLike(int nbrLike) {
-        this.nbrLike = nbrLike;
+    public  void setNbr_like(int nbr_like) {
+        this.nbr_like = nbr_like;
     }
 
     public String getUsername() {
@@ -108,12 +108,12 @@ public class Statut {
         this.username = username;
     }
 
-    public Statut(int id_s, String titre, String contenu, String username, int nbrLike, Date created, Date updated) {
-        this.id_s = id_s;
+    public Statut(int id, String titre, String contenu, String username, int nbr_like, Date created, Date updated) {
+        this.id = id;
         this.titre = titre;
         this.contenu = contenu;
         this.username = username;
-        this.nbrLike = nbrLike;
+        this.nbr_like = nbr_like;
         this.created = created;
         this.updated = updated;
     }

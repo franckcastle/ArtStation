@@ -38,11 +38,11 @@ public class AjouterComController implements Initializable {
 
     @FXML
     void ajouterCom(ActionEvent event) {
-        // System.out.println(sta.getId_s());
+        // System.out.println(sta.getId());
         Commentaire c = new Commentaire();
         c.setUsername(Session.getUserCon().getUsername());
         c.setDescription(descriptionField.getText());
-        c.setId_s(sta.getId_s());
+        c.setId_s_id(sta.getId());
         System.out.println(c);
         try {
             if (c.getDescription().length() == 0) {

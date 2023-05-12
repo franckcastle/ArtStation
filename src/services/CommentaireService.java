@@ -18,12 +18,12 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
         java.util.Date javaDate = new java.util.Date();
       //  Date date_ajout = new Date(javaDate.getTime());
         PreparedStatement statement;
-        statement = cnx.prepareStatement("INSERT INTO  commentaire (username,id_s,description) VALUES" +
+        statement = cnx.prepareStatement("INSERT INTO  commentaire (username,id_s_id,description) VALUES" +
                 "(?,?,?)");
         statement.setString(1, Session.getUserCon().getUsername());
 
         statement.setString(3, c.getDescription());
-        statement.setInt(2, c.getId_s());
+        statement.setInt(2, c.getId_s_id());
         statement.executeUpdate();
         System.out.println("l'ajout du commentaire a ete effectué avec succés!");
 
@@ -32,7 +32,7 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
 
     @Override
     public void modifierCom(Commentaire c) throws SQLException {
-        String query = "UPDATE  commentaire set description=? Where id_c ='" + c.getId_c() + "'";
+        String query = "UPDATE  commentaire set description=? Where id ='" + c.getId() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
 
@@ -49,11 +49,11 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
 
 
 
-        public boolean supprimerCom (int id_c) throws SQLException{
+        public boolean supprimerCom (int id) throws SQLException{
         boolean ok = false;
         try {
-            PreparedStatement req = cnx.prepareStatement("delete from commentaire where id_c = ? ");
-            req.setInt(1, id_c);
+            PreparedStatement req = cnx.prepareStatement("delete from commentaire where id = ? ");
+            req.setInt(1, id);
             req.executeUpdate();
             ok = true;
             System.out.println("Commentaire supprimé !");
@@ -76,8 +76,8 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
 
             cm.setDescription(rs.getString("description"));
             cm.setDate_ajout(rs.getDate("date_ajout"));
-            cm.setId_c(rs.getInt("id_c"));
-            cm.setId_s(rs.getInt("id_s"));
+            cm.setId(rs.getInt("id"));
+            cm.setId_s_id(rs.getInt("id_s_id"));
 
             commentaires.add(cm);
 
@@ -86,13 +86,13 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
 
     }
 
-    public Commentaire rechCom(int id_c) throws SQLException {
+    public Commentaire rechCom(int id) throws SQLException {
         Commentaire c = new Commentaire();
         try {
             Statement stmt = cnx.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM commentaire  where id_c ="+id_c);
+            ResultSet result = stmt.executeQuery("SELECT * FROM commentaire  where id ="+id);
             while(result.next()) {
-                c.setId_c(result.getInt(1));
+                c.setId(result.getInt(1));
                 c.setDescription(result.getString(2));
                 c.setDate_ajout(result.getDate(3));
 
@@ -103,16 +103,16 @@ public  class CommentaireService implements IServiceCom<Commentaire> {
 
         return c;
     }
-    public List<Commentaire> recupererComByIdStatut(int id_s) throws SQLException {
+    public List<Commentaire> recupererComByIdStatut(int id_s_id) throws SQLException {
         List<Commentaire> commentaires = new ArrayList<>();
-        String q = "select * from commentaire where id_s ="+id_s;
+        String q = "select * from commentaire where id_s_id ="+id_s_id;
         Statement st = cnx.createStatement();
         ResultSet rs =  st.executeQuery(q);
         while(rs.next()){
             Commentaire cm = new Commentaire();
             cm.setUsername(rs.getString("username"));
-            cm.setId_c(rs.getInt("id_c"));
-            cm.setId_s(rs.getInt("id_s"));
+            cm.setId(rs.getInt("id"));
+            cm.setId_s_id(rs.getInt("id_s_id"));
             cm.setDescription(rs.getString("description"));
             cm.setDate_ajout(rs.getDate("date_ajout"));
 

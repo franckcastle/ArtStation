@@ -1,5 +1,6 @@
 package api;
 
+import services.SendSms;
 import utils.MyDb;
 
 import java.io.BufferedReader;
@@ -17,19 +18,19 @@ public class BadWords {
 
 
    //Utiliser ca quand je recupere l'user!
-    //public static String checkWords(String paragraph,String userId) {
-   //int count = 0;
+    public static String checkWords(String paragraph) {
+   int count = 0;
 
-        public static String checkWords(String paragraph) {
+     //   public static String checkWords(String paragraph) {
         List<String> badWords = loadBadWords();
         String[] words = paragraph.split("\\s+");
         for (String word : words) {
             if (badWords.contains(word.toLowerCase())) {
                 saveBadWord(word);
 
-//                count++; // incrémenter la variable de comptage
+               count++; // incrémenter la variable de comptage
 //                if (count > 3) { // vérifier si le nombre de gros mots dépasse trois
-//                sendSMS(userId); // appeler la méthode sendSMS pour envoyer un message à l'utilisateur
+             SendSms.SendSms("+21621601920","Vous ne pouvez plus commenter!"); // appeler la méthode sendSMS pour envoyer un message à l'utilisateur
                 return "true";
             }
         }

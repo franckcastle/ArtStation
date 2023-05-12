@@ -25,7 +25,7 @@
                   <Insets left="15.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="nbrLike" prefHeight="18.0" prefWidth="142.0" text="nbrLike">
+            <Label fx:id="nbr_like" prefHeight="18.0" prefWidth="142.0" text="nbr_like">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>

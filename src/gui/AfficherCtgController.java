@@ -91,7 +91,7 @@ public class AfficherCtgController implements Initializable {
                                 ModifierCtgController controller = loader.getController();
                                 controller.setCategorie(cate);
                                 controller.initialize();
-                               /* System.out.println("the product"+prod.getID_produit());
+                               /* System.out.println("the product"+prod.getId());
                                 ModiffierPdtController controller =loader.getController();
                                 controller.p=prod;*/
                                 CategorieTv.getScene().setRoot(root);

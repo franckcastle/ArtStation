@@ -167,7 +167,7 @@ public class OrderAffiche implements Initializable {
     void retour(ActionEvent event) {
 
     }
-    int i;
+    int i=1;
     ShoppingCart shop=new ShoppingCart();
 ShoppingCartService sc =new ShoppingCartService();
     @Override
@@ -208,8 +208,8 @@ ShoppingCartService sc =new ShoppingCartService();
                     dateCol.setText(dateToString(orderSelectionne.getOrderDate()));
                     PriceCol.setText(Float.toString(orderSelectionne.getTotal_price()));
                     etaCol.setText(orderSelectionne.getSta());
-                    i=orderSelectionne.getOrderId();
-                    shop=orderSelectionne;
+                    //i =orderSelectionne.getOrderId();
+                    shop= orderSelectionne;
                     System.out.println(i);
 
                 }
@@ -232,8 +232,8 @@ ShoppingCartService sc =new ShoppingCartService();
 
         GetProducts controller =loader.getController();
         controller.sc= i;
-
-       orderTab.getScene().setRoot(root);
+System.out.println(i);
+orderTab.getScene().setRoot(root);
     }
     @FXML
     void imprimerbtn(ActionEvent event) {

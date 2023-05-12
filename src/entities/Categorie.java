@@ -1,14 +1,12 @@
 package entities;
 
-import java.util.Objects;
-
 public class Categorie {
 
- private int id_ctg;
+ private int id;
  private String nom_ctg ;
 
- public Categorie(int id_ctg, String nom_ctg) {
-  this.id_ctg = id_ctg;
+ public Categorie(int id, String nom_ctg) {
+  this.id = id;
   this.nom_ctg = nom_ctg;
  }
 
@@ -20,12 +18,12 @@ public class Categorie {
 
  }
 
- public int getId_ctg() {
-  return id_ctg;
+ public int getId() {
+  return id;
  }
 
- public void setId_ctg(int id_ctg) {
-  this.id_ctg = id_ctg;
+ public void setId(int id) {
+  this.id = id;
  }
 
 
@@ -40,7 +38,7 @@ public class Categorie {
  @Override
  public String toString() {
   return "Categorie{" +
-          "id_ctg=" + id_ctg +
+          "id=" + id +
           ", nom_ctg='" + nom_ctg + '\'' +
           '}';
  }

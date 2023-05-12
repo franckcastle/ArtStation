@@ -25,7 +25,7 @@ public class StatutController implements Initializable {
     @FXML
     private Label statutTitre;
     @FXML
-    private Label nbrLike;
+    private Label nbr_like;
 
     @FXML
     private Button affichebtn;
@@ -50,7 +50,7 @@ public class StatutController implements Initializable {
         if (statut != null) {
             statutTitre.setText(statut.getTitre());
             statutContenu.setText("Publié le : "+ statut.getCreated());
-            nbrLike.setText(statut.getNbrLike()+ "  Personnes aiment ça");
+            nbr_like.setText(statut.getNbr_like()+ "  Personnes aiment ça");
 
 
             statutTitre.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
@@ -60,7 +60,7 @@ public class StatutController implements Initializable {
         } else {
             statutTitre.setText("");
             statutContenu.setText("");
-            nbrLike.setText("");
+            nbr_like.setText("");
         }
     }
 

@@ -24,7 +24,7 @@ public class Reservation_WorkshopServices {
         ResultSet rs = st.executeQuery(req);
         while (rs.next()) {
             System.out.println(rs);
-            Reservation_Workshop t = new Reservation_Workshop(rs.getInt("id"), rs.getInt("id_workshop"), rs.getString("categorie"));
+            Reservation_Workshop t = new Reservation_Workshop(rs.getInt("id"), rs.getInt("workshops_id"), rs.getString("categorie"));
             listEv.add(t);
         }
         return listEv;
@@ -34,7 +34,7 @@ public class Reservation_WorkshopServices {
     public void ajouterR(Reservation_Workshop t) throws SQLException, Exception {
 
 
-        String sql = "INSERT INTO reservation_workshop (id_workshop,id_user,categorie) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO reservation_workshop (workshops_id,id_user,categorie) VALUES (?, ?, ?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
         pstmt.setInt(1, t.getId_workshop());
         pstmt.setInt(2, t.getId_user());
@@ -45,7 +45,7 @@ public class Reservation_WorkshopServices {
     public boolean  supprimerR(Reservation_Workshop t) throws SQLException {
         boolean ok = false;
         try {
-            PreparedStatement req = cnx.prepareStatement("delete from reservation_workshop where id_reservation = ? ");
+            PreparedStatement req = cnx.prepareStatement("delete from reservation_workshop where id = ? ");
             req.setInt(1, t.getId_reservation());
             req.executeUpdate();
             ok = true;
@@ -75,7 +75,7 @@ public class Reservation_WorkshopServices {
         while(rs.next()){
             Reservation_Workshop p = new Reservation_Workshop();
             p.setId_reservation(rs.getInt("id_reservation"));
-            p.setId_workshop(rs.getInt("id_workshop"));
+            p.setId_workshop(rs.getInt("workshops_id"));
             p.setId_user(rs.getInt("id_user"));
             p.setCategorie(rs.getString("categorie"));
 
@@ -108,7 +108,7 @@ public class Reservation_WorkshopServices {
     }*/
 
     public void modifierR(Reservation_Workshop t) {
-        String query = "UPDATE  reservation_workshop set id_workshop=? Where id ='" + t.getId_reservation() + "'";
+        String query = "UPDATE  reservation_workshop set workshops_id=? Where id ='" + t.getId_reservation() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setInt(1, t.getId_workshop());
@@ -121,11 +121,11 @@ public class Reservation_WorkshopServices {
     }
 
 
-    public int getNombreReservations(int id_workshop) throws SQLException {
+    public int getNombreReservations(int workshops_id) throws SQLException {
         int nombreReservations = 0;
-        String req = "SELECT COUNT(*) AS nombre_reservations FROM reservation_workshop WHERE id_workshop = ?";
+        String req = "SELECT COUNT(*) AS nombre_reservations FROM reservation_workshop WHERE workshops_id = ?";
         PreparedStatement pstmt = cnx.prepareStatement(req);
-        pstmt.setInt(1, id_workshop);
+        pstmt.setInt(1, workshops_id);
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
             nombreReservations = rs.getInt("nombre_reservations");

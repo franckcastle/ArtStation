@@ -43,6 +43,7 @@ public class AfficherStatutController implements Initializable {
     Separator separator = new Separator();
     Label usernameLabel = new Label(Session.getUserCon().getUsername());
 
+
     @FXML
     private VBox com;
 
@@ -74,6 +75,8 @@ public class AfficherStatutController implements Initializable {
         vbox.setSpacing(10);
 
         Label usernameLabel = new Label(statut.getUsername());
+        usernameLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #fac881 ");
+
 
         Label titreLabel = new Label(statut.getTitre());
         titreLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #455771 ");
@@ -86,7 +89,7 @@ public class AfficherStatutController implements Initializable {
         Label createdLabel = new Label("Publié le " + statut.getCreated());
         createdLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
 
-        Label nbrLikeLabel = new Label(statut.getNbrLike() + " personnes aiment ça");
+        Label nbrLikeLabel = new Label(statut.getNbr_like() + " personnes aiment ça");
         nbrLikeLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
         Label comLabel = new Label("Commentaires: ");
         comLabel.setStyle("-fx-font-size: 17px; -fx-font-weight: bold;-fx-text-fill: #455771");
@@ -98,14 +101,16 @@ public class AfficherStatutController implements Initializable {
 
         List<Commentaire> commentairesList = null;
         try {
-            commentairesList = cs.recupererComByIdStatut(statut.getId_s());
+            commentairesList = cs.recupererComByIdStatut(statut.getId());
         } catch (SQLException e) {
             System.out.println("Erreur" + e.getMessage());
         }for (Commentaire commentaire : commentairesList) {
 
            Label username2Label = new Label(commentaire.getUsername());
+            username2Label.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #455771 ");
+
             Label commentaireLabel = new Label(commentaire.getDescription());
-            Label comsLabel = new Label(Integer.toString(commentaire.getId_c()));
+            Label comsLabel = new Label(Integer.toString(commentaire.getId()));
 
             commentaireLabel.setContentDisplay(ContentDisplay.LEFT);
             commentaireLabel.setOnMouseClicked(event -> {
@@ -115,7 +120,7 @@ public class AfficherStatutController implements Initializable {
                     Parent root = loader.load();
 
                     ModifierComController controller = loader.getController();
-                    controller.id=commentaire.getId_c();
+                    controller.id=commentaire.getId();
                     statutsVBox.getScene().setRoot(root);
                 }catch (IOException ex){
                     System.out.println("Erreur"+ex.getMessage());
@@ -173,11 +178,11 @@ public class AfficherStatutController implements Initializable {
                 if (!isLiked) {
                     isLiked = true;
                     s.ajouterLikeStatut(statut);
-                    nbrLikeLabel.setText((statut.getNbrLike() + 1) + " personnes aiment ça");
+                    nbrLikeLabel.setText((statut.getNbr_like() + 1) + " personnes aiment ça");
                 } else {
                     isLiked = false;
                     s.supprimerLikeStatut(statut);
-                    nbrLikeLabel.setText((statut.getNbrLike()) + " personnes aiment ça");
+                    nbrLikeLabel.setText((statut.getNbr_like()) + " personnes aiment ça");
                 }
             } catch (SQLException ex) {
                 System.out.println("Erreur" + ex.getMessage());
@@ -195,7 +200,7 @@ public class AfficherStatutController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 try {
-                    s.supprimer(statut.getId_s());
+                    s.supprimer(statut.getId());
                     statutsVBox.getChildren().remove(vbox);
                 } catch (SQLException ex) {
                     System.out.println("Erreur" + ex.getMessage());

@@ -1,6 +1,7 @@
 package services;
 
 import entities.Reclamation;
+import entities.Session;
 import entities.User;
 import utils.MyDb;
 
@@ -17,9 +18,9 @@ public class ReclamService implements IServiceReclam<Reclamation>{
     @Override
     public void ajouter(Reclamation reclamation) throws SQLException {
 
-            String req = "INSERT INTO reclamation (userId, sujet, plainte) VALUES (?, ?, ?)";
+            String req = "INSERT INTO reclamation (user_id, sujet, plainte) VALUES (?, ?, ?)";
             PreparedStatement statement = cnx.prepareStatement(req);
-            statement.setInt(1, reclamation.getUserId());
+            statement.setInt(1, Session.getUserCon().getUserId());
             statement.setString(2, reclamation.getSujet());
             statement.setString(3, reclamation.getPlainte());
             statement.executeUpdate();
@@ -28,7 +29,7 @@ public class ReclamService implements IServiceReclam<Reclamation>{
 
     @Override
     public void modifer(Reclamation reclamation) throws SQLException {
-        String req = "UPDATE reclamation SET sujet = ?,plainte = ? where reclamationId = ?";
+        String req = "UPDATE reclamation SET sujet = ?,plainte = ? where id = ?";
         PreparedStatement statement = cnx.prepareStatement(req);
         statement.setString(1, reclamation.getSujet());
         statement.setString(2, reclamation.getPlainte());
@@ -41,7 +42,7 @@ public class ReclamService implements IServiceReclam<Reclamation>{
     public boolean supprimer(Reclamation reclamation) throws SQLException {
         boolean ok = false;
         try {
-            PreparedStatement req = cnx.prepareStatement("delete from reclamation where reclamationId= ?");
+            PreparedStatement req = cnx.prepareStatement("delete from reclamation where id= ?");
             req.setInt(1,reclamation.getReclamationId());
             req.executeUpdate();
             ok=true;
@@ -59,8 +60,8 @@ public class ReclamService implements IServiceReclam<Reclamation>{
         ResultSet rs = st.executeQuery(s);
         while (rs.next()) {
             Reclamation r = new Reclamation();
-            r.setReclamationId(rs.getInt("reclamationId"));
-            r.setUserId(rs.getInt("userId"));
+            r.setReclamationId(rs.getInt("id"));
+            r.setUserId(rs.getInt("user_id"));
             r.setSujet(rs.getString("sujet"));
             r.setPlainte(rs.getString("plainte"));
 

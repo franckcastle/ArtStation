@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 import services.WorkshopServices;
 import java.io.IOException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.Date;
 import java.net.URL;
@@ -116,8 +118,17 @@ public class AjouterWorkshopController implements Initializable {
             Date newDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
             w.setDate(newDate);*/
 
-            w.setHeure_debut(heure_debutField.getText());
-            w.setHeure_fin(heure_finField.getText());
+
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            Date heureDebut = timeFormat.parse(heure_debutField.getText());
+            w.setHeure_debut(String.valueOf(new Time(heureDebut.getTime())));
+
+            Date heureFin = timeFormat.parse(heure_finField.getText());
+            w.setHeure_fin(String.valueOf(new Time(heureFin.getTime())));
+
+
+           // w.setHeure_debut(heure_debutField.getText());
+           // w.setHeure_fin(heure_finField.getText());
 
 
             if (!prixField.getText().isEmpty()) {

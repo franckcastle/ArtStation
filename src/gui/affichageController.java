@@ -64,8 +64,15 @@ public class affichageController implements Initializable {
         Workshop wp = new Workshop();
 
         String titre = titreField.getText();
-        String heure_debut=heure_debutField.getText();
-        String heure_fin=heure_finField.getText();
+
+
+
+
+       // String heure_debut=heure_debutField.getText();
+       // String heure_fin=heure_finField.getText();
+
+
+
         String categorie=categorieField.getText();
         String nom_artiste=nom_artisteField.getText();
         int duree = Integer.parseInt(dureeField.getText());

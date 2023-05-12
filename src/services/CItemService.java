@@ -16,14 +16,14 @@ public class CItemService implements ItemService<CartItem> {
 
     @Override
     public void ajouter(CartItem t) throws SQLException {
-        String req = "INSERT INTO cartitem(orderId,id,quantity,price) VALUES("
+        String req = "INSERT INTO cartitem(panier_id,produit_id,quantity,price) VALUES("
                 + "'" + t.getOrderId() + "','" + t.getId() + "','" + t.getQuantity() + "',"+ t.getPrice()  + ")";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
     }
     @Override
     public void modifier(CartItem t) throws SQLException {
-        String req = "UPDATE cartitem SET orderId = ?,id = ?,quantity = ?,price = ? where cart_id = ?";
+        String req = "UPDATE cartitem SET panier_id = ?,produit_id= ?,quantity = ?,price = ? where id = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getOrderId());
         ps.setInt(2, t.getId());
@@ -34,7 +34,7 @@ public class CItemService implements ItemService<CartItem> {
 
     }
     public void supprimer(int cart_id) {
-        String sql = "delete from cartitem where cart_id=?";
+        String sql = "delete from cartitem where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1,cart_id);
@@ -54,9 +54,9 @@ public class CItemService implements ItemService<CartItem> {
         while(rs.next()){
             CartItem p = new CartItem();
 
-            p.setCart_id(rs.getInt("cart_id"));
-            p.setOrderId(rs.getInt("orderId"));
-            p.setId(rs.getInt("id"));
+            p.setCart_id(rs.getInt("id"));
+            p.setOrderId(rs.getInt("panier_id"));
+            p.setId(rs.getInt("produit_id"));
             p.setQuantity(rs.getInt("quantity"));
             p.setPrice(rs.getFloat("price"));
             cartItems.add(p);
@@ -68,7 +68,7 @@ public class CItemService implements ItemService<CartItem> {
     @Override
     public List<CartItem> getById(int i) throws SQLException {
         List<CartItem> CartItems = new ArrayList<>();
-        String req = "SELECT * FROM cartitem WHERE orderId = ?";
+        String req = "SELECT * FROM cartitem WHERE panier_id = ?";
 
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, i);
@@ -77,13 +77,14 @@ public class CItemService implements ItemService<CartItem> {
         while(rs.next()){
             CartItem c = new CartItem();
 
-            c.setCart_id(rs.getInt("cart_id"));
-            c.setOrderId(rs.getInt("orderId"));
-            c.setId(rs.getInt("id"));
+            c.setCart_id(rs.getInt("id"));
+            c.setId(rs.getInt("produit_id"));
+            c.setOrderId(rs.getInt("panier_id"));
             c.setQuantity(rs.getInt("quantity"));
             c.setPrice(rs.getFloat("price"));
+            c.setTotal(rs.getFloat("total"))   ;
             CartItems.add(c);
-
+System.out.print(CartItems);
         }
         return CartItems;
 

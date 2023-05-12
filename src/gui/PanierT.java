@@ -63,10 +63,10 @@ public class PanierT {
     }
     public void display(int i){
 
-
+i=7;
         try {
 
-            ObservableList<Produit> observableUserList = FXCollections.observableList(PS.getByorderId(i));
+            ObservableList<Produit> observableUserList = FXCollections.observableList(PS.getByorderId(7));
             ProduitTable.setItems(observableUserList);
            ProduitTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
            ProduitTable.setCellFactory(new Callback<ListView<Produit>, ListCell<Produit>>() {

@@ -1,8 +1,6 @@
 package gui;
 
 import entities.Commentaire;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +21,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import static api.BadWords.checkWords;
 
 public class ModifierComController implements Initializable {
 
@@ -70,7 +66,7 @@ public void initialize() {
     public void modifierCom(ActionEvent event) throws SQLException {
         if (!descriptionField.getText().isEmpty()) {
             Commentaire com = new Commentaire();
-            com.setId_c(id);
+            com.setId(id);
             System.out.println(id);
             com.setDescription(descriptionField.getText());
             cs.modifierCom(com);

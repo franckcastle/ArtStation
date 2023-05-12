@@ -81,7 +81,7 @@ public class AjouterPdtController  implements Initializable {
             p.setDescription (descriptionTf.getText());
             p.setPrix(Float.valueOf(prixTf.getText()));
             p.setQte_stock(Integer.parseInt(qte_stockTf.getText()));
-            p.setId_ctg(i);
+            p.setId_ctg_id(i);
             p.setImage(imageTf.getText());
             try {
 
@@ -120,7 +120,7 @@ public class AjouterPdtController  implements Initializable {
                 List<Categorie> categories = cs.getAll();
                 for (Categorie c : categories) {
                     if (c.getNom_ctg().equals(s)) {
-                       int categoryId = c.getId_ctg();
+                       int categoryId = c.getId();
 
                         i=categoryId;
                         break; }

@@ -31,7 +31,7 @@ public class RemiseService implements RInterface<Remise> {
 
     @Override
     public void ajouter(Remise r) throws SQLException {
-        String req = "INSERT INTO remise(code,owner) VALUES("
+        String req = "INSERT INTO remise(code,nom) VALUES("
                 + r.getCode() + ", '" + r.getOwner() + "')";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
@@ -40,7 +40,7 @@ public class RemiseService implements RInterface<Remise> {
     @Override
     public void modifier(Remise remise) throws SQLException {
 
-        String req = "UPDATE remise SET owner = ?,nb = ? where code ='" + remise.getCode() + "'";
+        String req = "UPDATE remise SET nom = ?,nb = ? where code ='" + remise.getCode() + "'";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -84,7 +84,7 @@ public class RemiseService implements RInterface<Remise> {
 
             Remise c = new Remise();
             c.setCode(rs.getInt("code"));
-            c.setOwner(rs.getString("owner"));
+            c.setOwner(rs.getString("nom"));
 
             c.setNb(rs.getInt("nb"));
 
@@ -108,7 +108,7 @@ public class RemiseService implements RInterface<Remise> {
         Remise rem = new Remise();
         while (rs.next()) {
             rem.setCode(rs.getInt("code"));
-            rem.setOwner(rs.getString("owner"));
+            rem.setOwner(rs.getString("nom"));
             rem.setNb(rs.getInt("nb"));
         }
         return rem;

@@ -98,12 +98,12 @@
                        </ImageView>
                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                               <Image url="@../assets/workhsop.png" />
+                               <Image url="@../assets/logoworkshop.png" />
                            </image>
                        </ImageView>
                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                               <Image url="@../assets/event.png" />
+                               <Image url="@../assets/logocalendar.png" />
                            </image>
                        </ImageView>
                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
@@ -118,7 +118,7 @@
                        </ImageView>
                        <ImageView fitHeight="52.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                               <Image url="@../assets/forum.png" />
+                               <Image url="@../assets/logoforum.png" />
                            </image>
                        </ImageView>
                    </children>

@@ -1,7 +1,7 @@
 package entities;
 
 public class Produit {
-    private int ID_produit, qte_stock, id_ctg, rating;
+    private int id, qte_stock, id_ctg_id, rating;
     private String nom,description,image;
     private Float prix;
 
@@ -9,21 +9,21 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(int ID_produit, String nom, String description, String image, Float prix,int qte_stock, int id_ctg) {
-        this.ID_produit = ID_produit;
+    public Produit(int id, String nom, String description, String image, Float prix, int qte_stock, int id_ctg_id) {
+        this.id = id;
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.prix = prix;
         this.qte_stock = qte_stock;
-        this.id_ctg=id_ctg;
+        this.id_ctg_id = id_ctg_id;
 
     }
 
-    public Produit(int ID_produit, int qte_stock, int id_ctg, int rating, String nom, String description, String image, Float prix) {
-        this.ID_produit = ID_produit;
+    public Produit(int id, int qte_stock, int id_ctg_id, int rating, String nom, String description, String image, Float prix) {
+        this.id = id;
         this.qte_stock = qte_stock;
-        this.id_ctg = id_ctg;
+        this.id_ctg_id = id_ctg_id;
         this.rating = rating;
         this.nom = nom;
         this.description = description;
@@ -31,13 +31,13 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Produit(String nom, String description, String image, Float prix, int qte_stock, int id_ctg) {
+    public Produit(String nom, String description, String image, Float prix, int qte_stock, int id_ctg_id) {
         this.nom = nom;
         this.description = description;
         this.image = image;
         this.prix = prix;
         this.qte_stock = qte_stock;
-        this.id_ctg=id_ctg;
+        this.id_ctg_id = id_ctg_id;
     }
 
 
@@ -47,12 +47,12 @@ public class Produit {
         this.prix = prix;
     }
 
-    public int getID_produit() {
-        return ID_produit;
+    public int getId() {
+        return id;
     }
 
-    public void setID_produit(int ID_produit) {
-        this.ID_produit = ID_produit;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getQte_stock() {
@@ -95,12 +95,12 @@ public class Produit {
         this.prix = prix;
     }
 
-    public int getId_ctg() {
-        return id_ctg;
+    public int getId_ctg_id() {
+        return id_ctg_id;
     }
 
-    public void setId_ctg(int id_ctg) {
-        this.id_ctg = id_ctg;
+    public void setId_ctg_id(int id_ctg_id) {
+        this.id_ctg_id = id_ctg_id;
     }
 
     public int getRating() {
@@ -114,9 +114,9 @@ public class Produit {
     @Override
     public String toString() {
         return "Produit{" +
-                "ID_produit=" + ID_produit +
+                "id=" + id +
                 ", qte_stock=" + qte_stock +
-                ", id_ctg=" + id_ctg +
+                ", id_ctg_id=" + id_ctg_id +
                 ", rating=" + rating +
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +

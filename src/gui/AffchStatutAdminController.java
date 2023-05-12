@@ -49,7 +49,7 @@ public class AffchStatutAdminController implements  Initializable{
         String titre = titreTf.getText();
         String contenu = contenuTf.getText();
         // String date_ajout = dateajouTf.getText();
-        s.setId_s(Integer.parseInt(idsTf.getText()));
+        s.setId(Integer.parseInt(idsTf.getText()));
         s.setTitre(titreTf.getText());
         s.setContenu(contenuTf.getText());
        // s.setCreated(Date.valueOf(createdTf.getText()));
@@ -110,7 +110,7 @@ public class AffchStatutAdminController implements  Initializable{
                         protected void updateItem(Statut s, boolean empty) {
                             super.updateItem(s, empty);
                             if (s != null) {
-                                setText(s.getUsername()+" - " +s.getId_s() + " - " +s.getTitre()+ " - " +s.getContenu());
+                                setText(s.getUsername()+" - " +s.getId() + " - " +s.getTitre()+ " - " +s.getContenu());
                             } else {
                                 setText(null);
                             }
@@ -125,7 +125,7 @@ public class AffchStatutAdminController implements  Initializable{
 
                     usernameTf.setText(comSelectionne.getUsername());
 
-                    idsTf.setText(Integer.toString(comSelectionne.getId_s()));
+                    idsTf.setText(Integer.toString(comSelectionne.getId()));
                     titreTf.setText(comSelectionne.getTitre());
                     contenuTf.setText(comSelectionne.getContenu());
 

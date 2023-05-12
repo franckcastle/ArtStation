@@ -56,7 +56,9 @@ public class ConnexionController implements Initializable {
                             Session.setUserCon(u);
 
                                 AnchorPane root = FXMLLoader.load(getClass().getResource("HomeApp.fxml"));
-                                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                           // AnchorPane root = FXMLLoader.load(getClass().getResource("Verification.fxml"));
+
+                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 stage.setWidth(800);
                                 stage.setHeight(500);
                                 Scene scene = new Scene(root);

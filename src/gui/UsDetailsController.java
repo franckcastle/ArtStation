@@ -99,17 +99,42 @@ public class UsDetailsController implements Initializable {
     @FXML
     public void qr(ActionEvent event) throws IOException, WriterException, SQLException {
         int idcon = Session.getUserCon().getUserId();
-        if(us.participerEv(idcon,ee)) {
-            String qrCodeText = ee.getTitre();
-            System.out.println(qrCodeText);
-            String filePath = "D:/Dev/ArtStation/src/image/JD11.png";
-            int size = 100;
-            String fileType = "png";
-            File qrFile = new File(filePath);
-
-            qr.createQRImage(qrFile, qrCodeText, size, fileType);
-            System.out.println("DONE");
+        int nb_motif= -1 ;
+        try {
+            nb_motif = us.participerEv(idcon,ee);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
+        if(nb_motif == 1){
+            System.out.print("Vous avez déja résérvé.");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur ");
+            alert.setHeaderText("Vous avez déja résérvé");
+
+            alert.showAndWait();
+            return ;
+        }else   if(nb_motif == 2){
+            System.out.print("Désolé toute les place sont résérvés ");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur ");
+            alert.setHeaderText("Désolé toute les place sont résérvés");
+
+            alert.showAndWait();
+            return ;
+        }
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("succés");
+        alert.setHeaderText("vous etes inscrit a cette evenement");
+        alert.showAndWait();
+        String qrCodeText = ee.getTitre();
+        System.out.println(qrCodeText);
+        String filePath = "D:/Dev/ArtStation/src/image/JD15.png";
+        int size = 100;
+        String fileType = "png";
+        File qrFile = new File(filePath);
+
+        qr.createQRImage(qrFile, qrCodeText, size, fileType);
+        System.out.println("DONE");
     }
 
     public void eval(ActionEvent event) throws SQLException {
@@ -131,5 +156,31 @@ public class UsDetailsController implements Initializable {
 
         }
 
+    }
+    @FXML
+    public void annulerReservation (ActionEvent event){
+        boolean vb =false ;
+        int idcon = Session.getUserCon().getUserId();
+        try {
+            vb = us.annulerRes(idcon,ee) ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (vb){
+            System.out.println("Réservation annuler");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("annulation ");
+            alert.setHeaderText("Réservation annuler");
+
+            alert.showAndWait();
+        }else{
+            System.out.println("Vous n'etes pas inscrit dans cette événement");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("annulation ");
+            alert.setHeaderText("Vous n'etes pas inscrit dans cette événement");
+
+            alert.showAndWait();
+
+        }
     }
 }

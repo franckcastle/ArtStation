@@ -5,7 +5,7 @@ import java.util.List;
 public class User {
     private int userId ,tel;
     private String username,password,email,role;
-    private List<Reservation> reservations;
+    private List<Resevation> reservations;
 
     public User() {}
 
@@ -26,15 +26,15 @@ public class User {
         this.role = role;
     }
 
-    public User(List<Reservation> reservations) {
+    public User(List<Resevation> reservations) {
         this.reservations = reservations;
     }
 
-    public List<Reservation> getReservations() {
+    public List<Resevation> getReservations() {
         return reservations;
     }
 
-    public void setReservations(List<Reservation> reservations) {
+    public void setReservations(List<Resevation> reservations) {
         this.reservations = reservations;
     }
 

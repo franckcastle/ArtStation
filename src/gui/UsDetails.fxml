@@ -69,6 +69,11 @@
                <font>
                   <Font name="Berlin Sans FB" size="12.0" />
                </font></Button>
+            <Button layoutX="456.0" layoutY="352.0" mnemonicParsing="false" onAction="#annulerReservation" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #f6b49c;" styleClass="shadow" stylesheets="@../css/Style.css" text="Annuler" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

@@ -14,7 +14,7 @@ public class FeedService implements IFeed<Feedback> {
 //
     @Override
     public void ajouter(Feedback feedback) throws SQLException {
-        String req = "INSERT INTO feedback ( text,id_Ev) VALUES (?,?)";
+        String req = "INSERT INTO feedback ( text,id_ev_id) VALUES (?,?)";
         PreparedStatement statement = cnx.prepareStatement(req);
 
         statement.setString(1, feedback.getText());

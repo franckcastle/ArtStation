@@ -155,7 +155,7 @@ public class ForumController implements Initializable {
         Label titreLabel = new Label(statut.getTitre());
         titreLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
         Label createdLabel = new Label("Publié le " + statut.getCreated());
-        Label nbrLikeLabel = new Label(statut.getNbrLike() + " personnes aiment ça");
+        Label nbrLikeLabel = new Label(statut.getNbr_like() + " personnes aiment ça");
 
         hbox.getChildren().addAll(titreLabel, createdLabel, nbrLikeLabel);
         return hbox;
@@ -170,12 +170,12 @@ public class ForumController implements Initializable {
         Text contenuText = new Text(statut.getContenu());
         contenuText.setWrappingWidth(400);
         Label createdLabel = new Label("Publié le " + statut.getCreated());
-        Label nbrLikeLabel = new Label(statut.getNbrLike() + " personnes aiment ça");
+        Label nbrLikeLabel = new Label(statut.getNbr_like() + " personnes aiment ça");
 
 
         List<Commentaire> commentairesList = null;
         try {
-            commentairesList = cs.recupererComByIdStatut(statut.getId_s());
+            commentairesList = cs.recupererComByIdStatut(statut.getId());
         } catch (SQLException e) {
             System.out.println("Erreur" + e.getMessage());
         }

@@ -13,7 +13,7 @@ public interface IService <T>{
     List<T> recuperer() throws SQLException;
     User GetByUsername(String username) throws SQLException;
     List<User> GetByRole(String role) throws SQLException;
-    public boolean participerEv(int id_u, Evenement e) throws SQLException;
+    public int participerEv(int id_u, Evenement e) throws SQLException;
     public boolean annulerRes(int id_u, Evenement e) throws SQLException;
 
 }

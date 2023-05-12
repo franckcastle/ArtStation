@@ -7,8 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import services.UserService;
 
@@ -27,10 +34,17 @@ public class AfficherUsersController implements Initializable {
     private TextField passwordTf;
 
     @FXML
+    private TextField rechercheTf;
+
+    @FXML
     private ChoiceBox<String> roleTf;
 
     @FXML
     private TextField telTf;
+
+    @FXML
+    private Button rechercheBtn;
+
 
     @FXML
     private TextField usernameTf;
@@ -99,6 +113,7 @@ public class AfficherUsersController implements Initializable {
         try {
 
             ObservableList<User> observableUserList = FXCollections.observableList(us.recuperer());
+
             usersLv.setItems(observableUserList);
             usersLv.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             usersLv.setCellFactory(new Callback<ListView<User>, ListCell<User>>() {
@@ -132,10 +147,115 @@ public class AfficherUsersController implements Initializable {
                     selectionModel.select(userSelectionne.getRole());
 
                 }
+
+                rechercheBtn.setOnAction(event1 -> rechercherUtilisateurs());
+
             });
         } catch (SQLException ex) {
             System.out.println(ex);
         }
 
     }
+    @FXML
+    void events(MouseEvent event) throws IOException {
+        BorderPane root = FXMLLoader.load(getClass().getResource("Event.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(800);
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+
+    @FXML
+    void forum(MouseEvent event) throws IOException {
+        BorderPane root = FXMLLoader.load(getClass().getResource("InterfaceAdminForum.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(800);
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+
+    @FXML
+    void home(MouseEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("HomeApp.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(800);
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+
+    @FXML
+    void orders(MouseEvent event)  throws IOException{
+        AnchorPane root = FXMLLoader.load(getClass().getResource("OrderAffiche.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(800);
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+
+    @FXML
+    void products(MouseEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("AffichagePdt.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(800);
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+
+    @FXML
+    void workshops(MouseEvent event)  throws IOException{
+        AnchorPane root = FXMLLoader.load(getClass().getResource("InterfaceAdminWs.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(800);
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+    @FXML
+    void Admin(MouseEvent event) throws IOException {
+        BorderPane root = FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(800);
+        stage.setHeight(500);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setMaximized(false);
+        stage.show();
+    }
+    public void rechercherUtilisateurs() {
+        String recherche = rechercheTf.getText();
+        if (!recherche.isEmpty()) {
+            try {
+                ObservableList<User> observableUserList = FXCollections.observableList(us.recupererRech(recherche));
+                usersLv.setItems(observableUserList);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        } else {
+            // Si le champ texte de recherche est vide, on récupère tous les utilisateurs
+            try {
+                ObservableList<User> observableUserList = FXCollections.observableList(us.recuperer());
+                usersLv.setItems(observableUserList);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
+    }
+
 }

@@ -22,14 +22,15 @@ public class ProduitService  {
 
 
     public void ajouterProduit(Produit p) throws SQLException, Exception {
-        String sql = "INSERT INTO produit (nom,description,image,prix,qte_stock,id_ctg) VALUES (?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO produit (id_ctg_id,nom,description,prix,image,qte_stock) VALUES (?, ?, ?, ?,?,?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
-        pstmt.setString(1, p.getNom());
-        pstmt.setString(2, p.getDescription());
-        pstmt.setString(3, p.getImage());
+        pstmt.setInt(1,p.getId_ctg_id());
+        pstmt.setString(2, p.getNom());
+        pstmt.setString(3, p.getDescription());
         pstmt.setFloat(4, p.getPrix());
-        pstmt.setInt(5, p.getQte_stock());
-        pstmt.setInt(6,p.getId_ctg());
+        pstmt.setString(5, p.getImage());
+        pstmt.setInt(6, p.getQte_stock());
+
         ;
         pstmt.executeUpdate();
     }
@@ -44,13 +45,13 @@ public class ProduitService  {
         while (rs.next()) {
             System.out.println(rs);
             Produit p = new Produit
-                    (rs.getInt("ID_produit"),
+                    (rs.getInt("id"),
                             rs.getString("nom"),
                             rs.getString("description"),
                             rs.getString("image"),
                             rs.getFloat("prix"),
                             rs.getInt("qte_stock"),
-                            rs.getInt("id_ctg"));
+                            rs.getInt("id_ctg_id"));
 
             listProd.add(p);
             System.out.println(p);
@@ -80,8 +81,8 @@ public class ProduitService  {
             p.setPrix( rs.getFloat("prix"));
             p.setImage(rs.getString("image"));
             p.setQte_stock(rs.getInt("qte_stock"));
-            p.setId_ctg(rs.getInt("id_ctg"));
-            p.setID_produit(rs.getInt("Id_produit"));
+            p.setId_ctg_id(rs.getInt("id_ctg"));
+            p.setId(rs.getInt("id"));
             produits.add(p);
         }
         return produits;
@@ -98,8 +99,8 @@ public class ProduitService  {
         List<Produit> prod = new ArrayList<>();
         String sql = "SELECT produit.nom, cartitem.price, cartitem.quantity " +
                 "FROM cartitem " +
-                "JOIN produit ON produit.ID_produit = cartitem.id " +
-                "WHERE cartitem.orderId = ?";;
+                "JOIN produit ON produit.id = cartitem.produit_id " +
+                "WHERE cartitem.panier_id = ?";;
         try (PreparedStatement stmt = cnx.prepareStatement(sql)) {
             stmt.setInt(1, i);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -119,7 +120,7 @@ public class ProduitService  {
 
     }
     public boolean supprimerProduit(Integer ID_produit) {
-        String sql = "delete from produit where ID_produit=?";
+        String sql = "delete from produit where id=?";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setInt(1, ID_produit);
@@ -132,7 +133,7 @@ public class ProduitService  {
 
     }
        public void modifier(Produit p) {
-            String query = "UPDATE  produit set nom=?,description=?,prix=?,qte_stock=? Where ID_produit ='" + p.getID_produit() + "'";
+            String query = "UPDATE  produit set nom=?,description=?,prix=?,qte_stock=? Where id ='" + p.getId() + "'";
             try {
                 PreparedStatement ste = cnx.prepareStatement(query);
                 ste.setString(1, p.getNom());
@@ -148,7 +149,7 @@ public class ProduitService  {
 
         }
     public void modifierQte(Produit p) {
-        String query = "UPDATE  produit set qte_stock=? Where ID_produit ='" + p.getID_produit() + "'";
+        String query = "UPDATE  produit set qte_stock=? Where id ='" + p.getId() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
 
@@ -162,18 +163,18 @@ public class ProduitService  {
 
     }
 
-    public Produit rechercheProduit (int ID_produit) throws SQLException, ParseException {
+    public Produit rechercheProduit (int id) throws SQLException, ParseException {
         Produit p = new Produit();
         try {
             Statement stmt = cnx.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM statut  where ID_produit ="+ID_produit);
+            ResultSet result = stmt.executeQuery("SELECT * FROM statut  where id ="+id);
             while(result.next()) {
-                p.setID_produit(result.getInt(1));
+                p.setId(result.getInt(1));
                 p.setNom(result.getString(2));
                 p.setDescription(result.getString(3));
                 p.setPrix(result.getFloat(4));
                 p.setQte_stock(result.getInt(5));
-                p.setId_ctg(result.getInt(6));
+                p.setId_ctg_id(result.getInt(6));
                 p.setImage(result.getString(7));
             }
         } catch (SQLException ex) {

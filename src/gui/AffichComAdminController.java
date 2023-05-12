@@ -46,7 +46,7 @@ public class AffichComAdminController implements  Initializable{
 
         String description = descriptionTf.getText();
        // String date_ajout = dateajouTf.getText();
-        c.setId_c(Integer.parseInt(idcTf.getText()));
+        c.setId(Integer.parseInt(idcTf.getText()));
         c.setDescription(descriptionTf.getText());
         cs.modifierCom(c);
         comsLv.refresh();
@@ -97,7 +97,7 @@ public class AffichComAdminController implements  Initializable{
                         protected void updateItem(Commentaire c, boolean empty) {
                             super.updateItem(c, empty);
                             if (c != null) {
-                                setText(c.getUsername()+" - "+c.getId_c() + " - " +c.getDescription()+ " - " +c.getDate_ajout());
+                                setText(c.getUsername()+" - "+c.getId() + " - " +c.getDescription()+ " - " +c.getDate_ajout());
                             } else {
                                 setText(null);
                             }
@@ -110,7 +110,7 @@ public class AffichComAdminController implements  Initializable{
                 Commentaire comSelectionne = comsLv.getSelectionModel().getSelectedItem();
                 if (comSelectionne != null) {
                     usernameTf.setText(comSelectionne.getUsername());
-                    idcTf.setText(Integer.toString(comSelectionne.getId_c()));
+                    idcTf.setText(Integer.toString(comSelectionne.getId()));
                     descriptionTf.setText(comSelectionne.getDescription());
                     //dateajouTf.setText(comSelectionne.getDate_ajout());
 

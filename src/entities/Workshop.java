@@ -3,7 +3,7 @@ import java.util.Date;
 public class Workshop {
 
 
-    private int id, duree, nbPlaces;
+    private int id, duree, nb_places	;
     private float prix;
     private Date date;
     private String titre, nom_artiste, description, heure_debut, heure_fin,categorie,image;
@@ -14,6 +14,43 @@ public class Workshop {
     public Workshop(String titre) {
         this.titre=titre;
     }
+
+
+    public Workshop(int id, int duree, int nb_places, float prix, String titre, String nom_artiste, String categorie) {
+        this.id = id;
+        this.duree = duree;
+        this.nb_places = nb_places;
+        this.prix = prix;
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+        this.categorie = categorie;
+    }
+
+
+    public Workshop( int duree, int nb_places, float prix, String titre, String nom_artiste, String categorie) {
+
+        this.duree = duree;
+        this.nb_places = nb_places;
+        this.prix = prix;
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+        this.categorie = categorie;
+    }
+
+    public Workshop(int id, int duree, float prix, String titre, String nom_artiste, String description, String image, Date date) {
+        this.id = id;
+        this.duree = duree;
+        this.prix = prix;
+
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+        this.description = description;
+
+        this.image=image;
+        this.date=date;
+    }
+
+
 
     public Workshop(int id, int duree, float prix,  String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String image, Date date) {
         this.id = id;
@@ -29,10 +66,45 @@ public class Workshop {
         this.date=date;
     }
 
-    public Workshop(int id, int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String categorie,String image) {
+
+
+
+    public Workshop(int id, int duree, int nb_places	, float prix, Date date, String titre, String nom_artiste, String description, String categorie,String image) {
         this.id = id;
         this.duree = duree;
-        this.nbPlaces = nbPlaces;
+        this.nb_places	 = nb_places	;
+        this.prix = prix;
+        this.date = date;
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+
+        this.heure_fin = heure_fin;
+        this.categorie=categorie;
+        this.image=image;
+
+    }
+
+
+    public Workshop( int duree, int nb_places	, float prix, Date date, String titre, String nom_artiste, String description, String categorie,String image) {
+        this.id = id;
+        this.duree = duree;
+        this.nb_places	 = nb_places	;
+        this.prix = prix;
+        this.date = date;
+        this.titre = titre;
+        this.nom_artiste = nom_artiste;
+        this.description = description;
+
+        this.categorie=categorie;
+        this.image=image;
+
+    }
+
+
+    public Workshop(int id, int duree, int nb_places	, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin, String categorie,String image) {
+        this.id = id;
+        this.duree = duree;
+        this.nb_places	 = nb_places	;
         this.prix = prix;
         this.date = date;
         this.titre = titre;
@@ -45,9 +117,9 @@ public class Workshop {
 
     }
 
-    public Workshop(int duree, int nbPlaces, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin,String categorie, String image) {
+    public Workshop(int duree, int nb_places	, float prix, Date date, String titre, String nom_artiste, String description, String heure_debut, String heure_fin,String categorie, String image) {
         this.duree =duree;
-        this.nbPlaces = nbPlaces;
+        this.nb_places	 = nb_places	;
         this.prix = prix;
         this.date = date;
         this.titre = titre;
@@ -108,12 +180,12 @@ public class Workshop {
         this.duree = duree;
     }
 
-    public int getNbPlaces() {
-        return nbPlaces;
+    public int getNbPlaces	() {
+        return nb_places	;
     }
 
-    public void setNbPlaces(int nbPlaces) {
-        this.nbPlaces = nbPlaces;
+    public void setNbPlaces	(int nb_places	) {
+        this.nb_places	 = nb_places	;
     }
 
     public float getPrix() {
@@ -193,7 +265,7 @@ public class Workshop {
         return "Workshop{" +
                 "id=" + id +
                 ", duree=" + duree +
-                ", nbPlaces=" + nbPlaces +
+                ", nb_places	=" + nb_places	 +
                 ", prix=" + prix +
                 ", date=" + date +
                 ", titre='" + titre + '\'' +

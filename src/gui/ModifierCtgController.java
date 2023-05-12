@@ -1,7 +1,6 @@
 package gui;
 
 import entities.Categorie;
-import entities.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import services.CategorieService;
-import services.ProduitService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +50,7 @@ public class ModifierCtgController implements Initializable {
 
         if(!nomTf.getText().isEmpty()){
             Categorie cc = new Categorie();
-            cc.setId_ctg(c.getId_ctg());
+            cc.setId(c.getId());
             cc.setNom_ctg(nomTf.getText());
             cs.modifierCategorie(cc);
         } else {

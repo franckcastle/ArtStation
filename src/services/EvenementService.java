@@ -26,7 +26,7 @@ public class EvenementService {
         while (rs.next()) {
             System.out.println(rs);
             //    public Evenement(int id, String titre, String description, String localisation, Date dateDebut, Date dateFin, Float prix, float rating, int ratingNumber, int points, int nbPlace) {
-            Evenement e = new Evenement(rs.getInt("id"),  rs.getString("titre"), rs.getString("description"), rs.getString("localisation"), rs.getDate("dateDebut"), rs.getDate("dateFin"), rs.getFloat("prix"),rs.getFloat("rating"),rs.getInt("ratingNumber"),rs.getInt("points"),rs.getString("image"), rs.getInt("nbPlace"));
+            Evenement e = new Evenement(rs.getInt("id"),  rs.getString("titre"), rs.getString("description"), rs.getString("localisation"), rs.getDate("date_debut"), rs.getDate("date_fin"), rs.getFloat("prix"),rs.getFloat("rating"),rs.getInt("rating_number"),rs.getInt("points"),rs.getString("image"), rs.getInt("nb_place"));
 
             listEv.add(e);
         }
@@ -38,7 +38,7 @@ public class EvenementService {
         Date dateDebut = new SimpleDateFormat("dd/MM/yyyy").parse(sDateDebut);
         //String req="INSERT INTO evenement VALUES(" +
         // "'"+e.getEvaluation()+"','"+e.getTitre()+"','"+e.getDescription()+"','"+e.getLocalisation()+"','"+dateDebut+"','"+dateDebut+"','"+e.getPrix()+"',"+e.getNbPlace()+ ")";
-        String sql = "INSERT INTO evenement (titre,description,localisation,dateDebut,dateFin,prix,nbPlace) VALUES (?, ?, ?, ?,?, ?, ?)";
+        String sql = "INSERT INTO evenement (titre,description,localisation,date_debut,date_fin,prix,nb_place) VALUES (?, ?, ?, ?,?, ?, ?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
 
         pstmt.setString(1, e.getTitre());
@@ -57,7 +57,7 @@ public class EvenementService {
         Date dateDebut = new SimpleDateFormat("dd/MM/yyyy").parse(sDateDebut);
         //String req="INSERT INTO evenement VALUES(" +
         // "'"+e.getEvaluation()+"','"+e.getTitre()+"','"+e.getDescription()+"','"+e.getLocalisation()+"','"+dateDebut+"','"+dateDebut+"','"+e.getPrix()+"',"+e.getNbPlace()+ ")";
-        String sql = "INSERT INTO evenement (titre,description,localisation,dateDebut,dateFin,prix,image,nbPlace) VALUES (?, ?, ?, ?,?, ?,?, ?)";
+        String sql = "INSERT INTO evenement (titre,description,localisation,date_debut,date_fin,prix,image,nb_place) VALUES (?, ?, ?, ?,?, ?,?, ?)";
         PreparedStatement pstmt = cnx.prepareStatement(sql);
 
         pstmt.setString(1, e.getTitre());
@@ -116,7 +116,7 @@ public class EvenementService {
             e.setId(rs.getInt("id"));
             e.setRating (rs.getInt("rating"));
             e.setPoints(rs.getInt("points"));
-            e.setRatingNumber(rs.getInt("ratingNumber"));
+            e.setRatingNumber(rs.getInt("rating_number"));
         }
         //end recuperation
         int rattingNumber = e.getRatingNumber();
@@ -134,7 +134,7 @@ public class EvenementService {
         e.setRating(evaluation);
         e.setRatingNumber(rattingNumber);
         //Mettre a jour les variable ratting number et rating apres le calcul
-        String query = "UPDATE  evenement set rating=?,ratingNumber=?  Where id = '" + e.getId() + "'";
+        String query = "UPDATE  evenement set rating=?,rating_number=?  Where id = '" + e.getId() + "'";
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setFloat(1, e.getRating());

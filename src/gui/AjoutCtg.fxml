@@ -19,7 +19,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="idctgTf" layoutX="396.0" layoutY="164.0" prefHeight="26.0" prefWidth="158.0" promptText="id de categorie" />
       <TextField fx:id="nomctgTf" layoutX="396.0" layoutY="229.0" prefHeight="26.0" prefWidth="158.0" promptText="nom de categorie" />
       <Button layoutX="379.0" layoutY="325.0" mnemonicParsing="false" onAction="#AjouterCategorie" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #F6B49C;" styleClass="search-box" stylesheets="@../values/style.css" text="ajouter" textFill="WHITE" />
       <Button fx:id="retour" layoutX="497.0" layoutY="323.0" mnemonicParsing="false" onAction="#retour" prefHeight="33.0" prefWidth="62.0" style="-fx-background-color: #455771;" styleClass="search-box" stylesheets="@../values/style.css" text="quitter" textFill="WHITE" />

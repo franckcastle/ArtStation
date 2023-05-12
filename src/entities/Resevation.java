@@ -1,19 +1,17 @@
 package entities;
 
-import java.util.Date;
-
-public class Reservation {
+public class Resevation {
     private int id;
     //jointure
     private Evenement evenement;
     //jointure avec user
     private User user;
-    public Reservation(int id, Evenement evenement) {
+    public Resevation(int id, Evenement evenement) {
         this.id = id;
         this.evenement = evenement;
     }
 
-    public Reservation(int id, Evenement evenement, User user) {
+    public Resevation(int id, Evenement evenement, User user) {
         this.id = id;
         this.evenement = evenement;
         this.user = user;
@@ -45,7 +43,7 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" +
+        return "Resevation{" +
                 "id=" + id +
                 ", evenement=" + evenement +
                 '}';

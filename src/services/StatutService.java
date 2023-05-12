@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import services.IServiceStatut;
 import utils.MyDb;
 
 
@@ -25,7 +24,7 @@ public  class StatutService implements IServiceStatut<Statut> {
         java.util.Date javaDate = new java.util.Date();
         java.sql.Date created = new java.sql.Date(javaDate.getTime());
         PreparedStatement statement;
-        statement = cnx.prepareStatement("INSERT INTO  statut (username,titre,contenu,created,nbrLike) VALUES" +
+        statement = cnx.prepareStatement("INSERT INTO  statut (username,titre,contenu,created,nbr_like) VALUES" +
                 "(?, ?, ?,?,?)");
         statement.setString(1, Session.getUserCon().getUsername());
 
@@ -40,14 +39,14 @@ public  class StatutService implements IServiceStatut<Statut> {
 
     public void ajouterLikeStatut(Statut statut) throws SQLException {
         PreparedStatement statement;
-        statement = cnx.prepareStatement("UPDATE statut SET nbrLike = nbrLike+1 WHERE id_s="+statut.getId_s());
+        statement = cnx.prepareStatement("UPDATE statut SET nbr_like = nbr_like+1 WHERE id="+statut.getId());
         statement.executeUpdate();
         System.out.println("Like réussi !");
     }
     public void supprimerLikeStatut(Statut statut) throws SQLException {
 
         PreparedStatement statement;
-        statement = cnx.prepareStatement("UPDATE statut SET nbrLike = nbrLike-1  WHERE id_s=" + statut.getId_s());
+        statement = cnx.prepareStatement("UPDATE statut SET nbr_like = nbr_like-1  WHERE id=" + statut.getId());
         statement.executeUpdate();
 
 
@@ -59,7 +58,7 @@ public  class StatutService implements IServiceStatut<Statut> {
     public void modifier(Statut s) throws SQLException {
         java.util.Date javaDate = new java.util.Date();
         java.sql.Date updated = new java.sql.Date(javaDate.getTime());
-        String query = "UPDATE  statut set titre=?,contenu=? ,updated=? Where id_s ='" + s.getId_s() + "'";
+        String query = "UPDATE  statut set titre=?,contenu=? ,updated=? Where id ='" + s.getId() + "'";
         //   java.sql.Date updated = Date.valueOf(LocalDate.now());
         try {
             PreparedStatement ste = cnx.prepareStatement(query);
@@ -78,11 +77,11 @@ public  class StatutService implements IServiceStatut<Statut> {
 
     }
 
-    public boolean supprimer (int id_s) throws SQLException{
+    public boolean supprimer (int id) throws SQLException{
         boolean ok = false;
         try {
-            PreparedStatement req = cnx.prepareStatement("delete from statut where id_s = ? ");
-            req.setInt(1, id_s);
+            PreparedStatement req = cnx.prepareStatement("delete from statut where id = ? ");
+            req.setInt(1, id);
             req.executeUpdate();
             ok = true;
             System.out.println("Statut supprimé !");
@@ -107,21 +106,21 @@ public  class StatutService implements IServiceStatut<Statut> {
             stt.setContenu(rs.getString("contenu"));
             stt.setCreated(rs.getDate("created"));
             stt.setUpdated(rs.getDate("updated"));
-            stt.setNbrLike(rs.getInt("nbrLike"));
-            stt.setId_s(rs.getInt("id_s"));
+            stt.setNbr_like(rs.getInt("nbr_like"));
+            stt.setId(rs.getInt("id"));
             statuts.add(stt);
 
         }
         return statuts;
 
     }
-    public Statut rechStatut(int id_s) throws SQLException, ParseException {
+    public Statut rechStatut(int id) throws SQLException, ParseException {
         Statut statut = new Statut();
         try {
             Statement stmt = cnx.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM statut  where id_s ="+id_s);
+            ResultSet result = stmt.executeQuery("SELECT * FROM statut  where id ="+id);
             while(result.next()) {
-                statut.setId_s(result.getInt(1));
+                statut.setId(result.getInt(1));
                 statut.setTitre(result.getString(2));
                 statut.setContenu(result.getString(3));
                 statut.setCreated(result.getDate(4));
@@ -137,11 +136,11 @@ public  class StatutService implements IServiceStatut<Statut> {
     @Override
     public int recupererIdStatut(String titre) throws SQLException, ParseException {
         int id=0;
-        String p = "SELECT id_s FROM statut where titre='"+titre+"';";
+        String p = "SELECT id FROM statut where titre='"+titre+"';";
         PreparedStatement pst = cnx.prepareStatement(p);
         ResultSet rs = pst.executeQuery();
         while(rs.next())
-        {id= rs.getInt("id_s");
+        {id= rs.getInt("id");
         }
         return id;
     }
@@ -158,7 +157,7 @@ public  class StatutService implements IServiceStatut<Statut> {
         Statut s = new Statut();
         rs.next();
         if (rs.getRow()!=0){
-            s.setId_s(rs.getInt(1));
+            s.setId(rs.getInt(1));
             s.setTitre(titre);
             s.setContenu(rs.getString(3));
 
@@ -173,7 +172,7 @@ public  class StatutService implements IServiceStatut<Statut> {
     }
     public List<Statut> getByNbrLike() throws SQLException {
         List<Statut> statuts = recuperer();
-        Collections.sort(statuts, Comparator.comparing(Statut::getNbrLike));
+        Collections.sort(statuts, Comparator.comparing(Statut::getNbr_like));
         return statuts;
     }
     public List<Statut> getByTitre() throws SQLException {

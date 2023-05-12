@@ -19,7 +19,7 @@
             <Font name="Berlin Sans FB" size="35.0" />
          </font>
       </Label>
-      <AnchorPane prefHeight="405.0" prefWidth="600.0">
+      <AnchorPane onDragDetected="#annulerReservation" prefHeight="405.0" prefWidth="600.0">
          <children>
             <Label fx:id="dateF" layoutX="49.0" layoutY="152.0" text="Date" textFill="#7ba0bc">
                <font>
@@ -69,6 +69,11 @@
                <font>
                   <Font name="Berlin Sans FB" size="12.0" />
                </font></Button>
+            <Button layoutX="472.0" layoutY="353.0" mnemonicParsing="false" onAction="#annulerReservation" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #f6b49c;" styleClass="shadow" stylesheets="@../css/Style.css" text="Annuler" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

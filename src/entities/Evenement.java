@@ -1,11 +1,5 @@
 package entities;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -22,17 +16,17 @@ public class Evenement {
     private String image;
     private int nbPlace;
     //jointure
-    private List<Reservation> reservations;
+    private List<Resevation> reservations;
 
-    public Evenement(List<Reservation> reservations) {
+    public Evenement(List<Resevation> reservations) {
         this.reservations = reservations;
     }
 
-    public List<Reservation> getReservations() {
+    public List<Resevation> getReservations() {
         return reservations;
     }
 
-    public void setReservations(List<Reservation> reservations) {
+    public void setReservations(List<Resevation> reservations) {
         this.reservations = reservations;
     }
     //jointure avec createur(user)

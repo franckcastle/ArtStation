@@ -27,7 +27,7 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     @Override
     public void ajouter(ShoppingCart s) throws SQLException {
 
-            String req = "INSERT INTO shoppingcart(nom,prenom,ville,Adresse,code_postale,Total_price) VALUES("
+            String req = "INSERT INTO shoppingcart(nom,prenoom,ville,Adresse,code_postale,Total_price) VALUES("
                     + "'" + s.getNom() + "','" + s.getPrenom() + "','" + s.getVille()+ "','"+s.getAdresse()+ "','"  + s.getCode_postale() +"'," +s.getTotal_price()+")";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -36,7 +36,7 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     @Override
     public void modifier(ShoppingCart s) throws SQLException {
 
-        String req = "UPDATE shoppingcart SET nom = ?,prenom = ?,ville = ? ,Adresse = ?,code_postale = ?,Total_price = ? ,sta = ? where orderId ='" + s.getOrderId() + "'";
+        String req = "UPDATE shoppingcart SET nom = ?,prenoom = ?,ville = ? ,Adresse = ?,code_postale = ?,Total_price = ? ,sta = ? where id ='" + s.getOrderId() + "'";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, s.getNom());
@@ -89,7 +89,7 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     public  boolean supprimer(int t) throws SQLException {
         boolean ok = false;
         try {
-            PreparedStatement req = cnx.prepareStatement("delete from shoppingcart where orderId= ? ");
+            PreparedStatement req = cnx.prepareStatement("delete from shoppingcart where id= ? ");
             req.setInt(1, t);
             req.executeUpdate();
             ok = true;
@@ -108,14 +108,14 @@ public class ShoppingCartService implements SService<ShoppingCart> {
 
 
                 ShoppingCart c = new ShoppingCart();
-           c.setOrderId(rs.getInt("orderId"));
+           c.setOrderId(rs.getInt("id"));
            c.setNom(rs.getString("nom"));
-            c.setPrenom(rs.getString("prenom"));
+            c.setPrenom(rs.getString("prenoom"));
             c.setVille(rs.getString("ville"));
             c.setAdresse(rs.getString("Adresse"));
             c.setCode_postale(rs.getInt("code_postale"));
             c.setTotal_price(rs.getInt("Total_price"));
-            c.setOrderDate(rs.getDate("orderDate"));
+        //    c.setOrderDate(rs.getDate("order_date"));
             c.setSta(rs.getString("sta"));
             ShoppingCarts.add(c);
 
@@ -127,7 +127,7 @@ public class ShoppingCartService implements SService<ShoppingCart> {
     public List<ShoppingCart> getById(int id) throws SQLException {
         List<ShoppingCart> ShoppingCarts = new ArrayList<>();
        // String req = "Select * from shoppingcart where orderId = ?";
-        String req = "Select * from shoppincart where orderId = ?";
+        String req = "Select * from shoppincart where id = ?";
 
 
         PreparedStatement ps = cnx.prepareStatement(req);
@@ -136,9 +136,9 @@ public class ShoppingCartService implements SService<ShoppingCart> {
 
         while(rs.next()){
             ShoppingCart c = new ShoppingCart();
-            c.setOrderId(rs.getInt("orderId"));
+            c.setOrderId(rs.getInt("id"));
             c.setNom(rs.getString("nom"));
-            c.setPrenom(rs.getString("prenom"));
+            c.setPrenom(rs.getString("prenoom"));
             c.setVille(rs.getString("ville"));
             c.setAdresse(rs.getString("Adresse"));
             c.setCode_postale(rs.getInt("code_postale"));

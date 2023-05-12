@@ -31,7 +31,7 @@ public class VerificationController implements Initializable {
      if (code.equals(codeTf.getText())){
          try {
 
-             Parent loader = FXMLLoader.load(getClass().getResource("AfficherUsers.fxml"));
+             Parent loader = FXMLLoader.load(getClass().getResource("HomeApp.fxml"));
              codeTf.getScene().setRoot(loader);
          }catch (IOException ex){
              System.out.println(ex);
@@ -46,7 +46,7 @@ public class VerificationController implements Initializable {
 
     @FXML
     void EnvoyerSms(ActionEvent event){
-        SendSms.SendSms("+21627005915","Votre Code de verification ArtStation est :"+code);
+        SendSms.SendSms("+21621601920","Votre Code de verification ArtStation est :"+code);
     }
 
     @Override

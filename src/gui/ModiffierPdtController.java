@@ -18,9 +18,6 @@ import services.ProduitService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ModiffierPdtController implements Initializable {
@@ -78,7 +75,7 @@ public class ModiffierPdtController implements Initializable {
 
         if(!nomTf.getText().isEmpty()){
             Produit pp = new Produit();
-            pp.setID_produit(p.getID_produit());
+            pp.setId(p.getId());
             pp.setNom(nomTf.getText());
             pp.setDescription(descriptionTf.getText());
             pp.setPrix(Float.valueOf(prixTf.getText()));

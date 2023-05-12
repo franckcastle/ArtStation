@@ -138,7 +138,7 @@ public class AfficherRemise implements Initializable {
        Remise r =new Remise();
         r.setCode(Integer.parseInt(code.getText()));
         r.setOwner(owner.getText());
-        r.setNb(Integer.parseInt(nb.getText()));
+
 
 
         rs.ajouter(r);

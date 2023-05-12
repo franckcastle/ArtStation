@@ -6,6 +6,10 @@ public class CartItem {
     private int id;
     private int quantity;
     private Float price;
+    private Float total;
+
+    public CartItem() {
+    }
 
     @Override
     public String toString() {
@@ -15,7 +19,25 @@ public class CartItem {
                 ", id=" + id +
                 ", quantity=" + quantity +
                 ", price=" + price +
+                ", total=" + total +
                 '}';
+    }
+
+    public CartItem(int cart_id, int orderId, int id, int quantity, Float price, Float total) {
+        this.cart_id = cart_id;
+        this.orderId = orderId;
+        this.id = id;
+        this.quantity = quantity;
+        this.price = price;
+        this.total = total;
+    }
+
+    public CartItem(int cart_id, int orderId, int id, int quantity, Float price) {
+        this.cart_id = cart_id;
+        this.orderId = orderId;
+        this.id = id;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     public int getCart_id() {
@@ -50,7 +72,6 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-
     public Float getPrice() {
         return price;
     }
@@ -59,26 +80,11 @@ public class CartItem {
         this.price = price;
     }
 
-    public CartItem() {
+    public Float getTotal() {
+        return total;
     }
 
-    public CartItem(int orderId, int id, int quantity, float price) {
-        this.orderId = orderId;
-        this.id = id;
-        this.quantity = quantity;
-        this.price = price;
-    }
-
-    public CartItem(int cart_id, int orderId, int id, int quantity, float price) {
-        this.cart_id = cart_id;
-        this.orderId = orderId;
-        this.id = id;
-        this.quantity = quantity;
-        this.price = price;
-    }
-
-    public CartItem(int quantity, float price) {
-        this.quantity = quantity;
-        this.price = price;
+    public void setTotal(Float total) {
+        this.total = total;
     }
 }

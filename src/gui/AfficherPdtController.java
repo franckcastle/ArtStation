@@ -157,7 +157,7 @@ public class AfficherPdtController implements Initializable {
                                 ModiffierPdtController controller = loader.getController();
                                 controller.setProduit(prod);
                                 controller.initialize();
-                               /* System.out.println("the product"+prod.getID_produit());
+                               /* System.out.println("the product"+prod.getId());
                                 ModiffierPdtController controller =loader.getController();
                                 controller.p=prod;*/
                                 productsTv.getScene().setRoot(root);
@@ -188,7 +188,7 @@ public class AfficherPdtController implements Initializable {
                     Button b = new Button("delete");
                     b.setOnAction((event) -> {
                         Produit listProd = (Produit) productsTv.getItems().get(getIndex());
-                        if (ps.supprimerProduit(listProd.getID_produit())) {
+                        if (ps.supprimerProduit(listProd.getId())) {
                             productsTv.getItems().remove(getIndex());
 
                         }

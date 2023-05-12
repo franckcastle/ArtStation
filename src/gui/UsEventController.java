@@ -105,9 +105,9 @@ public class UsEventController implements Initializable {
             int rowIndex = 1;
             int columnIndex = 0;
             for (Evenement ev : filteredProducts) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Ev.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/UserEv.fxml"));
                 Parent parent = fxmlLoader.load();
-                EvController productController = fxmlLoader.getController();
+                UserEvController productController = fxmlLoader.getController();
                 productController.setData(ev);
                 Node node = parent;
                 eventContainer.add(node, columnIndex, rowIndex);
@@ -232,7 +232,7 @@ public class UsEventController implements Initializable {
 
     @FXML
     void Profile(MouseEvent event) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+        BorderPane root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setWidth(800);
         stage.setHeight(500);

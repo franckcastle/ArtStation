@@ -15,7 +15,7 @@ public class UserService implements IService<User> {
 
     @Override
     public void ajouter(User u) throws SQLException {
-        String req = "INSERT INTO user(userName,password,email,tel,role)Values('"+ u.getUsername() + "','" + u.getPassword() + "','"
+        String req = "INSERT INTO user(username,password,email,tel,role)Values('"+ u.getUsername() + "','" + u.getPassword() + "','"
                 + u.getEmail() +"',"+u.getTel()+ ",'" + u.getRole() + "')";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
@@ -24,7 +24,7 @@ public class UserService implements IService<User> {
 
     @Override
     public void modifer(String s,String s1,String s2,int s3,String s4,String s5) throws SQLException {
-        String req = "UPDATE user SET userName=?,password=?,email=?,tel=?,role=? where username = ?";
+        String req = "UPDATE user SET username=?,password=?,email=?,tel=?,role=? where username = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1,s);
         ps.setString(2,s1);
@@ -57,8 +57,8 @@ public class UserService implements IService<User> {
         ResultSet rs = st.executeQuery(s);
         while (rs.next()){
             User u = new User();
-            u.setUserId(rs.getInt("userId"));
-            u.setUsername(rs.getString("userName"));
+            u.setUserId(rs.getInt("id"));
+            u.setUsername(rs.getString("username"));
             u.setPassword(rs.getString("password"));
             u.setEmail(rs.getString("email"));
             u.setTel(rs.getInt("tel"));
@@ -105,8 +105,8 @@ public class UserService implements IService<User> {
 
         while (rs.next()){
             User u = new User();
-            u.setUserId(rs.getInt("userId"));
-            u.setUsername(rs.getString("userName"));
+            u.setUserId(rs.getInt("id"));
+            u.setUsername(rs.getString("username"));
             u.setPassword(rs.getString("password"));
             u.setEmail(rs.getString("email"));
             u.setTel(rs.getInt("tel"));
@@ -150,33 +150,53 @@ public class UserService implements IService<User> {
         ps.executeUpdate();
     }
     @Override
-    public boolean participerEv(int id_u, Evenement e) throws SQLException {
+    public int participerEv(int id_u, Evenement e) throws SQLException {
+        //Cette fonction retourne  0 si Ok / 1 si l'utilisateur a déja réservé 2 s'il n'a pas de place
+        String sql = "SELECT * FROM resevation WHERE event_id_id = ? AND user_id = ?";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setInt(1, e.getId());
+        ps.setInt(2, id_u);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next())
+            return 1 ;
+
         if (nbPlacesRes(e.getId()) < e.getNbPlace()) {
-            String req = "INSERT INTO reservation(event_id,user_id) values(?,?)";
+            String req = "INSERT INTO resevation(event_id_id,user_id) values(?,?)";
             PreparedStatement st = cnx.prepareStatement(req);
             st.setInt(1, e.getId());
             st.setInt(2, id_u);
             st.executeUpdate();
             dimNbPlace(e);
             System.out.println("done");
-            return true;
+            return 0;
 //"update evenement set nbPlace = nbPlace - 1"
         }
-        return false;
+        return 2;
     }
+
 
     //test
     @Override
     public boolean annulerRes(int id_u, Evenement e) throws SQLException {
-        PreparedStatement req = cnx.prepareStatement("delete from reservation where event_id= ? and user_id=? ");
-        req.setInt(1, e.getId());
-        req.setInt(2, id_u);
-        req.executeUpdate();
-        return true;
+        String sql = "SELECT * FROM resevation WHERE event_id_id = ? AND user_id = ?";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setInt(1, e.getId());
+        ps.setInt(2, id_u);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+
+            PreparedStatement req = cnx.prepareStatement("delete from resevation where event_id_id= ? and user_id=? ");
+            req.setInt(1, e.getId());
+            req.setInt(2, id_u);
+            req.executeUpdate();
+            augNbPlace(e);
+            return true;
+        }
+        return false ;
     }
 
     public int nbPlacesRes(int id_e) throws SQLException {
-        String req = "Select *  from reservation where event_id=" + id_e;
+        String req = "Select *  from resevation where event_id_id=" + id_e;
         Statement st = cnx.createStatement();
         ResultSet rs = st.executeQuery(req);
 
@@ -188,9 +208,18 @@ public class UserService implements IService<User> {
         }
         return nb;
     }
+    public void augNbPlace(Evenement ev) throws SQLException{
+        //
+        String req = "UPDATE evenement SET nb_place =? where id = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, ev.getNbPlace()+1);
+        ps.setInt(2, ev.getId());
+
+        ps.executeUpdate();
+    }
     public void dimNbPlace(Evenement ev) throws SQLException{
         //
-        String req = "UPDATE evenement SET nbPlace =? where id = ?";
+        String req = "UPDATE evenement SET nb_place =? where id = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, ev.getNbPlace()-1);
         ps.setInt(2, ev.getId());
@@ -198,5 +227,22 @@ public class UserService implements IService<User> {
         ps.executeUpdate();
     }
 
+    public List<User> recupererRech(String rech) throws SQLException {
+        List<User> users = new ArrayList<>();
+        String s = "Select * from user where username = '"+rech+"'";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(s);
+        while (rs.next()){
+            User u = new User();
+            u.setUserId(rs.getInt("id"));
+            u.setUsername(rs.getString("username"));
+            u.setPassword(rs.getString("password"));
+            u.setEmail(rs.getString("email"));
+            u.setTel(rs.getInt("tel"));
+            u.setRole(rs.getString("role"));
+            users.add(u);
+        }
+        return users;
+    }
 
 }

@@ -2,16 +2,12 @@ package gui;
 
 import entities.CartItem;
 import entities.Produit;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.Rating;
 
@@ -21,7 +17,6 @@ import javafx.scene.control.ButtonType;
 
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -105,7 +100,7 @@ public class ProductController implements Initializable {
 
                 // Call the rateProduit method to store the rating value in the database
                 RatingService rs = new RatingService();
-               rs.rateProduit(produit.getID_produit(), i);
+               rs.rateProduit(produit.getId(), i);
 
             }
         }
@@ -115,8 +110,8 @@ CItemService ci =new CItemService();
 
     public void addedItem(Produit p, int c) throws SQLException {
         CartItem item = new CartItem();
-        item.setId(p.getID_produit());
-        item.setOrderId(c);
+        item.setId(p.getId());
+        item.setOrderId(1);
         item.setQuantity(1);
         item.setPrice((float)p.getPrix()*item.getQuantity());
         ci.ajouter(item);

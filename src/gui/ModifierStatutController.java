@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import services.StatutService;
@@ -56,7 +55,7 @@ public class ModifierStatutController implements Initializable {
     @FXML
     public void modifier(ActionEvent event) throws SQLException {
         if (!titreField.getText().isEmpty()) {
-            s.setId_s(s.getId_s());
+            s.setId(s.getId());
             s.setTitre(titreField.getText());
             s.setContenu(contenuField.getText());
 
